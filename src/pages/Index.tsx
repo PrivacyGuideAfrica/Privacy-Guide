@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
-import { Shield, Users, AlertTriangle, ClipboardCheck, Layers, FileCheck } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -91,22 +91,6 @@ const Index = () => {
             </Card>
           </Link>
 
-          <Link to="/annual-audit">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <ClipboardCheck className="h-6 w-6 text-ndpa-green" />
-                  <span>Annual Audit</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
-                  Review your annual audit requirements and compliance status
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
           <Link to="/dpia-assessment">
             <Card className="cursor-pointer hover:shadow-md transition-shadow">
               <CardHeader>
@@ -118,22 +102,6 @@ const Index = () => {
               <CardContent>
                 <p className="text-gray-600">
                   Determine whether your organization needs to conduct a Data Protection Impact Assessment
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link to="/organization-classification">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Layers className="h-6 w-6 text-ndpa-green" />
-                  <span>Organization Classification</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
-                  Identify your organization's classification level: MDP-UHL, MDP-EHL, or MDP-OHL
                 </p>
               </CardContent>
             </Card>
@@ -151,6 +119,9 @@ const Index = () => {
               </a>
               <a href="/privacy" className="text-gray-400 hover:text-gray-500">
                 Privacy Notice
+              </a>
+              <a href="/legal-notice" className="text-gray-400 hover:text-gray-500">
+                Legal Notice
               </a>
             </div>
             <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
