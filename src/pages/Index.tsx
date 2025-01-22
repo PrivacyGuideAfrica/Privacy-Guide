@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
-import { Shield, Users, AlertTriangle, ClipboardCheck, Scale } from "lucide-react";
+import { Shield, Users, AlertTriangle, ClipboardCheck, Layers, FileCheck } from "lucide-react";
 
 const Index = () => {
   return (
@@ -94,6 +94,34 @@ const Index = () => {
             <CardContent>
               <p className="text-gray-600">
                 Review your annual audit requirements and compliance status
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <FileCheck className="h-6 w-6 text-ndpa-green" />
+                <span>DPIA Assessment</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Determine whether your organization needs to conduct a Data Protection Impact Assessment
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Layers className="h-6 w-6 text-ndpa-green" />
+                <span>Organization Classification</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Identify your organization's classification level: MDP-UHL, MDP-EHL, or MDP-OHL
               </p>
             </CardContent>
           </Card>
