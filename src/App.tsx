@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NDPAApplicability from "./pages/NDPAApplicability";
+import ControllerProcessor from "./pages/ControllerProcessor";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/ndpa-applicability" element={<NDPAApplicability />} />
+          <Route path="/controller-processor" element={<ControllerProcessor />} />
           <Route path="/about" element={<div className="p-8">About Page Coming Soon</div>} />
           <Route path="/privacy" element={<div className="p-8">Privacy Notice Coming Soon</div>} />
         </Routes>
