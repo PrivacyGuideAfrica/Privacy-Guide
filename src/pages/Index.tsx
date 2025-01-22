@@ -59,75 +59,85 @@ const Index = () => {
             </Card>
           </Link>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Users className="h-6 w-6 text-ndpa-green" />
-                <span>Controller or Processor</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Assess whether your organization acts as a data controller or processor
-              </p>
-            </CardContent>
-          </Card>
+          <Link to="/controller-processor">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Users className="h-6 w-6 text-ndpa-green" />
+                  <span>Controller or Processor</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Assess whether your organization acts as a data controller or processor
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <AlertTriangle className="h-6 w-6 text-ndpa-green" />
-                <span>Data Breach Assessment</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Evaluate your data breach response readiness and obligations
-              </p>
-            </CardContent>
-          </Card>
+          <Link to="/data-breach">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <AlertTriangle className="h-6 w-6 text-ndpa-green" />
+                  <span>Data Breach Assessment</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Evaluate your data breach response readiness and obligations
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <ClipboardCheck className="h-6 w-6 text-ndpa-green" />
-                <span>Annual Audit</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Review your annual audit requirements and compliance status
-              </p>
-            </CardContent>
-          </Card>
+          <Link to="/annual-audit">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <ClipboardCheck className="h-6 w-6 text-ndpa-green" />
+                  <span>Annual Audit</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Review your annual audit requirements and compliance status
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <FileCheck className="h-6 w-6 text-ndpa-green" />
-                <span>DPIA Assessment</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Determine whether your organization needs to conduct a Data Protection Impact Assessment
-              </p>
-            </CardContent>
-          </Card>
+          <Link to="/dpia-assessment">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <FileCheck className="h-6 w-6 text-ndpa-green" />
+                  <span>DPIA Assessment</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Determine whether your organization needs to conduct a Data Protection Impact Assessment
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Layers className="h-6 w-6 text-ndpa-green" />
-                <span>Organization Classification</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Identify your organization's classification level: MDP-UHL, MDP-EHL, or MDP-OHL
-              </p>
-            </CardContent>
-          </Card>
+          <Link to="/organization-classification">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Layers className="h-6 w-6 text-ndpa-green" />
+                  <span>Organization Classification</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Identify your organization's classification level: MDP-UHL, MDP-EHL, or MDP-OHL
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
 
