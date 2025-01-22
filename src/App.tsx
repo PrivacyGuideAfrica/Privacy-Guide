@@ -9,6 +9,7 @@ import ControllerProcessor from "./pages/ControllerProcessor";
 import DataBreachAssessment from "./pages/DataBreachAssessment";
 import AnnualAudit from "./pages/AnnualAudit";
 import DPIAAssessment from "./pages/DPIAAssessment";
+import LegalNotice from "./pages/LegalNotice";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/dpia-assessment" element={<DPIAAssessment />} />
           <Route path="/about" element={<div className="p-8">About Page Coming Soon</div>} />
           <Route path="/privacy" element={<div className="p-8">Privacy Notice Coming Soon</div>} />
+          <Route path="/legal-notice" element={<LegalNotice />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

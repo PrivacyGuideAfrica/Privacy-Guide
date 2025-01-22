@@ -8,12 +8,15 @@ export const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-ndpa-navy font-bold text-xl">NDPA Assessment</span>
+              <span className="text-ndpa-navy font-bold text-xl">Privacy Guide Africa</span>
             </Link>
           </div>
           <div className="flex items-center space-x-4">
             <Button variant="ghost" asChild>
               <Link to="/about">About</Link>
+            </Button>
+            <Button variant="ghost" asChild>
+              <Link to="/legal-notice">Legal Notice</Link>
             </Button>
             <Button variant="ghost" asChild>
               <Link to="/privacy">Privacy Notice</Link>
