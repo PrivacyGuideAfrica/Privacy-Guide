@@ -9,18 +9,27 @@ import { HelpCircle } from "lucide-react";
 
 interface Props {
   onProceedToClassification: () => void;
+  onClassificationSelected: (classification: string) => void;
 }
 
-export const AuditNecessityAssessment = ({ onProceedToClassification }: Props) => {
+export const AuditNecessityAssessment = ({ onProceedToClassification, onClassificationSelected }: Props) => {
   const [answer, setAnswer] = useState<string>("");
-  const [showMessage, setShowMessage] = useState(false);
+  const [showClassification, setShowClassification] = useState(false);
+  const [selectedClassification, setSelectedClassification] = useState<string>("");
 
   const handleAnswer = (value: string) => {
     setAnswer(value);
     if (value === "yes") {
-      setShowMessage(false);
+      setShowClassification(true);
+    }
+  };
+
+  const handleClassificationSelect = (value: string) => {
+    setSelectedClassification(value);
+    if (value === "unsure") {
+      onProceedToClassification();
     } else {
-      setShowMessage(true);
+      onClassificationSelected(value);
     }
   };
 
@@ -60,18 +69,28 @@ export const AuditNecessityAssessment = ({ onProceedToClassification }: Props) =
             </div>
           </RadioGroup>
 
-          {showMessage && (
-            <Alert>
-              <AlertDescription>
-                An annual audit may not be necessary, but ensure regular compliance documentation.
-              </AlertDescription>
-            </Alert>
-          )}
-
           {answer === "yes" && (
-            <Button onClick={onProceedToClassification}>
-              Proceed to Classification Assessment
-            </Button>
+            <div className="space-y-4">
+              <p className="text-lg">What is your organisation's classification?</p>
+              <RadioGroup value={selectedClassification} onValueChange={handleClassificationSelect}>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="MDP-UHL" id="mdp-uhl" />
+                  <Label htmlFor="mdp-uhl">MDP-UHL (Ultra High Level)</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="MDP-EHL" id="mdp-ehl" />
+                  <Label htmlFor="mdp-ehl">MDP-EHL (Extra High Level)</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="MDP-OHL" id="mdp-ohl" />
+                  <Label htmlFor="mdp-ohl">MDP-OHL (Ordinary High Level)</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="unsure" id="unsure" />
+                  <Label htmlFor="unsure">Not sure</Label>
+                </div>
+              </RadioGroup>
+            </div>
           )}
         </div>
       </CardContent>

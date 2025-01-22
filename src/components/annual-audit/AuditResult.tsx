@@ -15,11 +15,13 @@ export const AuditResult = ({ classification, onReset }: Props) => {
   const getResultMessage = () => {
     switch (classification) {
       case "MDP-UHL":
-        return "Your organisation is classified under MDP-UHL. Conduct an annual audit and submit a Compliance Audit Report (CAR).";
+        return "Annual audit and Compliance Audit Report (CAR) submission required.";
       case "MDP-EHL":
-        return "Your organisation is classified under MDP-EHL. Conduct an annual audit and submit a Compliance Audit Report (CAR).";
+        return "Annual audit required with Compliance Audit Report submission.";
       case "MDP-OHL":
-        return "Your organisation may fall under MDP-OHL. An annual registration update is required, but a full audit may not be necessary.";
+        return "Annual registration update required, not a full audit.";
+      case null:
+        return "An annual audit may not be necessary, but ensure regular compliance documentation.";
       default:
         return "Unable to determine classification. Please try the assessment again.";
     }

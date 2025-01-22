@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { HelpCircle } from "lucide-react";
 import type { Classification } from "@/pages/AnnualAudit";
@@ -19,10 +18,12 @@ export const ClassificationAssessment = ({ onClassificationDetermined }: Props) 
     const newAnswers = { ...answers, [currentQuestion]: value };
     setAnswers(newAnswers);
 
-    if (currentQuestion === 1 && value === "yes") {
-      setCurrentQuestion(2);
-    } else if (currentQuestion === 1 && value === "no") {
-      setCurrentQuestion(3);
+    if (currentQuestion === 1) {
+      if (value === "yes") {
+        setCurrentQuestion(2);
+      } else {
+        setCurrentQuestion(3);
+      }
     } else if (currentQuestion === 2) {
       if (value === "yes") {
         onClassificationDetermined("MDP-UHL");
