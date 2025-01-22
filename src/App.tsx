@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import NDPAApplicability from "./pages/NDPAApplicability";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/ndpa-applicability" element={<NDPAApplicability />} />
           <Route path="/about" element={<div className="p-8">About Page Coming Soon</div>} />
           <Route path="/privacy" element={<div className="p-8">Privacy Notice Coming Soon</div>} />
         </Routes>

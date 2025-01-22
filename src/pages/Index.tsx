@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { Shield, Users, AlertTriangle, ClipboardCheck, Layers, FileCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -42,19 +43,21 @@ const Index = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl font-bold text-center mb-12">Assessment Modules</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Shield className="h-6 w-6 text-ndpa-green" />
-                <span>NDPA Applicability</span>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600">
-                Determine if the Nigerian Data Protection Act applies to your organization
-              </p>
-            </CardContent>
-          </Card>
+          <Link to="/ndpa-applicability">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Shield className="h-6 w-6 text-ndpa-green" />
+                  <span>NDPA Applicability</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Determine if the Nigerian Data Protection Act applies to your organization
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
 
           <Card>
             <CardHeader>
