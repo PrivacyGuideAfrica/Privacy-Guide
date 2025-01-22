@@ -39,7 +39,7 @@ const AnnualAudit = () => {
         {currentStep === "necessity" && (
           <AuditNecessityAssessment
             onProceedToClassification={() => setCurrentStep("classification")}
-            onClassificationSelected={(result) => {
+            onClassificationSelected={(result: Classification) => {
               setClassification(result);
               setCurrentStep("result");
             }}
@@ -48,7 +48,7 @@ const AnnualAudit = () => {
 
         {currentStep === "classification" && (
           <ClassificationAssessment
-            onClassificationDetermined={(result) => {
+            onClassificationDetermined={(result: Classification) => {
               setClassification(result);
               setCurrentStep("result");
             }}
