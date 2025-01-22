@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NDPAApplicability from "./pages/NDPAApplicability";
 import ControllerProcessor from "./pages/ControllerProcessor";
 import DataBreachAssessment from "./pages/DataBreachAssessment";
+import AnnualAudit from "./pages/AnnualAudit";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/ndpa-applicability" element={<NDPAApplicability />} />
           <Route path="/controller-processor" element={<ControllerProcessor />} />
           <Route path="/data-breach" element={<DataBreachAssessment />} />
+          <Route path="/annual-audit" element={<AnnualAudit />} />
           <Route path="/about" element={<div className="p-8">About Page Coming Soon</div>} />
           <Route path="/privacy" element={<div className="p-8">Privacy Notice Coming Soon</div>} />
         </Routes>
