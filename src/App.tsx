@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NDPAApplicability from "./pages/NDPAApplicability";
 import ControllerProcessor from "./pages/ControllerProcessor";
+import DataBreachAssessment from "./pages/DataBreachAssessment";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/ndpa-applicability" element={<NDPAApplicability />} />
           <Route path="/controller-processor" element={<ControllerProcessor />} />
+          <Route path="/data-breach" element={<DataBreachAssessment />} />
           <Route path="/about" element={<div className="p-8">About Page Coming Soon</div>} />
           <Route path="/privacy" element={<div className="p-8">Privacy Notice Coming Soon</div>} />
         </Routes>
