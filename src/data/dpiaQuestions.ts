@@ -1,158 +1,93 @@
+import { Question } from "@/components/shared/AssessmentInterface";
+
 export interface DPIAActivity {
   label: string;
   tooltip?: string;
 }
 
-export interface DPIAQuestion {
-  id: number;
-  text: string;
-  tooltip?: string;
-  nextQuestions: {
-    yes: number | null;
-    no: number | null;
-  };
-  requiresDPIA?: {
-    yes: boolean;
-    no: boolean;
-  };
-}
+export const dpiaActivities: DPIAActivity[] = [
+  {
+    label: "Systematic and extensive profiling with significant effects",
+    tooltip: "Large scale automated processing used to analyze or predict aspects about individuals"
+  },
+  {
+    label: "Large scale processing of sensitive data",
+    tooltip: "Processing special categories of data or criminal convictions on a large scale"
+  },
+  {
+    label: "Systematic monitoring of public areas",
+    tooltip: "Regular monitoring of individuals in public spaces using technology"
+  }
+];
 
-export const dpiaQuestions: DPIAQuestion[] = [
+export const dpiaQuestions: Question[] = [
   {
     id: 1,
-    text: "Are you processing personal data that could result in a high risk to the rights and freedoms of individuals?",
-    tooltip: "High risk refers to situations where data processing could lead to identity theft, financial loss, discrimination, or significant invasion of privacy. This includes using personal data to make important decisions about people, tracking location or online activity, sharing data with many organizations, or processing sensitive data.",
-    nextQuestions: {
-      yes: 2,
-      no: null
-    },
-    requiresDPIA: {
-      yes: false,
-      no: false
+    text: "Are you processing personal data that could result in a high risk to individuals' rights and freedoms?",
+    tooltip: "Consider if your processing could lead to discrimination, identity theft, financial loss, or other significant impacts",
+    options: {
+      yes: {
+        nextQuestion: 2
+      },
+      no: {
+        nextQuestion: null,
+        message: "Based on your response, a DPIA may not be required. However, it's recommended to document your decision-making process and regularly review your processing activities."
+      }
+    }
+  },
+  {
+    id: 2,
+    text: "Does your processing involve any of these high-risk activities?",
+    tooltip: "Select any activities that apply to your processing operations",
+    options: {
+      yes: {
+        nextQuestion: 3
+      },
+      no: {
+        nextQuestion: 4
+      }
     }
   },
   {
     id: 3,
-    text: "Are you using new technologies or are there any innovative processing activities involved?",
-    tooltip: "New technologies like AI, IoT, or innovative processing methods may involve unknown risks, making a DPIA essential.",
-    nextQuestions: {
-      yes: null,
-      no: 4
-    },
-    requiresDPIA: {
-      yes: true,
-      no: false
+    text: "Will you be processing sensitive data on a large scale?",
+    tooltip: "Sensitive data includes health data, biometric data, or data about racial/ethnic origin",
+    options: {
+      yes: {
+        nextQuestion: null,
+        message: "A DPIA is required. You should document the nature, scope, context, and purposes of the processing, assess necessity and risks, and identify measures to address those risks."
+      },
+      no: {
+        nextQuestion: 4
+      }
     }
   },
   {
     id: 4,
-    text: "Could the processing result in denial of services or legal rights to individuals?",
-    tooltip: "This includes situations like loan refusals, employment decisions, or other actions that could impact individuals' legal rights.",
-    nextQuestions: {
-      yes: null,
-      no: 5
-    },
-    requiresDPIA: {
-      yes: true,
-      no: false
+    text: "Are you using new technologies or applying existing technologies in novel ways?",
+    tooltip: "Consider if you're using innovative technology or applying existing technology in new ways that could impact individuals",
+    options: {
+      yes: {
+        nextQuestion: 5
+      },
+      no: {
+        nextQuestion: 5
+      }
     }
   },
   {
     id: 5,
-    text: "Are you processing data in a way that may lead to significant harm?",
-    tooltip: "Significant harm includes discrimination, loss of employment, or other serious negative impacts on individuals.",
-    nextQuestions: {
-      yes: null,
-      no: null
-    },
-    requiresDPIA: {
-      yes: true,
-      no: false
+    text: "Does the processing involve making decisions about individuals using automated means?",
+    tooltip: "This includes profiling and automated decision-making with legal or similarly significant effects",
+    options: {
+      yes: {
+        nextQuestion: null,
+        message: "A DPIA is required. You need to assess the impact of the automated processing and implement appropriate safeguards."
+      },
+      no: {
+        nextQuestion: null,
+        message: "Based on your responses, you should still consider conducting a DPIA as a best practice, even if not strictly required. This will help ensure compliance and demonstrate accountability."
+      }
     }
-  }
-];
-
-export const dpiaActivities: DPIAActivity[] = [
-  {
-    label: "Automated decision-making or profiling",
-    tooltip: "Processing personal data without human intervention, often to make predictions or decisions about individuals (e.g., credit scoring, automated job screening)."
-  },
-  {
-    label: "Large-scale processing of sensitive data",
-    tooltip: "Handling large volumes of sensitive data such as health, financial, biometric, or criminal records that can cause significant harm if breached."
-  },
-  {
-    label: "Systematic monitoring of public areas",
-    tooltip: "Ongoing observation or tracking of individuals in public spaces, typically using surveillance technologies (e.g., CCTV)."
-  },
-  {
-    label: "Processing of children's data",
-    tooltip: "Collection, use, or sharing of personal data from minors, which requires additional safeguards due to their vulnerability."
-  },
-  {
-    label: "Cross-border data transfer to a country with weaker data protection",
-    tooltip: "Moving personal data to a country with weaker protection standards, requiring additional safeguards."
-  },
-  {
-    label: "Processing data that could lead to discrimination",
-    tooltip: "Using data in a way that could unfairly disadvantage certain groups of people."
-  },
-  {
-    label: "Invisible processing",
-    tooltip: "Processing data in ways that people are not aware of."
-  },
-  {
-    label: "Data matching",
-    tooltip: "Comparing different sets of data to find links and reveal new information."
-  },
-  {
-    label: "Combining data from various sources",
-    tooltip: "Bringing together data from different places to create a more complete picture of an individual."
-  }
-];
-
-export const dpiaGuidanceSteps = [
-  {
-    title: "Step 1: Identify and Describe the Processing",
-    items: [
-      "Define the nature, scope, context, and purposes of the data processing",
-      "Outline the type of personal data and the methods of collection"
-    ]
-  },
-  {
-    title: "Step 2: Assess Necessity and Proportionality",
-    items: [
-      "Evaluate whether the processing is essential for achieving the specified objectives",
-      "Consider whether less intrusive methods could achieve the same results"
-    ]
-  },
-  {
-    title: "Step 3: Identify Risks",
-    items: [
-      "List risks to the rights and freedoms of data subjects",
-      "Rank the risks as low, medium, or high based on likelihood and impact"
-    ]
-  },
-  {
-    title: "Step 4: Mitigate Risks",
-    items: [
-      "Implement technical and organisational measures to reduce risks",
-      "Document how these measures reduce the likelihood or impact of identified risks"
-    ]
-  },
-  {
-    title: "Step 5: Consult with Stakeholders",
-    items: [
-      "Involve your Data Protection Officer (DPO)",
-      "If necessary, seek advice from external legal advisors",
-      "Consult the Data Protection Authority (NDPC) if high risks remain unresolved"
-    ]
-  },
-  {
-    title: "Step 6: Document and Review",
-    items: [
-      "Keep comprehensive documentation of the DPIA process",
-      "Periodically review and update the DPIA if the processing activity changes"
-    ]
   }
 ];
