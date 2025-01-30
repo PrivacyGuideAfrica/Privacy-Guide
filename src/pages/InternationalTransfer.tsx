@@ -41,7 +41,6 @@ const questions: Question[] = [
   {
     id: 4,
     text: "Are you sending the information to another company within your own group?",
-    tooltip: "The regulator has yet to publish the procedure for applying for it, thereby making it unusable.",
     options: {
       yes: {
         nextQuestion: 6,
@@ -53,16 +52,12 @@ const questions: Question[] = [
   {
     id: 5,
     text: "Do you have a contract in place with the recipient organisation?",
-    tooltip: "The regulator has yet to publish its module(s) of the Standard Contractual Clauses; therefore, it is currently unusable.",
     options: {
       yes: {
         nextQuestion: 6,
         message: "You might be able to use \"Standard Contractual Clauses.\" These are special contracts with rules to protect the information."
       },
-      no: {
-        nextQuestion: null,
-        message: "You may not be able to transfer this data lawfully under the NDPA.\n\n• Reassess the necessity of the transfer\n• Consult a data protection expert for alternative solutions"
-      }
+      no: { nextQuestion: 6 }
     }
   },
   {
@@ -72,11 +67,11 @@ const questions: Question[] = [
     options: {
       yes: {
         nextQuestion: null,
-        message: "You may be able to transfer the data, provided you follow the applicable safeguards.\n\n• Ensure you document your legal basis and have security measures in place\n• If relying on consent, ensure it is freely given and recorded"
+        message: "You may be able to transfer the data, provided you follow the applicable safeguards.\n\n• Ensure you document your legal basis and have security measures in place\n• If relying on consent, ensure it is freely given and recorded\n\nHow can you transfer data outside Nigeria?\n\nThere are a few ways you can send personal information to other countries:\n\n1. Adequacy Decisions: The authorities might decide that some countries have data protection laws that are good enough to protect information sent from Nigeria. However, there's no list of these countries right now due to a court judgment that invalidated the previous list of countries.\n\n2. Binding Corporate Rules: Sometimes, companies have special rules they follow within their group to send information safely. The procedure to apply for this is not publicly available yet.\n\n3. Contractual Clauses: You can have a special contract with the company receiving the information. This contract will have rules to protect the information. However, the authorities have not published its module of any standard contracts to use yet.\n\n4. Other Ways:\n• Informed Consent: Ask the person if it is okay to send their information abroad\n• Necessary for a Contract: Send information if needed to fulfill a contract\n• Sole Interest of the Data Subject: Send information if it's in the person's best interests\n• Public Interest: Send information for important public tasks\n• Legal Claims: Send information if needed for court cases\n• Vital Interests: Send information to protect someone's life or safety\n\nImportant things to remember:\n• Figure out where the personal data is going\n• Check your tools and services\n• Keep track of where you send information\n• Document your international data transfer mechanism"
       },
       no: {
         nextQuestion: null,
-        message: "You may not be able to transfer this data lawfully under the NDPA.\n\n• Reassess the necessity of the transfer\n• Consult a data protection expert for alternative solutions"
+        message: "You may not be able to transfer this data lawfully under the NDPA.\n\n• Reassess the necessity of the transfer\n• Consult a data protection expert for alternative solutions\n\nHow can you transfer data outside Nigeria?\n\nThere are a few ways you can send personal information to other countries:\n\n1. Adequacy Decisions: The authorities might decide that some countries have data protection laws that are good enough to protect information sent from Nigeria. However, there's no list of these countries right now due to a court judgment that invalidated the previous list of countries.\n\n2. Binding Corporate Rules: Sometimes, companies have special rules they follow within their group to send information safely. The procedure to apply for this is not publicly available yet.\n\n3. Contractual Clauses: You can have a special contract with the company receiving the information. This contract will have rules to protect the information. However, the authorities have not published its module of any standard contracts to use yet.\n\n4. Other Ways:\n• Informed Consent: Ask the person if it is okay to send their information abroad\n• Necessary for a Contract: Send information if needed to fulfill a contract\n• Sole Interest of the Data Subject: Send information if it's in the person's best interests\n• Public Interest: Send information for important public tasks\n• Legal Claims: Send information if needed for court cases\n• Vital Interests: Send information to protect someone's life or safety\n\nImportant things to remember:\n• Figure out where the personal data is going\n• Check your tools and services\n• Keep track of where you send information\n• Document your international data transfer mechanism"
       }
     }
   }
