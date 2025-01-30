@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
-import { Shield, Users, AlertTriangle, FileCheck } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck, Clipboard } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -102,6 +102,22 @@ const Index = () => {
               <CardContent>
                 <p className="text-gray-600">
                   Determine whether your organization needs to conduct a Data Protection Impact Assessment
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/annual-audit">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Clipboard className="h-6 w-6 text-ndpa-green" />
+                  <span>Annual Audit Requirements</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Find out if your organization needs to conduct an annual data protection audit
                 </p>
               </CardContent>
             </Card>
