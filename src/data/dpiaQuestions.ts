@@ -3,6 +3,73 @@ export interface DPIAActivity {
   tooltip?: string;
 }
 
+export interface DPIAQuestion {
+  id: number;
+  text: string;
+  tooltip?: string;
+  nextQuestions: {
+    yes: number | null;
+    no: number | null;
+  };
+  requiresDPIA?: {
+    yes: boolean;
+    no: boolean;
+  };
+}
+
+export const dpiaQuestions: DPIAQuestion[] = [
+  {
+    id: 1,
+    text: "Are you processing personal data that could result in a high risk to the rights and freedoms of individuals?",
+    tooltip: "\"High risk\" refers to situations where data processing could lead to identity theft, financial loss, discrimination, or significant invasion of privacy.",
+    nextQuestions: {
+      yes: 2,
+      no: null
+    },
+    requiresDPIA: {
+      yes: false,
+      no: false
+    }
+  },
+  {
+    id: 3,
+    text: "Are you using new technologies or are there any innovative processing activities involved?",
+    tooltip: "New technologies like AI may involve unknown risks, making a DPIA essential.",
+    nextQuestions: {
+      yes: null,
+      no: 4
+    },
+    requiresDPIA: {
+      yes: true,
+      no: false
+    }
+  },
+  {
+    id: 4,
+    text: "Could the processing result in denial of services or legal rights to individuals?",
+    nextQuestions: {
+      yes: null,
+      no: 5
+    },
+    requiresDPIA: {
+      yes: true,
+      no: false
+    }
+  },
+  {
+    id: 5,
+    text: "Are you processing data in a way that may lead to significant harm?",
+    nextQuestions: {
+      yes: null,
+      no: null
+    },
+    requiresDPIA: {
+      yes: true,
+      no: false
+    }
+  }
+];
+
 export const dpiaActivities: DPIAActivity[] = [
   {
     label: "Automated decision-making or profiling",
