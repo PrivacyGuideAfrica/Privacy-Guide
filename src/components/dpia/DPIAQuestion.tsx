@@ -6,6 +6,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Card, CardContent } from "@/components/ui/card";
 import { HelpCircle } from "lucide-react";
 
 interface Props {
@@ -17,37 +18,41 @@ interface Props {
 
 const DPIAQuestion = ({ text, tooltip, value, onValueChange }: Props) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow">
-      <div className="flex items-start gap-2 mb-4">
-        <h2 className="text-xl font-semibold">{text}</h2>
-        {tooltip && (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <HelpCircle className="h-5 w-5 text-gray-400" />
-              </TooltipTrigger>
-              <TooltipContent className="max-w-sm">
-                {tooltip}
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        )}
-      </div>
-      <RadioGroup
-        className="space-y-4"
-        value={value}
-        onValueChange={onValueChange}
-      >
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="yes" id="yes" />
-          <Label htmlFor="yes">Yes</Label>
+    <Card>
+      <CardContent className="pt-6">
+        <div className="flex items-start gap-2 mb-6">
+          <h2 className="text-xl font-semibold text-left">{text}</h2>
+          {tooltip && (
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button className="mt-1">
+                    <HelpCircle className="h-5 w-5 text-muted-foreground" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent className="max-w-sm">
+                  <p>{tooltip}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          )}
         </div>
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="no" id="no" />
-          <Label htmlFor="no">No</Label>
-        </div>
-      </RadioGroup>
-    </div>
+        <RadioGroup
+          className="space-y-4"
+          value={value}
+          onValueChange={onValueChange}
+        >
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="yes" id="yes" />
+            <Label htmlFor="yes">Yes</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="no" id="no" />
+            <Label htmlFor="no">No</Label>
+          </div>
+        </RadioGroup>
+      </CardContent>
+    </Card>
   );
 };
 
