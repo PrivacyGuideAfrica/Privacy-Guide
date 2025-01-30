@@ -62,6 +62,7 @@ const questions: Question[] = [
   {
     id: 6,
     text: "Is the information being used by a government agency for one of these reasons?\n\n• Prevention, investigation, detection, prosecution, or adjudication of a criminal offence?\n• Prevention or control of a national public health emergency?\n• National security?\n• Publication in the public interest?\n• Journalism, educational, artistic, or literary purposes?\n• Establishment, exercise, or defence of legal claims?",
+    tooltip: "Government agencies have specific exemptions under the NDPA for certain processing activities in the public interest.",
     options: {
       yes: {
         nextQuestion: null,

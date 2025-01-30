@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
@@ -125,7 +126,23 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
           </div>
         ) : currentQuestionData ? (
           <div className="space-y-6">
-            <p className="text-lg">{currentQuestionData.text}</p>
+            <div className="flex items-start gap-2">
+              <p className="text-lg">{currentQuestionData.text}</p>
+              {currentQuestionData.tooltip && (
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
+                        <HelpCircle className="h-4 w-4" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs">{currentQuestionData.tooltip}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
+            </div>
             <div className="space-y-4">
               <Button
                 variant={answers[currentQuestion] === "yes" ? "default" : "outline"}
@@ -146,8 +163,8 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
         ) : null}
       </CardContent>
 
-      <CardFooter className="flex flex-col gap-4">
-        {!finalMessage && (
+      {!finalMessage && (
+        <div className="p-6 pt-0">
           <div className="flex justify-between w-full">
             <Button
               variant="outline"
@@ -166,8 +183,8 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
           </div>
-        )}
-      </CardFooter>
+        </div>
+      )}
     </Card>
   );
 };
