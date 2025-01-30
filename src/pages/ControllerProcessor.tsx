@@ -1,267 +1,114 @@
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { HelpCircle, ArrowLeft, RotateCcw } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { Link } from "react-router-dom";
+import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
+import { Layout } from "@/components/shared/Layout";
+
+const questions: Question[] = [
+  {
+    id: 1,
+    text: "Do you process personal data? (e.g., collect, store, use, share, or delete it)",
+    tooltip: "Processing is doing anything with personal data, like collecting it, storing it, using it, sharing it, or even deleting it.",
+    options: {
+      yes: {
+        nextQuestion: 2,
+      },
+      no: {
+        nextQuestion: null,
+        message: "The Nigerian Data Protection Act does not apply to your processing.",
+      },
+    },
+  },
+  {
+    id: 2,
+    text: "Are you responsible for deciding why and how you use personal data?",
+    options: {
+      yes: {
+        nextQuestion: 3,
+      },
+      no: {
+        nextQuestion: 5,
+      },
+    },
+  },
+  {
+    id: 3,
+    text: "Do you set rules for who can access, use, and share the data?",
+    options: {
+      yes: {
+        nextQuestion: 4,
+      },
+      no: {
+        nextQuestion: 5,
+      },
+    },
+  },
+  {
+    id: 4,
+    text: "Do you oversee the personal data lifecycle, from collection to deletion?",
+    options: {
+      yes: {
+        nextQuestion: null,
+        message: "Your organisation may be classified as a Data Controller. As a Data Controller, you must:\n\n" +
+          "• Register with the NDPC and file annual Compliance Audit Reports if you're a controller of major importance\n" +
+          "• Appoint Data Protection Officers to provide semi-annual reports\n" +
+          "• Identify lawful bases for processing, including consent, contractual necessity, legal obligations\n" +
+          "• Provide Privacy Notices to Data Subjects before collecting data\n" +
+          "• Implement security measures including data protection schedules, encryption, and software updates",
+      },
+      no: {
+        nextQuestion: 5,
+      },
+    },
+  },
+  {
+    id: 5,
+    text: "Do you process personal data based solely on the instructions of another entity (such as a Data Controller)?",
+    tooltip: "A Data Processor only acts under the direction of a Controller and does not decide how data is used.",
+    options: {
+      yes: {
+        nextQuestion: null,
+        message: "Your organisation may be classified as a Data Processor. Your responsibilities include:\n\n" +
+          "• Acting only on Controller Instructions\n" +
+          "• Carrying out Data Protection Impact Assessments before deploying high-risk systems\n" +
+          "• Ensuring software compliance with NDPA guidelines\n" +
+          "• Immediate notification of data breaches to controllers",
+      },
+      no: {
+        nextQuestion: 6,
+      },
+    },
+  },
+  {
+    id: 6,
+    text: "Do you determine how another organisation uses personal data while also processing it on their behalf?",
+    options: {
+      yes: {
+        nextQuestion: null,
+        message: "You may function as both a Data Controller and Processor. Review your internal processes with a Data Protection Professional to ensure compliance with both sets of obligations under the NDPA.",
+      },
+      no: {
+        nextQuestion: null,
+        message: "Your responses suggest that further clarification is needed to determine your role. Please review the definitions and responsibilities of Data Controllers and Data Processors to better understand your obligations under the NDPA.",
+      },
+    },
+  },
+];
 
 const ControllerProcessor = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(1);
-  const [result, setResult] = useState<string | null>(null);
-  const { toast } = useToast();
-
-  const resetAssessment = () => {
-    setCurrentQuestion(1);
-    setResult(null);
-    toast({
-      title: "Assessment Reset",
-      description: "You can start the assessment again.",
-    });
-  };
-
-  const renderQuestion = () => {
-    switch (currentQuestion) {
-      case 1:
-        return (
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <h2 className="text-xl font-semibold">
-                Are you processing (collecting, using, sharing, storing, or deleting) personal data?
-              </h2>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <HelpCircle className="h-5 w-5 text-gray-500" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Processing refers to any operation performed on personal data.</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-            <div className="space-x-4">
-              <Button onClick={() => setCurrentQuestion(2)}>Yes</Button>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  setResult(
-                    "The Nigerian Data Protection Act does not apply to your processing."
-                  )
-                }
-              >
-                No
-              </Button>
-            </div>
-          </div>
-        );
-
-      case 2:
-        return (
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <h2 className="text-xl font-semibold">
-                Are you responsible for determining the purposes and means of processing personal data?
-              </h2>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <HelpCircle className="h-5 w-5 text-gray-500" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Determining the purposes and means refers to deciding why and how personal data is processed.</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-            <div className="space-x-4">
-              <Button onClick={() => setCurrentQuestion(3)}>Yes</Button>
-              <Button variant="outline" onClick={() => setCurrentQuestion(5)}>
-                No
-              </Button>
-            </div>
-          </div>
-        );
-
-      case 3:
-        return (
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <h2 className="text-xl font-semibold">
-                Do you control who can access the data and how it is shared with others?
-              </h2>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <HelpCircle className="h-5 w-5 text-gray-500" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Controlling access refers to deciding how and with whom personal data is shared.</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-            <div className="space-x-4">
-              <Button onClick={() => setCurrentQuestion(4)}>Yes</Button>
-              <Button variant="outline" onClick={() => setCurrentQuestion(5)}>
-                No
-              </Button>
-            </div>
-          </div>
-        );
-
-      case 4:
-        return (
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">
-              Are you the primary entity responsible for the personal data lifecycle (from collection to deletion)?
-            </h2>
-            <div className="space-x-4">
-              <Button
-                onClick={() =>
-                  setResult(
-                    "You are a Data Controller. As a Data Controller, you must:\n\n" +
-                    "• Register with the NDPC and file annual Compliance Audit Reports if you're a controller of major importance\n" +
-                    "• Appoint Data Protection Officers to provide semi-annual reports\n" +
-                    "• Identify lawful bases for processing\n" +
-                    "• Provide Privacy Notices to Data Subjects\n" +
-                    "• Implement security measures including data protection schedules and encryption"
-                  )
-                }
-              >
-                Yes
-              </Button>
-              <Button variant="outline" onClick={() => setCurrentQuestion(5)}>
-                No
-              </Button>
-            </div>
-          </div>
-        );
-
-      case 5:
-        return (
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">
-              Do you process personal data based solely on the instructions of another entity (such as a Data Controller)?
-            </h2>
-            <div className="space-x-4">
-              <Button
-                onClick={() =>
-                  setResult(
-                    "You are a Data Processor. Your responsibilities include:\n\n" +
-                    "• Acting only on Controller Instructions\n" +
-                    "• Carrying out Data Protection Impact Assessments\n" +
-                    "• Ensuring software compliance with NDPA guidelines\n" +
-                    "• Immediate notification of data breaches to controllers"
-                  )
-                }
-              >
-                Yes
-              </Button>
-              <Button variant="outline" onClick={() => setCurrentQuestion(6)}>
-                No
-              </Button>
-            </div>
-          </div>
-        );
-
-      case 6:
-        return (
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">
-              Are you involved in both determining the purpose of data processing and handling data for another organisation?
-            </h2>
-            <div className="space-x-4">
-              <Button
-                onClick={() =>
-                  setResult(
-                    "You may be both a Data Controller and Processor. Consult with a Data Protection Officer (DPO) for clarity on your specific obligations under each role."
-                  )
-                }
-              >
-                Yes
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() =>
-                  setResult(
-                    "Based on your responses, we recommend reviewing the questions again or consulting with a Data Protection Officer for clarity on your role."
-                  )
-                }
-              >
-                No
-              </Button>
-            </div>
-          </div>
-        );
-
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="mb-6 flex items-center justify-between">
-          <Link to="/" className="flex items-center text-gray-600 hover:text-gray-900">
-            <ArrowLeft className="h-5 w-5 mr-2" />
-            Back to Home
-          </Link>
-          <Button variant="outline" onClick={resetAssessment}>
-            <RotateCcw className="h-4 w-4 mr-2" />
-            Start Over
-          </Button>
-        </div>
-
-        <Card>
-          <CardContent className="pt-6">
-            {!result ? (
-              <div>
-                <div className="mb-6">
-                  <div className="h-2 w-full bg-gray-200 rounded-full">
-                    <div
-                      className="h-2 bg-ndpa-green rounded-full transition-all duration-300"
-                      style={{
-                        width: `${(currentQuestion / 6) * 100}%`,
-                      }}
-                    />
-                  </div>
-                  <p className="text-sm text-gray-600 mt-2">
-                    Question {currentQuestion} of 6
-                  </p>
-                </div>
-                {renderQuestion()}
-              </div>
-            ) : (
-              <div className="space-y-6">
-                <Alert>
-                  <AlertDescription className="whitespace-pre-line">
-                    {result}
-                  </AlertDescription>
-                </Alert>
-                <div className="space-y-4">
-                  <Button onClick={resetAssessment} className="w-full">
-                    Take Assessment Again
-                  </Button>
-                  <Link to="/">
-                    <Button variant="outline" className="w-full">
-                      Return to Home
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+    <Layout>
+      <div className="container mx-auto py-8">
+        <h1 className="text-2xl font-bold mb-6 text-center">
+          Controller or Processor Assessment
+        </h1>
+        <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
+          This assessment will help determine whether your organization is classified as a Data Controller
+          or Data Processor under the Nigerian Data Protection Act (NDPA).
+        </p>
+        <AssessmentInterface
+          title="Controller/Processor Assessment"
+          questions={questions}
+        />
       </div>
-    </div>
+    </Layout>
   );
 };
 
