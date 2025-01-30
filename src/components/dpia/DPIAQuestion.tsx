@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Card, CardContent } from "@/components/ui/card";
-import { HelpCircle } from "lucide-react";
+import { HelpCircle, CheckCircle2 } from "lucide-react";
 
 interface Props {
   text: string;
@@ -44,11 +44,21 @@ const DPIAQuestion = ({ text, tooltip, value, onValueChange }: Props) => {
         >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="yes" id="yes" />
-            <Label htmlFor="yes">Yes</Label>
+            <Label htmlFor="yes" className="flex items-center gap-2">
+              Yes
+              {value === "yes" && (
+                <CheckCircle2 className="h-4 w-4 text-green-500" />
+              )}
+            </Label>
           </div>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="no" id="no" />
-            <Label htmlFor="no">No</Label>
+            <Label htmlFor="no" className="flex items-center gap-2">
+              No
+              {value === "no" && (
+                <CheckCircle2 className="h-4 w-4 text-green-500" />
+              )}
+            </Label>
           </div>
         </RadioGroup>
       </CardContent>

@@ -2,6 +2,9 @@ import { useState } from "react";
 import DPIAQuestion from "./DPIAQuestion";
 import DPIAActivities from "./DPIAActivities";
 import { dpiaActivities, dpiaQuestions } from "@/data/dpiaQuestions";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 
 interface Props {
   onComplete: (required: boolean) => void;
@@ -48,28 +51,88 @@ const DPIARequirement = ({ onComplete }: Props) => {
     setCurrentQuestion(answers.q2.length > 0 ? 3 : 4);
   };
 
+  const goBack = () => {
+    if (currentQuestion > 1) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
+  const goForward = () => {
+    const question = dpiaQuestions.find(q => q.id === currentQuestion);
+    if (!question) return;
+
+    const answer = answers[`q${currentQuestion}`];
+    if (!answer) return;
+
+    const nextQuestion = question.nextQuestions[answer as 'yes' | 'no'];
+    if (nextQuestion) {
+      setCurrentQuestion(nextQuestion);
+    }
+  };
+
+  const progress = (currentQuestion / dpiaQuestions.length) * 100;
+
   const currentQuestionData = dpiaQuestions.find(q => q.id === currentQuestion);
 
   if (currentQuestion === 2) {
     return (
-      <DPIAActivities
-        activities={dpiaActivities}
-        selectedActivities={answers.q2}
-        onActivityToggle={handleActivityToggle}
-        onNext={handleActivitiesNext}
-      />
+      <div className="space-y-6">
+        <Progress value={progress} className="w-full" />
+        <p className="text-sm text-muted-foreground">
+          Question {currentQuestion} of {dpiaQuestions.length}
+        </p>
+        <DPIAActivities
+          activities={dpiaActivities}
+          selectedActivities={answers.q2}
+          onActivityToggle={handleActivityToggle}
+          onNext={handleActivitiesNext}
+        />
+        <div className="flex justify-between">
+          <Button
+            variant="outline"
+            onClick={goBack}
+            className="flex items-center gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" /> Previous
+          </Button>
+        </div>
+      </div>
     );
   }
 
   if (!currentQuestionData) return null;
 
   return (
-    <DPIAQuestion
-      text={currentQuestionData.text}
-      tooltip={currentQuestionData.tooltip}
-      value={answers[`q${currentQuestionData.id}`]}
-      onValueChange={(value) => handleAnswer(currentQuestionData.id, value)}
-    />
+    <div className="space-y-6">
+      <Progress value={progress} className="w-full" />
+      <p className="text-sm text-muted-foreground">
+        Question {currentQuestion} of {dpiaQuestions.length}
+      </p>
+      <DPIAQuestion
+        text={currentQuestionData.text}
+        tooltip={currentQuestionData.tooltip}
+        value={answers[`q${currentQuestionData.id}`]}
+        onValueChange={(value) => handleAnswer(currentQuestionData.id, value)}
+      />
+      <div className="flex justify-between">
+        <Button
+          variant="outline"
+          onClick={goBack}
+          disabled={currentQuestion === 1}
+          className="flex items-center gap-2"
+        >
+          <ArrowLeft className="h-4 w-4" /> Previous
+        </Button>
+        <Button
+          variant="outline"
+          onClick={goForward}
+          disabled={!answers[`q${currentQuestion}`]}
+          className="flex items-center gap-2"
+        >
+          Next <ArrowRight className="h-4 w-4" />
+        </Button>
+      </div>
+    </div>
   );
 };
 

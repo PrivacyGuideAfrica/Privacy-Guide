@@ -8,11 +8,14 @@ import {
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Card, CardContent } from "@/components/ui/card";
 import { dpiaGuidanceSteps } from "@/data/dpiaQuestions";
+import { useNavigate } from "react-router-dom";
 
 const DPIAGuidance = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="space-y-6">
-      <Alert variant="warning" className="border-l-4">
+      <Alert className="border-l-4">
         <AlertDescription>
           A DPIA is required for your processing activities. Follow the steps below 
           to conduct an effective DPIA.
@@ -45,11 +48,11 @@ const DPIAGuidance = () => {
           onClick={() => window.location.reload()} 
           className="w-full sm:w-auto"
         >
-          Start New Assessment
+          Retake Assessment
         </Button>
         <Button 
           variant="outline" 
-          onClick={() => window.location.href = "/"} 
+          onClick={() => navigate("/")} 
           className="w-full sm:w-auto"
         >
           Take Other Assessments
