@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 
@@ -6,7 +5,7 @@ const questions: Question[] = [
   {
     id: 1,
     text: "Are you processing personal data (any information related to an identifiable individual)?",
-    tooltip: "Personal data includes names, emails, biometric data, or any information that can identify an individual",
+    tooltip: "Personal data includes names, emails, biometric data, or any information that can identify an individual directly or indirectly.",
     options: {
       yes: { nextQuestion: 2 },
       no: { 
@@ -17,7 +16,8 @@ const questions: Question[] = [
   },
   {
     id: 2,
-    text: "Is the personal data being processed within Nigeria or involves Nigerian citizens?",
+    text: "Is the personal data being processed within Nigeria or does it involve data subjects (people) in Nigeria?",
+    tooltip: "Processing can include collection, storage, analysis, or transfer of data involving Nigerian residents.",
     options: {
       yes: { nextQuestion: 3 },
       no: { nextQuestion: 4 }
@@ -25,18 +25,20 @@ const questions: Question[] = [
   },
   {
     id: 3,
-    text: "Is your organisation domiciled or operating within Nigeria?",
+    text: "Is your organisation established or operating within Nigeria?",
+    tooltip: "An organisation is considered established in Nigeria if it has offices, branches, or carries out business within Nigeria.",
     options: {
       yes: {
         nextQuestion: null,
-        message: "The NDPA applies to your processing activities. Ensure compliance with NDPA requirements."
+        message: "Based on your responses, the NDPA applies to your organisation. Ensure compliance with Nigeria's data protection regulations."
       },
       no: { nextQuestion: 4 }
     }
   },
   {
     id: 4,
-    text: "Is your organisation outside Nigeria but processing personal data of Nigerian residents or individuals within Nigeria?",
+    text: "Is your organisation outside Nigeria but processing personal data of data subjects in Nigeria?",
+    tooltip: "Even if your organisation is outside Nigeria, the NDPA applies if you offer goods or services to people in Nigeria or monitor their behaviour.",
     options: {
       yes: { nextQuestion: 5 },
       no: {
@@ -47,35 +49,33 @@ const questions: Question[] = [
   },
   {
     id: 5,
-    text: "Is your processing solely for personal or household purposes and does not violate a data subject's fundamental right to privacy?",
-    tooltip: "Household purposes include using personal data for family or personal matters without violating privacy rights.",
+    text: "Are you only using personal data for personal or family reasons at home, and are you making sure you are not invading anyone's privacy?",
+    tooltip: "Household purposes include personal use such as storing contacts or managing family finances but do not cover surveillance or sharing data publicly.",
     options: {
       yes: {
         nextQuestion: null,
-        message: "The NDPA does not apply to your processing."
+        message: "The NDPA does not apply to your processing activities, but ensure you follow relevant data protection laws in your jurisdiction."
       },
       no: { nextQuestion: 6 }
     }
   },
   {
     id: 6,
-    text: "Is your processing carried out by a competent authority for one of the following purposes:\n- Prevention, investigation, detection, prosecution, or adjudication of a criminal offence?\n- Prevention or control of a national public health emergency?\n- National security?\n- Publication in the public interest?\n- Journalism, educational, artistic, or literary purposes?\n- Establishment, exercise, or defence of legal claims?",
+    text: "Is the information being used by a government agency for one of these reasons?\n\n• Prevention, investigation, detection, prosecution, or adjudication of a criminal offence?\n• Prevention or control of a national public health emergency?\n• National security?\n• Publication in the public interest?\n• Journalism, educational, artistic, or literary purposes?\n• Establishment, exercise, or defence of legal claims?",
     options: {
       yes: {
         nextQuestion: null,
-        message: "The NDPA does not apply to your processing."
+        message: "The NDPA does not apply to your processing activities, but ensure you follow relevant data protection laws in your jurisdiction."
       },
       no: {
         nextQuestion: null,
-        message: "The NDPA applies to your processing activities."
+        message: "Based on your responses, the NDPA applies to your organisation. Ensure compliance with Nigeria's data protection regulations."
       }
     }
   }
 ];
 
 const NDPAApplicability = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
