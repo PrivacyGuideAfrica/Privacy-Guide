@@ -9,6 +9,7 @@ import ControllerProcessor from "./pages/ControllerProcessor";
 import DataBreachAssessment from "./pages/DataBreachAssessment";
 import DPIAAssessment from "./pages/DPIAAssessment";
 import AnnualAudit from "./pages/AnnualAudit";
+import InternationalTransfer from "./pages/InternationalTransfer";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import About from "./pages/About";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/data-breach" element={<DataBreachAssessment />} />
           <Route path="/dpia-assessment" element={<DPIAAssessment />} />
           <Route path="/annual-audit" element={<AnnualAudit />} />
+          <Route path="/international-transfer" element={<InternationalTransfer />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyNotice />} />
           <Route path="/legal-notice" element={<LegalNotice />} />
