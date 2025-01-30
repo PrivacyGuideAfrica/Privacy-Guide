@@ -1,6 +1,8 @@
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { Navbar } from "@/components/Navbar";
 
+export type Classification = "MDP-UHL" | "MDP-EHL" | "MDP-OHL" | null;
+
 const questions: Question[] = [
   {
     id: 1,
