@@ -7,16 +7,40 @@ export interface DPIAActivity {
 
 export const dpiaActivities: DPIAActivity[] = [
   {
-    label: "Systematic and extensive profiling with significant effects",
-    tooltip: "Large scale automated processing used to analyze or predict aspects about individuals"
+    label: "Automated decision-making or profiling",
+    tooltip: "Using automated systems to make decisions or analyze personal data"
   },
   {
-    label: "Large scale processing of sensitive data",
-    tooltip: "Processing special categories of data or criminal convictions on a large scale"
+    label: "Large-scale processing of sensitive data (e.g., health, financial)",
+    tooltip: "Processing special categories of data or sensitive information on a large scale"
   },
   {
     label: "Systematic monitoring of public areas",
     tooltip: "Regular monitoring of individuals in public spaces using technology"
+  },
+  {
+    label: "Processing of children's data",
+    tooltip: "Handling personal data of individuals under 18 years of age"
+  },
+  {
+    label: "Cross-border data transfer to a country with weaker data protection",
+    tooltip: "Transferring personal data to countries with different data protection standards"
+  },
+  {
+    label: "Processing data that could lead to discrimination",
+    tooltip: "Handling data that might result in unfair treatment based on personal characteristics"
+  },
+  {
+    label: "Invisible processing",
+    tooltip: "Processing personal data without the individual's knowledge"
+  },
+  {
+    label: "Data matching",
+    tooltip: "Combining data sets to identify patterns or relationships"
+  },
+  {
+    label: "Combining data from various sources",
+    tooltip: "Merging personal data from multiple different sources or databases"
   }
 ];
 
@@ -37,7 +61,7 @@ export const dpiaQuestions: Question[] = [
   },
   {
     id: 2,
-    text: "Does your processing involve any of these high-risk activities?",
+    text: "Are you conducting any of the following activities?",
     tooltip: "Select any activities that apply to your processing operations",
     options: {
       yes: {
