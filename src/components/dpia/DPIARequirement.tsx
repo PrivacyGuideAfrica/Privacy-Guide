@@ -10,6 +10,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { HelpCircle } from "lucide-react";
+import { dpiaActivities } from "@/data/dpiaQuestions";
 
 interface Props {
   onComplete: (required: boolean) => void;
@@ -24,14 +25,6 @@ const DPIARequirement = ({ onComplete }: Props) => {
     q4: "",
     q5: "",
   });
-
-  const activities = [
-    "Automated decision-making or profiling",
-    "Large-scale processing of sensitive data",
-    "Systematic monitoring of public areas",
-    "Processing of children's data",
-    "Cross-border data transfers",
-  ];
 
   const handleQ1Answer = (value: string) => {
     setAnswers({ ...answers, q1: value });
@@ -125,14 +118,26 @@ const DPIARequirement = ({ onComplete }: Props) => {
             Are you conducting any of the following activities?
           </h2>
           <div className="space-y-4">
-            {activities.map((activity) => (
-              <div key={activity} className="flex items-center space-x-2">
+            {dpiaActivities.map((activity) => (
+              <div key={activity.label} className="flex items-center space-x-2">
                 <Checkbox
-                  id={activity}
-                  checked={answers.q2.includes(activity)}
-                  onCheckedChange={() => handleQ2Answer(activity)}
+                  id={activity.label}
+                  checked={answers.q2.includes(activity.label)}
+                  onCheckedChange={() => handleQ2Answer(activity.label)}
                 />
-                <Label htmlFor={activity}>{activity}</Label>
+                <div className="flex items-center gap-2">
+                  <Label htmlFor={activity.label}>{activity.label}</Label>
+                  {activity.tooltip && (
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <HelpCircle className="h-4 w-4 text-gray-400" />
+                        </TooltipTrigger>
+                        <TooltipContent>{activity.tooltip}</TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  )}
+                </div>
               </div>
             ))}
           </div>
