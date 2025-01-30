@@ -18,7 +18,7 @@ interface Props {
 const DPIAQuestion = ({ text, tooltip, value, onValueChange }: Props) => {
   return (
     <div className="bg-white p-6 rounded-lg shadow">
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-start gap-2 mb-4">
         <h2 className="text-xl font-semibold">{text}</h2>
         {tooltip && (
           <TooltipProvider>

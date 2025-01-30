@@ -32,7 +32,7 @@ const DPIAGuidance = () => {
         ))}
       </Accordion>
 
-      <div className="flex gap-4 mt-8">
+      <div className="flex gap-4">
         <Button onClick={() => window.location.reload()}>
           Start New Assessment
         </Button>

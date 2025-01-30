@@ -21,7 +21,7 @@ export const dpiaQuestions: DPIAQuestion[] = [
   {
     id: 1,
     text: "Are you processing personal data that could result in a high risk to the rights and freedoms of individuals?",
-    tooltip: "\"High risk\" refers to situations where data processing could lead to identity theft, financial loss, discrimination, or significant invasion of privacy.",
+    tooltip: "High risk refers to situations where data processing could lead to identity theft, financial loss, discrimination, or significant invasion of privacy. This includes using personal data to make important decisions about people, tracking location or online activity, sharing data with many organizations, or processing sensitive data.",
     nextQuestions: {
       yes: 2,
       no: null
@@ -34,7 +34,7 @@ export const dpiaQuestions: DPIAQuestion[] = [
   {
     id: 3,
     text: "Are you using new technologies or are there any innovative processing activities involved?",
-    tooltip: "New technologies like AI may involve unknown risks, making a DPIA essential.",
+    tooltip: "New technologies like AI, IoT, or innovative processing methods may involve unknown risks, making a DPIA essential.",
     nextQuestions: {
       yes: null,
       no: 4
@@ -47,6 +47,7 @@ export const dpiaQuestions: DPIAQuestion[] = [
   {
     id: 4,
     text: "Could the processing result in denial of services or legal rights to individuals?",
+    tooltip: "This includes situations like loan refusals, employment decisions, or other actions that could impact individuals' legal rights.",
     nextQuestions: {
       yes: null,
       no: 5
@@ -59,6 +60,7 @@ export const dpiaQuestions: DPIAQuestion[] = [
   {
     id: 5,
     text: "Are you processing data in a way that may lead to significant harm?",
+    tooltip: "Significant harm includes discrimination, loss of employment, or other serious negative impacts on individuals.",
     nextQuestions: {
       yes: null,
       no: null
@@ -89,7 +91,7 @@ export const dpiaActivities: DPIAActivity[] = [
   },
   {
     label: "Cross-border data transfer to a country with weaker data protection",
-    tooltip: "Moving personal data to a weaker country which requires adherence to specific regulations to ensure data protection standards."
+    tooltip: "Moving personal data to a country with weaker protection standards, requiring additional safeguards."
   },
   {
     label: "Processing data that could lead to discrimination",
