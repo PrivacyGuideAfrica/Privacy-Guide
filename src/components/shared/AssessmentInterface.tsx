@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/componen
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { ArrowLeft, ArrowRight, RotateCcw } from "lucide-react";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 export interface Question {
   id: number;
@@ -29,6 +30,7 @@ interface Props {
 }
 
 export const AssessmentInterface = ({ title, questions, onComplete, onReset }: Props) => {
+  const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
@@ -106,11 +108,21 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
 
       <CardContent>
         {finalMessage ? (
-          <Alert>
-            <AlertDescription className="whitespace-pre-wrap">
-              {finalMessage}
-            </AlertDescription>
-          </Alert>
+          <div className="space-y-6">
+            <Alert>
+              <AlertDescription className="whitespace-pre-wrap">
+                {finalMessage}
+              </AlertDescription>
+            </Alert>
+            <div className="space-y-4">
+              <Button className="w-full" onClick={resetAssessment}>
+                Retake Assessment
+              </Button>
+              <Button variant="outline" className="w-full" onClick={() => navigate("/")}>
+                Take Other Assessments
+              </Button>
+            </div>
+          </div>
         ) : currentQuestionData ? (
           <div className="space-y-6">
             <p className="text-lg">{currentQuestionData.text}</p>
