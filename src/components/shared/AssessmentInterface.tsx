@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 export interface Question {
   id: number;
@@ -30,11 +31,70 @@ interface Props {
   onReset?: () => void;
 }
 
+interface DPIAStep {
+  title: string;
+  description: string[];
+}
+
+const dpiaSteps: DPIAStep[] = [
+  {
+    title: "Step 1: Identify and Describe the Processing",
+    description: [
+      "Define the nature, scope, context, and purposes of the data processing.",
+      "Outline the type of personal data and the methods of collection."
+    ]
+  },
+  {
+    title: "Step 2: Assess Necessity and Proportionality",
+    description: [
+      "Evaluate whether the processing is essential for achieving the specified objectives.",
+      "Consider whether less intrusive methods could achieve the same results."
+    ]
+  },
+  {
+    title: "Step 3: Identify Risks",
+    description: [
+      "List risks to the rights and freedoms of data subjects (e.g., data breaches, misuse of data, discrimination).",
+      "Rank the risks as low, medium, or high based on likelihood and impact."
+    ]
+  },
+  {
+    title: "Step 4: Mitigate Risks",
+    description: [
+      "Implement technical and organisational measures to reduce risks (e.g., encryption, anonymisation, access controls).",
+      "Document how these measures reduce the likelihood or impact of identified risks."
+    ]
+  },
+  {
+    title: "Step 5: Consult with Stakeholders",
+    description: [
+      "Involve your Data Protection Officer (DPO) and, if necessary, seek advice from external legal advisors.",
+      "If high risks remain unresolved, consult the Data Protection Authority (NDPC) before proceeding."
+    ]
+  },
+  {
+    title: "Step 6: Document and Review",
+    description: [
+      "Keep comprehensive documentation of the DPIA process, including the identified risks and mitigation strategies.",
+      "Periodically review and update the DPIA if the processing activity changes."
+    ]
+  }
+];
+
 export const AssessmentInterface = ({ title, questions, onComplete, onReset }: Props) => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
+  const [openSteps, setOpenSteps] = useState<number[]>([]);
+
+  const toggleStep = (stepIndex: number) => {
+    setOpenSteps(prev => 
+      prev.includes(stepIndex) 
+        ? prev.filter(i => i !== stepIndex)
+        : [...prev, stepIndex]
+    );
+  };
 
   const handleAnswer = (value: string) => {
     const question = questions.find(q => q.id === currentQuestion);
@@ -71,12 +131,44 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
     setCurrentQuestion(1);
     setAnswers({});
     setFinalMessage(null);
+    setOpenSteps([]);
     onReset?.();
     toast.success("Assessment reset successfully");
   };
 
   const currentQuestionData = questions.find(q => q.id === currentQuestion);
   const progress = (currentQuestion / questions.length) * 100;
+
+  const renderDPIAGuidance = () => (
+    <div className="space-y-4">
+      <h3 className="text-lg font-semibold mb-4">DPIA Guidance: How to Effectively Conduct a DPIA</h3>
+      <div className="space-y-2">
+        {dpiaSteps.map((step, index) => (
+          <Collapsible
+            key={index}
+            open={openSteps.includes(index)}
+            onOpenChange={() => toggleStep(index)}
+            className="border rounded-lg bg-card"
+          >
+            <CollapsibleTrigger className="flex items-center justify-between w-full p-4 hover:bg-accent rounded-lg transition-colors">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-ndpa-green" />
+                <span className="font-medium">{step.title}</span>
+              </div>
+              <ChevronDown className={`h-5 w-5 transition-transform ${openSteps.includes(index) ? 'transform rotate-180' : ''}`} />
+            </CollapsibleTrigger>
+            <CollapsibleContent className="p-4 pt-0">
+              <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+                {step.description.map((desc, i) => (
+                  <li key={i} className="ml-4">{desc}</li>
+                ))}
+              </ul>
+            </CollapsibleContent>
+          </Collapsible>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <Card className="w-full max-w-3xl mx-auto">
@@ -115,6 +207,7 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
                 {finalMessage}
               </AlertDescription>
             </Alert>
+            {finalMessage.includes("A DPIA is required") && renderDPIAGuidance()}
             <div className="space-y-4">
               <Button className="w-full" onClick={resetAssessment}>
                 Retake Assessment
