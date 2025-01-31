@@ -12,11 +12,11 @@ const About = () => {
           
           <div className="space-y-4">
             <p className="text-gray-700">
-              Welcome to the NDPA Self-Assessment Tool BY Privacy Guide Africa, a platform designed to help Nigerian organisations of all sizes—small, medium, and large—navigate the complexities of compliance with the Nigerian Data Protection Act (NDPA).
+              Welcome to the Privacy Assessment Tool by Privacy Guide Africa, a platform designed by DataUlinzi to help African organisations of all sizes, small, medium and large, navigate the complexities of compliance with African data protection Laws.
             </p>
 
             <p className="text-gray-700">
-              Our mission is simple: to make data protection compliance accessible, actionable, and user-friendly. With structured and easy-to-use assessment modules, we aim to empower businesses by simplifying the process of identifying their obligations under the NDPA and fostering a stronger data protection culture across Nigeria.
+              Our mission is simple: to make data protection compliance accessible, actionable, and user-friendly. With structured and easy-to-use assessment modules, we aim to empower businesses by simplifying the process of identifying their obligations under various data protection laws and fostering a stronger data protection culture across Nigeria.
             </p>
 
             <p className="text-gray-700">
