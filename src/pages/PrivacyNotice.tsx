@@ -58,7 +58,7 @@ const PrivacyNotice = () => {
           <section>
             <h2 className="text-xl font-semibold mb-4">Cookies and tracking technologies</h2>
             <p>
-              We don't use cookies on our website. None. Zero. Zilch. Your browsing stays your business.
+              We don't use cookies on our website. None. Zero. Zilch. Your browsing stays your business. However, to keep the website running smoothly, we rely on third-party services for hosting, performance monitoring, and security. These services may make automated requests in the background to ensure the site remains available and functional. These requests do not track your personal activities, nor do they collect personally identifiable information about you.
             </p>
           </section>
 
