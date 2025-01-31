@@ -47,7 +47,7 @@ export const dpiaActivities: DPIAActivity[] = [
 export const dpiaQuestions: Question[] = [
   {
     id: 1,
-    text: "Are you processing personal data that could result in a high risk to the rights and freedoms of individuals?",
+    text: "Are you processing personal data that could result in a high risk to the rights and freedoms of individuals (e.g., large-scale processing, special categories of data)?",
     tooltip: "'High risk' refers to situations where data processing could lead to identity theft, financial loss, discrimination, or significant invasion of privacy. Are you using personal data in a way that could cause problems for people's rights and freedoms, such as using personal data to make important decisions about people, tracking people's location or online activity, sharing personal data with many different organisations, or processing sensitive personal data?",
     options: {
       yes: {
