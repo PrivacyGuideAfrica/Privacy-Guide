@@ -14,10 +14,13 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">
-              NDPA Self-Assessment Tool
+              Privacy Assessment Tool
             </h1>
             <p className="mt-3 max-w-md mx-auto text-xl sm:text-2xl md:mt-5 md:max-w-3xl">
-              Evaluate your organization's compliance with the Nigerian Data Protection Act
+              Evaluate your organisation's compliance with Data Protection Laws in Africa
+            </p>
+            <p className="mt-3 text-lg text-gray-200">
+              More countries coming soon!
             </p>
           </div>
         </div>
@@ -41,10 +44,10 @@ const Index = () => {
 
       {/* Modules Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-3xl font-bold text-center mb-12">Assessment Modules</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">Nigeria's Assessment Modules</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Link to="/ndpa-applicability">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Shield className="h-6 w-6 text-ndpa-green" />
@@ -60,7 +63,7 @@ const Index = () => {
           </Link>
 
           <Link to="/controller-processor">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Users className="h-6 w-6 text-ndpa-green" />
@@ -76,7 +79,7 @@ const Index = () => {
           </Link>
 
           <Link to="/data-breach">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <AlertTriangle className="h-6 w-6 text-ndpa-green" />
@@ -92,7 +95,7 @@ const Index = () => {
           </Link>
 
           <Link to="/dpia-assessment">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <FileCheck className="h-6 w-6 text-ndpa-green" />
@@ -108,7 +111,7 @@ const Index = () => {
           </Link>
 
           <Link to="/annual-audit">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Clipboard className="h-6 w-6 text-ndpa-green" />
@@ -124,7 +127,7 @@ const Index = () => {
           </Link>
 
           <Link to="/international-transfer">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow">
+            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Globe className="h-6 w-6 text-ndpa-green" />
@@ -157,7 +160,7 @@ const Index = () => {
               </a>
             </div>
             <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-              &copy; 2024 NDPA Self-Assessment Tool. All rights reserved.
+              &copy; 2024 DataUlinzi. All rights reserved.
             </p>
           </div>
         </div>
