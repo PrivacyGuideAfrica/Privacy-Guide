@@ -47,22 +47,21 @@ export const dpiaActivities: DPIAActivity[] = [
 export const dpiaQuestions: Question[] = [
   {
     id: 1,
-    text: "Are you processing personal data that could result in a high risk to individuals' rights and freedoms?",
-    tooltip: "Consider if your processing could lead to discrimination, identity theft, financial loss, or other significant impacts",
+    text: "Are you processing personal data that could result in a high risk to the rights and freedoms of individuals?",
+    tooltip: "'High risk' refers to situations where data processing could lead to identity theft, financial loss, discrimination, or significant invasion of privacy. Are you using personal data in a way that could cause problems for people's rights and freedoms, such as using personal data to make important decisions about people, tracking people's location or online activity, sharing personal data with many different organisations, or processing sensitive personal data?",
     options: {
       yes: {
         nextQuestion: 2
       },
       no: {
         nextQuestion: null,
-        message: "Based on your response, a DPIA may not be required. However, it's recommended to document your decision-making process and regularly review your processing activities."
+        message: "A DPIA may not be necessary, but keep records of your processing activities."
       }
     }
   },
   {
     id: 2,
-    text: "Are you conducting any of the following activities?",
-    tooltip: "Select any activities that apply to your processing operations",
+    text: "Are you conducting any of the following activities: automated decision-making or profiling, large-scale processing of sensitive data, systematic monitoring of public areas, processing of children's data, cross-border data transfer to a country with weaker data protection, processing data that could lead to discrimination, invisible processing, data matching, or combining data from various sources?",
     options: {
       yes: {
         nextQuestion: 3
@@ -74,12 +73,12 @@ export const dpiaQuestions: Question[] = [
   },
   {
     id: 3,
-    text: "Will you be processing sensitive data on a large scale?",
-    tooltip: "Sensitive data includes health data, biometric data, or data about racial/ethnic origin",
+    text: "Are you using new technologies, or are there any innovative processing activities involved (e.g., AI or IoT)?",
+    tooltip: "New technologies like AI may involve unknown risks which makes a DPIA essential.",
     options: {
       yes: {
         nextQuestion: null,
-        message: "A DPIA is required. You should document the nature, scope, context, and purposes of the processing, assess necessity and risks, and identify measures to address those risks."
+        message: "A DPIA is required. Consult a Data Protection Officer to mitigate risks related to new technologies.\n\nDPIA Guidance: How to Effectively Conduct a DPIA\n\nStep 1: Identify and Describe the Processing\n- Define the nature, scope, context, and purposes of the data processing.\n- Outline the type of personal data and the methods of collection.\n\nStep 2: Assess Necessity and Proportionality\n- Evaluate whether the processing is essential for achieving the specified objectives.\n- Consider whether less intrusive methods could achieve the same results.\n\nStep 3: Identify Risks\n- List risks to the rights and freedoms of data subjects (e.g., data breaches, misuse of data, discrimination).\n- Rank the risks as low, medium, or high based on likelihood and impact.\n\nStep 4: Mitigate Risks\n- Implement technical and organisational measures to reduce risks (e.g., encryption, anonymisation, access controls).\n- Document how these measures reduce the likelihood or impact of identified risks.\n\nStep 5: Consult with Stakeholders\n- Involve your Data Protection Officer (DPO) and, if necessary, seek advice from external legal advisors.\n- If high risks remain unresolved, consult the Data Protection Authority (NDPC) before proceeding.\n\nStep 6: Document and Review\n- Keep comprehensive documentation of the DPIA process, including the identified risks and mitigation strategies.\n- Periodically review and update the DPIA if the processing activity changes."
       },
       no: {
         nextQuestion: 4
@@ -88,11 +87,11 @@ export const dpiaQuestions: Question[] = [
   },
   {
     id: 4,
-    text: "Are you using new technologies or applying existing technologies in novel ways?",
-    tooltip: "Consider if you're using innovative technology or applying existing technology in new ways that could impact individuals",
+    text: "Could the processing result in denial of services or legal rights to individuals (e.g., loan refusals, employment decisions)?",
     options: {
       yes: {
-        nextQuestion: 5
+        nextQuestion: null,
+        message: "A DPIA is required due to potential harm to individuals' legal rights.\n\nDPIA Guidance: How to Effectively Conduct a DPIA\n\nStep 1: Identify and Describe the Processing\n- Define the nature, scope, context, and purposes of the data processing.\n- Outline the type of personal data and the methods of collection.\n\nStep 2: Assess Necessity and Proportionality\n- Evaluate whether the processing is essential for achieving the specified objectives.\n- Consider whether less intrusive methods could achieve the same results.\n\nStep 3: Identify Risks\n- List risks to the rights and freedoms of data subjects (e.g., data breaches, misuse of data, discrimination).\n- Rank the risks as low, medium, or high based on likelihood and impact.\n\nStep 4: Mitigate Risks\n- Implement technical and organisational measures to reduce risks (e.g., encryption, anonymisation, access controls).\n- Document how these measures reduce the likelihood or impact of identified risks.\n\nStep 5: Consult with Stakeholders\n- Involve your Data Protection Officer (DPO) and, if necessary, seek advice from external legal advisors.\n- If high risks remain unresolved, consult the Data Protection Authority (NDPC) before proceeding.\n\nStep 6: Document and Review\n- Keep comprehensive documentation of the DPIA process, including the identified risks and mitigation strategies.\n- Periodically review and update the DPIA if the processing activity changes."
       },
       no: {
         nextQuestion: 5
@@ -101,16 +100,15 @@ export const dpiaQuestions: Question[] = [
   },
   {
     id: 5,
-    text: "Does the processing involve making decisions about individuals using automated means?",
-    tooltip: "This includes profiling and automated decision-making with legal or similarly significant effects",
+    text: "Are you processing data in a way that may lead to significant harm (e.g., discrimination, loss of employment)?",
     options: {
       yes: {
         nextQuestion: null,
-        message: "A DPIA is required. You need to assess the impact of the automated processing and implement appropriate safeguards."
+        message: "A DPIA is required.\n\nDPIA Guidance: How to Effectively Conduct a DPIA\n\nStep 1: Identify and Describe the Processing\n- Define the nature, scope, context, and purposes of the data processing.\n- Outline the type of personal data and the methods of collection.\n\nStep 2: Assess Necessity and Proportionality\n- Evaluate whether the processing is essential for achieving the specified objectives.\n- Consider whether less intrusive methods could achieve the same results.\n\nStep 3: Identify Risks\n- List risks to the rights and freedoms of data subjects (e.g., data breaches, misuse of data, discrimination).\n- Rank the risks as low, medium, or high based on likelihood and impact.\n\nStep 4: Mitigate Risks\n- Implement technical and organisational measures to reduce risks (e.g., encryption, anonymisation, access controls).\n- Document how these measures reduce the likelihood or impact of identified risks.\n\nStep 5: Consult with Stakeholders\n- Involve your Data Protection Officer (DPO) and, if necessary, seek advice from external legal advisors.\n- If high risks remain unresolved, consult the Data Protection Authority (NDPC) before proceeding.\n\nStep 6: Document and Review\n- Keep comprehensive documentation of the DPIA process, including the identified risks and mitigation strategies.\n- Periodically review and update the DPIA if the processing activity changes."
       },
       no: {
         nextQuestion: null,
-        message: "Based on your responses, you should still consider conducting a DPIA as a best practice, even if not strictly required. This will help ensure compliance and demonstrate accountability."
+        message: "A DPIA is not mandatory based on your current processing activities. However, it is recommended that you document your activities for accountability. If the scope, nature, or purpose of your data processing changes in the future—such as implementing new technologies, processing sensitive data, or engaging in large-scale processing—you should reassess whether a DPIA is required. Regularly reviewing your data practices ensures continued compliance with data protection regulations."
       }
     }
   }
