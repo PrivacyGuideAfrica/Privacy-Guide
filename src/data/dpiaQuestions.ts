@@ -44,32 +44,6 @@ export const dpiaActivities: DPIAActivity[] = [
   }
 ];
 
-const dpiaGuidance = `DPIA Guidance: How to Effectively Conduct a DPIA
-
-Step 1: Identify and Describe the Processing
-- Define the nature, scope, context, and purposes of the data processing.
-- Outline the type of personal data and the methods of collection.
-
-Step 2: Assess Necessity and Proportionality
-- Evaluate whether the processing is essential for achieving the specified objectives.
-- Consider whether less intrusive methods could achieve the same results.
-
-Step 3: Identify Risks
-- List risks to the rights and freedoms of data subjects (e.g., data breaches, misuse of data, discrimination).
-- Rank the risks as low, medium, or high based on likelihood and impact.
-
-Step 4: Mitigate Risks
-- Implement technical and organisational measures to reduce risks (e.g., encryption, anonymisation, access controls).
-- Document how these measures reduce the likelihood or impact of identified risks.
-
-Step 5: Consult with Stakeholders
-- Involve your Data Protection Officer (DPO) and, if necessary, seek advice from external legal advisors.
-- If high risks remain unresolved, consult the Data Protection Authority (NDPC) before proceeding.
-
-Step 6: Document and Review
-- Keep comprehensive documentation of the DPIA process, including the identified risks and mitigation strategies.
-- Periodically review and update the DPIA if the processing activity changes.`;
-
 export const dpiaQuestions: Question[] = [
   {
     id: 1,
@@ -104,7 +78,7 @@ export const dpiaQuestions: Question[] = [
     options: {
       yes: {
         nextQuestion: null,
-        message: "A DPIA is required. Consult a Data Protection Officer to mitigate risks related to new technologies.\n\n" + dpiaGuidance
+        message: "A DPIA is required. Consult a Data Protection Officer to mitigate risks related to new technologies."
       },
       no: {
         nextQuestion: 4
@@ -117,7 +91,7 @@ export const dpiaQuestions: Question[] = [
     options: {
       yes: {
         nextQuestion: null,
-        message: "A DPIA is required due to potential harm to individuals' legal rights.\n\n" + dpiaGuidance
+        message: "A DPIA is required due to potential harm to individuals' legal rights."
       },
       no: {
         nextQuestion: 5
@@ -130,7 +104,7 @@ export const dpiaQuestions: Question[] = [
     options: {
       yes: {
         nextQuestion: null,
-        message: "A DPIA is required.\n\n" + dpiaGuidance
+        message: "A DPIA is required."
       },
       no: {
         nextQuestion: null,
