@@ -1,7 +1,8 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
-import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck, Clipboard } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -121,22 +122,6 @@ const Index = () => {
               <CardContent>
                 <p className="text-gray-600">
                   Find out if your organization needs to conduct an annual data protection audit
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link to="/international-transfer">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Globe className="h-6 w-6 text-ndpa-green" />
-                  <span>International Transfer</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
-                  Assess the requirements for transferring personal data internationally under the NDPA
                 </p>
               </CardContent>
             </Card>
