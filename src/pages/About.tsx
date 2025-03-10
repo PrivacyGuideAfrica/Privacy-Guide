@@ -1,4 +1,3 @@
-
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Linkedin } from "lucide-react";
@@ -55,7 +54,7 @@ const About = () => {
             </div>
 
             <p className="text-gray-700 pt-6 italic">
-              We believe that understanding data protection shouldn't be daunting. Let's make compliance straightforward—together!
+              We believe that understanding data protection shouldn't be daunting. Let's make compliance straightforward together!
             </p>
           </div>
         </div>
