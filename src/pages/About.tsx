@@ -1,3 +1,4 @@
+
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Linkedin } from "lucide-react";
@@ -16,7 +17,7 @@ const About = () => {
             </p>
 
             <p className="text-gray-700">
-              Our mission is simple: to make data protection compliance accessible, actionable, and user-friendly. With structured and easy-to-use assessment modules, we aim to empower businesses by simplifying the process of identifying their obligations under various data protection laws and fostering a stronger data protection culture across Nigeria.
+              Our mission is simple: to make data protection compliance accessible, actionable, and user-friendly. With structured and easy-to-use assessment modules, we aim to empower businesses by simplifying the process of identifying their obligations under various data protection laws and fostering a stronger data protection culture across Africa.
             </p>
 
             <p className="text-gray-700">
