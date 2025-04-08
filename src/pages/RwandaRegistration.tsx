@@ -5,122 +5,146 @@ import { AssessmentInterface, Question } from "@/components/shared/AssessmentInt
 const questions: Question[] = [
   {
     id: 1,
-    text: "Are you (or do you intend to be) a Data Controller or a Data Processor handling personal data under the Rwandan Data Protection Law?",
-    tooltip: "A Data Controller decides the purpose and means of processing personal data. A Data Processor processes data on behalf of a Data Controller. If either applies to you, registration is required.",
+    text: "Do you currently, or do you intend to, handle personal data as a Data Controller or Data Processor under the Rwandan Data Protection Law?",
+    tooltip: "A Data Controller decides the purpose and means of processing personal data. A Data Processor processes personal data on behalf of a Data Controller.",
     options: {
       yes: { 
         nextQuestion: 2,
-        message: "You must register with Rwanda's Data Protection and Privacy Office. Proceed to the next question to see what information you need."
+        message: "You must register. Proceed to Question 2 to see what information is required."
       },
       no: { 
         nextQuestion: null,
-        message: "You do not need to register. However, if your role changes or you begin processing personal data, revisit this module."
+        message: "You do not need to register right now. However, if your role changes or you begin processing personal data, revisit this module."
       }
     }
   },
   {
     id: 2,
-    text: "Can you provide your organisation's identity (e.g. legal name, address, registration number) and the contact details of a single point of contact (e.g. data protection liaison)?",
-    tooltip: "This information is required to identify your organization and establish a communication channel with the DPA.",
+    text: "Do You Have Your Organisation's Identity & Contact Details Ready? (e.g. legal name, address, registration number, single point of contact)",
+    tooltip: "This information is required to identify your organization and establish a communication channel with the DPPO.",
     options: {
-      yes: { nextQuestion: 3 },
+      yes: { 
+        nextQuestion: 3,
+        message: "Great! Proceed to Question 3."
+      },
       no: { 
         nextQuestion: null,
-        message: "Please gather this information before registering."
+        message: "Please gather these details before proceeding with registration."
       }
     }
   },
   {
     id: 3,
-    text: "If you have appointed a representative, can you provide the identity and address of that representative?",
+    text: "Have You Appointed a Representative (If Applicable)? If you are required by law to have one, can you provide their identity and address?",
     tooltip: "If your organization is based outside Rwanda but subject to Rwandan data protection law, you may need a local representative.",
     options: {
-      yes: { nextQuestion: 4 },
+      yes: { 
+        nextQuestion: 4,
+        message: "Good. Proceed to Question 4."
+      },
       no: { 
         nextQuestion: null,
-        message: "If a representative is required by law, you must have their details to register."
+        message: "If a representative is required, you must have their details ready to register."
       }
     }
   },
   {
     id: 4,
-    text: "Can you describe the types of personal data you process and the categories of individuals involved (e.g. customers, employees)?",
+    text: "Can You Describe the Types of Personal Data and Data Subjects? (e.g. customers' contact info, employees' records, etc.)",
     tooltip: "You need to clearly identify what kinds of data you handle and whose data it is.",
     options: {
-      yes: { nextQuestion: 5 },
+      yes: { 
+        nextQuestion: 5,
+        message: "Excellent. Proceed to Question 5."
+      },
       no: { 
         nextQuestion: null,
-        message: "A clear description is needed to complete your registration."
+        message: "A clear description of data types and individuals is needed. Collect this information before registering."
       }
     }
   },
   {
     id: 5,
-    text: "Can you indicate whether you hold or are likely to hold personal data based on your sectors (e.g. healthcare, finance, e-commerce)?",
+    text: "Do You Know the Relevant Sectors in Which You Operate? (e.g. healthcare, finance, e-commerce)",
     tooltip: "Different sectors have different data protection requirements and risks.",
     options: {
-      yes: { nextQuestion: 6 },
+      yes: { 
+        nextQuestion: 6,
+        message: "Perfect. Proceed to Question 6."
+      },
       no: { 
         nextQuestion: null,
-        message: "You must identify the relevant sectors or industries in which you operate."
+        message: "Identifying your sectors or industries is mandatory for registration."
       }
     }
   },
   {
     id: 6,
-    text: "Can you provide the specific purposes for which you process personal data (e.g. marketing, service delivery, research)?",
+    text: "Can You Provide the Purposes for Processing the Personal Data? (e.g. marketing, product delivery, research)",
     tooltip: "You must be transparent about why you're collecting and using personal data.",
     options: {
-      yes: { nextQuestion: 7 },
+      yes: { 
+        nextQuestion: 7,
+        message: "Good. Proceed to Question 7."
+      },
       no: { 
         nextQuestion: null,
-        message: "This information is essential to register."
+        message: "You must specify why you process personal data."
       }
     }
   },
   {
     id: 7,
-    text: "Can you identify the recipients or types of recipients to whom you disclose personal data (e.g. service providers, partners)?",
+    text: "Do You Know Who Receives the Data? (e.g. service providers, partners, third parties)",
     tooltip: "You need to disclose who will have access to the personal data you collect.",
     options: {
-      yes: { nextQuestion: 8 },
+      yes: { 
+        nextQuestion: 8,
+        message: "Great! Proceed to Question 8."
+      },
       no: { 
         nextQuestion: null,
-        message: "You must know who will receive the data to complete registration."
+        message: "You must identify the categories of recipients (or specific recipients) for registration."
       }
     }
   },
   {
     id: 8,
-    text: "Do you transfer (or intend to transfer) personal data outside Rwanda, directly or indirectly?",
+    text: "Do You Transfer or Intend to Transfer Data Outside Rwanda?",
     tooltip: "Cross-border data transfers are subject to additional requirements.",
     options: {
       yes: { 
         nextQuestion: 8.1 
       },
-      no: { nextQuestion: 9 }
+      no: { 
+        nextQuestion: 9,
+        message: "No cross-border transfers. Proceed to Question 9."
+      }
     }
   },
   {
     id: 8.1,
-    text: "Can you specify the destination countries for these data transfers?",
+    text: "Can you specify which country or countries?",
     tooltip: "You need to know which countries will receive the data, as different countries have different data protection standards.",
     options: {
-      yes: { nextQuestion: 9 },
+      yes: { 
+        nextQuestion: 9,
+        message: "Proceed to Question 9."
+      },
       no: { 
         nextQuestion: null,
-        message: "Please clarify where you plan to transfer data before registering."
+        message: "You must clarify the destination(s) before registering."
       }
     }
   },
   {
     id: 9,
-    text: "Can you describe the main risks of your data processing activities and the security measures or safeguards in place?",
+    text: "Have You Assessed the Risks and Safeguards? Do you understand the main risks to personal data (e.g. security breaches) and the measures you have in place to mitigate them?",
     tooltip: "You need to demonstrate that you've assessed potential risks and implemented appropriate security measures.",
     options: {
       yes: { 
         nextQuestion: null,
-        message: "You have the core information needed for registration. Proceed to the next step: \n\n1. Visit the official registration portal: www.dpo.gov.rw to download the application form.\n2. Complete the form thoroughly with the information you compiled above.\n3. Prepare the necessary documents, such as:\n   - Letter addressed to the CEO of NCSA.\n   - Certificate of Incorporation.\n   - License from Regulator (if applicable).\n   - Legal instrument (for public entities).\n   - Contract with a representative (if required).\n   - Supporting documents (contracts, privacy notice, etc.).\n4. Submit your PDF documents in a zipped folder to registration@dpo.gov.rw and dpp@ncsa.gov.rw, including your organisation's name in the subject line.\n5. Await review; there is no fee for registration.\n6. A certificate is usually issued within 30 working days if everything is complete.\n7. If rejected, you have 7 working days to receive notice and can re-apply after meeting requirements.\n\nRemember: You must inform the NCSA within 15 working days if any registration details change. Failure to do so may lead to administrative fines."
+        message: "You have the core information needed to register. Proceed to Next Steps below!\n\n1. Visit the official portal: www.dpo.gov.rw to download the application form.\n2. Complete the form thoroughly with the information from your answers above.\n3. Prepare all supporting documents:\n   - Letter addressed to the Chief Executive Officer of NCSA\n   - Certificate of incorporation\n   - Regulator's license (if applicable)\n   - Legal instrument (if you are a public entity)\n   - Representative's contract (if you appointed one)\n   - Other relevant contracts or a privacy notice\n4. Submit your PDF documents in a zipped folder to registration@dpo.gov.rw and dpp@ncsa.gov.rw, using your organisation's name in the subject line.\n5. Await confirmation—no fee is charged.\n6. A certificate is typically issued within 30 working days if your application is complete.\n7. If rejected, you will be notified within 7 working days and can re-apply after meeting any missing requirements.\n\nRemember: Inform the NCSA within 15 working days if there are changes to your registration details. Failure to do so may result in fines."
       },
       no: { 
         nextQuestion: null,
@@ -136,14 +160,14 @@ const RwandaRegistration = () => {
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6 text-center">
-          Registering with Rwanda's Data Protection Authority
+          Registering as a Data Controller or Processor in Rwanda
         </h1>
         <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
-          This assessment will help you determine if you need to register with Rwanda's Data Protection Authority 
-          and what information you'll need to provide during the registration process.
+          This module helps you determine if you must register with the Data Protection and Privacy Office (DPPO) 
+          and guides you through the information needed.
         </p>
         <AssessmentInterface
-          title="Registration with Rwanda's DPA"
+          title="Registration with Rwanda's DPPO"
           questions={questions}
           onComplete={() => {}}
           onReset={() => {}}
