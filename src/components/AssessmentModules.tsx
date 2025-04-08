@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Users, AlertTriangle, FileCheck, Clipboard } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface AssessmentModulesProps {
@@ -49,28 +49,46 @@ const nigeriaModules: Module[] = [
 
 const rwandaModules: Module[] = [
   {
-    title: "Rwanda DP Law Applicability",
+    title: "Does Rwanda's Data Protection Law Apply to You?",
     description: "Determine if Rwanda's Data Protection Law applies to your organization",
     icon: Shield,
-    link: "/ndpa-applicability", // For now, will point to the same page
+    link: "/ndpa-applicability", // Reusing the same component for now
   },
   {
-    title: "Controller or Processor",
-    description: "Assess whether your organization acts as a data controller or processor under Rwanda's law",
+    title: "Are You a Data Controller or Processor?",
+    description: "Assess your organization's role under Rwanda's data protection framework",
     icon: Users,
     link: "/controller-processor",
   },
   {
-    title: "Data Breach Assessment",
-    description: "Evaluate your data breach response readiness under Rwanda's requirements",
-    icon: AlertTriangle,
-    link: "/data-breach",
+    title: "Registering with the Data Protection Authority?",
+    description: "Understand your registration requirements with Rwanda's Data Protection Authority",
+    icon: Globe,
+    link: "/ndpa-applicability", // Placeholder until dedicated page is created
   },
   {
-    title: "DPIA Assessment",
-    description: "Understand when a Data Protection Impact Assessment is required in Rwanda",
+    title: "Do You Need to Do a DPIA?",
+    description: "Determine if your processing requires a Data Protection Impact Assessment",
     icon: FileCheck,
     link: "/dpia-assessment",
+  },
+  {
+    title: "Do You Need to Appoint a Local Representative?",
+    description: "Find out if your organization needs a local representative in Rwanda",
+    icon: User,
+    link: "/ndpa-applicability", // Placeholder until dedicated page is created
+  },
+  {
+    title: "Do You Need to Appoint a DPO?",
+    description: "Assess whether your organization needs a Data Protection Officer",
+    icon: Users,
+    link: "/ndpa-applicability", // Placeholder until dedicated page is created
+  },
+  {
+    title: "Data Breach Notification",
+    description: "Understand your data breach notification obligations under Rwanda's law",
+    icon: AlertTriangle,
+    link: "/data-breach",
   },
 ];
 
