@@ -74,8 +74,8 @@ const Index = () => {
               </Button>
               <Button 
                 size="lg" 
-                variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/10 font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                variant="default"
+                className="bg-orange-500 hover:bg-orange-600 text-white border-white hover:bg-orange-600/90 font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={scrollToCountries}
               >
                 Explore Country Modules
