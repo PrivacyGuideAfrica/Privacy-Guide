@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import CountryPage from "./pages/CountryPage";
 import NDPAApplicability from "./pages/NDPAApplicability";
 import ControllerProcessor from "./pages/ControllerProcessor";
 import DataBreachAssessment from "./pages/DataBreachAssessment";
@@ -24,6 +25,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/country/:countryId" element={<CountryPage />} />
           <Route path="/ndpa-applicability" element={<NDPAApplicability />} />
           <Route path="/controller-processor" element={<ControllerProcessor />} />
           <Route path="/data-breach" element={<DataBreachAssessment />} />
