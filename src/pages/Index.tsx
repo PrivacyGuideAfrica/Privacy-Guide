@@ -2,27 +2,40 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
-import { Shield, Users, AlertTriangle, FileCheck, Clipboard } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { CountrySelector } from "@/components/CountrySelector";
+import { AssessmentModules } from "@/components/AssessmentModules";
 
 const Index = () => {
+  const [selectedCountry, setSelectedCountry] = useState("nigeria");
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-ndpa-navy to-ndpa-green text-white py-20">
+      {/* Hero Section with improved styling */}
+      <div className="bg-gradient-to-r from-ndpa-navy to-ndpa-green text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl animate-fade-in">
               Privacy Assessment Tool
             </h1>
-            <p className="mt-3 max-w-md mx-auto text-xl sm:text-2xl md:mt-5 md:max-w-3xl">
+            <p className="mt-5 max-w-xl mx-auto text-xl sm:text-2xl md:mt-5">
               Evaluate your organisation's compliance with Data Protection Laws in Africa
             </p>
-            <p className="mt-3 text-lg text-gray-200">
-              More countries coming soon!
-            </p>
+            <div className="mt-8 flex justify-center">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="bg-white text-ndpa-navy hover:bg-gray-100 font-semibold"
+                onClick={() => document.getElementById('countries-section')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get Started
+                <ChevronDown className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -43,90 +56,15 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Modules Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-3xl font-bold text-center mb-12">Nigeria's Assessment Modules</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Link to="/ndpa-applicability">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Shield className="h-6 w-6 text-ndpa-green" />
-                  <span>NDPA Applicability</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
-                  Determine if the Nigerian Data Protection Act applies to your organization
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+      {/* Countries Section */}
+      <div id="countries-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Select Your Country</h2>
+        <CountrySelector selectedCountry={selectedCountry} onCountryChange={setSelectedCountry} />
+      </div>
 
-          <Link to="/controller-processor">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Users className="h-6 w-6 text-ndpa-green" />
-                  <span>Controller or Processor</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
-                  Assess whether your organization acts as a data controller or processor
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link to="/data-breach">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <AlertTriangle className="h-6 w-6 text-ndpa-green" />
-                  <span>Data Breach Assessment</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
-                  Evaluate your data breach response readiness and obligations
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link to="/dpia-assessment">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <FileCheck className="h-6 w-6 text-ndpa-green" />
-                  <span>DPIA Assessment</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
-                  Determine whether your organization needs to conduct a Data Protection Impact Assessment
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link to="/annual-audit">
-            <Card className="cursor-pointer hover:shadow-md transition-shadow h-full">
-              <CardHeader>
-                <CardTitle className="flex items-center space-x-2">
-                  <Clipboard className="h-6 w-6 text-ndpa-green" />
-                  <span>Annual Audit Requirements</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">
-                  Find out if your organization needs to conduct an annual data protection audit
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-        </div>
+      {/* Assessment Modules Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
+        <AssessmentModules country={selectedCountry} />
       </div>
 
       {/* Footer */}
