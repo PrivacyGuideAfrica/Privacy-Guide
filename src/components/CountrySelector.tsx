@@ -76,7 +76,10 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
     <div className="space-y-12">
       {/* Live Countries */}
       <div>
-        <h2 className="text-3xl font-bold text-center mb-8">Now Live</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 relative">
+          <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">Now Live!</span>
+          <span className="absolute -right-6 top-0 text-xl text-orange-500">✨</span>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {liveCountries.map((country) => (
             <Link
@@ -101,15 +104,7 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
                   </div>
                 </div>
                 <div className="p-4">
-                  <div className="text-sm text-gray-600 mb-3">
-                    <h4 className="font-semibold mb-1">Modules:</h4>
-                    <ul className="list-disc pl-5 space-y-0.5">
-                      {country.modules.map((module, idx) => (
-                        <li key={idx}>{module}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex justify-center mt-4">
+                  <div className="flex justify-center mt-2">
                     <span className="inline-flex items-center text-sm font-medium text-ndpa-green">
                       Explore {country.name}'s Modules
                       <ArrowRight className="ml-1 h-4 w-4" />
@@ -145,7 +140,7 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
         </div>
         <p className="text-center text-gray-600 mt-6">
           We're working to bring these countries online. Want yours prioritised? 
-          <button className="text-ndpa-green ml-1 font-medium">Let us know</button>
+          <button className="text-orange-500 ml-1 font-medium">Let us know</button>
         </p>
       </div>
     </div>

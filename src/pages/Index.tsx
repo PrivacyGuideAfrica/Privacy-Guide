@@ -30,10 +30,13 @@ const Index = () => {
             xmlns="http://www.w3.org/2000/svg"
             className="opacity-20"
           >
-            {/* Simplified Africa map shape */}
+            {/* Simplified Africa map shape with texture */}
+            <pattern id="pattern-lines" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+              <path d="M0,5 L10,5" stroke="white" strokeWidth="0.5" fill="none" opacity="0.3" />
+            </pattern>
             <path 
               d="M400,100 C450,120 500,150 520,200 C540,250 560,300 580,350 C600,400 600,450 580,500 C560,550 530,580 480,590 C430,600 380,590 330,570 C280,550 250,520 230,470 C210,420 200,370 220,320 C240,270 270,230 320,210 C370,190 350,80 400,100 Z" 
-              fill="none" 
+              fill="url(#pattern-lines)" 
               stroke="white" 
               strokeWidth="2"
             />
@@ -63,7 +66,7 @@ const Index = () => {
             <div className="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <Button 
                 size="lg" 
-                className="bg-white text-blue-700 hover:bg-gray-100 font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={scrollToCountries}
               >
                 Start Free Assessment
@@ -124,7 +127,7 @@ const Index = () => {
           </p>
           <Button 
             size="lg" 
-            className="bg-white text-blue-700 hover:bg-gray-100 font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             onClick={scrollToCountries}
           >
             Start Free Assessment
@@ -161,7 +164,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} PrivacyGuide.Africa. All rights reserved.
+            &copy; {new Date().getFullYear()} DataUlinzi. All rights reserved.
           </div>
         </div>
       </footer>
