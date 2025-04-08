@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
@@ -7,12 +8,12 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-ndpa-navy font-bold text-lg sm:text-xl">Privacy Guide Africa</span>
+              <span className="text-ndpa-navy font-bold text-lg sm:text-xl">PrivacyGuide.Africa</span>
             </Link>
           </div>
           
@@ -22,10 +23,16 @@ export const Navbar = () => {
               <Link to="/about">About</Link>
             </Button>
             <Button variant="ghost" asChild>
+              <Link to="/privacy">Privacy Notice</Link>
+            </Button>
+            <Button variant="ghost" asChild>
               <Link to="/legal-notice">Legal Notice</Link>
             </Button>
             <Button variant="ghost" asChild>
-              <Link to="/privacy">Privacy Notice</Link>
+              <Link to="/#countries-section">Explore Modules</Link>
+            </Button>
+            <Button variant="default" className="bg-ndpa-green hover:bg-ndpa-green/90" asChild>
+              <Link to="/#countries-section">Start Free Assessment</Link>
             </Button>
           </div>
 
@@ -50,10 +57,16 @@ export const Navbar = () => {
                 <Link to="/about">About</Link>
               </Button>
               <Button variant="ghost" asChild className="justify-start">
+                <Link to="/privacy">Privacy Notice</Link>
+              </Button>
+              <Button variant="ghost" asChild className="justify-start">
                 <Link to="/legal-notice">Legal Notice</Link>
               </Button>
               <Button variant="ghost" asChild className="justify-start">
-                <Link to="/privacy">Privacy Notice</Link>
+                <Link to="/#countries-section">Explore Modules</Link>
+              </Button>
+              <Button variant="default" className="bg-ndpa-green hover:bg-ndpa-green/90 justify-start" asChild>
+                <Link to="/#countries-section">Start Free Assessment</Link>
               </Button>
             </div>
           </div>
