@@ -14,6 +14,7 @@ import AnnualAudit from "./pages/AnnualAudit";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import About from "./pages/About";
+import RwandaApplicability from "./pages/RwandaApplicability";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/country/:countryId" element={<CountryPage />} />
           <Route path="/ndpa-applicability" element={<NDPAApplicability />} />
+          <Route path="/rwanda-applicability" element={<RwandaApplicability />} />
           <Route path="/controller-processor" element={<ControllerProcessor />} />
           <Route path="/data-breach" element={<DataBreachAssessment />} />
           <Route path="/dpia-assessment" element={<DPIAAssessment />} />

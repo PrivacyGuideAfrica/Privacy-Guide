@@ -52,7 +52,7 @@ const rwandaModules: Module[] = [
     title: "Does Rwanda's Data Protection Law Apply to You?",
     description: "Determine if Rwanda's Data Protection Law applies to your organization",
     icon: Shield,
-    link: "/ndpa-applicability", // Reusing the same component for now
+    link: "/rwanda-applicability",
   },
   {
     title: "Are You a Data Controller or Processor?",
