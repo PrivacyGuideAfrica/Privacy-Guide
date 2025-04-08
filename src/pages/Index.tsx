@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { ArrowDown, ChevronDown, ArrowRight, MapPin } from "lucide-react";
@@ -63,19 +62,11 @@ const Index = () => {
             <p className="mt-5 text-xl sm:text-2xl text-white/90 leading-relaxed">
               A free tool to help organisations across Africa assess their data protection obligations and understand local compliance requirements.
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <Button 
-                size="lg" 
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                onClick={scrollToCountries}
-              >
-                Start Free Assessment
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+            <div className="mt-10 flex justify-center">
               <Button 
                 size="lg" 
                 variant="default"
-                className="bg-orange-500 hover:bg-orange-600 text-white border-white hover:bg-orange-600/90 font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 onClick={scrollToCountries}
               >
                 Explore Country Modules

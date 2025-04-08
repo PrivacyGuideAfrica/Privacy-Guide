@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -89,9 +88,7 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
               className="block transition-all duration-300 transform hover:scale-105"
             >
               <Card
-                className={`overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50
-                  ${selectedCountry === country.id ? "ring-2 ring-ndpa-green" : ""}
-                `}
+                className={`overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50`}
               >
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/80 to-blue-400/70 opacity-90" />
@@ -105,7 +102,7 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
                 </div>
                 <div className="p-4">
                   <div className="flex justify-center mt-2">
-                    <span className="inline-flex items-center text-sm font-medium text-ndpa-green">
+                    <span className="inline-flex items-center text-sm font-medium text-orange-500">
                       Explore {country.name}'s Modules
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </span>

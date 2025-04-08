@@ -37,8 +37,11 @@ const WhoItsFor = () => {
         <h2 className="text-3xl font-bold text-center mb-12">Who Is This For?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {audiences.map((item, index) => (
-            <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow bg-white relative overflow-hidden">
-              {/* Subtle texture pattern for each card */}
+            <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow bg-white relative overflow-hidden group hover:-translate-y-2 duration-300">
+              {/* Card background with gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-orange-50 opacity-50"></div>
+              
+              {/* Decorative pattern */}
               <div className="absolute inset-0 opacity-5">
                 <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                   <pattern id={`dots-${index}`} width="20" height="20" patternUnits="userSpaceOnUse">
@@ -48,12 +51,15 @@ const WhoItsFor = () => {
                 </svg>
               </div>
               
+              {/* Decorative corner accent */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-orange-200 via-orange-100 to-transparent opacity-50 rounded-bl-full"></div>
+              
               <CardContent className="pt-6 relative z-10">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-ndpa-green/20 to-orange-400/10 rounded-full flex items-center justify-center mb-4">
-                    <item.icon className="h-6 w-6 text-ndpa-green" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-400/20 to-blue-400/20 rounded-full flex items-center justify-center mb-5 shadow-md group-hover:shadow-orange-200/50 transition-all duration-300">
+                    <item.icon className="h-8 w-8 text-orange-500 group-hover:scale-110 transition-transform duration-300" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-orange-500 transition-colors">{item.title}</h3>
                   <p className="text-gray-600">{item.description}</p>
                 </div>
               </CardContent>
