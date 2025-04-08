@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import CountryPage from "./pages/CountryPage";
 import NDPAApplicability from "./pages/NDPAApplicability";
+import RwandaApplicability from "./pages/RwandaApplicability";
+import RwandaRegistration from "./pages/RwandaRegistration";
 import ControllerProcessor from "./pages/ControllerProcessor";
 import DataBreachAssessment from "./pages/DataBreachAssessment";
 import DPIAAssessment from "./pages/DPIAAssessment";
@@ -14,7 +16,6 @@ import AnnualAudit from "./pages/AnnualAudit";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import About from "./pages/About";
-import RwandaApplicability from "./pages/RwandaApplicability";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/country/:countryId" element={<CountryPage />} />
           <Route path="/ndpa-applicability" element={<NDPAApplicability />} />
           <Route path="/rwanda-applicability" element={<RwandaApplicability />} />
+          <Route path="/rwanda-registration" element={<RwandaRegistration />} />
           <Route path="/controller-processor" element={<ControllerProcessor />} />
           <Route path="/data-breach" element={<DataBreachAssessment />} />
           <Route path="/dpia-assessment" element={<DPIAAssessment />} />

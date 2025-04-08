@@ -64,7 +64,7 @@ const rwandaModules: Module[] = [
     title: "Registering with the Data Protection Authority?",
     description: "Understand your registration requirements with Rwanda's Data Protection Authority",
     icon: Globe,
-    link: "/ndpa-applicability", // Placeholder until dedicated page is created
+    link: "/rwanda-registration",
   },
   {
     title: "Do You Need to Do a DPIA?",
