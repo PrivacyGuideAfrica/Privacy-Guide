@@ -1,6 +1,7 @@
 
 import { Question } from "@/components/shared/AssessmentInterface";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
+import { useState } from "react";
 
 const dpoQuestions: Question[] = [
   {
@@ -63,7 +64,68 @@ const dpoQuestions: Question[] = [
   },
 ];
 
+const AdditionalGuidance = () => (
+  <div className="mt-12 bg-card border rounded-lg p-6 max-w-3xl mx-auto">
+    <h2 className="text-2xl font-semibold mb-4">Additional Guidance on DPO Appointment</h2>
+    
+    <div className="space-y-6">
+      <section>
+        <h3 className="text-lg font-medium mb-2">Joint DPO</h3>
+        <p className="text-muted-foreground">
+          A group of undertakings may appoint a single DPO, as long as they are easily accessible to each establishment. 
+          Public authorities or bodies may also designate one DPO for several entities.
+        </p>
+      </section>
+      
+      <section>
+        <h3 className="text-lg font-medium mb-2">Who Can Be a DPO</h3>
+        <p className="text-muted-foreground">
+          The DPO can be a permanent staff member or an external contractor with expert knowledge of data protection law and practices.
+        </p>
+      </section>
+      
+      <section>
+        <h3 className="text-lg font-medium mb-2">Qualifications</h3>
+        <ul className="list-disc list-inside text-muted-foreground space-y-1">
+          <li>Understanding of national data protection laws</li>
+          <li>Familiarity with the organisation's processing operations and risks</li>
+          <li>Knowledge of information technology and data security</li>
+          <li>Ability to train colleagues and promote a culture of data protection</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h3 className="text-lg font-medium mb-2">DPO Duties</h3>
+        <ul className="list-disc list-inside text-muted-foreground space-y-1">
+          <li>Inform and advise on legal obligations</li>
+          <li>Monitor compliance with data protection laws and policies</li>
+          <li>Guide and track Data Protection Impact Assessments (DPIAs)</li>
+          <li>Cooperate with the supervisory authority (NCSA)</li>
+          <li>Act as the main contact point for data subjects and regulators</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h3 className="text-lg font-medium mb-2">Resources and Responsibility</h3>
+        <p className="text-muted-foreground">
+          Senior management must provide adequate budget, staffing, and support for the DPO role.
+          The DPO is not personally liable for non-compliance; the Data Controller or Processor retains overall responsibility.
+        </p>
+      </section>
+      
+      <section>
+        <h3 className="text-lg font-medium mb-2">Publishing DPO Contact Details</h3>
+        <p className="text-muted-foreground">
+          The organisation must make the DPO's contact information publicly available and share it with the supervisory authority.
+        </p>
+      </section>
+    </div>
+  </div>
+);
+
 export const DPOAssessment = () => {
+  const [isAssessmentComplete, setIsAssessmentComplete] = useState(false);
+
   return (
     <div className="space-y-8">
       <div className="max-w-3xl mx-auto">
@@ -76,65 +138,12 @@ export const DPOAssessment = () => {
         <AssessmentInterface
           title="DPO Appointment Assessment"
           questions={dpoQuestions}
+          onComplete={() => setIsAssessmentComplete(true)}
+          onReset={() => setIsAssessmentComplete(false)}
         />
       </div>
 
-      <div className="mt-12 bg-card border rounded-lg p-6 max-w-3xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-4">Additional Guidance on DPO Appointment</h2>
-        
-        <div className="space-y-6">
-          <section>
-            <h3 className="text-lg font-medium mb-2">Joint DPO</h3>
-            <p className="text-muted-foreground">
-              A group of undertakings may appoint a single DPO, as long as they are easily accessible to each establishment. 
-              Public authorities or bodies may also designate one DPO for several entities.
-            </p>
-          </section>
-          
-          <section>
-            <h3 className="text-lg font-medium mb-2">Who Can Be a DPO</h3>
-            <p className="text-muted-foreground">
-              The DPO can be a permanent staff member or an external contractor with expert knowledge of data protection law and practices.
-            </p>
-          </section>
-          
-          <section>
-            <h3 className="text-lg font-medium mb-2">Qualifications</h3>
-            <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>Understanding of national data protection laws</li>
-              <li>Familiarity with the organisation's processing operations and risks</li>
-              <li>Knowledge of information technology and data security</li>
-              <li>Ability to train colleagues and promote a culture of data protection</li>
-            </ul>
-          </section>
-          
-          <section>
-            <h3 className="text-lg font-medium mb-2">DPO Duties</h3>
-            <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>Inform and advise on legal obligations</li>
-              <li>Monitor compliance with data protection laws and policies</li>
-              <li>Guide and track Data Protection Impact Assessments (DPIAs)</li>
-              <li>Cooperate with the supervisory authority (NCSA)</li>
-              <li>Act as the main contact point for data subjects and regulators</li>
-            </ul>
-          </section>
-          
-          <section>
-            <h3 className="text-lg font-medium mb-2">Resources and Responsibility</h3>
-            <p className="text-muted-foreground">
-              Senior management must provide adequate budget, staffing, and support for the DPO role.
-              The DPO is not personally liable for non-compliance; the Data Controller or Processor retains overall responsibility.
-            </p>
-          </section>
-          
-          <section>
-            <h3 className="text-lg font-medium mb-2">Publishing DPO Contact Details</h3>
-            <p className="text-muted-foreground">
-              The organisation must make the DPO's contact information publicly available and share it with the supervisory authority.
-            </p>
-          </section>
-        </div>
-      </div>
+      {isAssessmentComplete && <AdditionalGuidance />}
     </div>
   );
 };
