@@ -14,10 +14,10 @@ const RwandaDataBreachAssessment = () => {
   return (
     <Layout>
       <div className="container py-8 space-y-6">
-        <h1 className="text-3xl font-bold">Data Breach Notification in Rwanda</h1>
+        <h1 className="text-3xl font-bold">Data Breach Notification Assessment</h1>
         <RwandaDataBreachDescription />
         <AssessmentInterface
-          title="Data Breach Notification Assessment"
+          title="Data Breach Notification"
           questions={rwandaDataBreachQuestions}
           onComplete={() => setIsCompleted(true)}
         />

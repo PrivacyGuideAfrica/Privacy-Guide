@@ -26,7 +26,7 @@ export const rwandaDataBreachQuestions: Question[] = [
       },
       notSure: { 
         nextQuestion: null,
-        message: "This module does not directly apply to you if you're neither a Controller nor a Processor." 
+        message: "You should first determine whether you are a controller or processor. Please check our Controller/Processor module and then return to complete this assessment." 
       }
     }
   },

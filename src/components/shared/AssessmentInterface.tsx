@@ -196,7 +196,7 @@ export const AssessmentInterface = ({
     const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
     const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
     const isDpoRequired = finalMessage?.includes("You must designate a Data Protection Officer");
-    const isBreachNotification = finalMessage?.includes("notify the NDPC") || finalMessage?.includes("notify your Data Controller") || finalMessage?.includes("notify affected");
+    const isBreachNotification = finalMessage?.includes("notify the NDPC") || finalMessage?.includes("notify your Data Controller") || finalMessage?.includes("notify affected") || finalMessage?.includes("notify data subjects") || finalMessage?.includes("breach") || finalMessage?.includes("Data Processor");
     
     return (
       <div className="space-y-6">
@@ -221,7 +221,7 @@ export const AssessmentInterface = ({
                 : isDpoRequired
                   ? "Based on your responses, you may need to designate a DPO."
                   : isBreachNotification
-                    ? "Based on your responses, here are your breach notification requirements."
+                    ? "Based on your responses, below are your breach notification requirements."
                     : "Based on your responses, a full DPIA may not be required."}
           </p>
         </div>
