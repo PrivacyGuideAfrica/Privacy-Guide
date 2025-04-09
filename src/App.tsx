@@ -16,6 +16,7 @@ import AnnualAudit from "./pages/AnnualAudit";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import About from "./pages/About";
+import RepresentativeAssessment from "./pages/RepresentativeAssessment";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/data-breach" element={<DataBreachAssessment />} />
           <Route path="/dpia-assessment" element={<DPIAAssessment />} />
           <Route path="/annual-audit" element={<AnnualAudit />} />
+          <Route path="/representative-assessment" element={<RepresentativeAssessment />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyNotice />} />
           <Route path="/legal-notice" element={<LegalNotice />} />

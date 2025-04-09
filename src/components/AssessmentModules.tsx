@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User, Building } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface AssessmentModulesProps {
@@ -75,8 +75,8 @@ const rwandaModules: Module[] = [
   {
     title: "Do You Need to Appoint a Local Representative?",
     description: "Find out if your organization needs a local representative in Rwanda",
-    icon: User,
-    link: "/ndpa-applicability", // Placeholder until dedicated page is created
+    icon: Building,
+    link: "/representative-assessment",
   },
   {
     title: "Do You Need to Appoint a DPO?",
