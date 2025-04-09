@@ -2,6 +2,7 @@
 import { Question } from "@/components/shared/AssessmentInterface";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
+import { Users, UserCog, GraduationCap, ClipboardList, Settings, Globe, ChevronRight } from "lucide-react";
 
 const dpoQuestions: Question[] = [
   {
@@ -65,59 +66,116 @@ const dpoQuestions: Question[] = [
 ];
 
 const AdditionalGuidance = () => (
-  <div className="mt-12 bg-card border rounded-lg p-6 max-w-3xl mx-auto">
-    <h2 className="text-2xl font-semibold mb-4">Additional Guidance on DPO Appointment</h2>
+  <div className="mt-12 bg-card border rounded-lg p-8 max-w-3xl mx-auto">
+    <h2 className="text-2xl font-semibold mb-6 text-center">Additional Guidance on DPO Appointment</h2>
     
-    <div className="space-y-6">
-      <section>
-        <h3 className="text-lg font-medium mb-2">Joint DPO</h3>
-        <p className="text-muted-foreground">
-          A group of undertakings may appoint a single DPO, as long as they are easily accessible to each establishment. 
-          Public authorities or bodies may also designate one DPO for several entities.
-        </p>
+    <div className="space-y-8">
+      <section className="flex items-start gap-4 p-4 rounded-md hover:bg-muted/50 transition-colors">
+        <div className="bg-primary/10 p-3 rounded-full shrink-0">
+          <Users className="h-6 w-6 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-lg font-medium mb-1">Joint DPO</h3>
+          <p className="text-muted-foreground">
+            A group of undertakings may appoint a single DPO, as long as they are easily accessible to each establishment. 
+            Public authorities or bodies may also designate one DPO for several entities.
+          </p>
+        </div>
       </section>
       
-      <section>
-        <h3 className="text-lg font-medium mb-2">Who Can Be a DPO</h3>
-        <p className="text-muted-foreground">
-          The DPO can be a permanent staff member or an external contractor with expert knowledge of data protection law and practices.
-        </p>
+      <section className="flex items-start gap-4 p-4 rounded-md hover:bg-muted/50 transition-colors">
+        <div className="bg-primary/10 p-3 rounded-full shrink-0">
+          <UserCog className="h-6 w-6 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-lg font-medium mb-1">Who Can Be a DPO</h3>
+          <p className="text-muted-foreground">
+            The DPO can be a permanent staff member or an external contractor with expert knowledge of data protection law and practices.
+          </p>
+        </div>
       </section>
       
-      <section>
-        <h3 className="text-lg font-medium mb-2">Qualifications</h3>
-        <ul className="list-disc list-inside text-muted-foreground space-y-1">
-          <li>Understanding of national data protection laws</li>
-          <li>Familiarity with the organisation's processing operations and risks</li>
-          <li>Knowledge of information technology and data security</li>
-          <li>Ability to train colleagues and promote a culture of data protection</li>
-        </ul>
+      <section className="flex items-start gap-4 p-4 rounded-md hover:bg-muted/50 transition-colors">
+        <div className="bg-primary/10 p-3 rounded-full shrink-0">
+          <GraduationCap className="h-6 w-6 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-lg font-medium mb-1">Qualifications</h3>
+          <ul className="text-muted-foreground space-y-1">
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Understanding of national data protection laws</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Familiarity with the organisation's processing operations and risks</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Knowledge of information technology and data security</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Ability to train colleagues and promote a culture of data protection</span>
+            </li>
+          </ul>
+        </div>
       </section>
       
-      <section>
-        <h3 className="text-lg font-medium mb-2">DPO Duties</h3>
-        <ul className="list-disc list-inside text-muted-foreground space-y-1">
-          <li>Inform and advise on legal obligations</li>
-          <li>Monitor compliance with data protection laws and policies</li>
-          <li>Guide and track Data Protection Impact Assessments (DPIAs)</li>
-          <li>Cooperate with the supervisory authority (NCSA)</li>
-          <li>Act as the main contact point for data subjects and regulators</li>
-        </ul>
+      <section className="flex items-start gap-4 p-4 rounded-md hover:bg-muted/50 transition-colors">
+        <div className="bg-primary/10 p-3 rounded-full shrink-0">
+          <ClipboardList className="h-6 w-6 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-lg font-medium mb-1">DPO Duties</h3>
+          <ul className="text-muted-foreground space-y-1">
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Inform and advise on legal obligations</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Monitor compliance with data protection laws and policies</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Guide and track Data Protection Impact Assessments (DPIAs)</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Cooperate with the supervisory authority (NCSA)</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <ChevronRight className="h-4 w-4 mt-1 text-primary shrink-0" />
+              <span>Act as the main contact point for data subjects and regulators</span>
+            </li>
+          </ul>
+        </div>
       </section>
       
-      <section>
-        <h3 className="text-lg font-medium mb-2">Resources and Responsibility</h3>
-        <p className="text-muted-foreground">
-          Senior management must provide adequate budget, staffing, and support for the DPO role.
-          The DPO is not personally liable for non-compliance; the Data Controller or Processor retains overall responsibility.
-        </p>
+      <section className="flex items-start gap-4 p-4 rounded-md hover:bg-muted/50 transition-colors">
+        <div className="bg-primary/10 p-3 rounded-full shrink-0">
+          <Settings className="h-6 w-6 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-lg font-medium mb-1">Resources and Responsibility</h3>
+          <p className="text-muted-foreground">
+            Senior management must provide adequate budget, staffing, and support for the DPO role.
+            The DPO is not personally liable for non-compliance; the Data Controller or Processor retains overall responsibility.
+          </p>
+        </div>
       </section>
       
-      <section>
-        <h3 className="text-lg font-medium mb-2">Publishing DPO Contact Details</h3>
-        <p className="text-muted-foreground">
-          The organisation must make the DPO's contact information publicly available and share it with the supervisory authority.
-        </p>
+      <section className="flex items-start gap-4 p-4 rounded-md hover:bg-muted/50 transition-colors">
+        <div className="bg-primary/10 p-3 rounded-full shrink-0">
+          <Globe className="h-6 w-6 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-lg font-medium mb-1">Publishing DPO Contact Details</h3>
+          <p className="text-muted-foreground">
+            The organisation must make the DPO's contact information publicly available and share it with the supervisory authority.
+          </p>
+        </div>
       </section>
     </div>
   </div>
