@@ -10,7 +10,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 2,
-        message: "You must register. Proceed to see what information is required."
+        message: null
       },
       no: { 
         nextQuestion: null,
@@ -130,7 +130,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: null,
-        message: "You have the core information needed to register. Proceed to Next Steps below!\n\nNext Steps: How to Register\n\n1. Visit the official portal: www.dpo.gov.rw to download the application form.\n2. Complete the form thoroughly with the information from your answers above.\n3. Prepare all supporting documents:\n   - Letter addressed to the Chief Executive Officer of NCSA\n   - Certificate of incorporation\n   - Regulator's license (if applicable)\n   - Legal instrument (if you are a public entity)\n   - Representative's contract (if you appointed one)\n   - Other relevant contracts or a privacy notice\n4. Submit your PDF documents in a zipped folder to registration@dpo.gov.rw and dpp@ncsa.gov.rw, using your organisation's name in the subject line.\n5. Await confirmation—no fee is charged.\n6. A certificate is typically issued within 30 working days if your application is complete.\n7. If rejected, you will be notified within 7 working days and can re-apply after meeting any missing requirements.\n\nRemember: Inform the NCSA within 15 working days if there are changes to your registration details. Failure to do so may result in fines."
+        message: "Next Steps: How to Register\n\n1. Visit the official portal: www.dpo.gov.rw to download the application form.\n2. Complete the form thoroughly with the information from your answers above.\n3. Prepare all supporting documents:\n   - Letter addressed to the Chief Executive Officer of NCSA\n   - Certificate of incorporation\n   - Regulator's license (if applicable)\n   - Legal instrument (if you are a public entity)\n   - Representative's contract (if you appointed one)\n   - Other relevant contracts or a privacy notice\n4. Submit your PDF documents in a zipped folder to registration@dpo.gov.rw and dpp@ncsa.gov.rw, using your organisation's name in the subject line.\n5. Await confirmation—no fee is charged.\n6. A certificate is typically issued within 30 working days if your application is complete.\n7. If rejected, you will be notified within 7 working days and can re-apply after meeting any missing requirements.\n\nRemember: Inform the NCSA within 15 working days if there are changes to your registration details. Failure to do so may result in fines."
       },
       no: { 
         nextQuestion: null,

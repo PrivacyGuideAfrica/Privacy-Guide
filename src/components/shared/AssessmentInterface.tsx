@@ -15,11 +15,11 @@ export interface Question {
   options: {
     yes: {
       nextQuestion: number | null;
-      message?: string;
+      message?: string | null;
     };
     no: {
       nextQuestion: number | null;
-      message?: string;
+      message?: string | null;
     };
   };
 }
@@ -104,11 +104,12 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
     setAnswers(newAnswers);
 
     const option = value === "yes" ? question.options.yes : question.options.no;
-
-    if (option.message) {
+    
+    if (option.message && option.nextQuestion === null) {
       setFinalMessage(option.message);
       onComplete?.();
-    } else if (option.nextQuestion) {
+    } 
+    else if (option.nextQuestion !== null) {
       setCurrentQuestion(option.nextQuestion);
     }
   };
