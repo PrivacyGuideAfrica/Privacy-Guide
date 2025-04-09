@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,6 +33,7 @@ interface Props {
   questions: Question[];
   onComplete?: () => void;
   onReset?: () => void;
+  renderQuestion?: (question: Question) => React.ReactNode;
 }
 
 interface DPIAStep {
@@ -86,7 +86,13 @@ const dpiaSteps: DPIAStep[] = [
   }
 ];
 
-export const AssessmentInterface = ({ title, questions, onComplete, onReset }: Props) => {
+export const AssessmentInterface = ({ 
+  title, 
+  questions, 
+  onComplete, 
+  onReset,
+  renderQuestion 
+}: Props) => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -235,8 +241,10 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
         ) : currentQuestionData ? (
           <div className="space-y-6">
             <div className="flex items-start gap-2">
-              <p className="text-lg whitespace-pre-line">{currentQuestionData.text}</p>
-              {currentQuestionData.tooltip && (
+              {renderQuestion && renderQuestion(currentQuestionData) || (
+                <p className="text-lg whitespace-pre-line">{currentQuestionData.text}</p>
+              )}
+              {!renderQuestion && currentQuestionData.tooltip && (
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>

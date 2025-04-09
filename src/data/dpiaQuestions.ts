@@ -67,7 +67,7 @@ export const dpiaQuestions: Question[] = [
   },
   {
     id: 2,
-    text: "Does your processing involve any of the following?\n\nAutomated processing with significant effects (e.g. an algorithm deciding on a loan)\nLarge-scale processing of sensitive personal data (e.g. health, biometric, or other special categories)\nSystematic monitoring of public areas on a large scale (e.g. extensive CCTV or facial recognition)\nProcessing data about vulnerable individuals (e.g. children, persons with disabilities, refugees)\nMatching or combining datasets in ways individuals would not reasonably expect\nUsing new technologies (e.g. AI or IoT) that could create unknown or high risks\nActivities identified by the supervisory authority as high risk.",
+    text: "Does your processing involve any of the following?",
     tooltip: "If you answered 'Yes' to any of the above, you must conduct a DPIA.",
     options: {
       yes: {

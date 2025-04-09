@@ -1,7 +1,8 @@
 
 import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
-import { dpiaQuestions } from "@/data/dpiaQuestions";
+import { dpiaQuestions, dpiaActivities } from "@/data/dpiaQuestions";
+import { AlertCircle } from "lucide-react";
 
 const DPIAAssessment = () => {
   return (
@@ -20,6 +21,32 @@ const DPIAAssessment = () => {
         <AssessmentInterface
           title="DPIA Assessment"
           questions={dpiaQuestions}
+          renderQuestion={(question) => {
+            if (question.id === 2) {
+              return (
+                <div className="space-y-4">
+                  <p className="text-lg">{question.text}</p>
+                  <div className="bg-muted p-4 rounded-lg space-y-3">
+                    <h3 className="font-medium">High-risk activities include:</h3>
+                    <ul className="space-y-2">
+                      {dpiaActivities.map((activity, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <AlertCircle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
+                          <div>
+                            <span className="font-medium">{activity.label}</span>
+                            {activity.tooltip && (
+                              <p className="text-muted-foreground text-sm">{activity.tooltip}</p>
+                            )}
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            }
+            return null;
+          }}
         />
       </div>
     </Layout>
