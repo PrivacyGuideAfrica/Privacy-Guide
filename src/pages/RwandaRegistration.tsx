@@ -25,7 +25,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 3,
-        message: "Great! Proceed to the next question."
+        message: null
       },
       no: { 
         nextQuestion: null,
@@ -40,7 +40,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 4,
-        message: "Good. Proceed to the next question."
+        message: null
       },
       no: { 
         nextQuestion: null,
@@ -55,7 +55,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 5,
-        message: "Excellent. Proceed to the next question."
+        message: null
       },
       no: { 
         nextQuestion: null,
@@ -70,7 +70,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 6,
-        message: "Perfect. Proceed to the next question."
+        message: null
       },
       no: { 
         nextQuestion: null,
@@ -85,7 +85,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 7,
-        message: "Good. Proceed to the next question."
+        message: null
       },
       no: { 
         nextQuestion: null,
@@ -100,7 +100,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 8,
-        message: "Great! Proceed to the next question."
+        message: null
       },
       no: { 
         nextQuestion: null,
@@ -115,7 +115,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 9,
-        message: "Proceed to the next question."
+        message: null
       },
       no: { 
         nextQuestion: null,
