@@ -195,6 +195,7 @@ export const AssessmentInterface = ({
   const renderCompletionMessage = () => {
     const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
     const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
+    const isDpoRequired = finalMessage?.includes("You must designate a Data Protection Officer");
     
     return (
       <div className="space-y-6">
@@ -224,7 +225,13 @@ export const AssessmentInterface = ({
           <div className="flex items-start gap-3">
             <FileText className="h-5 w-5 text-foreground shrink-0 mt-1" />
             <div className="space-y-2">
-              <h3 className="font-medium">{isDpiaRequired ? "DPIA Requirements" : "Recommendation"}</h3>
+              <h3 className="font-medium">
+                {isDpiaRequired 
+                  ? "DPIA Requirements" 
+                  : isDpoRequired 
+                    ? "DPO Requirements"
+                    : "Recommendation"}
+              </h3>
               <div className="text-sm text-muted-foreground whitespace-pre-line">
                 {finalMessage}
               </div>

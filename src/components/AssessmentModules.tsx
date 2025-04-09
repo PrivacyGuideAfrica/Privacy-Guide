@@ -81,8 +81,8 @@ const rwandaModules: Module[] = [
   {
     title: "Do You Need to Appoint a DPO?",
     description: "Assess whether your organization needs a Data Protection Officer",
-    icon: Users,
-    link: "/ndpa-applicability", // Placeholder until dedicated page is created
+    icon: User,
+    link: "/dpo-assessment",
   },
   {
     title: "Data Breach Notification",
