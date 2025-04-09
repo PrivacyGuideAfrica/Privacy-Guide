@@ -194,6 +194,7 @@ export const AssessmentInterface = ({
 
   const renderCompletionMessage = () => {
     const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
+    const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
     
     return (
       <div className="space-y-6">
@@ -212,8 +213,10 @@ export const AssessmentInterface = ({
           </h2>
           <p className="text-muted-foreground">
             {isDpiaRequired 
-              ? "Based on your responses, you need to conduct a DPIA." 
-              : "Based on your responses, a full DPIA may not be required."}
+              ? "Based on your responses, you need to conduct a DPIA."
+              : isRepresentativeRequired
+                ? "You may need to designate a local representative in Rwanda."
+                : "Based on your responses, a full DPIA may not be required."}
           </p>
         </div>
 
