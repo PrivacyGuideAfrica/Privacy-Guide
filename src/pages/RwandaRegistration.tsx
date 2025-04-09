@@ -10,7 +10,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 2,
-        message: "You must register. Proceed to Question 2 to see what information is required."
+        message: "You must register. Proceed to see what information is required."
       },
       no: { 
         nextQuestion: null,
@@ -25,7 +25,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 3,
-        message: "Great! Proceed to Question 3."
+        message: "Great! Proceed to the next question."
       },
       no: { 
         nextQuestion: null,
@@ -40,7 +40,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 4,
-        message: "Good. Proceed to Question 4."
+        message: "Good. Proceed to the next question."
       },
       no: { 
         nextQuestion: null,
@@ -50,12 +50,12 @@ const questions: Question[] = [
   },
   {
     id: 4,
-    text: "Can You Describe the Types of Personal Data and Data Subjects? (e.g. customers' contact info, employees' records, etc.)",
+    text: "Can You describe the types of Personal Data you collect and Data Subjects involved? (e.g. customers' contact info, employees' records, etc.)",
     tooltip: "You need to clearly identify what kinds of data you handle and whose data it is.",
     options: {
       yes: { 
         nextQuestion: 5,
-        message: "Excellent. Proceed to Question 5."
+        message: "Excellent. Proceed to the next question."
       },
       no: { 
         nextQuestion: null,
@@ -65,12 +65,12 @@ const questions: Question[] = [
   },
   {
     id: 5,
-    text: "Do You Know the Relevant Sectors in Which You Operate? (e.g. healthcare, finance, e-commerce)",
+    text: "Do you know the relevant sectors in which you operate? (e.g. healthcare, finance, e-commerce)",
     tooltip: "Different sectors have different data protection requirements and risks.",
     options: {
       yes: { 
         nextQuestion: 6,
-        message: "Perfect. Proceed to Question 6."
+        message: "Perfect. Proceed to the next question."
       },
       no: { 
         nextQuestion: null,
@@ -80,12 +80,12 @@ const questions: Question[] = [
   },
   {
     id: 6,
-    text: "Can You Provide the Purposes for Processing the Personal Data? (e.g. marketing, product delivery, research)",
+    text: "Can you provide the purposes for processing the Personal Data you collect? (e.g. marketing, product delivery, research)",
     tooltip: "You must be transparent about why you're collecting and using personal data.",
     options: {
       yes: { 
         nextQuestion: 7,
-        message: "Good. Proceed to Question 7."
+        message: "Good. Proceed to the next question."
       },
       no: { 
         nextQuestion: null,
@@ -100,7 +100,7 @@ const questions: Question[] = [
     options: {
       yes: { 
         nextQuestion: 8,
-        message: "Great! Proceed to Question 8."
+        message: "Great! Proceed to the next question."
       },
       no: { 
         nextQuestion: null,
@@ -110,26 +110,12 @@ const questions: Question[] = [
   },
   {
     id: 8,
-    text: "Do You Transfer or Intend to Transfer Data Outside Rwanda?",
+    text: "Do you transfer or intend to transfer data outside Rwanda and do you know the specific destinations?",
     tooltip: "Cross-border data transfers are subject to additional requirements.",
     options: {
       yes: { 
-        nextQuestion: 8.1
-      },
-      no: { 
         nextQuestion: 9,
-        message: "No cross-border transfers. Proceed to Question 9."
-      }
-    }
-  },
-  {
-    id: 8.1,
-    text: "Can you specify which country or countries?",
-    tooltip: "You need to know which countries will receive the data, as different countries have different data protection standards.",
-    options: {
-      yes: { 
-        nextQuestion: 9,
-        message: "Proceed to Question 9."
+        message: "Proceed to the next question."
       },
       no: { 
         nextQuestion: null,
@@ -139,12 +125,12 @@ const questions: Question[] = [
   },
   {
     id: 9,
-    text: "Have You Assessed the Risks and Safeguards? Do you understand the main risks to personal data (e.g. security breaches) and the measures you have in place to mitigate them?",
+    text: "Have you assessed the risks and safeguards? Do you understand the main risks to personal data (e.g. security breaches) and the measures you have in place to mitigate them?",
     tooltip: "You need to demonstrate that you've assessed potential risks and implemented appropriate security measures.",
     options: {
       yes: { 
         nextQuestion: null,
-        message: "You have the core information needed to register. Proceed to Next Steps below!\n\n1. Visit the official portal: www.dpo.gov.rw to download the application form.\n2. Complete the form thoroughly with the information from your answers above.\n3. Prepare all supporting documents:\n   - Letter addressed to the Chief Executive Officer of NCSA\n   - Certificate of incorporation\n   - Regulator's license (if applicable)\n   - Legal instrument (if you are a public entity)\n   - Representative's contract (if you appointed one)\n   - Other relevant contracts or a privacy notice\n4. Submit your PDF documents in a zipped folder to registration@dpo.gov.rw and dpp@ncsa.gov.rw, using your organisation's name in the subject line.\n5. Await confirmation—no fee is charged.\n6. A certificate is typically issued within 30 working days if your application is complete.\n7. If rejected, you will be notified within 7 working days and can re-apply after meeting any missing requirements.\n\nRemember: Inform the NCSA within 15 working days if there are changes to your registration details. Failure to do so may result in fines."
+        message: "You have the core information needed to register. Proceed to Next Steps below!\n\nNext Steps: How to Register\n\n1. Visit the official portal: www.dpo.gov.rw to download the application form.\n2. Complete the form thoroughly with the information from your answers above.\n3. Prepare all supporting documents:\n   - Letter addressed to the Chief Executive Officer of NCSA\n   - Certificate of incorporation\n   - Regulator's license (if applicable)\n   - Legal instrument (if you are a public entity)\n   - Representative's contract (if you appointed one)\n   - Other relevant contracts or a privacy notice\n4. Submit your PDF documents in a zipped folder to registration@dpo.gov.rw and dpp@ncsa.gov.rw, using your organisation's name in the subject line.\n5. Await confirmation—no fee is charged.\n6. A certificate is typically issued within 30 working days if your application is complete.\n7. If rejected, you will be notified within 7 working days and can re-apply after meeting any missing requirements.\n\nRemember: Inform the NCSA within 15 working days if there are changes to your registration details. Failure to do so may result in fines."
       },
       no: { 
         nextQuestion: null,
