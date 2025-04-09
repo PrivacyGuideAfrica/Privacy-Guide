@@ -196,11 +196,12 @@ export const AssessmentInterface = ({
     const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
     const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
     const isDpoRequired = finalMessage?.includes("You must designate a Data Protection Officer");
+    const isBreachNotification = finalMessage?.includes("notify the NDPC") || finalMessage?.includes("notify your Data Controller") || finalMessage?.includes("notify affected");
     
     return (
       <div className="space-y-6">
         <div className="flex flex-col items-center justify-center p-6 text-center">
-          {isDpiaRequired ? (
+          {isDpiaRequired || isBreachNotification && finalMessage?.includes("immediately") ? (
             <div className="bg-muted/50 rounded-full p-4 mb-4">
               <AlertCircle className="h-12 w-12 text-destructive" />
             </div>
@@ -219,7 +220,9 @@ export const AssessmentInterface = ({
                 ? "You may need to designate a local representative in Rwanda."
                 : isDpoRequired
                   ? "Based on your responses, you may need to designate a DPO."
-                  : "Based on your responses, a full DPIA may not be required."}
+                  : isBreachNotification
+                    ? "Based on your responses, here are your breach notification requirements."
+                    : "Based on your responses, a full DPIA may not be required."}
           </p>
         </div>
 

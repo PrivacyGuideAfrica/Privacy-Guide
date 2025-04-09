@@ -88,7 +88,7 @@ const rwandaModules: Module[] = [
     title: "Data Breach Notification",
     description: "Understand your data breach notification obligations under Rwanda's law",
     icon: AlertTriangle,
-    link: "/data-breach",
+    link: "/rwanda-data-breach",
   },
 ];
 

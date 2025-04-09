@@ -18,6 +18,7 @@ import PrivacyNotice from "./pages/PrivacyNotice";
 import About from "./pages/About";
 import RepresentativeAssessment from "./pages/RepresentativeAssessment";
 import DPOAssessment from "./pages/DPOAssessment";
+import RwandaDataBreachAssessment from "./pages/RwandaDataBreachAssessment";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/rwanda-registration" element={<RwandaRegistration />} />
           <Route path="/controller-processor" element={<ControllerProcessor />} />
           <Route path="/data-breach" element={<DataBreachAssessment />} />
+          <Route path="/rwanda-data-breach" element={<RwandaDataBreachAssessment />} />
           <Route path="/dpia-assessment" element={<DPIAAssessment />} />
           <Route path="/annual-audit" element={<AnnualAudit />} />
           <Route path="/representative-assessment" element={<RepresentativeAssessment />} />
