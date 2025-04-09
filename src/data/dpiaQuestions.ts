@@ -1,3 +1,4 @@
+
 import { Question } from "@/components/shared/AssessmentInterface";
 
 export interface DPIAActivity {
@@ -47,68 +48,35 @@ export const dpiaActivities: DPIAActivity[] = [
 export const dpiaQuestions: Question[] = [
   {
     id: 1,
-    text: "Are you processing personal data that could result in a high risk to the rights and freedoms of individuals (e.g., large-scale processing, special categories of data)?",
-    tooltip: "'High risk' refers to situations where data processing could lead to identity theft, financial loss, discrimination, or significant invasion of privacy. Are you using personal data in a way that could cause problems for people's rights and freedoms, such as using personal data to make important decisions about people, tracking people's location or online activity, sharing personal data with many different organisations, or processing sensitive personal data?",
+    text: "Is the processing of personal data likely to result in a high risk to the rights and freedoms of individuals?",
+    tooltip: "A higher-risk scenario may require you to carry out a DPIA to assess and address potential impacts on individuals' privacy.",
     options: {
       yes: {
-        nextQuestion: 2
+        nextQuestion: 2,
+        message: null
       },
       no: {
         nextQuestion: null,
-        message: "A DPIA may not be necessary, but keep records of your processing activities."
+        message: "You might not need a DPIA, but it's good practice to consider privacy risks."
+      },
+      notSure: {
+        nextQuestion: 2,
+        message: null
       }
     }
   },
   {
     id: 2,
-    text: "Are you conducting any of the following activities? Automated decision-making or profiling, large-scale processing of sensitive data (e.g., health, financial), systematic monitoring of public areas, processing of children's data, cross-border data transfer to a country with weaker data protection, processing data that could lead to discrimination, invisible processing, data matching, combining data from various sources",
-    options: {
-      yes: {
-        nextQuestion: 3
-      },
-      no: {
-        nextQuestion: 4
-      }
-    }
-  },
-  {
-    id: 3,
-    text: "Are you using new technologies, or are there any innovative processing activities involved (e.g., AI or IoT)?",
-    tooltip: "New technologies like AI may involve unknown risks which makes a DPIA essential.",
+    text: "Does your processing involve any of the following?\n\nAutomated processing with significant effects (e.g. an algorithm deciding on a loan)\nLarge-scale processing of sensitive personal data (e.g. health, biometric, or other special categories)\nSystematic monitoring of public areas on a large scale (e.g. extensive CCTV or facial recognition)\nProcessing data about vulnerable individuals (e.g. children, persons with disabilities, refugees)\nMatching or combining datasets in ways individuals would not reasonably expect\nUsing new technologies (e.g. AI or IoT) that could create unknown or high risks\nActivities identified by the supervisory authority as high risk.",
+    tooltip: "If you answered 'Yes' to any of the above, you must conduct a DPIA.",
     options: {
       yes: {
         nextQuestion: null,
-        message: "A DPIA is required. Consult a Data Protection Officer to mitigate risks related to new technologies."
-      },
-      no: {
-        nextQuestion: 4
-      }
-    }
-  },
-  {
-    id: 4,
-    text: "Could the processing result in denial of services or legal rights to individuals (e.g., loan refusals, employment decisions)?",
-    options: {
-      yes: {
-        nextQuestion: null,
-        message: "A DPIA is required due to potential harm to individuals' legal rights."
-      },
-      no: {
-        nextQuestion: 5
-      }
-    }
-  },
-  {
-    id: 5,
-    text: "Are you processing data in a way that may lead to significant harm (e.g., discrimination, loss of employment)?",
-    options: {
-      yes: {
-        nextQuestion: null,
-        message: "A DPIA is required."
+        message: "Based on your responses, you must conduct a DPIA.\n\nA DPIA should include:\nA description of the processing operations and their purposes.\nAn assessment of whether the processing is necessary and proportional.\nAn evaluation of the risks to individuals' rights and freedoms.\nThe measures you plan to take to address those risks and demonstrate compliance.\nA plan for monitoring and reviewing the DPIA.\n\nWho should be involved:\nThe Data Controller (responsible for carrying out the DPIA).\nThe Data Processor (must assist, if involved).\nThe Data Protection Officer (if you have one).\nIt's good practice to seek input from the individuals whose data will be processed.\n\nWhen to conduct/review:\nBefore starting processing.\nDPIAs should be ongoing and regularly reviewed.\n\nConsultation and publication:\nConsult the NCSA if you're unsure whether a DPIA is necessary or if a single DPIA covers multiple operations.\nWhile publishing the full DPIA is not mandatory, a summary is recommended for transparency.\nYou must provide the full DPIA to the supervisory authority if requested."
       },
       no: {
         nextQuestion: null,
-        message: "A DPIA is not mandatory based on your current processing activities. However, it is recommended that you document your activities for accountability. If the scope, nature, or purpose of your data processing changes in the future—such as implementing new technologies, processing sensitive data, or engaging in large-scale processing—you should reassess whether a DPIA is required. Regularly reviewing your data practices ensures continued compliance with data protection regulations."
+        message: "Based on your responses, a DPIA may not be required. However, it's advisable to adopt best practices in privacy risk management:\n\nEven if not mandatory, consider documenting:\nA description of your processing operations and their purposes.\nAn assessment of whether the processing is necessary and proportional.\nAny potential risks to individuals' rights and freedoms.\nMeasures to mitigate risks and ensure compliance.\nA plan for ongoing monitoring and review.\n\nFollowing these measures promotes trust and accountability if your processing changes in the future."
       }
     }
   }

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +19,10 @@ export interface Question {
       message?: string | null;
     };
     no: {
+      nextQuestion: number | null;
+      message?: string | null;
+    };
+    notSure?: {
       nextQuestion: number | null;
       message?: string | null;
     };
@@ -103,7 +108,16 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
     const newAnswers = { ...answers, [currentQuestion]: value };
     setAnswers(newAnswers);
 
-    const option = value === "yes" ? question.options.yes : question.options.no;
+    let option;
+    if (value === "yes") {
+      option = question.options.yes;
+    } else if (value === "no") {
+      option = question.options.no;
+    } else if (value === "notSure" && question.options.notSure) {
+      option = question.options.notSure;
+    } else {
+      return;
+    }
     
     if (option.message && option.nextQuestion === null) {
       setFinalMessage(option.message);
@@ -208,7 +222,7 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
                 {finalMessage}
               </AlertDescription>
             </Alert>
-            {finalMessage.includes("A DPIA is required") && renderDPIAGuidance()}
+            {finalMessage.includes("you must conduct a DPIA") && renderDPIAGuidance()}
             <div className="space-y-4">
               <Button className="w-full" onClick={resetAssessment}>
                 Retake Assessment
@@ -221,7 +235,7 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
         ) : currentQuestionData ? (
           <div className="space-y-6">
             <div className="flex items-start gap-2">
-              <p className="text-lg">{currentQuestionData.text}</p>
+              <p className="text-lg whitespace-pre-line">{currentQuestionData.text}</p>
               {currentQuestionData.tooltip && (
                 <TooltipProvider>
                   <Tooltip>
@@ -252,6 +266,15 @@ export const AssessmentInterface = ({ title, questions, onComplete, onReset }: P
               >
                 No
               </Button>
+              {currentQuestionData.options.notSure && (
+                <Button
+                  variant={answers[currentQuestion] === "notSure" ? "default" : "outline"}
+                  className="w-full justify-start"
+                  onClick={() => handleAnswer("notSure")}
+                >
+                  Not Sure
+                </Button>
+              )}
             </div>
           </div>
         ) : null}
