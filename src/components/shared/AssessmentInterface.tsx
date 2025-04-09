@@ -217,7 +217,9 @@ export const AssessmentInterface = ({
               ? "Based on your responses, you need to conduct a DPIA."
               : isRepresentativeRequired
                 ? "You may need to designate a local representative in Rwanda."
-                : "Based on your responses, a full DPIA may not be required."}
+                : isDpoRequired
+                  ? "Based on your responses, you may need to designate a DPO."
+                  : "Based on your responses, a full DPIA may not be required."}
           </p>
         </div>
 
