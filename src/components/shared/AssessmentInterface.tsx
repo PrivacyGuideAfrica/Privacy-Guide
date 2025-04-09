@@ -1,9 +1,10 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -191,6 +192,65 @@ export const AssessmentInterface = ({
     </div>
   );
 
+  const renderCompletionMessage = () => {
+    const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
+    
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-col items-center justify-center p-6 text-center">
+          {isDpiaRequired ? (
+            <div className="bg-muted/50 rounded-full p-4 mb-4">
+              <AlertCircle className="h-12 w-12 text-destructive" />
+            </div>
+          ) : (
+            <div className="bg-muted/50 rounded-full p-4 mb-4">
+              <CheckCircle2 className="h-12 w-12 text-ndpa-green" />
+            </div>
+          )}
+          <h2 className="text-2xl font-bold mb-2">
+            {isDpiaRequired ? "DPIA Required" : "Assessment Complete"}
+          </h2>
+          <p className="text-muted-foreground">
+            {isDpiaRequired 
+              ? "Based on your responses, you need to conduct a DPIA." 
+              : "Based on your responses, a full DPIA may not be required."}
+          </p>
+        </div>
+
+        <div className="bg-card border rounded-lg p-6 space-y-4">
+          <div className="flex items-start gap-3">
+            <FileText className="h-5 w-5 text-foreground shrink-0 mt-1" />
+            <div className="space-y-2">
+              <h3 className="font-medium">{isDpiaRequired ? "DPIA Requirements" : "Recommendation"}</h3>
+              <div className="text-sm text-muted-foreground whitespace-pre-line">
+                {finalMessage}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {isDpiaRequired && renderDPIAGuidance()}
+
+        <div className="space-y-4 pt-2">
+          <Button 
+            className="w-full bg-ndpa-green text-white hover:bg-ndpa-green/90" 
+            onClick={resetAssessment}
+          >
+            <RotateCcw className="h-4 w-4 mr-2" />
+            Retake Assessment
+          </Button>
+          <Button 
+            variant="outline" 
+            className="w-full border-ndpa-green text-ndpa-green hover:bg-ndpa-green/10" 
+            onClick={() => navigate("/")}
+          >
+            Take Other Assessments
+          </Button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <Card className="w-full max-w-3xl mx-auto">
       <CardHeader>
@@ -222,22 +282,7 @@ export const AssessmentInterface = ({
 
       <CardContent>
         {finalMessage ? (
-          <div className="space-y-6">
-            <Alert>
-              <AlertDescription className="whitespace-pre-wrap">
-                {finalMessage}
-              </AlertDescription>
-            </Alert>
-            {finalMessage.includes("you must conduct a DPIA") && renderDPIAGuidance()}
-            <div className="space-y-4">
-              <Button className="w-full" onClick={resetAssessment}>
-                Retake Assessment
-              </Button>
-              <Button variant="outline" className="w-full" onClick={() => navigate("/")}>
-                Take Other Assessments
-              </Button>
-            </div>
-          </div>
+          renderCompletionMessage()
         ) : currentQuestionData ? (
           <div className="space-y-6">
             <div className="flex items-start gap-2">
