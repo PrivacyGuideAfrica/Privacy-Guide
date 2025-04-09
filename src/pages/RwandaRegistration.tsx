@@ -114,7 +114,7 @@ const questions: Question[] = [
     tooltip: "Cross-border data transfers are subject to additional requirements.",
     options: {
       yes: { 
-        nextQuestion: 8.1 
+        nextQuestion: 8.1
       },
       no: { 
         nextQuestion: 9,
