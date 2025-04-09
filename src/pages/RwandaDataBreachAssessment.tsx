@@ -24,7 +24,7 @@ const RwandaDataBreachAssessment = () => {
 
         {isCompleted && (
           <div className="space-y-4 mt-8 animate-fade-in">
-            <h2 className="text-2xl font-semibold">Additional Guidance</h2>
+            <h2 className="text-2xl font-semibold">Based on your responses, below are your breach notification requirements</h2>
             <Separator className="my-2" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
