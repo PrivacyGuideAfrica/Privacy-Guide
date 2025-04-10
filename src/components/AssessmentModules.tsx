@@ -58,7 +58,7 @@ const rwandaModules: Module[] = [
     title: "Are You a Data Controller or Processor?",
     description: "Assess your organization's role under Rwanda's data protection framework",
     icon: Users,
-    link: "/controller-processor",
+    link: "/rwanda-controller-processor",
   },
   {
     title: "Registering with the Data Protection Authority?",
