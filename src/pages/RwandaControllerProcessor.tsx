@@ -17,6 +17,8 @@ const RwandaControllerProcessor = () => {
   const controllerMessage = "You are likely to be a Data Controller.";
 
   const processorMessage = "You are likely to be a Data Processor.";
+  
+  const dualRoleMessage = "You might have a dual role as both a Data Controller and a Data Processor. This means you may act as a Controller for some processing activities and as a Processor for others.";
 
   // Function to handle answer recording and determine assessment result
   const handleAnswer = (questionId: number, answer: string) => {
@@ -35,8 +37,9 @@ const RwandaControllerProcessor = () => {
         // If they follow instructions, they're a processor
         setFinalMessage(processorMessage);
       } else {
-        // If they don't follow instructions, they're a controller
-        setFinalMessage(controllerMessage);
+        // If they don't follow instructions but also don't have full controller characteristics,
+        // they might have a dual role
+        setFinalMessage(dualRoleMessage);
       }
     }
   };
