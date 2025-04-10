@@ -25,126 +25,75 @@ const RwandaControllerProcessor = () => {
     const newAnswers = { ...answerPath, [questionId]: answer };
     setAnswerPath(newAnswers);
 
-    // Check for completed assessment at question 4
-    if (questionId === 4) {
-      determineResult(newAnswers);
+    // For Q3 and Q4, we determine the result immediately as they're end points
+    if (questionId === 3) {
+      if (answer === "yes") {
+        setFinalMessage(controllerMessage);
+      } else {
+        setFinalMessage(processorMessage);
+      }
+    } else if (questionId === 4) {
+      // Q4 is always Controller
+      setFinalMessage(controllerMessage);
     }
   };
 
-  // Function to determine the result based on the answer path
-  const determineResult = (answers: AnswerPath) => {
-    // Path 1: Q1(No) -> Q2(No) -> Q3(Yes) -> Q4(No) = "You are likely to be a Data Processor"
-    if (
-      answers[1] === "no" && 
-      answers[2] === "no" && 
-      answers[3] === "yes" && 
-      answers[4] === "no"
-    ) {
-      setFinalMessage(processorMessage);
-      return;
-    }
-    
-    // Path 2: Q1(Yes) -> Q2(Yes) -> Q3(No) -> Q4(No) = "You are likely to be a Data Controller"
-    if (
-      answers[1] === "yes" && 
-      answers[2] === "yes" && 
-      answers[3] === "no" && 
-      answers[4] === "no"
-    ) {
-      setFinalMessage(controllerMessage);
-      return;
-    }
-    
-    // Path 3: Q1(either) -> Q2(Yes) -> Q3(No) -> Q4(Yes) = "You are likely to have a Dual Role"
-    if (
-      (answers[1] === "yes" || answers[1] === "no") && 
-      answers[2] === "yes" && 
-      answers[3] === "no" && 
-      answers[4] === "yes"
-    ) {
-      setFinalMessage(dualRoleMessage);
-      return;
-    }
-    
-    // If no specific pattern matches, provide a default message based on the most relevant scenario
-    // Default: Controller if Q1 and Q2 are Yes, Q3 is No
-    if (
-      answers[1] === "yes" && 
-      answers[2] === "yes" && 
-      answers[3] === "no"
-    ) {
-      setFinalMessage(controllerMessage);
-      return;
-    }
-    
-    // Default: Processor if Q3 is Yes
-    if (answers[3] === "yes") {
-      setFinalMessage(processorMessage);
-      return;
-    }
-    
-    // Default: Dual Role if Q4 is Yes
-    if (answers[4] === "yes") {
-      setFinalMessage(dualRoleMessage);
-      return;
-    }
-
-    // Final default if no other conditions match
-    setFinalMessage("Your answers do not match one of the common patterns. You may be a Joint Controller or have partial control. Please consider consulting with a data protection professional for a detailed assessment of your specific situation.");
-  };
+  // The logic is now handled directly in the handleAnswer function
 
   const questions: Question[] = [
     {
       id: 1,
-      text: "Do you (or your organisation) decide how or why personal data is collected or used?",
-      tooltip: "This means you determine the purposes and means of processing personal data, including what data to collect and how it will be used.",
+      text: "Are you processing personal data under the direct instructions of another organisation or entity?",
+      tooltip: "This means someone else tells you what data to collect, how to use it, and you follow their guidelines.",
       options: {
         yes: {
           nextQuestion: 2,
         },
         no: {
-          nextQuestion: 2, // Changed to go to Question 2 instead of ending
+          nextQuestion: 4, // Skip to Q4 if not following instructions
         },
       },
     },
     {
       id: 2,
-      text: "Do you also decide key factors such as which data is collected, who receives it, and how long it is kept?",
-      tooltip: "This includes making decisions about data collection scope, data sharing, and retention periods.",
+      text: "Do you decide the purpose for which the personal data is being used?",
+      tooltip: "This means you determine why the data is collected and how it will be used, regardless of whose instructions you follow.",
       options: {
         yes: {
-          nextQuestion: 3,
+          nextQuestion: 4, // If deciding purpose, go to Q4
         },
         no: {
-          nextQuestion: 3, // Changed to go to Question 3
+          nextQuestion: 3, // If not deciding purpose, go to Q3
         },
       },
     },
     {
       id: 3,
-      text: "Do you ever handle personal data solely under instructions from a separate party who decides all major aspects?",
-      tooltip: "As a processor, you would only act on behalf of another entity that provides clear instructions on data handling.",
+      text: "Do you decide what data to collect, from whom, and how long to retain it?",
+      tooltip: "This includes making key decisions about data collection scope, sources, and retention periods.",
       options: {
         yes: {
-          nextQuestion: 4,
+          nextQuestion: null,
+          message: null // Will be set to controllerMessage by handleAnswer function
         },
         no: {
-          nextQuestion: 4, // Changed to go to Question 4
+          nextQuestion: null,
+          message: null // Will be set to processorMessage by handleAnswer function
         },
       },
     },
     {
       id: 4,
-      text: "Do you handle personal data in some activities by making all the decisions yourself, and in other activities only follow someone else's instructions?",
-      tooltip: "This would indicate you may have different roles depending on the specific processing activities.",
+      text: "You appear to have decision-making authority over personal data. This typically means you are a Data Controller.",
+      tooltip: "Data Controllers determine the purposes and means of processing personal data. They decide what data to collect and how to use it.",
       options: {
         yes: {
           nextQuestion: null,
-          message: null // Will be set by handleAnswer function
+          message: null // Will be set to controllerMessage by handleAnswer function
         },
         no: {
           nextQuestion: null,
-          message: null // Will be set by handleAnswer function
+          message: null // Will be set to controllerMessage by handleAnswer function
         },
       },
     },
