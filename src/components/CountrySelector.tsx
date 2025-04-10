@@ -137,7 +137,7 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
         </div>
         <p className="text-center text-gray-600 mt-6">
           We're working to bring these countries online. Want yours prioritised? 
-          <button className="text-orange-500 ml-1 font-medium">Let us know</button>
+          <a href="mailto:support@privacyguide.africa" className="text-orange-500 ml-1 font-medium hover:underline">Let us know</a>
         </p>
       </div>
     </div>
