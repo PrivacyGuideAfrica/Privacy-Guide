@@ -43,7 +43,14 @@ const questions: Question[] = [
       no: {
         nextQuestion: null,
         message: "You appear to make the crucial decisions, so you likely act as a Data Controller.\n\n" +
+          "Definition:\n" +
           "A Data Controller is a person or entity (public, private, or legal) that alone or jointly determines how and why personal data is processed. They hold the decision-making power regarding data collection, use, and disclosure.\n\n" +
+          "When You're Likely a Controller:\n" +
+          "• You decide which personal data is collected and from whom.\n" +
+          "• You determine the lawful basis for processing and the retention period.\n" +
+          "• You choose whether to share data (and with whom).\n" +
+          "• You have a direct relationship with data subjects, such as employees or customers.\n" +
+          "• You have autonomy over the processing, possibly hiring processors to act on your behalf.\n\n" +
           "Key Obligations as a Data Controller under Rwanda's Law:\n\n" +
           "• Registration: Must register with the National Cyber Security Authority (NCSA).\n" +
           "• Compliance with Principles: Ensure data is processed lawfully, fairly, and securely.\n" +
@@ -77,7 +84,13 @@ const questions: Question[] = [
       no: {
         nextQuestion: null,
         message: "You are consistently following instructions, so you likely act as a Data Processor (if you do not set data usage decisions). Otherwise, you are a Data Controller.\n\n" +
+          "Definition:\n" +
           "A Data Processor is an individual or entity that processes personal data solely on behalf of, and under the instructions of, a Data Controller. They do not decide why or how the data is used.\n\n" +
+          "When You're Likely a Processor:\n" +
+          "• You receive data or instructions directly from a controller or a third party.\n" +
+          "• You do not decide which data to collect, nor the lawful basis or retention period.\n" +
+          "• You implement the processing under a contract, without making key decisions about the outcomes.\n" +
+          "• You may have technical input but remain guided by the controller's directions.\n\n" +
           "Key Obligations as a Data Processor under Rwanda's Law:\n\n" +
           "• Register with the NCSA: Just like controllers, processors must also register if they handle data of individuals in Rwanda.\n" +
           "• Follow Instructions: Process data strictly as directed by the controller.\n" +
