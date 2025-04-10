@@ -1,5 +1,8 @@
-import { Navbar } from "@/components/Navbar";
+import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Globe } from "lucide-react";
 
 const questions: Question[] = [
   {
@@ -78,8 +81,7 @@ const questions: Question[] = [
 
 const NDPAApplicability = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
+    <Layout>
       <div className="max-w-4xl mx-auto px-4 py-8">
         <AssessmentInterface
           title="NDPA Applicability Assessment"
@@ -87,8 +89,18 @@ const NDPAApplicability = () => {
           onComplete={() => {}}
           onReset={() => {}}
         />
+        
+        <div className="mt-8 text-center">
+          <Link 
+            to="/countries" 
+            className="inline-flex items-center px-6 py-3 border border-blue-500 text-blue-600 rounded-md font-medium hover:bg-blue-50 transition-colors"
+          >
+            <Globe className="mr-2 h-5 w-5" />
+            Take Other Assessments
+          </Link>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

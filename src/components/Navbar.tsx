@@ -23,10 +23,10 @@ export const Navbar = () => {
               <Link to="/about">About</Link>
             </Button>
             <Button variant="ghost" asChild>
-              <Link to="/#countries-section">Explore Modules</Link>
+              <Link to="/countries">Explore Modules</Link>
             </Button>
             <Button variant="default" className="bg-orange-500 hover:bg-orange-600" asChild>
-              <Link to="/#countries-section">Start Free Assessment</Link>
+              <Link to="/countries">Start Free Assessment</Link>
             </Button>
           </div>
 
@@ -51,10 +51,10 @@ export const Navbar = () => {
                 <Link to="/about">About</Link>
               </Button>
               <Button variant="ghost" asChild className="justify-start">
-                <Link to="/#countries-section">Explore Modules</Link>
+                <Link to="/countries">Explore Modules</Link>
               </Button>
               <Button variant="default" className="bg-orange-500 hover:bg-orange-600 justify-start" asChild>
-                <Link to="/#countries-section">Start Free Assessment</Link>
+                <Link to="/countries">Start Free Assessment</Link>
               </Button>
             </div>
           </div>

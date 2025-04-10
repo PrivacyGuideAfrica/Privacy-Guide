@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
-import { ArrowDown, ChevronDown, ArrowRight, MapPin } from "lucide-react";
+import { ArrowDown, ChevronDown, ArrowRight, MapPin, Globe } from "lucide-react";
 import { useState } from "react";
 import { CountrySelector } from "@/components/CountrySelector";
 import WhoItsFor from "@/components/sections/WhoItsFor";
@@ -11,10 +12,6 @@ import { Footer } from "@/components/shared/Footer";
 
 const Index = () => {
   const [selectedCountry, setSelectedCountry] = useState("nigeria");
-
-  const scrollToCountries = () => {
-    document.getElementById('countries-section')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -68,10 +65,12 @@ const Index = () => {
                 size="lg" 
                 variant="default"
                 className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                onClick={scrollToCountries}
+                asChild
               >
-                Explore Country Modules
-                <ChevronDown className="ml-2 h-5 w-5" />
+                <Link to="/countries">
+                  Explore Country Modules
+                  <ChevronDown className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </div>
           </div>
@@ -100,7 +99,66 @@ const Index = () => {
               Choose your jurisdiction to access tailored assessment modules
             </p>
           </div>
-          <CountrySelector selectedCountry={selectedCountry} onCountryChange={setSelectedCountry} />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {/* Nigeria Card */}
+            <Link to="/country/nigeria" className="block transition-all duration-300 transform hover:scale-105">
+              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/80 to-blue-400/70 opacity-90" />
+                  <div className="h-36 flex justify-center items-center overflow-hidden">
+                    <div className="relative z-10 text-white p-6 flex flex-col items-center w-full">
+                      <div className="text-4xl mb-2">🇳🇬</div>
+                      <h3 className="text-2xl font-bold text-center">Nigeria</h3>
+                      <p className="text-white/90 mt-1 text-center text-sm">Nigeria Data Protection Act (NDPA)</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="flex justify-center mt-2">
+                    <span className="inline-flex items-center text-sm font-medium text-orange-500">
+                      Explore Nigeria's Modules
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+            
+            {/* Rwanda Card */}
+            <Link to="/country/rwanda" className="block transition-all duration-300 transform hover:scale-105">
+              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/80 to-blue-400/70 opacity-90" />
+                  <div className="h-36 flex justify-center items-center overflow-hidden">
+                    <div className="relative z-10 text-white p-6 flex flex-col items-center w-full">
+                      <div className="text-4xl mb-2">🇷🇼</div>
+                      <h3 className="text-2xl font-bold text-center">Rwanda</h3>
+                      <p className="text-white/90 mt-1 text-center text-sm">Rwanda Data Protection Law</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="flex justify-center mt-2">
+                    <span className="inline-flex items-center text-sm font-medium text-orange-500">
+                      Explore Rwanda's Modules
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+          </div>
+          
+          <div className="text-center mt-8">
+            <Link 
+              to="/countries"
+              className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md shadow-md hover:shadow-lg transition-all"
+            >
+              <Globe className="mr-2 h-5 w-5" />
+              View All Countries & Assessments
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -120,10 +178,12 @@ const Index = () => {
           <Button 
             size="lg" 
             className="bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            onClick={scrollToCountries}
+            asChild
           >
-            Start Free Assessment
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <Link to="/countries">
+              Start Free Assessment
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </Button>
         </div>
       </div>

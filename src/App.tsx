@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Countries from "./pages/Countries";
 import CountryPage from "./pages/CountryPage";
 import NDPAApplicability from "./pages/NDPAApplicability";
 import RwandaApplicability from "./pages/RwandaApplicability";
@@ -32,6 +33,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/countries" element={<Countries />} />
           <Route path="/country/:countryId" element={<CountryPage />} />
           <Route path="/ndpa-applicability" element={<NDPAApplicability />} />
           <Route path="/rwanda-applicability" element={<RwandaApplicability />} />
