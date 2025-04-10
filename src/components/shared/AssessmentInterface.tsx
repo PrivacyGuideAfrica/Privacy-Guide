@@ -35,6 +35,8 @@ interface Props {
   onComplete?: () => void;
   onReset?: () => void;
   renderQuestion?: (question: Question) => React.ReactNode;
+  customAnswerHandler?: (questionId: number, answer: string) => void;
+  finalMessage?: string | null;
 }
 
 interface DPIAStep {
@@ -92,12 +94,16 @@ export const AssessmentInterface = ({
   questions, 
   onComplete, 
   onReset,
-  renderQuestion 
+  renderQuestion,
+  customAnswerHandler,
+  finalMessage: externalFinalMessage
 }: Props) => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [answers, setAnswers] = useState<Record<number, string>>({});
-  const [finalMessage, setFinalMessage] = useState<string | null>(null);
+  const [internalFinalMessage, setInternalFinalMessage] = useState<string | null>(null);
+  // Use the external message if provided, otherwise use the internal one
+  const finalMessage = externalFinalMessage !== undefined ? externalFinalMessage : internalFinalMessage;
   const [openSteps, setOpenSteps] = useState<number[]>([]);
 
   const toggleStep = (stepIndex: number) => {
@@ -115,6 +121,11 @@ export const AssessmentInterface = ({
     const newAnswers = { ...answers, [currentQuestion]: value };
     setAnswers(newAnswers);
 
+    // If there's a custom answer handler, call it
+    if (customAnswerHandler) {
+      customAnswerHandler(currentQuestion, value);
+    }
+
     let option;
     if (value === "yes") {
       option = question.options.yes;
@@ -127,7 +138,10 @@ export const AssessmentInterface = ({
     }
     
     if (option.message && option.nextQuestion === null) {
-      setFinalMessage(option.message);
+      // Only set local final message if there's no external one provided
+      if (externalFinalMessage === undefined) {
+        setInternalFinalMessage(option.message);
+      }
       onComplete?.();
     } 
     else if (option.nextQuestion !== null) {
@@ -152,7 +166,7 @@ export const AssessmentInterface = ({
   const resetAssessment = () => {
     setCurrentQuestion(1);
     setAnswers({});
-    setFinalMessage(null);
+    setInternalFinalMessage(null);
     setOpenSteps([]);
     onReset?.();
     toast.success("Assessment reset successfully");
