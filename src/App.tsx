@@ -20,6 +20,7 @@ import RepresentativeAssessment from "./pages/RepresentativeAssessment";
 import DPOAssessment from "./pages/DPOAssessment";
 import RwandaDataBreachAssessment from "./pages/RwandaDataBreachAssessment";
 import RwandaControllerProcessor from "./pages/RwandaControllerProcessor";
+import NigeriaLawfulBasis from "./pages/NigeriaLawfulBasis";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/rwanda-registration" element={<RwandaRegistration />} />
           <Route path="/controller-processor" element={<ControllerProcessor />} />
           <Route path="/rwanda-controller-processor" element={<RwandaControllerProcessor />} />
+          <Route path="/nigeria-lawful-basis" element={<NigeriaLawfulBasis />} />
           <Route path="/data-breach" element={<DataBreachAssessment />} />
           <Route path="/rwanda-data-breach" element={<RwandaDataBreachAssessment />} />
           <Route path="/dpia-assessment" element={<DPIAAssessment />} />

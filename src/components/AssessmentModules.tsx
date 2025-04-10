@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User, Building } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User, Building, Gavel } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface AssessmentModulesProps {
@@ -26,6 +26,12 @@ const nigeriaModules: Module[] = [
     description: "Assess whether your organization acts as a data controller or processor",
     icon: Users,
     link: "/controller-processor",
+  },
+  {
+    title: "Lawful Basis Assessment",
+    description: "Identify the appropriate lawful basis for your data processing activities",
+    icon: Gavel,
+    link: "/nigeria-lawful-basis",
   },
   {
     title: "Data Breach Assessment",
