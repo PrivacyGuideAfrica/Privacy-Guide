@@ -1,78 +1,176 @@
+
 import { Navbar } from "@/components/Navbar";
+import { Shield, Eye, Server, Scale, UserCheck, Cookie, Globe, MessageSquare } from "lucide-react";
 
 const PrivacyNotice = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold text-ndpa-navy mb-8">Privacy Notice</h1>
-        <div className="space-y-6 text-gray-700">
-          <section>
-            <h2 className="text-xl font-semibold mb-4">About Privacy Guide</h2>
-            <p>
-              Privacy Guide is a tool designed to assist African organisations with understanding compliance with data protection laws across the continent. Our aim is to simplify compliance through actionable and easy-to-use assessment modules.
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-ndpa-navy mb-3">Privacy Notice</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">Transparent, straightforward, and human</p>
+        </div>
+        
+        <div className="space-y-10">
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-blue-50 p-3 rounded-lg mr-4">
+                <Shield className="h-6 w-6 text-blue-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">About Privacy Guide</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed">
+              Privacy Guide is a tool designed to help African organisations understand and navigate data protection compliance across the continent. Our goal is to make compliance less intimidating, more accessible, and actually useful, through easy-to-use assessment modules and clear, actionable guidance.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-xl font-semibold mb-4">The data we process</h2>
-            <p>
-              When you visit our website (privacyguide.africa) or complete any of our assessment modules, we do not collect personal data unless you choose to share it—like when you need help resolving an issue. Our goal? To better understand your business operations and help assess your compliance level. However, when you visit, your device may automatically share some information with our website server, including:
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-green-50 p-3 rounded-lg mr-4">
+                <Eye className="h-6 w-6 text-green-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">The Data We Process</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              When you visit privacyguide.africa or use our assessment tools, we don't collect personal data unless you choose to share it, like when you contact us for help.
             </p>
-            <ul className="list-disc pl-6 mt-2 space-y-1">
+            <p className="text-gray-700 leading-relaxed mb-4">
+              However, some technical information is automatically shared with our server when you visit the site. This includes:
+            </p>
+            <ul className="list-disc pl-8 space-y-2 text-gray-700 mb-4">
               <li>Your IP address</li>
               <li>Browser type and version</li>
               <li>Operating system</li>
               <li>Date and time of your visit</li>
-              <li>Pages you viewed</li>
+              <li>Pages viewed</li>
             </ul>
-            <p className="mt-4">
-              This data is processed without your active intervention and only stored temporarily before it is automatically deleted.
+            <p className="text-gray-700 leading-relaxed">
+              This data is processed passively and stored temporarily to keep things running smoothly. It is automatically deleted after a short time.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Why we need your data</h2>
-            <p>
-              When you visit our website to complete our assessment modules, your device automatically shares some information with our servers. This is essential to identify your device and ensure everything works smoothly. If you email us for help, we may process your personal data to respond to your inquiry and provide support to you.
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-purple-50 p-3 rounded-lg mr-4">
+                <Server className="h-6 w-6 text-purple-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">Why We Need This Data</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              We use technical information to:
             </p>
-            <p className="mt-2">
-              We only collect what's necessary to provide you with the best experience.
+            <ul className="list-disc pl-8 space-y-2 text-gray-700 mb-4">
+              <li>Recognise your device</li>
+              <li>Ensure website stability and security</li>
+              <li>Improve your experience while navigating our site</li>
+            </ul>
+            <p className="text-gray-700 leading-relaxed">
+              If you email us, we'll also process your contact details to respond and support you, nothing more.
             </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Our lawful basis</h2>
-            <p>
-              We rely on legitimate interest as the legal reason for processing your IP address and device information. This helps us recognise your device when you visit our website, making your browsing experience smoother and secure. We also rely on legitimate interest as the legal reason for processing your email address when you make an inquiry.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Your rights under the law</h2>
-            <p>
-              You're in control! You have a right to access your data and ask us to correct or even erase it. You can object to processing, restrict processing, transfer to another system or entity and even withdraw consent. You also have the right concerning automated decision-making, including profiling, just that we do not profile.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold mb-4">Cookies and tracking technologies</h2>
-            <p>
-              We don't use cookies on our website. None. Zero. Zilch. Your browsing stays your business. However, to keep the website running smoothly, we rely on third-party services for hosting, performance monitoring, and security. These services may make automated requests in the background to ensure the site remains available and functional. These requests do not track your personal activities, nor do they collect personally identifiable information about you.
+            <p className="text-gray-700 leading-relaxed mt-4 font-medium">
+              We only collect what we actually need, and nothing we don't.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-xl font-semibold mb-4">What happens if your data moves outside?</h2>
-            <p>
-              If your data takes a trip abroad, we make sure we take measures to protect it from choice of service provider to country.
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-orange-50 p-3 rounded-lg mr-4">
+                <Server className="h-6 w-6 text-orange-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">Analytics: Yes, But the Privacy-Respecting Kind</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              We use Umami Analytics, a privacy-friendly, cookie-less analytics tool that helps us understand how people use our site, without tracking you.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              Umami doesn't use cookies, doesn't collect personal data, and doesn't follow you around the internet. It gives us the insights we need (like which pages are popular) while respecting your privacy 100%.
             </p>
           </section>
 
-          <section>
-            <h2 className="text-xl font-semibold mb-4">How to access us</h2>
-            <p>
-              We believe privacy doesn't have to be complicated. If you've got questions or concerns, reach out to us at support@privacyguide.africa.
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-indigo-50 p-3 rounded-lg mr-4">
+                <Scale className="h-6 w-6 text-indigo-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">Our Lawful Basis</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              We rely on legitimate interest to process:
+            </p>
+            <ul className="list-disc pl-8 space-y-2 text-gray-700 mb-4">
+              <li>Technical data (IP address, browser, etc.)</li>
+              <li>Email contact details when you reach out</li>
+            </ul>
+            <p className="text-gray-700 leading-relaxed">
+              This allows us to keep the website functional and respond to your requests without compromising your rights.
+            </p>
+          </section>
+
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-red-50 p-3 rounded-lg mr-4">
+                <UserCheck className="h-6 w-6 text-red-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">Your Rights</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              You have rights over your personal data, and we respect them all:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+              <div className="bg-gray-50 p-3 rounded text-gray-700">Access it</div>
+              <div className="bg-gray-50 p-3 rounded text-gray-700">Correct it</div>
+              <div className="bg-gray-50 p-3 rounded text-gray-700">Erase it</div>
+              <div className="bg-gray-50 p-3 rounded text-gray-700">Object to how we use it</div>
+              <div className="bg-gray-50 p-3 rounded text-gray-700">Restrict what we do with it</div>
+              <div className="bg-gray-50 p-3 rounded text-gray-700">Transfer it somewhere else</div>
+              <div className="bg-gray-50 p-3 rounded text-gray-700">Withdraw consent at any time</div>
+            </div>
+            <p className="text-gray-700 italic">
+              P.S. We don't do profiling or automated decision-making, so nothing sneaky is happening behind the scenes.
+            </p>
+          </section>
+
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-yellow-50 p-3 rounded-lg mr-4">
+                <Cookie className="h-6 w-6 text-yellow-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">No Cookies, No Creeping</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              We don't use cookies. None. Nada. Zilch.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              Your browsing habits are none of our business.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              We do rely on third-party services to keep the site fast and secure, and they may make background requests, but they don't track you or collect personally identifiable information.
+            </p>
+          </section>
+
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-teal-50 p-3 rounded-lg mr-4">
+                <Globe className="h-6 w-6 text-teal-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">International Data Transfers</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed">
+              If your data has to cross borders (digitally speaking), we only work with service providers who offer strong privacy protections. No wild west vibes, just responsible data handling.
+            </p>
+          </section>
+
+          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+            <div className="flex items-start mb-4">
+              <div className="bg-pink-50 p-3 rounded-lg mr-4">
+                <MessageSquare className="h-6 w-6 text-pink-600" />
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-800">Talk to Us</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed">
+              Got questions? Confused? Curious? Just want to say hi?<br />
+              Email us at <a href="mailto:support@privacyguide.africa" className="text-blue-600 hover:underline">support@privacyguide.africa</a>, and a real human (not a bot) will get back to you.
             </p>
           </section>
         </div>
