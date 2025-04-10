@@ -29,16 +29,6 @@ const WhyPrivacyGuide = () => {
             </div>
           ))}
         </div>
-        
-        <div className="mt-12 bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
-          <blockquote className="italic text-gray-600">
-            "This tool has simplified our compliance journey tremendously. As a small business in Nigeria, 
-            understanding our obligations under the NDPA seemed overwhelming until we found PrivacyGuide.Africa."
-          </blockquote>
-          <div className="mt-4 font-medium">
-            — Compliance Officer, Lagos-based FinTech
-          </div>
-        </div>
       </div>
     </section>
   );

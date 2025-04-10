@@ -23,12 +23,6 @@ export const Navbar = () => {
               <Link to="/about">About</Link>
             </Button>
             <Button variant="ghost" asChild>
-              <Link to="/privacy">Privacy Notice</Link>
-            </Button>
-            <Button variant="ghost" asChild>
-              <Link to="/legal-notice">Legal Notice</Link>
-            </Button>
-            <Button variant="ghost" asChild>
               <Link to="/#countries-section">Explore Modules</Link>
             </Button>
             <Button variant="default" className="bg-orange-500 hover:bg-orange-600" asChild>
@@ -55,12 +49,6 @@ export const Navbar = () => {
             <div className="flex flex-col space-y-2">
               <Button variant="ghost" asChild className="justify-start">
                 <Link to="/about">About</Link>
-              </Button>
-              <Button variant="ghost" asChild className="justify-start">
-                <Link to="/privacy">Privacy Notice</Link>
-              </Button>
-              <Button variant="ghost" asChild className="justify-start">
-                <Link to="/legal-notice">Legal Notice</Link>
               </Button>
               <Button variant="ghost" asChild className="justify-start">
                 <Link to="/#countries-section">Explore Modules</Link>

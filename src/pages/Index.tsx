@@ -134,7 +134,7 @@ const Index = () => {
             <div className="col-span-1 md:col-span-2">
               <h3 className="text-xl font-bold mb-4">PrivacyGuide.Africa</h3>
               <p className="text-gray-400 mb-4 max-w-md">
-                Helping Africa's organisations make sense of data protection.
+                Data protection made human, for humans.
               </p>
             </div>
             <div>
@@ -148,9 +148,8 @@ const Index = () => {
             <div>
               <h4 className="text-lg font-semibold mb-4">Connect</h4>
               <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">X (Twitter)</a></li>
+                <li><a href="https://www.linkedin.com/company/privacy-guide-africa/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a></li>
+                <li><a href="https://x.com/PrivacyGuideAfr" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">X (Twitter)</a></li>
               </ul>
             </div>
           </div>
