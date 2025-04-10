@@ -13,52 +13,12 @@ const RwandaControllerProcessor = () => {
   const [answerPath, setAnswerPath] = useState<AnswerPath>({});
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
 
-  const controllerMessage = "You are likely to be a Data Controller.\n\n" +
-    "Definition:\n" +
-    "A Data Controller is a person or entity (public, private, or legal) that alone or jointly determines how and why personal data is processed. They hold the decision-making power regarding data collection, use, and disclosure.\n\n" +
-    "When You're Likely a Controller:\n" +
-    "• You decide which personal data is collected and from whom.\n" +
-    "• You determine the lawful basis for processing and the retention period.\n" +
-    "• You choose whether to share data (and with whom).\n" +
-    "• You have a direct relationship with data subjects, such as employees or customers.\n" +
-    "• You have autonomy over the processing, possibly hiring processors to act on your behalf.\n\n" +
-    "Key Obligations as a Data Controller under Rwanda's Law:\n\n" +
-    "• Registration: Must register with the National Cyber Security Authority (NCSA).\n" +
-    "• Compliance with Principles: Ensure data is processed lawfully, fairly, and securely.\n" +
-    "• Respect Data Subject Rights: E.g., access, objection, erasure, rectification.\n" +
-    "• Maintain Records: Keep logs of processing activities.\n" +
-    "• Implement Safeguards: Address risks (technical and organisational measures).\n" +
-    "• Notify Breaches: Inform the NCSA within 48 hours if a breach occurs and submit a report within 72 hours.\n" +
-    "• Limit International Transfers: Store personal data in Rwanda or obtain proper authorisation for transfers.\n" +
-    "• Appoint a DPO (if required): When large-scale or specific processing activities apply.";
+  // Simplified messages that will be shown in the initial result card
+  const controllerMessage = "You are likely to be a Data Controller.";
 
-  const processorMessage = "You are likely to be a Data Processor.\n\n" +
-    "Definition:\n" +
-    "A Data Processor is an individual or entity that processes personal data solely on behalf of, and under the instructions of, a Data Controller. They do not decide why or how the data is used.\n\n" +
-    "When You're Likely a Processor:\n" +
-    "• You receive data or instructions directly from a controller or a third party.\n" +
-    "• You do not decide which data to collect, nor the lawful basis or retention period.\n" +
-    "• You implement the processing under a contract, without making key decisions about the outcomes.\n" +
-    "• You may have technical input but remain guided by the controller's directions.\n\n" +
-    "Key Obligations as a Data Processor under Rwanda's Law:\n\n" +
-    "• Register with the NCSA: Just like controllers, processors must also register if they handle data of individuals in Rwanda.\n" +
-    "• Follow Instructions: Process data strictly as directed by the controller.\n" +
-    "• Maintain Security Measures: Protect data from unauthorised access or loss.\n" +
-    "• Notify Breaches: Inform the controller within 48 hours if a data breach occurs.\n" +
-    "• Limit International Transfers: Transfer data outside Rwanda only with controller authorisation and in compliance with legal safeguards.\n" +
-    "• Keep Records: Logs of processing activities may be required.\n" +
-    "• Appoint a DPO (if required): Same criteria as controllers, depending on nature and scope of processing.";
+  const processorMessage = "You are likely to be a Data Processor.";
 
-  const dualRoleMessage = "You are likely to have a Dual Role - acting as a controller in some activities and as a processor in others.\n\n" +
-    "Definition & Context:\n" +
-    "An organisation may act as both a controller and a processor if, in some activities, it decides how and why data is processed (controller role), but in others, it simply follows the instructions of a different controller (processor role).\n\n" +
-    "Typical Scenario:\n" +
-    "• A company processes its employees' data as a controller (making all decisions on collection and use).\n" +
-    "• It also processes customer data on behalf of a partner company strictly under that partner's directions, taking the processor role.\n\n" +
-    "Key Points:\n" +
-    "• Scope Clarity: Each project or data flow needs clear documentation to identify which role you hold.\n" +
-    "• Compliance: You must meet controller obligations (for the activities where you decide on data use) and processor obligations (for the activities where you follow instructions).\n" +
-    "• Liability: You may bear direct responsibility for compliance failures in each respective role.";
+  const dualRoleMessage = "You are likely to have a Dual Role — acting as a controller in some activities and as a processor in others.";
 
   // Function to handle answer recording and determine assessment result
   const handleAnswer = (questionId: number, answer: string) => {
@@ -84,14 +44,14 @@ const RwandaControllerProcessor = () => {
       return;
     }
     
-    // Path 2: Q1(Yes) -> Q2(Yes) -> Q3(No) -> Q4(No) = "You are likely to be a Data Processor"
+    // Path 2: Q1(Yes) -> Q2(Yes) -> Q3(No) -> Q4(No) = "You are likely to be a Data Controller"
     if (
       answers[1] === "yes" && 
       answers[2] === "yes" && 
       answers[3] === "no" && 
       answers[4] === "no"
     ) {
-      setFinalMessage(processorMessage);
+      setFinalMessage(controllerMessage);
       return;
     }
     
@@ -106,12 +66,12 @@ const RwandaControllerProcessor = () => {
       return;
     }
     
+    // If no specific pattern matches, provide a default message based on the most relevant scenario
     // Default: Controller if Q1 and Q2 are Yes, Q3 is No
     if (
       answers[1] === "yes" && 
       answers[2] === "yes" && 
-      answers[3] === "no" && 
-      !answers[4]
+      answers[3] === "no"
     ) {
       setFinalMessage(controllerMessage);
       return;
@@ -128,6 +88,9 @@ const RwandaControllerProcessor = () => {
       setFinalMessage(dualRoleMessage);
       return;
     }
+
+    // Final default if no other conditions match
+    setFinalMessage("Your answers do not match one of the common patterns. You may be a Joint Controller or have partial control. Please consider consulting with a data protection professional for a detailed assessment of your specific situation.");
   };
 
   const questions: Question[] = [

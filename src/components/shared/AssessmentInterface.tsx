@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -8,6 +8,12 @@ import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle,
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+
+// Lazy load the guidance component
+const RwandaControllerProcessorGuidance = lazy(() => 
+  import("@/components/controller-processor/RwandaControllerProcessorGuidance")
+    .then(module => ({ default: module.RwandaControllerProcessorGuidance }))
+);
 
 export interface Question {
   id: number;
@@ -210,7 +216,8 @@ export const AssessmentInterface = ({
     const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
     const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
     const isDpoRequired = finalMessage?.includes("You must designate a Data Protection Officer");
-    const isControllerProcessor = finalMessage?.includes("Dual Role") || finalMessage?.includes("Controller") && (finalMessage?.includes("Processor") || finalMessage?.includes("controller") || finalMessage?.includes("processor")) && !finalMessage?.includes("breach") && !finalMessage?.includes("notify");
+    const isRwandaControllerProcessor = window.location.pathname.includes("rwanda-controller-processor");
+    const isControllerProcessor = isRwandaControllerProcessor || finalMessage?.includes("Dual Role") || finalMessage?.includes("Controller") && (finalMessage?.includes("Processor") || finalMessage?.includes("controller") || finalMessage?.includes("processor")) && !finalMessage?.includes("breach") && !finalMessage?.includes("notify");
     const isBreachNotification = finalMessage?.includes("notify the NDPC") || finalMessage?.includes("notify your Data Controller") || finalMessage?.includes("notify affected") || finalMessage?.includes("notify data subjects") || finalMessage?.includes("breach") || finalMessage?.includes("inform data subjects") || finalMessage?.includes("inform affected");
     
     return (
@@ -259,13 +266,23 @@ export const AssessmentInterface = ({
                         : "Recommendation"}
               </h3>
               <div className="text-sm text-muted-foreground whitespace-pre-line">
-                {finalMessage}
+                {isRwandaControllerProcessor 
+                  ? finalMessage?.split('\n\n')[0] // Only show the first line for Rwanda Controller/Processor
+                  : finalMessage}
               </div>
             </div>
           </div>
         </div>
 
         {isDpiaRequired && renderDPIAGuidance()}
+        
+        {isRwandaControllerProcessor && (
+          <div className="mt-4">
+            <Suspense fallback={<div className="text-center py-4">Loading additional guidance...</div>}>
+              <RwandaControllerProcessorGuidance />
+            </Suspense>
+          </div>
+        )}
 
         <div className="space-y-4 pt-2">
           <Button 
