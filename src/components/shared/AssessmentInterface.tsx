@@ -294,7 +294,7 @@ export const AssessmentInterface = ({
           <Button 
             variant="outline" 
             className="w-full border-ndpa-green text-ndpa-green hover:bg-ndpa-green/10" 
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/countries")}
           >
             Take Other Assessments
           </Button>

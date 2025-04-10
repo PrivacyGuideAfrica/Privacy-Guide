@@ -39,7 +39,7 @@ export const AuditResult = ({ classification, onReset }: Props) => {
       </CardContent>
       <CardFooter className="flex flex-col items-start gap-4">
         <div className="w-full space-y-4">
-          <Button className="w-full" onClick={() => navigate("/")}>
+          <Button className="w-full" onClick={() => navigate("/countries")}>
             Take Other Assessments
           </Button>
           <Button variant="outline" className="w-full" onClick={onReset}>
