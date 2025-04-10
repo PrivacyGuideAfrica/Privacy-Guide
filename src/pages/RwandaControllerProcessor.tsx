@@ -111,10 +111,6 @@ const RwandaControllerProcessor = () => {
         <h1 className="text-2xl font-bold mb-6 text-center">
           Controller or Processor Assessment - Rwanda
         </h1>
-        <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
-          This assessment will help determine whether your organization is classified as a Data Controller
-          or Data Processor under Rwanda's Data Protection Law.
-        </p>
         <div className="mb-8 max-w-3xl mx-auto">
           <RwandaControllerProcessorDescription />
         </div>
