@@ -1,11 +1,10 @@
-import { Navbar } from "@/components/Navbar";
-import { FileText, AlertTriangle, Link, AlertCircle, FileBadge, MailQuestion } from "lucide-react";
+import { FileText, AlertTriangle, Link as LinkIcon, AlertCircle, FileBadge, MailQuestion } from "lucide-react";
+import { Layout } from "@/components/shared/Layout";
 
 const LegalNotice = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navbar />
-      <div className="max-w-4xl mx-auto px-4 py-12">
+    <Layout>
+      <div className="max-w-4xl mx-auto px-4 py-12 bg-gradient-to-b from-gray-50 to-white">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-ndpa-navy mb-3">Legal Notice</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">Important information about the use of our website</p>
@@ -39,7 +38,7 @@ const LegalNotice = () => {
           <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
             <div className="flex items-start mb-4">
               <div className="bg-indigo-50 p-3 rounded-lg mr-4">
-                <Link className="h-6 w-6 text-indigo-600" />
+                <LinkIcon className="h-6 w-6 text-indigo-600" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">External Links</h2>
             </div>
@@ -85,7 +84,7 @@ const LegalNotice = () => {
           </section>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

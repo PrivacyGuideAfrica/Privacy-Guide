@@ -1,12 +1,11 @@
-import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Users, Target, Heart, Zap, ShieldCheck, Globe, Twitter } from "lucide-react";
+import { Layout } from "@/components/shared/Layout";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navbar />
-      <div className="max-w-4xl mx-auto px-4 py-12">
+    <Layout>
+      <div className="max-w-4xl mx-auto px-4 py-12 bg-gradient-to-b from-gray-50 to-white">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-ndpa-navy mb-3">About Us</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">Making data protection accessible across Africa</p>
@@ -135,7 +134,7 @@ const About = () => {
           </section>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

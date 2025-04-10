@@ -1,12 +1,11 @@
 
-import { Navbar } from "@/components/Navbar";
 import { Shield, Eye, Server, Scale, UserCheck, Cookie, Globe, MessageSquare } from "lucide-react";
+import { Layout } from "@/components/shared/Layout";
 
 const PrivacyNotice = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <Navbar />
-      <div className="max-w-4xl mx-auto px-4 py-12">
+    <Layout>
+      <div className="max-w-4xl mx-auto px-4 py-12 bg-gradient-to-b from-gray-50 to-white">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-ndpa-navy mb-3">Privacy Notice</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">Transparent, straightforward, and human</p>
@@ -175,7 +174,7 @@ const PrivacyNotice = () => {
           </section>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
