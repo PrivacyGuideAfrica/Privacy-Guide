@@ -196,7 +196,8 @@ export const AssessmentInterface = ({
     const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
     const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
     const isDpoRequired = finalMessage?.includes("You must designate a Data Protection Officer");
-    const isBreachNotification = finalMessage?.includes("notify the NDPC") || finalMessage?.includes("notify your Data Controller") || finalMessage?.includes("notify affected") || finalMessage?.includes("notify data subjects") || finalMessage?.includes("breach") || finalMessage?.includes("Data Processor") || finalMessage?.includes("inform data subjects") || finalMessage?.includes("inform affected");
+    const isControllerProcessor = finalMessage?.includes("Dual Role") || finalMessage?.includes("Controller") && (finalMessage?.includes("Processor") || finalMessage?.includes("controller") || finalMessage?.includes("processor")) && !finalMessage?.includes("breach") && !finalMessage?.includes("notify");
+    const isBreachNotification = finalMessage?.includes("notify the NDPC") || finalMessage?.includes("notify your Data Controller") || finalMessage?.includes("notify affected") || finalMessage?.includes("notify data subjects") || finalMessage?.includes("breach") || finalMessage?.includes("inform data subjects") || finalMessage?.includes("inform affected");
     
     return (
       <div className="space-y-6">
@@ -222,7 +223,9 @@ export const AssessmentInterface = ({
                   ? "Based on your responses, you may need to designate a DPO."
                   : isBreachNotification
                     ? "Based on your responses, below are your breach notification requirements."
-                    : "Based on your assessment results."}
+                    : isControllerProcessor
+                      ? "Based on your responses, your role under data protection law is outlined below."
+                      : "Based on your assessment results."}
           </p>
         </div>
 
@@ -237,7 +240,9 @@ export const AssessmentInterface = ({
                     ? "DPO Requirements"
                     : isBreachNotification
                       ? "Data Breach Requirements"
-                      : "Recommendation"}
+                      : isControllerProcessor
+                        ? "Controller/Processor Role"
+                        : "Recommendation"}
               </h3>
               <div className="text-sm text-muted-foreground whitespace-pre-line">
                 {finalMessage}
