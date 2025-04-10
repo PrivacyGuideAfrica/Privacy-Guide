@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { InfoIcon, Layers, Shield, Users } from "lucide-react";
 
-export const RwandaControllerProcessorGuidance: React.FC = () => {
+const RwandaControllerProcessorGuidance: React.FC = () => {
   return (
     <div className="space-y-6 mt-6">
       <div className="flex items-center gap-2">
@@ -159,3 +159,5 @@ export const RwandaControllerProcessorGuidance: React.FC = () => {
     </div>
   );
 };
+
+export default RwandaControllerProcessorGuidance;

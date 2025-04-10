@@ -12,7 +12,6 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 // Lazy load the guidance component
 const RwandaControllerProcessorGuidance = lazy(() => 
   import("@/components/controller-processor/RwandaControllerProcessorGuidance")
-    .then(module => ({ default: module.RwandaControllerProcessorGuidance }))
 );
 
 export interface Question {
