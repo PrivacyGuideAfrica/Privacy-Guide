@@ -1,4 +1,3 @@
-
 import { useState, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,7 +8,6 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
-// Lazy load the guidance component
 const RwandaControllerProcessorGuidance = lazy(() => 
   import("@/components/controller-processor/RwandaControllerProcessorGuidance")
 );
@@ -82,7 +80,7 @@ const dpiaSteps: DPIAStep[] = [
     title: "Step 5: Consult with Stakeholders",
     description: [
       "Involve your Data Protection Officer (DPO) and, if necessary, seek advice from external legal advisors.",
-      "If high risks remain unresolved, consult the Data Protection Authority (NDPC) before proceeding."
+      "If high risks remain unresolved, consult the Data Protection Authority before proceeding."
     ]
   },
   {
@@ -107,7 +105,6 @@ export const AssessmentInterface = ({
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [internalFinalMessage, setInternalFinalMessage] = useState<string | null>(null);
-  // Use the external message if provided, otherwise use the internal one
   const finalMessage = externalFinalMessage !== undefined ? externalFinalMessage : internalFinalMessage;
   const [openSteps, setOpenSteps] = useState<number[]>([]);
 
@@ -126,7 +123,6 @@ export const AssessmentInterface = ({
     const newAnswers = { ...answers, [currentQuestion]: value };
     setAnswers(newAnswers);
 
-    // If there's a custom answer handler, call it
     if (customAnswerHandler) {
       customAnswerHandler(currentQuestion, value);
     }
@@ -143,7 +139,6 @@ export const AssessmentInterface = ({
     }
     
     if (option.message && option.nextQuestion === null) {
-      // Only set local final message if there's no external one provided
       if (externalFinalMessage === undefined) {
         setInternalFinalMessage(option.message);
       }
@@ -266,7 +261,7 @@ export const AssessmentInterface = ({
               </h3>
               <div className="text-sm text-muted-foreground whitespace-pre-line">
                 {isRwandaControllerProcessor 
-                  ? finalMessage?.split('\n\n')[0] // Only show the first line for Rwanda Controller/Processor
+                  ? finalMessage?.split('\n\n')[0]
                   : finalMessage}
               </div>
             </div>
