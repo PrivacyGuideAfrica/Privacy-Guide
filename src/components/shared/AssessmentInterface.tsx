@@ -249,19 +249,11 @@ export const AssessmentInterface = ({
             <FileText className="h-5 w-5 text-foreground shrink-0 mt-1" />
             <div className="space-y-2">
               <h3 className="font-medium">
-                {isDpiaRequired 
-                  ? "DPIA Requirements" 
-                  : isDpoRequired 
-                    ? "DPO Requirements"
-                    : isBreachNotification
-                      ? "Data Breach Requirements"
-                      : isControllerProcessor
-                        ? "Controller/Processor Role"
-                        : "Recommendation"}
+                {isDpoRequired ? "DPO Requirements" : "Recommendation"}
               </h3>
               <div className="text-sm text-muted-foreground whitespace-pre-line">
-                {isRwandaControllerProcessor 
-                  ? finalMessage?.split('\n\n')[0]
+                {externalFinalMessage && isDpoRequired 
+                  ? externalFinalMessage.replace("You must designate a Data Protection Officer (DPO)", "You may need to designate a Data Protection Officer (DPO)")
                   : finalMessage}
               </div>
             </div>
