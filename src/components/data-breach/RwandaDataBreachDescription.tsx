@@ -10,6 +10,7 @@ export const RwandaDataBreachDescription = () => {
         <AlertTitle>Assessment Overview</AlertTitle>
         <AlertDescription>
           This module helps you determine your next steps if you experience a personal data breach.
+          Follow the questions to understand your notification obligations under Rwanda's data protection law.
         </AlertDescription>
       </Alert>
     </div>

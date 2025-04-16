@@ -20,6 +20,7 @@ const RwandaDataBreachAssessment = () => {
           title="Data Breach Notification"
           questions={rwandaDataBreachQuestions}
           onComplete={() => setIsCompleted(true)}
+          onReset={() => setIsCompleted(false)}
         />
 
         {isCompleted && (
