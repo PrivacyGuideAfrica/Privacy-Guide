@@ -7,6 +7,7 @@ import { CountrySelector } from "@/components/CountrySelector";
 import WhoItsFor from "@/components/sections/WhoItsFor";
 import HowItWorks from "@/components/sections/HowItWorks";
 import WhyPrivacyGuide from "@/components/sections/WhyPrivacyGuide";
+import UlinziQuest from "@/components/sections/UlinziQuest";
 import { Link } from "react-router-dom";
 import { Footer } from "@/components/shared/Footer";
 
@@ -167,6 +168,9 @@ const Index = () => {
 
       {/* Why Privacy Guide Section */}
       <WhyPrivacyGuide />
+
+      {/* UlinziQuest Section */}
+      <UlinziQuest />
 
       {/* CTA Section */}
       <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">

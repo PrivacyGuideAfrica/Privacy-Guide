@@ -18,6 +18,7 @@ export const Footer = () => {
               <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About</Link></li>
               <li><Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Notice</Link></li>
               <li><Link to="/legal-notice" className="text-gray-400 hover:text-white transition-colors">Legal Notice</Link></li>
+              <li><a href="https://quest.privacyguide.africa" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">UlinziQuest</a></li>
             </ul>
           </div>
           <div>

@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, Trophy } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -24,6 +24,14 @@ export const Navbar = () => {
             </Button>
             <Button variant="ghost" asChild>
               <Link to="/countries">Explore Modules</Link>
+            </Button>
+            <Button 
+              variant="outline" 
+              className="border-orange-500 text-orange-500 hover:bg-orange-50" 
+              onClick={() => window.open("https://quest.privacyguide.africa", "_blank")}
+            >
+              <Trophy className="mr-1 h-4 w-4" />
+              UlinziQuest
             </Button>
             <Button variant="default" className="bg-orange-500 hover:bg-orange-600" asChild>
               <Link to="/countries">Start Free Assessment</Link>
@@ -52,6 +60,14 @@ export const Navbar = () => {
               </Button>
               <Button variant="ghost" asChild className="justify-start">
                 <Link to="/countries">Explore Modules</Link>
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-orange-500 text-orange-500 hover:bg-orange-50 justify-start" 
+                onClick={() => window.open("https://quest.privacyguide.africa", "_blank")}
+              >
+                <Trophy className="mr-1 h-4 w-4" />
+                UlinziQuest
               </Button>
               <Button variant="default" className="bg-orange-500 hover:bg-orange-600 justify-start" asChild>
                 <Link to="/countries">Start Free Assessment</Link>
