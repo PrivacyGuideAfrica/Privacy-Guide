@@ -5,14 +5,18 @@ import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 const UgandaDataSubjectRights = () => {
   const questions = [
     {
-      id: "request_handling",
-      question: "How do you currently handle data subject requests?",
-      options: [
-        { value: "formal", label: "We have formal procedures in place" },
-        { value: "informal", label: "We handle them informally as they come" },
-        { value: "none", label: "We haven't received any requests yet" },
-        { value: "unsure", label: "We're not sure about our obligations" }
-      ]
+      id: 1,
+      text: "How do you currently handle data subject requests?",
+      options: {
+        yes: {
+          nextQuestion: null,
+          message: "Great! Having formal procedures for data subject requests is essential under Uganda's data protection law. Ensure your procedures cover all rights including access, rectification, erasure, restriction of processing, data portability, and objection. You must respond to requests within one month, with possible extensions to three months for complex requests."
+        },
+        no: {
+          nextQuestion: null,
+          message: "You need to establish formal procedures for handling data subject requests immediately. Under Uganda's law, individuals have rights to access, rectify, erase, restrict processing, data portability, and object to processing of their personal data. You must respond within one month and provide clear information about exercising these rights."
+        }
+      }
     }
   ];
 

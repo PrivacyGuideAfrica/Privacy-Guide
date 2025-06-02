@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
@@ -21,34 +20,35 @@ const Index = () => {
       
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white pb-16 pt-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-30">
           <svg 
             width="100%" 
             height="100%" 
             viewBox="0 0 800 600" 
             xmlns="http://www.w3.org/2000/svg"
-            className="opacity-20"
+            className="opacity-60"
           >
             {/* Simplified Africa map shape with texture */}
             <pattern id="pattern-lines" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M0,5 L10,5" stroke="white" strokeWidth="0.5" fill="none" opacity="0.3" />
+              <path d="M0,5 L10,5" stroke="white" strokeWidth="0.8" fill="none" opacity="0.6" />
             </pattern>
             <path 
               d="M400,100 C450,120 500,150 520,200 C540,250 560,300 580,350 C600,400 600,450 580,500 C560,550 530,580 480,590 C430,600 380,590 330,570 C280,550 250,520 230,470 C210,420 200,370 220,320 C240,270 270,230 320,210 C370,190 350,80 400,100 Z" 
               fill="url(#pattern-lines)" 
               stroke="white" 
-              strokeWidth="2"
+              strokeWidth="3"
+              opacity="0.8"
             />
             {/* Uganda pin */}
-            <circle cx="420" cy="380" r="8" fill="#4ADE80" />
-            <circle cx="420" cy="380" r="12" fill="none" stroke="#4ADE80" strokeWidth="2">
-              <animate attributeName="r" from="12" to="20" dur="1.5s" repeatCount="indefinite" />
+            <circle cx="420" cy="380" r="10" fill="#4ADE80" />
+            <circle cx="420" cy="380" r="15" fill="none" stroke="#4ADE80" strokeWidth="3">
+              <animate attributeName="r" from="15" to="25" dur="1.5s" repeatCount="indefinite" />
               <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite" />
             </circle>
             {/* Rwanda pin */}
-            <circle cx="450" cy="420" r="8" fill="#4ADE80" />
-            <circle cx="450" cy="420" r="12" fill="none" stroke="#4ADE80" strokeWidth="2">
-              <animate attributeName="r" from="12" to="20" dur="1.5s" repeatCount="indefinite" />
+            <circle cx="450" cy="420" r="10" fill="#4ADE80" />
+            <circle cx="450" cy="420" r="15" fill="none" stroke="#4ADE80" strokeWidth="3">
+              <animate attributeName="r" from="15" to="25" dur="1.5s" repeatCount="indefinite" />
               <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite" />
             </circle>
           </svg>
