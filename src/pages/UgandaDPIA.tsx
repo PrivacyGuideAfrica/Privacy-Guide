@@ -5,27 +5,36 @@ import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 const UgandaDPIA = () => {
   const questions = [
     {
-      id: "processing_type",
-      question: "What type of data processing do you conduct?",
-      options: [
-        { value: "automated", label: "Automated decision-making or profiling" },
-        { value: "sensitive", label: "Processing of sensitive personal data" },
-        { value: "large_scale", label: "Large-scale processing of personal data" },
-        { value: "surveillance", label: "Systematic monitoring of individuals" },
-        { value: "standard", label: "Standard data processing activities" }
-      ]
+      id: 1,
+      text: "What type of data processing do you conduct?",
+      options: {
+        yes: { 
+          nextQuestion: null,
+          message: "Based on your processing activities, you must conduct a Data Protection Impact Assessment (DPIA) before beginning the processing under Uganda's requirements." 
+        },
+        no: { 
+          nextQuestion: null,
+          message: "A DPIA may not be required for standard processing activities, but consider conducting one if your processing poses risks to individuals' rights and freedoms." 
+        }
+      }
     }
   ];
 
   return (
     <Layout>
-      <AssessmentInterface
-        title="Uganda DPIA Assessment"
-        description="Determine when you need to conduct a Data Protection Impact Assessment under Uganda's requirements"
-        questions={questions}
-        backLink="/country/uganda"
-        backText="Back to Uganda Modules"
-      />
+      <div className="container py-8 space-y-6">
+        <div className="space-y-4">
+          <h1 className="text-3xl font-bold">Uganda DPIA Assessment</h1>
+          <p className="text-lg text-muted-foreground">
+            Determine when you need to conduct a Data Protection Impact Assessment under Uganda's Data Protection and Privacy Act requirements.
+          </p>
+        </div>
+        
+        <AssessmentInterface
+          title="DPIA Assessment"
+          questions={questions}
+        />
+      </div>
     </Layout>
   );
 };

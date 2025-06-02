@@ -5,26 +5,36 @@ import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 const UgandaDataBreach = () => {
   const questions = [
     {
-      id: "breach_preparedness",
-      question: "How prepared is your organization for data breaches?",
-      options: [
-        { value: "well_prepared", label: "We have comprehensive incident response plans" },
-        { value: "somewhat", label: "We have basic procedures in place" },
-        { value: "limited", label: "Limited preparation" },
-        { value: "not_prepared", label: "No specific breach response procedures" }
-      ]
+      id: 1,
+      text: "How prepared is your organization for data breaches?",
+      options: {
+        yes: { 
+          nextQuestion: null,
+          message: "Great! Ensure your incident response plans align with Uganda's breach notification requirements and timelines for reporting to authorities and individuals." 
+        },
+        no: { 
+          nextQuestion: null,
+          message: "You need to develop comprehensive data breach response procedures that comply with Uganda's notification requirements to authorities and data subjects." 
+        }
+      }
     }
   ];
 
   return (
     <Layout>
-      <AssessmentInterface
-        title="Uganda Data Breach Assessment"
-        description="Understand your obligations for reporting data breaches to authorities and individuals"
-        questions={questions}
-        backLink="/country/uganda"
-        backText="Back to Uganda Modules"
-      />
+      <div className="container py-8 space-y-6">
+        <div className="space-y-4">
+          <h1 className="text-3xl font-bold">Uganda Data Breach Assessment</h1>
+          <p className="text-lg text-muted-foreground">
+            Understand your obligations for reporting data breaches to authorities and individuals under Uganda law.
+          </p>
+        </div>
+        
+        <AssessmentInterface
+          title="Data Breach Assessment"
+          questions={questions}
+        />
+      </div>
     </Layout>
   );
 };
