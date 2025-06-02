@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -14,6 +15,7 @@ interface CountryItem {
   flagEmoji: string;
   modules: string[];
   isLive: boolean;
+  isNew?: boolean;
 }
 
 const countries: CountryItem[] = [
@@ -32,6 +34,15 @@ const countries: CountryItem[] = [
     flagEmoji: "🇷🇼",
     modules: ["RDP Law Overview", "Controller/Processor", "Breach Response"],
     isLive: true,
+  },
+  {
+    id: "uganda",
+    name: "Uganda",
+    description: "Uganda Data Protection and Privacy Act",
+    flagEmoji: "🇺🇬",
+    modules: ["Registration", "Lawful Basis", "Cross-border Transfer", "DPIA", "Data Subject Rights", "Breach Notification", "Sensitive Data"],
+    isLive: true,
+    isNew: true,
   },
   {
     id: "kenya",
@@ -58,10 +69,10 @@ const countries: CountryItem[] = [
     isLive: false,
   },
   {
-    id: "uganda",
-    name: "Uganda",
+    id: "tanzania",
+    name: "Tanzania",
     description: "Coming Soon",
-    flagEmoji: "🇺🇬",
+    flagEmoji: "🇹🇿",
     modules: [],
     isLive: false,
   },
@@ -79,7 +90,7 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
           <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">Now Live!</span>
           <span className="absolute -right-6 top-0 text-xl text-orange-500">✨</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {liveCountries.map((country) => (
             <Link
               to={`/country/${country.id}`}
@@ -88,8 +99,13 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
               className="block transition-all duration-300 transform hover:scale-105"
             >
               <Card
-                className={`overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50`}
+                className={`overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50 relative`}
               >
+                {country.isNew && (
+                  <div className="absolute top-2 right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse z-10">
+                    NEW!
+                  </div>
+                )}
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/80 to-blue-400/70 opacity-90" />
                   <div className="h-36 flex justify-center items-center overflow-hidden">

@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
@@ -12,7 +13,7 @@ import { Link } from "react-router-dom";
 import { Footer } from "@/components/shared/Footer";
 
 const Index = () => {
-  const [selectedCountry, setSelectedCountry] = useState("nigeria");
+  const [selectedCountry, setSelectedCountry] = useState("uganda");
 
   return (
     <div className="min-h-screen bg-white">
@@ -38,9 +39,9 @@ const Index = () => {
               stroke="white" 
               strokeWidth="2"
             />
-            {/* Nigeria pin */}
-            <circle cx="350" cy="350" r="8" fill="#4ADE80" />
-            <circle cx="350" cy="350" r="12" fill="none" stroke="#4ADE80" strokeWidth="2">
+            {/* Uganda pin */}
+            <circle cx="420" cy="380" r="8" fill="#4ADE80" />
+            <circle cx="420" cy="380" r="12" fill="none" stroke="#4ADE80" strokeWidth="2">
               <animate attributeName="r" from="12" to="20" dur="1.5s" repeatCount="indefinite" />
               <animate attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite" />
             </circle>
@@ -102,23 +103,26 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {/* Nigeria Card */}
-            <Link to="/country/nigeria" className="block transition-all duration-300 transform hover:scale-105">
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50">
+            {/* Uganda Card */}
+            <Link to="/country/uganda" className="block transition-all duration-300 transform hover:scale-105">
+              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50 relative">
+                <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse z-10">
+                  NEW!
+                </div>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/80 to-blue-400/70 opacity-90" />
                   <div className="h-36 flex justify-center items-center overflow-hidden">
                     <div className="relative z-10 text-white p-6 flex flex-col items-center w-full">
-                      <div className="text-4xl mb-2">🇳🇬</div>
-                      <h3 className="text-2xl font-bold text-center">Nigeria</h3>
-                      <p className="text-white/90 mt-1 text-center text-sm">Nigeria Data Protection Act (NDPA)</p>
+                      <div className="text-4xl mb-2">🇺🇬</div>
+                      <h3 className="text-2xl font-bold text-center">Uganda</h3>
+                      <p className="text-white/90 mt-1 text-center text-sm">Uganda Data Protection and Privacy Act</p>
                     </div>
                   </div>
                 </div>
                 <div className="p-4">
                   <div className="flex justify-center mt-2">
                     <span className="inline-flex items-center text-sm font-medium text-orange-500">
-                      Explore Nigeria's Modules
+                      Explore Uganda's Modules
                       <ArrowRight className="ml-1 h-4 w-4" />
                     </span>
                   </div>

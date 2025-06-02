@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User, Building, Gavel } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User, Building, Gavel, Database, UserCheck, Send } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface AssessmentModulesProps {
@@ -98,9 +98,58 @@ const rwandaModules: Module[] = [
   },
 ];
 
+const ugandaModules: Module[] = [
+  {
+    title: "Registration with Personal Data Protection Office",
+    description: "Determine your registration requirements with Uganda's data protection authority",
+    icon: Globe,
+    link: "/uganda-registration",
+  },
+  {
+    title: "Lawful Basis for Processing",
+    description: "Identify the appropriate lawful basis for your data processing activities under Uganda law",
+    icon: Gavel,
+    link: "/uganda-lawful-basis",
+  },
+  {
+    title: "Cross-border Data Transfer Restrictions",
+    description: "Understand restrictions and requirements for transferring data outside Uganda",
+    icon: Send,
+    link: "/uganda-cross-border-transfer",
+  },
+  {
+    title: "Data Protection Impact Assessments",
+    description: "Determine when you need to conduct a DPIA under Uganda's requirements",
+    icon: FileCheck,
+    link: "/uganda-dpia",
+  },
+  {
+    title: "Responding to Data Subject Rights",
+    description: "Learn how to handle data subject requests and rights under Uganda law",
+    icon: UserCheck,
+    link: "/uganda-data-subject-rights",
+  },
+  {
+    title: "Data Breach Notification",
+    description: "Understand your obligations for reporting data breaches to authorities and individuals",
+    icon: AlertTriangle,
+    link: "/uganda-data-breach",
+  },
+  {
+    title: "Processing of Sensitive Data",
+    description: "Assess requirements and safeguards for processing sensitive personal data",
+    icon: Database,
+    link: "/uganda-sensitive-data",
+  },
+];
+
 export const AssessmentModules = ({ country }: AssessmentModulesProps) => {
-  const modules = country === "nigeria" ? nigeriaModules : rwandaModules;
-  const countryName = country === "nigeria" ? "Nigeria" : "Rwanda";
+  const modules = country === "nigeria" ? nigeriaModules : 
+                 country === "rwanda" ? rwandaModules : 
+                 country === "uganda" ? ugandaModules : [];
+  const countryName = country === "nigeria" ? "Nigeria" : 
+                     country === "rwanda" ? "Rwanda" : 
+                     country === "uganda" ? "Uganda" : country;
 
   return (
     <div>

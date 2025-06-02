@@ -22,6 +22,13 @@ import DPOAssessment from "./pages/DPOAssessment";
 import RwandaDataBreachAssessment from "./pages/RwandaDataBreachAssessment";
 import RwandaControllerProcessor from "./pages/RwandaControllerProcessor";
 import NigeriaLawfulBasis from "./pages/NigeriaLawfulBasis";
+import UgandaRegistration from "./pages/UgandaRegistration";
+import UgandaLawfulBasis from "./pages/UgandaLawfulBasis";
+import UgandaCrossBorderTransfer from "./pages/UgandaCrossBorderTransfer";
+import UgandaDPIA from "./pages/UgandaDPIA";
+import UgandaDataSubjectRights from "./pages/UgandaDataSubjectRights";
+import UgandaDataBreach from "./pages/UgandaDataBreach";
+import UgandaSensitiveData from "./pages/UgandaSensitiveData";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +54,13 @@ const App = () => (
           <Route path="/annual-audit" element={<AnnualAudit />} />
           <Route path="/representative-assessment" element={<RepresentativeAssessment />} />
           <Route path="/dpo-assessment" element={<DPOAssessment />} />
+          <Route path="/uganda-registration" element={<UgandaRegistration />} />
+          <Route path="/uganda-lawful-basis" element={<UgandaLawfulBasis />} />
+          <Route path="/uganda-cross-border-transfer" element={<UgandaCrossBorderTransfer />} />
+          <Route path="/uganda-dpia" element={<UgandaDPIA />} />
+          <Route path="/uganda-data-subject-rights" element={<UgandaDataSubjectRights />} />
+          <Route path="/uganda-data-breach" element={<UgandaDataBreach />} />
+          <Route path="/uganda-sensitive-data" element={<UgandaSensitiveData />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyNotice />} />
           <Route path="/legal-notice" element={<LegalNotice />} />

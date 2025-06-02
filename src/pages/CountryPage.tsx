@@ -32,6 +32,14 @@ const countryData: Record<string, CountryInfo> = {
     lawName: "Rwanda Data Protection Law",
     lawYear: "2021",
   },
+  uganda: {
+    id: "uganda",
+    name: "Uganda",
+    description: "East Africa's emerging digital economy with comprehensive data protection legislation.",
+    flagEmoji: "🇺🇬",
+    lawName: "Uganda Data Protection and Privacy Act",
+    lawYear: "2019",
+  },
 };
 
 const CountryPage = () => {
