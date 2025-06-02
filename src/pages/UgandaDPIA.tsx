@@ -5,18 +5,15 @@ import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 const UgandaDPIA = () => {
   const questions = [
     {
-      id: 1,
-      text: "What type of data processing do you conduct?",
-      options: {
-        yes: {
-          nextQuestion: null,
-          message: "Based on your data processing activities, you must conduct a Data Protection Impact Assessment (DPIA). Under Uganda's law, DPIAs are required for processing that involves high risks to individuals' rights and freedoms, including automated decision-making, sensitive data processing, large-scale processing, or systematic monitoring."
-        },
-        no: {
-          nextQuestion: null,
-          message: "For standard data processing activities, a DPIA may not be mandatory, but it's still good practice. However, monitor your processing activities as any changes toward high-risk processing (automated decisions, sensitive data, large-scale processing, or systematic monitoring) would trigger DPIA requirements."
-        }
-      }
+      id: "processing_type",
+      question: "What type of data processing do you conduct?",
+      options: [
+        { value: "automated", label: "Automated decision-making or profiling" },
+        { value: "sensitive", label: "Processing of sensitive personal data" },
+        { value: "large_scale", label: "Large-scale processing of personal data" },
+        { value: "surveillance", label: "Systematic monitoring of individuals" },
+        { value: "standard", label: "Standard data processing activities" }
+      ]
     }
   ];
 

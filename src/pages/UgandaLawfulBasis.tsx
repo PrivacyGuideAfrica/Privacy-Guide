@@ -5,18 +5,16 @@ import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 const UgandaLawfulBasis = () => {
   const questions = [
     {
-      id: 1,
-      text: "What is the primary purpose of your data processing?",
-      options: {
-        yes: {
-          nextQuestion: null,
-          message: "Your lawful basis for processing has been identified. Under Uganda's data protection law, ensure you have documented this basis, inform data subjects about it in your privacy notice, and only process data for the stated purposes. Remember that consent must be freely given, specific, informed, and withdrawable. For other bases, ensure they genuinely apply to your processing activities."
-        },
-        no: {
-          nextQuestion: null,
-          message: "You need to clearly identify and document your lawful basis for processing personal data. Under Uganda's law, you must have at least one lawful basis from: consent, contract performance, legal obligation, vital interests protection, public task performance, or legitimate interests. Each processing activity may require different lawful bases."
-        }
-      }
+      id: "processing_purpose",
+      question: "What is the primary purpose of your data processing?",
+      options: [
+        { value: "consent", label: "Based on individual consent" },
+        { value: "contract", label: "Performance of a contract" },
+        { value: "legal", label: "Compliance with legal obligation" },
+        { value: "vital", label: "Protection of vital interests" },
+        { value: "public", label: "Performance of public task" },
+        { value: "legitimate", label: "Legitimate interests" }
+      ]
     }
   ];
 
