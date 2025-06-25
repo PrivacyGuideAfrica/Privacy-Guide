@@ -60,7 +60,7 @@ const UgandaDataBreach = () => {
     },
     {
       id: 5,
-      text: "Have you notified the Personal Data Protection Office within 72 hours?",
+      text: "Have you notified the Personal Data Protection Office?",
       tooltip: "Notification should include the breach nature, likely consequences, and mitigation steps.",
       options: {
         yes: { nextQuestion: 6, message: null },
@@ -109,7 +109,7 @@ const UgandaDataBreach = () => {
           </p>
           <div className="bg-red-50 border border-red-200 rounded-lg p-4">
             <p className="text-sm text-red-800">
-              <strong>Important:</strong> If a breach poses risk to individuals, you must notify the Personal Data Protection Office (PDPO) within 72 hours and affected individuals without undue delay if there's high risk.
+              <strong>Important:</strong> If a breach poses risk to individuals, you must notify the Personal Data Protection Office (PDPO) immediately and affected individuals without undue delay if there's high risk.
             </p>
           </div>
         </div>
