@@ -118,12 +118,6 @@ const ugandaModules: Module[] = [
     link: "/uganda-lawful-basis",
   },
   {
-    title: "Cross-border Data Transfer Restrictions",
-    description: "Understand restrictions and requirements for transferring data outside Uganda",
-    icon: Send,
-    link: "/uganda-cross-border-transfer",
-  },
-  {
     title: "Data Protection Impact Assessments",
     description: "Determine when you need to conduct a DPIA under Uganda's requirements",
     icon: FileCheck,

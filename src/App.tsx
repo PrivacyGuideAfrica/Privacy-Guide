@@ -26,7 +26,7 @@ import UgandaRegistration from "./pages/UgandaRegistration";
 import UgandaAnnualCompliance from "./pages/UgandaAnnualCompliance";
 import UgandaDPO from "./pages/UgandaDPO";
 import UgandaLawfulBasis from "./pages/UgandaLawfulBasis";
-import UgandaCrossBorderTransfer from "./pages/UgandaCrossBorderTransfer";
+
 import UgandaDPIA from "./pages/UgandaDPIA";
 import UgandaDataSubjectRights from "./pages/UgandaDataSubjectRights";
 import UgandaDataBreach from "./pages/UgandaDataBreach";
@@ -60,7 +60,7 @@ const App = () => (
           <Route path="/uganda-annual-compliance" element={<UgandaAnnualCompliance />} />
           <Route path="/uganda-dpo" element={<UgandaDPO />} />
           <Route path="/uganda-lawful-basis" element={<UgandaLawfulBasis />} />
-          <Route path="/uganda-cross-border-transfer" element={<UgandaCrossBorderTransfer />} />
+          
           <Route path="/uganda-dpia" element={<UgandaDPIA />} />
           <Route path="/uganda-data-subject-rights" element={<UgandaDataSubjectRights />} />
           <Route path="/uganda-data-breach" element={<UgandaDataBreach />} />
