@@ -43,15 +43,6 @@ const UgandaRegistration = () => {
         { value: "none", label: "None of the above" }
       ]
     },
-    {
-      id: "data_volume",
-      question: "What is the scale of your data processing?",
-      options: [
-        { value: "large", label: "Large scale (thousands of data subjects)" },
-        { value: "medium", label: "Medium scale (hundreds of data subjects)" },
-        { value: "small", label: "Small scale (under 100 data subjects)" }
-      ]
-    }
   ];
 
   const handleAnswer = (questionId: string, answer: string) => {
@@ -165,21 +156,12 @@ const UgandaRegistration = () => {
                 </div>
 
                 <div className="bg-gray-50 p-6 rounded-lg">
-                  <h3 className="font-semibold mb-4">Next action links:</h3>
-                  <div className="space-y-3">
-                    <Button variant="outline" className="w-full justify-start">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Form 2 - Application for Registration/Renewal of Registration
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start">
-                      <Download className="mr-2 h-4 w-4" />
-                      Download Form 3 - Undertaking Not to Process or Store Personal Data Outside Uganda
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start">
-                      <Mail className="mr-2 h-4 w-4" />
-                      Contact the Personal Data Protection Office (Uganda)
-                    </Button>
-                  </div>
+                  <h3 className="font-semibold mb-4">Next Steps:</h3>
+                  <Button variant="default" className="w-full" asChild>
+                    <a href="https://www.pdpo.go.ug/register" target="_blank" rel="noopener noreferrer">
+                      Register with the Personal Data Protection Office
+                    </a>
+                  </Button>
                 </div>
               </div>
             ) : (
