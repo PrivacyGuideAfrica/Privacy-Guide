@@ -106,6 +106,12 @@ const ugandaModules: Module[] = [
     link: "/uganda-registration",
   },
   {
+    title: "Annual Data Protection Compliance Report",
+    description: "Understand your obligation to file an Annual Data Protection and Privacy Compliance Report with the PDPO",
+    icon: FileCheck,
+    link: "/uganda-annual-compliance",
+  },
+  {
     title: "Lawful Basis for Processing",
     description: "Identify the appropriate lawful basis for your data processing activities under Uganda law",
     icon: Gavel,

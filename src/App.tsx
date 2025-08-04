@@ -23,6 +23,7 @@ import RwandaDataBreachAssessment from "./pages/RwandaDataBreachAssessment";
 import RwandaControllerProcessor from "./pages/RwandaControllerProcessor";
 import NigeriaLawfulBasis from "./pages/NigeriaLawfulBasis";
 import UgandaRegistration from "./pages/UgandaRegistration";
+import UgandaAnnualCompliance from "./pages/UgandaAnnualCompliance";
 import UgandaLawfulBasis from "./pages/UgandaLawfulBasis";
 import UgandaCrossBorderTransfer from "./pages/UgandaCrossBorderTransfer";
 import UgandaDPIA from "./pages/UgandaDPIA";
@@ -55,6 +56,7 @@ const App = () => (
           <Route path="/representative-assessment" element={<RepresentativeAssessment />} />
           <Route path="/dpo-assessment" element={<DPOAssessment />} />
           <Route path="/uganda-registration" element={<UgandaRegistration />} />
+          <Route path="/uganda-annual-compliance" element={<UgandaAnnualCompliance />} />
           <Route path="/uganda-lawful-basis" element={<UgandaLawfulBasis />} />
           <Route path="/uganda-cross-border-transfer" element={<UgandaCrossBorderTransfer />} />
           <Route path="/uganda-dpia" element={<UgandaDPIA />} />
