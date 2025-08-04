@@ -1,6 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User, Building, Gavel, Database, UserCheck, Send } from "lucide-react";
+import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User, Building, Gavel, Database, UserCheck, Send, UserCog } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface AssessmentModulesProps {
@@ -146,6 +146,12 @@ const ugandaModules: Module[] = [
     description: "Assess requirements and safeguards for processing sensitive personal data",
     icon: Database,
     link: "/uganda-sensitive-data",
+  },
+  {
+    title: "Appointment of a Data Protection Officer (DPO)",
+    description: "Determine if your organisation needs to appoint a Data Protection Officer under Uganda's Data Protection and Privacy Act.",
+    icon: UserCog,
+    link: "/uganda-dpo",
   },
 ];
 
