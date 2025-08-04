@@ -4,42 +4,38 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { BookOpen, Shield, UserCog, Users } from "lucide-react";
-
 const UgandaDPO = () => {
   const [isCompleted, setIsCompleted] = useState(false);
-
-  const questions = [
-    {
-      id: 1,
-      text: "Do your main activities involve regularly and systematically watching or tracking a large number of individuals?",
-      tooltip: "\"Regular and systematic monitoring\" involves ongoing observation, tracking, or analysis of people. \"Large number\" considers factors such as the total number of individuals concerned, the volume and variety of data being processed, the duration or permanence of the data processing activity, and the geographical extent of the processing.",
-      options: {
-        yes: { 
-          nextQuestion: null,
-          message: "You need to appoint a Data Protection Officer (DPO). Your organisation's activities meet the criteria for mandatory DPO appointment under Uganda's Data Protection and Privacy Regulations."
-        },
-        no: { nextQuestion: 2, message: null }
-      }
-    },
-    {
-      id: 2,
-      text: "Are your main activities focused on processing special personal data?",
-      tooltip: "\"Special personal data\" includes information related to religious or philosophical beliefs, political opinions, sexual life, financial information, health status, or medical records of an individual.",
-      options: {
-        yes: { 
-          nextQuestion: null,
-          message: "You need to appoint a Data Protection Officer (DPO). Your organisation's activities meet the criteria for mandatory DPO appointment under Uganda's Data Protection and Privacy Regulations."
-        },
-        no: { 
-          nextQuestion: null,
-          message: "You are not legally required to appoint a DPO. Based on your answers, your organisation does not currently meet the specific conditions for mandatory DPO appointment. However, having a DPO, or at least a dedicated person responsible for data protection, can still be very beneficial for ensuring compliance and demonstrating good practice."
-        }
+  const questions = [{
+    id: 1,
+    text: "Do your main activities involve regularly and systematically watching or tracking a large number of individuals?",
+    tooltip: "\"Regular and systematic monitoring\" involves ongoing observation, tracking, or analysis of people. \"Large number\" considers factors such as the total number of individuals concerned, the volume and variety of data being processed, the duration or permanence of the data processing activity, and the geographical extent of the processing.",
+    options: {
+      yes: {
+        nextQuestion: null,
+        message: "You need to appoint a Data Protection Officer (DPO). Your organisation's activities meet the criteria for mandatory DPO appointment under Uganda's Data Protection and Privacy Regulations."
+      },
+      no: {
+        nextQuestion: 2,
+        message: null
       }
     }
-  ];
-
-  return (
-    <Layout>
+  }, {
+    id: 2,
+    text: "Are your main activities focused on processing special personal data?",
+    tooltip: "\"Special personal data\" includes information related to religious or philosophical beliefs, political opinions, sexual life, financial information, health status, or medical records of an individual.",
+    options: {
+      yes: {
+        nextQuestion: null,
+        message: "You need to appoint a Data Protection Officer (DPO). Your organisation's activities meet the criteria for mandatory DPO appointment under Uganda's Data Protection and Privacy Regulations."
+      },
+      no: {
+        nextQuestion: null,
+        message: "You are not legally required to appoint a DPO. Based on your answers, your organisation does not currently meet the specific conditions for mandatory DPO appointment. However, having a DPO, or at least a dedicated person responsible for data protection, can still be very beneficial for ensuring compliance and demonstrating good practice."
+      }
+    }
+  }];
+  return <Layout>
       <div className="container py-8 space-y-6">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Uganda Data Protection Officer (DPO) Assessment</h1>
@@ -56,15 +52,9 @@ const UgandaDPO = () => {
           </div>
         </div>
 
-        <AssessmentInterface
-          title="DPO Necessity Assessment"
-          questions={questions}
-          onComplete={() => setIsCompleted(true)}
-          onReset={() => setIsCompleted(false)}
-        />
+        <AssessmentInterface title="DPO Necessity Assessment" questions={questions} onComplete={() => setIsCompleted(true)} onReset={() => setIsCompleted(false)} />
 
-        {isCompleted && (
-          <div className="space-y-6 mt-8 animate-fade-in">
+        {isCompleted && <div className="space-y-6 mt-8 animate-fade-in">
             <h2 className="text-2xl font-semibold">DPO Guidance</h2>
             <Separator className="my-2" />
 
@@ -90,10 +80,7 @@ const UgandaDPO = () => {
                     <Shield className="h-5 w-5 text-green-500 flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-medium text-lg">Who Can Be a DPO?</h3>
-                      <p className="text-muted-foreground mt-1">
-                        A DPO should have expert knowledge of data protection law and practices, with the ability to carry out 
-                        prescribed tasks. Organizations must provide relevant training to enable effective performance.
-                      </p>
+                      <p className="text-muted-foreground mt-1">A DPO should have expert knowledge of data protection law and practices, with the ability to carry out prescribed tasks. Organisations must provide relevant training to enable effective performance.</p>
                     </div>
                   </div>
                 </CardContent>
@@ -151,11 +138,8 @@ const UgandaDPO = () => {
                 for data protection matters within your organisation.
               </p>
             </div>
-          </div>
-        )}
+          </div>}
       </div>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default UgandaDPO;
