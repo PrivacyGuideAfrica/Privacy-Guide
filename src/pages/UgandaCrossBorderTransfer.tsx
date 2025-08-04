@@ -85,7 +85,7 @@ const UgandaCrossBorderTransfer = () => {
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
-              <strong>Important:</strong> Cross-border transfers include cloud storage, remote access by staff, and data sharing with third parties abroad. All such arrangements must comply with Uganda's transfer restrictions.
+              <strong>Important:</strong> Cross-border transfers include cloud storage and data sharing with third parties abroad. All such arrangements must comply with Uganda's transfer restrictions.
             </p>
           </div>
         </div>
