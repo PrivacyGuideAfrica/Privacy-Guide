@@ -39,6 +39,7 @@ import SouthAfricaDataSubjectRights from "./pages/SouthAfricaDataSubjectRights";
 import SouthAfricaSpecialInformation from "./pages/SouthAfricaSpecialInformation";
 import SouthAfricaChildrenInformation from "./pages/SouthAfricaChildrenInformation";
 import SouthAfricaInformationOfficer from "./pages/SouthAfricaInformationOfficer";
+import SouthAfricaDirectMarketing from "./pages/SouthAfricaDirectMarketing";
 
 const queryClient = new QueryClient();
 
@@ -83,7 +84,7 @@ const App = () => (
           <Route path="/south-africa-special-information" element={<SouthAfricaSpecialInformation />} />
           <Route path="/south-africa-children-information" element={<SouthAfricaChildrenInformation />} />
           <Route path="/south-africa-information-officer" element={<SouthAfricaInformationOfficer />} />
-          <Route path="/south-africa-direct-marketing" element={<div>South Africa Direct Marketing - Coming Soon</div>} />
+          <Route path="/south-africa-direct-marketing" element={<SouthAfricaDirectMarketing />} />
           
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyNotice />} />
