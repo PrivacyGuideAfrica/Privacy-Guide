@@ -31,6 +31,7 @@ import UgandaDPIA from "./pages/UgandaDPIA";
 import UgandaDataSubjectRights from "./pages/UgandaDataSubjectRights";
 import UgandaDataBreach from "./pages/UgandaDataBreach";
 import UgandaSensitiveData from "./pages/UgandaSensitiveData";
+import SouthAfricaApplicability from "./pages/SouthAfricaApplicability";
 
 const queryClient = new QueryClient();
 
@@ -67,7 +68,7 @@ const App = () => (
           <Route path="/uganda-sensitive-data" element={<UgandaSensitiveData />} />
           
           {/* South Africa Routes */}
-          <Route path="/south-africa-applicability" element={<div>South Africa Applicability - Coming Soon</div>} />
+          <Route path="/south-africa-applicability" element={<SouthAfricaApplicability />} />
           <Route path="/south-africa-prior-authorisation" element={<div>South Africa Prior Authorisation - Coming Soon</div>} />
           <Route path="/south-africa-responsible-party" element={<div>South Africa Responsible Party/Operator - Coming Soon</div>} />
           <Route path="/south-africa-data-breach" element={<div>South Africa Data Breach - Coming Soon</div>} />
