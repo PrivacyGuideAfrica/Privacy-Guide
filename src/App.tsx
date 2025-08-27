@@ -35,6 +35,7 @@ import SouthAfricaApplicability from "./pages/SouthAfricaApplicability";
 import SouthAfricaPriorAuthorisation from "./pages/SouthAfricaPriorAuthorisation";
 import SouthAfricaResponsibleParty from "./pages/SouthAfricaResponsibleParty";
 import SouthAfricaDataBreach from "./pages/SouthAfricaDataBreach";
+import SouthAfricaDataSubjectRights from "./pages/SouthAfricaDataSubjectRights";
 
 const queryClient = new QueryClient();
 
@@ -75,7 +76,7 @@ const App = () => (
           <Route path="/south-africa-prior-authorisation" element={<SouthAfricaPriorAuthorisation />} />
           <Route path="/south-africa-responsible-party" element={<SouthAfricaResponsibleParty />} />
           <Route path="/south-africa-data-breach" element={<SouthAfricaDataBreach />} />
-          <Route path="/south-africa-data-subject-rights" element={<div>South Africa Data Subject Rights - Coming Soon</div>} />
+          <Route path="/south-africa-data-subject-rights" element={<SouthAfricaDataSubjectRights />} />
           <Route path="/south-africa-special-information" element={<div>South Africa Special Information - Coming Soon</div>} />
           <Route path="/south-africa-children-information" element={<div>South Africa Children Information - Coming Soon</div>} />
           <Route path="/south-africa-information-officer" element={<div>South Africa Information Officer - Coming Soon</div>} />
