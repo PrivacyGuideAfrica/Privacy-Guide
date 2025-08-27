@@ -65,6 +65,18 @@ const App = () => (
           <Route path="/uganda-data-subject-rights" element={<UgandaDataSubjectRights />} />
           <Route path="/uganda-data-breach" element={<UgandaDataBreach />} />
           <Route path="/uganda-sensitive-data" element={<UgandaSensitiveData />} />
+          
+          {/* South Africa Routes */}
+          <Route path="/south-africa-applicability" element={<div>South Africa Applicability - Coming Soon</div>} />
+          <Route path="/south-africa-prior-authorisation" element={<div>South Africa Prior Authorisation - Coming Soon</div>} />
+          <Route path="/south-africa-responsible-party" element={<div>South Africa Responsible Party/Operator - Coming Soon</div>} />
+          <Route path="/south-africa-data-breach" element={<div>South Africa Data Breach - Coming Soon</div>} />
+          <Route path="/south-africa-data-subject-rights" element={<div>South Africa Data Subject Rights - Coming Soon</div>} />
+          <Route path="/south-africa-special-information" element={<div>South Africa Special Information - Coming Soon</div>} />
+          <Route path="/south-africa-children-information" element={<div>South Africa Children Information - Coming Soon</div>} />
+          <Route path="/south-africa-information-officer" element={<div>South Africa Information Officer - Coming Soon</div>} />
+          <Route path="/south-africa-direct-marketing" element={<div>South Africa Direct Marketing - Coming Soon</div>} />
+          
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyNotice />} />
           <Route path="/legal-notice" element={<LegalNotice />} />

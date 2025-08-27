@@ -40,6 +40,14 @@ const countryData: Record<string, CountryInfo> = {
     lawName: "Uganda Data Protection and Privacy Act",
     lawYear: "2019",
   },
+  "south-africa": {
+    id: "south-africa",
+    name: "South Africa",
+    description: "Africa's economic powerhouse with comprehensive data protection legislation.",
+    flagEmoji: "🇿🇦",
+    lawName: "Protection of Personal Information Act (POPIA)",
+    lawYear: "2013",
+  },
 };
 
 const CountryPage = () => {

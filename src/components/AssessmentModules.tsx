@@ -149,13 +149,72 @@ const ugandaModules: Module[] = [
   },
 ];
 
+const southAfricaModules: Module[] = [
+  {
+    title: "Applicability Assessment",
+    description: "Determine if the Protection of Personal Information Act (POPIA) applies to your organization",
+    icon: Shield,
+    link: "/south-africa-applicability",
+  },
+  {
+    title: "Prior Authorisation from the Information Regulator",
+    description: "Assess whether your processing activities require prior authorisation from IRSA",
+    icon: FileCheck,
+    link: "/south-africa-prior-authorisation",
+  },
+  {
+    title: "Are you a Responsible Party or Operator?",
+    description: "Determine whether your organization acts as a Responsible Party (Controller) or Operator (Processor)",
+    icon: Users,
+    link: "/south-africa-responsible-party",
+  },
+  {
+    title: "Data Breach Notification",
+    description: "Understand your obligations for reporting security compromises under POPIA",
+    icon: AlertTriangle,
+    link: "/south-africa-data-breach",
+  },
+  {
+    title: "Handling Data Subject Rights Requests in South Africa",
+    description: "Learn how to respond to data subject access, correction, and deletion requests",
+    icon: UserCheck,
+    link: "/south-africa-data-subject-rights",
+  },
+  {
+    title: "Processing Special Personal Information in South Africa",
+    description: "Assess requirements for processing sensitive personal information under POPIA",
+    icon: Database,
+    link: "/south-africa-special-information",
+  },
+  {
+    title: "Processing Personal Information of Children",
+    description: "Understand the special requirements for processing children's personal information",
+    icon: User,
+    link: "/south-africa-children-information",
+  },
+  {
+    title: "Appointment of Information Officer and Responsibilities",
+    description: "Determine if you need to appoint an Information Officer and understand their duties",
+    icon: UserCog,
+    link: "/south-africa-information-officer",
+  },
+  {
+    title: "Direct Marketing",
+    description: "Assess your compliance obligations for direct marketing activities under POPIA",
+    icon: Send,
+    link: "/south-africa-direct-marketing",
+  },
+];
+
 export const AssessmentModules = ({ country }: AssessmentModulesProps) => {
   const modules = country === "nigeria" ? nigeriaModules : 
                  country === "rwanda" ? rwandaModules : 
-                 country === "uganda" ? ugandaModules : [];
+                 country === "uganda" ? ugandaModules :
+                 country === "south-africa" ? southAfricaModules : [];
   const countryName = country === "nigeria" ? "Nigeria" : 
                      country === "rwanda" ? "Rwanda" : 
-                     country === "uganda" ? "Uganda" : country;
+                     country === "uganda" ? "Uganda" :
+                     country === "south-africa" ? "South Africa" : country;
 
   return (
     <div>
