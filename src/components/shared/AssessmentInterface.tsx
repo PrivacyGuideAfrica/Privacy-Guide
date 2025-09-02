@@ -251,11 +251,29 @@ export const AssessmentInterface = ({
               <h3 className="font-medium">
                 {isDpoRequired ? "DPO Requirements" : "Recommendation"}
               </h3>
-              <div className="text-sm text-muted-foreground whitespace-pre-line">
-                {externalFinalMessage && isDpoRequired 
+              {(() => {
+                const messageContent = externalFinalMessage && isDpoRequired 
                   ? externalFinalMessage.replace("You must designate a Data Protection Officer (DPO)", "You may need to designate a Data Protection Officer (DPO)")
-                  : finalMessage}
-              </div>
+                  : finalMessage;
+                
+                // Check if the message contains HTML tags
+                const containsHTML = messageContent && /<[^>]+>/.test(messageContent);
+                
+                if (containsHTML) {
+                  return (
+                    <div 
+                      className="text-sm text-muted-foreground" 
+                      dangerouslySetInnerHTML={{ __html: messageContent }} 
+                    />
+                  );
+                } else {
+                  return (
+                    <div className="text-sm text-muted-foreground whitespace-pre-line">
+                      {messageContent}
+                    </div>
+                  );
+                }
+              })()}
             </div>
           </div>
         </div>
