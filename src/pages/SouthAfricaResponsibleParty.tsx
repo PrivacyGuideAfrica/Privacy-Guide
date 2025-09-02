@@ -460,38 +460,39 @@ export default function SouthAfricaResponsibleParty() {
             </div>
 
             <div className="bg-card rounded-lg shadow-lg p-8 mb-8">
-              <div className="prose prose-slate max-w-none mb-8">
-                <p className="text-muted-foreground text-lg leading-relaxed">
-                  This module helps you determine whether you are a "Responsible Party" or an "Operator" under POPIA. 
-                  Knowing your role is crucial for understanding your specific responsibilities when handling personal information.
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-6 mt-8">
-                  <div className="bg-muted/30 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-foreground mb-3">Responsible Party</h3>
-                    <p className="text-muted-foreground">
-                      A public or private body, or any other person, that alone or jointly with others, determines 
-                      the purpose (why) and means (how) for processing personal information. They are the primary 
-                      decision-maker for the data.
-                    </p>
-                  </div>
-
-                  <div className="bg-muted/30 p-6 rounded-lg">
-                    <h3 className="text-lg font-semibold text-foreground mb-3">Operator</h3>
-                    <p className="text-muted-foreground">
-                      A person who processes personal information for a Responsible Party, typically under a contract 
-                      or mandate. They act on the Responsible Party's instructions without determining the purpose or 
-                      means of processing themselves, and they do not come under the Responsible Party's direct authority.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
               <AssessmentInterface
                 title="Ascertaining Your Role"
                 questions={responsiblePartyQuestions}
                 onComplete={() => {}}
                 onReset={() => {}}
+                introContent={
+                  <div className="prose prose-slate max-w-none mb-8">
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      This module helps you determine whether you are a "Responsible Party" or an "Operator" under POPIA. 
+                      Knowing your role is crucial for understanding your specific responsibilities when handling personal information.
+                    </p>
+
+                    <div className="grid md:grid-cols-2 gap-6 mt-8">
+                      <div className="bg-muted/30 p-6 rounded-lg">
+                        <h3 className="text-lg font-semibold text-foreground mb-3">Responsible Party</h3>
+                        <p className="text-muted-foreground">
+                          A public or private body, or any other person, that alone or jointly with others, determines 
+                          the purpose (why) and means (how) for processing personal information. They are the primary 
+                          decision-maker for the data.
+                        </p>
+                      </div>
+
+                      <div className="bg-muted/30 p-6 rounded-lg">
+                        <h3 className="text-lg font-semibold text-foreground mb-3">Operator</h3>
+                        <p className="text-muted-foreground">
+                          A person who processes personal information for a Responsible Party, typically under a contract 
+                          or mandate. They act on the Responsible Party's instructions without determining the purpose or 
+                          means of processing themselves, and they do not come under the Responsible Party's direct authority.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                }
               />
 
               <div className="mt-8 text-center">

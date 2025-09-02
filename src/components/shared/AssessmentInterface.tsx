@@ -40,6 +40,7 @@ interface Props {
   renderQuestion?: (question: Question) => React.ReactNode;
   customAnswerHandler?: (questionId: number, answer: string) => void;
   finalMessage?: string | null;
+  introContent?: React.ReactNode;
 }
 
 interface DPIAStep {
@@ -99,7 +100,8 @@ export const AssessmentInterface = ({
   onReset,
   renderQuestion,
   customAnswerHandler,
-  finalMessage: externalFinalMessage
+  finalMessage: externalFinalMessage,
+  introContent
 }: Props) => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -353,6 +355,13 @@ export const AssessmentInterface = ({
       </CardHeader>
 
       <CardContent>
+        {/* Show intro content only when assessment is active (not completed) */}
+        {!finalMessage && introContent && (
+          <div className="mb-8">
+            {introContent}
+          </div>
+        )}
+        
         {finalMessage ? (
           renderCompletionMessage()
         ) : currentQuestionData ? (
