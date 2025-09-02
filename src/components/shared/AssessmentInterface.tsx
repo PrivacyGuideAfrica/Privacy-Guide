@@ -334,36 +334,99 @@ export const AssessmentInterface = ({
       (finalMessage?.includes("notify the NDPC") && finalMessage?.includes("within")) ||
       (finalMessage?.includes("notify your Data Controller") && finalMessage?.includes("hours"))
     );
+
+    // Detect Direct Marketing assessments
+    const isDirectMarketing = window.location.pathname.includes("direct-marketing");
+    const getDirectMarketingContent = () => {
+      if (finalMessage === "END_NO_ELECTRONIC_MARKETING") {
+        return {
+          title: "Rules Do Not Apply",
+          explanation: "This module's specific rules for direct marketing via unsolicited electronic communications do not apply to your current activities.",
+          actions: []
+        };
+      } else if (finalMessage === "LAWFUL_MARKETING") {
+        return {
+          title: "Lawful Direct Marketing Practices",
+          explanation: "You are conducting direct marketing using unsolicited electronic communications based on valid consent or the existing customer relationship exception, as required by POPIA. You must ensure every communication includes your identity and contact details for objection.",
+          actions: [
+            "Ensure all electronic direct marketing communications clearly state your identity and provide an address or other contact details for the recipient to send a request to cease communications.",
+            "Maintain accurate records of all consents or customer relationships relied upon."
+          ]
+        };
+      } else if (finalMessage === "UNLAWFUL_MARKETING") {
+        return {
+          title: "Unlawful Direct Marketing Practices",
+          explanation: "Your current practices for direct marketing using unsolicited electronic communications do not appear to meet the strict consent or customer relationship conditions set out in POPIA. This type of processing is prohibited unless these conditions are met.",
+          actions: [
+            "Immediately review and adjust your direct marketing strategies to ensure compliance.",
+            "Stop sending unsolicited electronic communications until a lawful basis is established.",
+            "Seek professional legal advice from a data protection compliance professional."
+          ]
+        };
+      }
+      return null;
+    };
     
     return (
       <div className="space-y-6">
         <div className="flex flex-col items-center justify-center p-6 text-center">
-          {isDpiaRequired || isBreachNotification && finalMessage?.includes("immediately") ? (
-            <div className="bg-muted/50 rounded-full p-4 mb-4">
-              <AlertCircle className="h-12 w-12 text-destructive" />
-            </div>
-          ) : (
-            <div className="bg-muted/50 rounded-full p-4 mb-4">
-              <CheckCircle2 className="h-12 w-12 text-ndpa-green" />
-            </div>
-          )}
+          {(() => {
+            // Direct Marketing specific icons
+            if (isDirectMarketing && getDirectMarketingContent()) {
+              const dmContent = getDirectMarketingContent();
+              if (finalMessage === "UNLAWFUL_MARKETING") {
+                return (
+                  <div className="bg-muted/50 rounded-full p-4 mb-4">
+                    <AlertCircle className="h-12 w-12 text-destructive" />
+                  </div>
+                );
+              } else {
+                return (
+                  <div className="bg-muted/50 rounded-full p-4 mb-4">
+                    <CheckCircle2 className="h-12 w-12 text-ndpa-green" />
+                  </div>
+                );
+              }
+            }
+            
+            // Other assessment types
+            if (isDpiaRequired || isBreachNotification && finalMessage?.includes("immediately")) {
+              return (
+                <div className="bg-muted/50 rounded-full p-4 mb-4">
+                  <AlertCircle className="h-12 w-12 text-destructive" />
+                </div>
+              );
+            } else {
+              return (
+                <div className="bg-muted/50 rounded-full p-4 mb-4">
+                  <CheckCircle2 className="h-12 w-12 text-ndpa-green" />
+                </div>
+              );
+            }
+          })()}
           <h2 className="text-2xl font-bold mb-2">
-            {isDpiaRequired ? "DPIA Required" : "Assessment Complete"}
+            {isDirectMarketing && getDirectMarketingContent()
+              ? getDirectMarketingContent()?.title
+              : isDpiaRequired 
+                ? "DPIA Required" 
+                : "Assessment Complete"}
           </h2>
           <p className="text-muted-foreground">
-            {isDpiaRequired 
-              ? "Based on your responses, you need to conduct a DPIA."
-              : isRepresentativeRequired
-                ? "You may need to designate a local representative in Rwanda."
-                : isDpoRequired
-                  ? "Based on your responses, you may need to designate a DPO."
-                  : isRoleAssessment
-                    ? "Based on your responses, your role and obligations under data protection law are outlined below."
-                    : isBreachNotification
-                      ? "Based on your responses, below are your breach notification requirements."
-                      : isControllerProcessor
-                        ? "Based on your responses, your role under data protection law is outlined below."
-                        : "Based on your assessment results."}
+            {isDirectMarketing && getDirectMarketingContent()
+              ? "Your direct marketing compliance status has been assessed."
+              : isDpiaRequired 
+                ? "Based on your responses, you need to conduct a DPIA."
+                : isRepresentativeRequired
+                  ? "You may need to designate a local representative in Rwanda."
+                  : isDpoRequired
+                    ? "Based on your responses, you may need to designate a DPO."
+                    : isRoleAssessment
+                      ? "Based on your responses, your role and obligations under data protection law are outlined below."
+                      : isBreachNotification
+                        ? "Based on your responses, below are your breach notification requirements."
+                        : isControllerProcessor
+                          ? "Based on your responses, your role under data protection law is outlined below."
+                          : "Based on your assessment results."}
           </p>
         </div>
 
@@ -372,9 +435,36 @@ export const AssessmentInterface = ({
             <FileText className="h-5 w-5 text-foreground shrink-0 mt-1" />
             <div className="space-y-2">
               <h3 className="font-medium">
-                {isDpoRequired ? "DPO Requirements" : "Recommendation"}
+                {isDirectMarketing && getDirectMarketingContent() 
+                  ? getDirectMarketingContent()?.title
+                  : isDpoRequired 
+                    ? "DPO Requirements" 
+                    : "Recommendation"}
               </h3>
               {(() => {
+                // Handle Direct Marketing specific content
+                if (isDirectMarketing && getDirectMarketingContent()) {
+                  const dmContent = getDirectMarketingContent();
+                  return (
+                    <div className="space-y-3">
+                      <div className="text-sm text-muted-foreground">
+                        {dmContent?.explanation}
+                      </div>
+                      {dmContent?.actions && dmContent.actions.length > 0 && (
+                        <div className="space-y-2">
+                          <h4 className="text-sm font-medium">What to do:</h4>
+                          <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground ml-2">
+                            {dmContent.actions.map((action, index) => (
+                              <li key={index}>{action}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                // Handle other assessment types
                 const messageContent = externalFinalMessage && isDpoRequired 
                   ? externalFinalMessage.replace("You must designate a Data Protection Officer (DPO)", "You may need to designate a Data Protection Officer (DPO)")
                   : finalMessage;
