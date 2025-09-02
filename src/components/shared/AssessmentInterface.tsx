@@ -212,7 +212,20 @@ export const AssessmentInterface = ({
     const isDpoRequired = finalMessage?.includes("You must designate a Data Protection Officer");
     const isRwandaControllerProcessor = window.location.pathname.includes("rwanda-controller-processor");
     const isControllerProcessor = isRwandaControllerProcessor || finalMessage?.includes("Dual Role") || finalMessage?.includes("Controller") && (finalMessage?.includes("Processor") || finalMessage?.includes("controller") || finalMessage?.includes("processor")) && !finalMessage?.includes("breach") && !finalMessage?.includes("notify");
-    const isBreachNotification = finalMessage?.includes("notify the NDPC") || finalMessage?.includes("notify your Data Controller") || finalMessage?.includes("notify affected") || finalMessage?.includes("notify data subjects") || finalMessage?.includes("breach") || finalMessage?.includes("inform data subjects") || finalMessage?.includes("inform affected");
+    
+    // Detect role-based assessments (Responsible Party/Operator, Controller/Processor)
+    const isRoleAssessment = window.location.pathname.includes("responsible-party") || 
+                            finalMessage?.includes("Responsible Party") || 
+                            finalMessage?.includes("Operator") ||
+                            finalMessage?.includes("obligations under POPIA");
+    
+    // More specific breach notification detection - only for actual breach assessment modules
+    const isBreachNotification = !isRoleAssessment && (
+      window.location.pathname.includes("data-breach") ||
+      window.location.pathname.includes("breach-assessment") ||
+      (finalMessage?.includes("notify the NDPC") && finalMessage?.includes("within")) ||
+      (finalMessage?.includes("notify your Data Controller") && finalMessage?.includes("hours"))
+    );
     
     return (
       <div className="space-y-6">
@@ -236,11 +249,13 @@ export const AssessmentInterface = ({
                 ? "You may need to designate a local representative in Rwanda."
                 : isDpoRequired
                   ? "Based on your responses, you may need to designate a DPO."
-                  : isBreachNotification
-                    ? "Based on your responses, below are your breach notification requirements."
-                    : isControllerProcessor
-                      ? "Based on your responses, your role under data protection law is outlined below."
-                      : "Based on your assessment results."}
+                  : isRoleAssessment
+                    ? "Based on your responses, your role and obligations under data protection law are outlined below."
+                    : isBreachNotification
+                      ? "Based on your responses, below are your breach notification requirements."
+                      : isControllerProcessor
+                        ? "Based on your responses, your role under data protection law is outlined below."
+                        : "Based on your assessment results."}
           </p>
         </div>
 
