@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2, Shield, Users, Database, UserCheck, Send, UserCog, Globe, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const RwandaControllerProcessorGuidance = lazy(() => 
@@ -91,6 +91,70 @@ const dpiaSteps: DPIAStep[] = [
       "Periodically review and update the DPIA if the processing activity changes."
     ]
   }
+];
+
+interface SouthAfricaModule {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  link: string;
+}
+
+const southAfricaModules: SouthAfricaModule[] = [
+  {
+    title: "Applicability Assessment",
+    description: "Determine if the Protection of Personal Information Act (POPIA) applies to your organization",
+    icon: Shield,
+    link: "/south-africa-applicability",
+  },
+  {
+    title: "Prior Authorisation from the Information Regulator",
+    description: "Assess whether your processing activities require prior authorisation from IRSA",
+    icon: FileText,
+    link: "/south-africa-prior-authorisation",
+  },
+  {
+    title: "Are you a Responsible Party or Operator?",
+    description: "Determine whether your organization acts as a Responsible Party (Controller) or Operator (Processor)",
+    icon: Users,
+    link: "/south-africa-responsible-party",
+  },
+  {
+    title: "Data Breach Notification",
+    description: "Understand your obligations for reporting security compromises under POPIA",
+    icon: AlertTriangle,
+    link: "/south-africa-data-breach",
+  },
+  {
+    title: "Handling Data Subject Rights Requests in South Africa",
+    description: "Learn how to respond to data subject access, correction, and deletion requests",
+    icon: UserCheck,
+    link: "/south-africa-data-subject-rights",
+  },
+  {
+    title: "Processing Special Personal Information in South Africa",
+    description: "Assess requirements for processing sensitive personal information under POPIA",
+    icon: Database,
+    link: "/south-africa-special-information",
+  },
+  {
+    title: "Processing Personal Information of Children",
+    description: "Understand the special requirements for processing children's personal information",
+    icon: Users,
+    link: "/south-africa-children-information",
+  },
+  {
+    title: "Appointment of Information Officer and Responsibilities",
+    description: "Determine if you need to appoint an Information Officer and understand their duties",
+    icon: UserCog,
+    link: "/south-africa-information-officer",
+  },
+  {
+    title: "Direct Marketing",
+    description: "Assess your compliance obligations for direct marketing activities under POPIA",
+    icon: Send,
+    link: "/south-africa-direct-marketing",
+  },
 ];
 
 export const AssessmentInterface = ({ 
@@ -208,6 +272,48 @@ export const AssessmentInterface = ({
     </div>
   );
 
+  // Detect if this is a South African assessment
+  const isSouthAfricanAssessment = () => {
+    return window.location.pathname.includes("south-africa");
+  };
+
+  // Get current assessment link to exclude from recommendations
+  const getCurrentAssessmentLink = () => {
+    const path = window.location.pathname;
+    return path;
+  };
+
+  // Render South African assessment links
+  const renderSouthAfricanAssessmentLinks = () => {
+    if (!isSouthAfricanAssessment()) return null;
+
+    const currentLink = getCurrentAssessmentLink();
+    const otherAssessments = southAfricaModules.filter(module => module.link !== currentLink);
+
+    return (
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-center">Other South Africa (POPIA) Assessments</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {otherAssessments.map((module) => (
+            <Link to={module.link} key={module.title} className="block">
+              <Card className="cursor-pointer hover:shadow-md transition-shadow h-full hover:translate-y-[-2px] p-4">
+                <div className="flex items-start space-x-3">
+                  <module.icon className="h-5 w-5 text-ndpa-green shrink-0 mt-1" />
+                  <div className="space-y-1">
+                    <h4 className="font-medium text-sm leading-tight">{module.title}</h4>
+                    <p className="text-xs text-muted-foreground line-clamp-2">
+                      {module.description}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   const renderCompletionMessage = () => {
     const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
     const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
@@ -304,6 +410,9 @@ export const AssessmentInterface = ({
             </Suspense>
           </div>
         )}
+
+        {/* South African Assessment Links */}
+        {renderSouthAfricanAssessmentLinks()}
 
         <div className="space-y-4 pt-2">
           <Button 
