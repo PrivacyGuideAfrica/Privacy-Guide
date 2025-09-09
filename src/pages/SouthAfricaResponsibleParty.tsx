@@ -355,7 +355,7 @@ const responsiblePartyQuestions: Question[] = [
           <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
             <h5 class="font-medium text-blue-900 mb-2">🔍 Possible Scenarios:</h5>
             <ul class="text-sm text-blue-800 space-y-1 list-disc list-inside">
-              <li><strong>Joint Controller:</strong> You may share responsibility with another party</li>
+              <li><strong>Joint Responsible Party:</strong> You may share responsibility with another party</li>
               <li><strong>Processor for Multiple Parties:</strong> You may process for different controllers</li>
               <li><strong>Minimal Processing:</strong> Your activities may not trigger POPIA obligations</li>
               <li><strong>Exempt Entity:</strong> You may qualify for specific exemptions under POPIA</li>
@@ -415,7 +415,7 @@ const responsiblePartyQuestions: Question[] = [
           <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
             <h5 class="font-medium text-blue-900 mb-2">🔍 Possible Scenarios:</h5>
             <ul class="text-sm text-blue-800 space-y-1 list-disc list-inside">
-              <li><strong>Joint Controller:</strong> You may share responsibility with another party</li>
+              <li><strong>Joint Responsible Party:</strong> You may share responsibility with another party</li>
               <li><strong>Processor for Multiple Parties:</strong> You may process for different controllers</li>
               <li><strong>Minimal Processing:</strong> Your activities may not trigger POPIA obligations</li>
               <li><strong>Exempt Entity:</strong> You may qualify for specific exemptions under POPIA</li>
