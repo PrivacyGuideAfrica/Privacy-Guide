@@ -43,7 +43,11 @@ import SouthAfricaDirectMarketing from "./pages/SouthAfricaDirectMarketing";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = () => {
+  // Debug: Verify JavaScript is loading on deployed site
+  console.log("Privacy Assessment Tool - App component loaded successfully");
+  
+  return (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -93,6 +97,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;
