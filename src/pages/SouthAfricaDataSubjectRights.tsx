@@ -376,7 +376,7 @@ const SouthAfricaDataSubjectRights = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button onClick={() => navigate("/countries/south-africa")} className="flex items-center gap-2">
+          <Button onClick={() => navigate("/country/south-africa")} className="flex items-center gap-2">
             <Globe className="h-4 w-4" />
             Take Other Assessments
           </Button>
