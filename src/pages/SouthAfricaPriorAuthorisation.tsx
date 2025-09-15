@@ -46,11 +46,11 @@ export default function SouthAfricaPriorAuthorisation() {
   const navigate = useNavigate();
 
   const handleComplete = () => {
-    console.log("Prior Authorisation assessment completed");
+    // Prior Authorisation assessment completed - no logging needed for production
   };
 
   const handleReset = () => {
-    console.log("Prior Authorisation assessment reset");
+    // Prior Authorisation assessment reset - no logging needed for production
   };
 
   return (

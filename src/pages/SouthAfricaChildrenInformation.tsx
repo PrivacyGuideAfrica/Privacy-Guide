@@ -41,11 +41,11 @@ export default function SouthAfricaChildrenInformation() {
   const navigate = useNavigate();
 
   const handleComplete = () => {
-    console.log("Assessment completed");
+    // Assessment completed - no logging needed for production
   };
 
   const handleReset = () => {
-    console.log("Assessment reset");
+    // Assessment reset - no logging needed for production
   };
 
   return (

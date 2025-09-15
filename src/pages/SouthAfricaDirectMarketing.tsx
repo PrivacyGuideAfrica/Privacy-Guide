@@ -39,11 +39,11 @@ const SouthAfricaDirectMarketing = () => {
   const navigate = useNavigate();
 
   const handleComplete = () => {
-    console.log('Direct Marketing Assessment completed');
+    // Direct Marketing Assessment completed - no logging needed for production
   };
 
   const handleReset = () => {
-    console.log('Direct Marketing Assessment reset');
+    // Direct Marketing Assessment reset - no logging needed for production
   };
 
   return (

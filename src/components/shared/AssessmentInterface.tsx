@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle,
 import { toast } from "sonner";
 import { useNavigate, Link } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import DOMPurify from "dompurify";
 
 const RwandaControllerProcessorGuidance = lazy(() => 
   import("@/components/controller-processor/RwandaControllerProcessorGuidance")
@@ -473,10 +474,17 @@ export const AssessmentInterface = ({
                 const containsHTML = messageContent && /<[^>]+>/.test(messageContent);
                 
                 if (containsHTML) {
+                  // Sanitize HTML content to prevent XSS attacks
+                  const sanitizedContent = DOMPurify.sanitize(messageContent, {
+                    ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'ul', 'ol', 'li', 'a', 'span'],
+                    ALLOWED_ATTR: ['href', 'target', 'class'],
+                    ALLOW_DATA_ATTR: false
+                  });
+                  
                   return (
                     <div 
                       className="text-sm text-muted-foreground" 
-                      dangerouslySetInnerHTML={{ __html: messageContent }} 
+                      dangerouslySetInnerHTML={{ __html: sanitizedContent }} 
                     />
                   );
                 } else {

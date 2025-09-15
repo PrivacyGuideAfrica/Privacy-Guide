@@ -28,11 +28,11 @@ const SouthAfricaInformationOfficer = () => {
   const navigate = useNavigate();
 
   const handleCompletion = () => {
-    console.log("Assessment completed");
+    // Assessment completed - no logging needed for production
   };
 
   const handleReset = () => {
-    console.log("Assessment reset");
+    // Assessment reset - no logging needed for production
   };
 
   return (
