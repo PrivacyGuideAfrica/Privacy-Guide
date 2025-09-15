@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Layout } from "@/components/shared/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { ArrowLeft, CheckCircle, XCircle, HelpCircle, User, Edit, X, UserCheck } from "lucide-react";
+import { ArrowLeft, CheckCircle, XCircle, HelpCircle, User, Edit, X, UserCheck, Globe } from "lucide-react";
 
 interface Question {
   id: string;
@@ -146,6 +147,7 @@ const requestTypes: RequestType[] = [
 ];
 
 const SouthAfricaDataSubjectRights = () => {
+  const navigate = useNavigate();
   const [currentStage, setCurrentStage] = useState<'initial' | 'selection' | 'assessment' | 'results'>('initial');
   const [selectedRequestType, setSelectedRequestType] = useState<RequestType | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -373,7 +375,11 @@ const SouthAfricaDataSubjectRights = () => {
           </ul>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button onClick={() => navigate("/countries/south-africa")} className="flex items-center gap-2">
+            <Globe className="h-4 w-4" />
+            Take Other Assessments
+          </Button>
           <Button onClick={resetAssessment} variant="outline">
             Start New Assessment
           </Button>
