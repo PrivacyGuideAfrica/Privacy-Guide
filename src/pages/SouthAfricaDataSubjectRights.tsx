@@ -238,7 +238,8 @@ const SouthAfricaDataSubjectRights = () => {
           type: "success" as const,
           actions: [
             "Perform the requested action (correct, destroy, or delete)",
-            "Notify relevant third parties (if applicable) and the individual of the action taken"
+            "Notify relevant operators (if applicable) processing the data subject's personal information",
+            "Notify the individual of the action taken"
           ]
         };
 
