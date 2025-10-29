@@ -74,7 +74,7 @@ const SouthAfricaInformationOfficer = () => {
                 
                 <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
                   <p className="text-sm">
-                    <strong>Key Point:</strong> By default, the head of your public or private body serves as the Information Officer, unless another person is formally designated. The designated Information Officer only officially takes up their duties once your organisation has been registered with the Information Regulator.
+                    <strong>Key Point:</strong> By default, the head of your public or private body serves as the Information Officer, unless another person is formally authorised. The authorised Information Officer only officially takes up their duties once your organisation has been registered with the Information Regulator.
                   </p>
                 </div>
               </div>
