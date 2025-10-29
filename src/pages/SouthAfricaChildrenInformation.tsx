@@ -22,7 +22,7 @@ const childrenInformationQuestions: Question[] = [
   },
   {
     id: 2,
-    text: "Is your processing of personal information of children based on any of the following reasons?\n\n• You have the prior consent of a competent person (e.g., parent or guardian)\n• The processing is necessary for the establishment, exercise, or defence of a right or obligation in law\n• The processing is necessary to comply with an obligation of international public law\n• The processing is for historical, statistical, or research purposes, where the purpose serves a public interest and is necessary for that purpose, and sufficient guarantees are provided to protect the child's privacy\n• The information has been deliberately made public by the child with the consent of a competent person\n• The Information Regulator has granted you specific authorisation to process this information, for example, if it is in the public interest and appropriate safeguards are in place",
+    text: "Is your processing of personal information of children based on any of the following reasons?\n\n• You have the prior consent of a competent person (e.g., parent or guardian)\n• The processing is necessary for the establishment, exercise, or defence of a right or obligation in law\n• The processing is necessary to comply with an obligation of international public law\n• The processing is for historical, statistical, or research purposes, where the purpose serves a public interest and is necessary for that purpose, and sufficient guarantees are provided to protect the child's privacy\n• The information has been deliberately made public by the child with the consent of a competent person",
     tooltip: "If none of these specific conditions apply, processing personal information of children is generally prohibited.",
     options: {
       yes: {
@@ -30,8 +30,22 @@ const childrenInformationQuestions: Question[] = [
         message: "Your processing of children's personal information appears to be lawful.\n\nYou are processing children's personal information under one of the specific conditions authorised by POPIA. Always ensure you maintain proper documentation of your lawful basis and the safeguards you have in place to protect this sensitive data.\n\nNext steps:\n• Ensure all appropriate safeguards are in place as required for children's personal information\n• Maintain accurate records of your lawful basis and any consents obtained for processing this data",
       },
       no: {
+        nextQuestion: 3,
+      },
+    },
+  },
+  {
+    id: 3,
+    text: "Do you have authorisation from the Information Regulator for this processing?",
+    tooltip: "The Information Regulator can grant specific authorisation for processing children's personal information in certain circumstances where none of the standard lawful bases apply, for example, if it is in the public interest and appropriate safeguards are in place. This requires a formal application process.",
+    options: {
+      yes: {
         nextQuestion: null,
-        message: "Your processing of children's personal information may be unlawful.\n\nYou appear to be processing personal information of children without a clear lawful basis under POPIA. This type of processing is generally prohibited unless one of the specific conditions or authorisations applies.\n\nImmediate action required:\n• Review your processing activities to identify a valid lawful basis\n• Consider obtaining proper consent from competent persons (parents/guardians)\n• Implement additional safeguards for children's data\n• Consult with legal counsel if necessary",
+        message: "Your processing of children's personal information is lawful under an authorisation granted by the Information Regulator.\n\nYou have obtained authorisation from the Information Regulator to process children's personal information. Ensure you comply with any conditions attached to the authorisation and maintain records of this approval.\n\nNext steps:\n• Review and comply with all conditions attached to your authorisation\n• Maintain documentation of the authorisation approval\n• Monitor for any changes to the terms of your authorisation\n• Implement all required technical and organisational safeguards for children's data\n• Keep the Information Regulator informed of any material changes to your processing",
+      },
+      no: {
+        nextQuestion: null,
+        message: "You appear to be processing personal information of children without a lawful basis under POPIA.\n\nThis type of processing is generally prohibited unless one of the specific conditions applies or you have authorisation from the Information Regulator.\n\nImmediate Actions Required:\n• Stop processing the children's personal information immediately until you obtain authorisation\n• Apply for authorisation from the Information Regulator in the manner prescribed\n• Contact the Information Regulator at: POPIACompliance@inforegulator.org.za\n• Seek legal advice on your specific circumstances and processing activities\n• Implement immediate security measures to protect any children's personal information you currently hold\n• Document your assessment and the steps you are taking to achieve compliance\n\nDo not resume processing children's personal information until you have obtained the necessary authorisation. Failure to comply with POPIA's requirements can result in significant penalties and harm to the children whose information you process.",
       },
     },
   },
