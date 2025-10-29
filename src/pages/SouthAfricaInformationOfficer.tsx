@@ -69,7 +69,7 @@ const SouthAfricaInformationOfficer = () => {
                 </Alert>
                 
                 <p>
-                  This module guides you, as a <strong>Responsible Party</strong> (an individual or organisation that determines why and how personal information is processed), on the requirement to appoint an Information Officer under South Africa's Protection of Personal Information Act (POPIA).
+                  This module guides you, as a <strong>Responsible Party</strong> (an individual or organisation that determines why and how personal information is processed), on the requirements relating to the Information Officer under South Africa's Protection of Personal Information Act (POPIA) when your organisation requires to appoint a deputy information officer with delegated or designated duties.
                 </p>
                 
                 <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
