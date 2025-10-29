@@ -8,8 +8,8 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 const directMarketingQuestions: Question[] = [
   {
     id: 1,
-    text: "Do you approach individuals for direct marketing purposes using electronic communications (like email, SMS, or automated calls) that they did not specifically ask to receive?",
-    tooltip: "This applies if you send marketing messages to individuals without them initiating contact or explicitly requesting to receive such communications from you.",
+    text: "Do you approach data subjects for direct marketing purposes using electronic communications (like email, SMS, or automated calls) that they did not specifically ask to receive?",
+    tooltip: "This applies if you send marketing messages to data subjects without them initiating contact or explicitly requesting to receive such communications from you.",
     options: {
       yes: { nextQuestion: 2 },
       no: { nextQuestion: null, message: "END_NO_ELECTRONIC_MARKETING" }
@@ -17,8 +17,8 @@ const directMarketingQuestions: Question[] = [
   },
   {
     id: 2,
-    text: "Have you obtained valid and specific consent from the individual to send them these electronic direct marketing communications?",
-    tooltip: "Consent must be freely given, specific, and informed. You can only approach an individual once to ask for this consent if you do not already have it, provided they have not previously refused. Consent can be obtained using Form 4 (POPIA Regulations 2021) or a similar, readily accessible method, and can be given via email, telephonically, SMS/WhatsApp, or facsimile.",
+    text: "Have you obtained valid and specific consent from the data subject to send them these electronic direct marketing communications?",
+    tooltip: "Consent must be freely given, specific, and informed. You can only approach a data subject once to ask for this consent if you do not already have it, provided they have not previously refused. Consent can be obtained using Form 4 (POPIA Regulations 2021) or a similar, readily accessible method, and can be given via email, telephonically, SMS/WhatsApp, or facsimile.",
     options: {
       yes: { nextQuestion: null, message: "LAWFUL_MARKETING" },
       no: { nextQuestion: 3 }
@@ -26,7 +26,7 @@ const directMarketingQuestions: Question[] = [
   },
   {
     id: 3,
-    text: "Is the individual an existing customer, and are you marketing your own similar products or services to them, using contact details obtained during a previous sale?",
+    text: "Is the data subject an existing customer, and are you marketing your own similar products or services to them, using contact details obtained during a previous sale?",
     tooltip: "This exception applies if you gained their contact details in the context of a sale of a product or service, and you are promoting your own similar goods or services. You must have given them a reasonable opportunity to object, free of charge, both at the time of data collection and in each subsequent communication, and they must not have initially refused such use.",
     options: {
       yes: { nextQuestion: null, message: "LAWFUL_MARKETING" },
@@ -84,7 +84,7 @@ const SouthAfricaDirectMarketing = () => {
             <Alert className="mb-8 bg-blue-50 border-blue-200">
               <MessageSquare className="h-4 w-4 text-blue-600" />
               <AlertDescription className="text-blue-700">
-                <strong>Key Definitions:</strong> Direct marketing means approaching an individual, either in person or via mail or electronic communication, to promote goods, services, or to request a donation. Electronic communication includes any text, voice, sound, or image message sent over an electronic communications network (e.g., email, SMS, automated calls). Unsolicited refers to communications that the individual did not specifically ask to receive.
+                <strong>Key Definitions:</strong> Direct marketing means approaching a data subject, either in person or via mail or electronic communication, to promote goods, services, or to request a donation. Electronic communication includes any text, voice, sound, or image message sent over an electronic communications network (e.g., email, SMS, automated calls). Unsolicited refers to communications that the data subject did not specifically ask to receive.
               </AlertDescription>
             </Alert>
 
