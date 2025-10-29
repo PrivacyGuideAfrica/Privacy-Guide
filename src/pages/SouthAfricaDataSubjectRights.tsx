@@ -53,7 +53,7 @@ const accessQuestions: Question[] = [
 const correctionQuestions: Question[] = [
   {
     id: "1B",
-    text: "Has the individual requested that you correct, destroy, or delete their personal information because it is inaccurate, irrelevant, excessive, outdated, incomplete, misleading, unlawfully obtained, or because you are no longer authorised to retain it?",
+    text: "Has the individual requested that you correct, destroy, or delete their personal information because it is inaccurate, irrelevant, excessive, outdated, incomplete, misleading, unlawfully obtained, or because you are no longer retain to retain it?",
     tooltip: "This applies if the individual believes the quality of their data is flawed or you no longer have a legal basis to hold it.",
     options: {
       yes: { nextQuestion: "2B" },
@@ -62,7 +62,7 @@ const correctionQuestions: Question[] = [
   },
   {
     id: "2B",
-    text: "Is the information indeed inaccurate, irrelevant, excessive, outdated, incomplete, misleading, unlawfully obtained, or are you no longer authorised to retain it?",
+    text: "Is the information indeed inaccurate, irrelevant, excessive, outdated, incomplete, misleading, unlawfully obtained, or are you no longer retain to retain it?",
     tooltip: "You should investigate the claim. If there's an agreement, you must follow it. If the data is accurate, you can provide credible evidence.",
     options: {
       yes: { message: "COMPLY_CORRECTION" },
