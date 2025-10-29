@@ -17,7 +17,7 @@ const directMarketingQuestions: Question[] = [
   },
   {
     id: 2,
-    text: "Have you obtained valid and specific consent from the data subject to send them these electronic direct marketing communications?",
+    text: "Have you identified the appropriate lawful basis to send data subjects direct marketing communications?",
     tooltip: "Consent must be freely given, specific, and informed. You can only approach a data subject once to ask for this consent if you do not already have it, provided they have not previously refused. Consent can be obtained using Form 4 (POPIA Regulations 2021) or a similar, readily accessible method, and can be given via email, telephonically, SMS/WhatsApp, or facsimile.",
     options: {
       yes: { nextQuestion: null, message: "LAWFUL_MARKETING" },
