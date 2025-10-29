@@ -107,7 +107,7 @@ const automatedQuestions: Question[] = [
   {
     id: "1D",
     text: "Have you received a request from an individual to reconsider a decision that was based solely on automated processing (without human involvement) and has significant legal consequences or substantially affects them?",
-    tooltip: "This applies to automated profiling or decision-making that has a major impact on an individual, such as automatically denying a loan application or rejecting a job application without human review. This does not apply to decisions made in connection with or in anticipation of entering into or performing a contract.",
+    tooltip: "This applies to automated profiling or decision-making that has a major impact on an individual, such as automatically denying a loan application without human review. This does not apply to decisions made in connection with or in anticipation of entering into or performing a contract.",
     options: {
       yes: { message: "RECONSIDER_AUTOMATED" },
       no: { message: "NO_AUTOMATED_REVIEW" }
