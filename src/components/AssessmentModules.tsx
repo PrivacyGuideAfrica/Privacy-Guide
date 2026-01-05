@@ -1,5 +1,5 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Shield, Users, AlertTriangle, FileCheck, Clipboard, Globe, User, Building, Gavel, Database, UserCheck, Send, UserCog } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,8 @@ interface Module {
   description: string;
   icon: React.ElementType;
   link: string;
+  isDisabled?: boolean;
+  disabledMessage?: string;
 }
 
 const nigeriaModules: Module[] = [
@@ -50,6 +52,8 @@ const nigeriaModules: Module[] = [
     description: "Find out if your organization needs to conduct an annual data protection audit",
     icon: Clipboard,
     link: "/annual-audit",
+    isDisabled: true,
+    disabledMessage: "Being Updated",
   },
 ];
 
@@ -224,21 +228,44 @@ export const AssessmentModules = ({ country }: AssessmentModulesProps) => {
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {modules.map((module) => (
-              <Link to={module.link} key={module.title}>
-                <Card className="cursor-pointer hover:shadow-md transition-shadow h-full hover:translate-y-[-4px]">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <module.icon className="h-6 w-6 text-ndpa-green" />
-                      <span>{module.title}</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">
-                      {module.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
+              module.isDisabled ? (
+                <div key={module.title}>
+                  <Card className="h-full opacity-60 cursor-not-allowed">
+                    <CardHeader>
+                      <CardTitle className="flex items-center space-x-2">
+                        <module.icon className="h-6 w-6 text-muted-foreground" />
+                        <span>{module.title}</span>
+                        {module.disabledMessage && (
+                          <Badge variant="secondary" className="ml-2 text-xs">
+                            {module.disabledMessage}
+                          </Badge>
+                        )}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">
+                        {module.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ) : (
+                <Link to={module.link} key={module.title}>
+                  <Card className="cursor-pointer hover:shadow-md transition-shadow h-full hover:translate-y-[-4px]">
+                    <CardHeader>
+                      <CardTitle className="flex items-center space-x-2">
+                        <module.icon className="h-6 w-6 text-ndpa-green" />
+                        <span>{module.title}</span>
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600">
+                        {module.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              )
             ))}
           </div>
           
