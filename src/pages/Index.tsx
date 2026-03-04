@@ -102,13 +102,37 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {/* South Africa Card */}
-            <Link to="/country/south-africa" className="block transition-all duration-300 transform hover:scale-105">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {/* Ghana Card */}
+            <Link to="/country/ghana" className="block transition-all duration-300 transform hover:scale-105">
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50 relative">
                 <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse z-10">
                   NEW!
                 </div>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/80 to-blue-400/70 opacity-90" />
+                  <div className="h-36 flex justify-center items-center overflow-hidden">
+                    <div className="relative z-10 text-white p-6 flex flex-col items-center w-full">
+                      <div className="text-4xl mb-2">🇬🇭</div>
+                      <h3 className="text-2xl font-bold text-center">Ghana</h3>
+                      <p className="text-white/90 mt-1 text-center text-sm">Data Protection Act, 2012 (Act 843)</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="flex justify-center mt-2">
+                    <span className="inline-flex items-center text-sm font-medium text-orange-500">
+                      Explore Ghana's Modules
+                      <ArrowRight className="ml-1 h-4 w-4" />
+                    </span>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+
+            {/* South Africa Card */}
+            <Link to="/country/south-africa" className="block transition-all duration-300 transform hover:scale-105">
+              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/80 to-blue-400/70 opacity-90" />
                   <div className="h-36 flex justify-center items-center overflow-hidden">
@@ -132,10 +156,7 @@ const Index = () => {
             
             {/* Uganda Card */}
             <Link to="/country/uganda" className="block transition-all duration-300 transform hover:scale-105">
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50 relative">
-                <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse z-10">
-                  NEW!
-                </div>
+              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 h-full bg-gradient-to-br from-white to-gray-50">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/80 to-blue-400/70 opacity-90" />
                   <div className="h-36 flex justify-center items-center overflow-hidden">

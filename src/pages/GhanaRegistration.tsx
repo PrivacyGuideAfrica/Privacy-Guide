@@ -98,8 +98,8 @@ const GhanaRegistration = () => {
               </>
             )}
 
-            <div className="mt-8 text-center">
-              <Button onClick={() => setShowResult(null)} className="mr-4">
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center">
+              <Button onClick={() => setShowResult(null)}>
                 Start New Assessment
               </Button>
               <Button variant="outline" asChild>
@@ -152,14 +152,14 @@ const GhanaRegistration = () => {
           <div className="space-y-4">
             <Button
               variant="outline"
-              className="w-full text-left p-4 h-auto justify-start hover:bg-blue-50"
+              className="w-full text-left p-4 h-auto justify-start hover:bg-blue-50 whitespace-normal text-wrap break-words"
               onClick={() => setShowResult("required")}
             >
               Yes, I intend to process personal data as a Data Controller
             </Button>
             <Button
               variant="outline"
-              className="w-full text-left p-4 h-auto justify-start hover:bg-blue-50"
+              className="w-full text-left p-4 h-auto justify-start hover:bg-blue-50 whitespace-normal text-wrap break-words"
               onClick={() => setShowResult("not-required")}
             >
               No, I do not intend to process personal data as a Data Controller
