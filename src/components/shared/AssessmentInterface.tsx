@@ -101,6 +101,46 @@ interface SouthAfricaModule {
   link: string;
 }
 
+interface GhanaModule {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  link: string;
+}
+
+const ghanaModules: GhanaModule[] = [
+  {
+    title: "Applicability Assessment",
+    description: "Determine if the Data Protection Act, 2012 (Act 843) applies to your organisation",
+    icon: Shield,
+    link: "/ghana-applicability",
+  },
+  {
+    title: "Registration with the Data Protection Commission",
+    description: "Assess whether you need to register with the DPC before processing personal data",
+    icon: FileText,
+    link: "/ghana-registration",
+  },
+  {
+    title: "Data Subject Rights",
+    description: "Evaluate your organisation's readiness to handle data subject rights requests",
+    icon: UserCheck,
+    link: "/ghana-data-subject-rights",
+  },
+  {
+    title: "Data Breach Notification",
+    description: "Understand your obligations for reporting data breaches under the Act",
+    icon: AlertTriangle,
+    link: "/ghana-data-breach",
+  },
+  {
+    title: "Data Protection Officer (DPO)",
+    description: "Assess whether your organisation should appoint a DPO",
+    icon: UserCog,
+    link: "/ghana-dpo",
+  },
+];
+
 const southAfricaModules: SouthAfricaModule[] = [
   {
     title: "Applicability Assessment",
@@ -294,6 +334,40 @@ export const AssessmentInterface = ({
     return (
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-center">Other South Africa (POPIA) Assessments</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {otherAssessments.map((module) => (
+            <Link to={module.link} key={module.title} className="block">
+              <Card className="cursor-pointer hover:shadow-md transition-shadow h-full hover:translate-y-[-2px] p-4">
+                <div className="flex items-start space-x-3">
+                  <module.icon className="h-5 w-5 text-ndpa-green shrink-0 mt-1" />
+                  <div className="space-y-1">
+                    <h4 className="font-medium text-sm leading-tight">{module.title}</h4>
+                    <p className="text-xs text-muted-foreground line-clamp-2">
+                      {module.description}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const isGhanaAssessment = () => {
+    return window.location.pathname.includes("ghana");
+  };
+
+  const renderGhanaAssessmentLinks = () => {
+    if (!isGhanaAssessment()) return null;
+
+    const currentLink = getCurrentAssessmentLink();
+    const otherAssessments = ghanaModules.filter(module => module.link !== currentLink);
+
+    return (
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-center">Other Ghana (Act 843) Assessments</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {otherAssessments.map((module) => (
             <Link to={module.link} key={module.title} className="block">
@@ -511,6 +585,9 @@ export const AssessmentInterface = ({
 
         {/* South African Assessment Links */}
         {renderSouthAfricanAssessmentLinks()}
+
+        {/* Ghana Assessment Links */}
+        {renderGhanaAssessmentLinks()}
 
         <div className="space-y-4 pt-2">
           <Button 

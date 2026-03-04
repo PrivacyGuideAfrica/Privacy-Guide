@@ -42,7 +42,6 @@ const countries: CountryItem[] = [
     flagEmoji: "🇺🇬",
     modules: ["Registration", "Lawful Basis", "DPIA", "Data Subject Rights", "Breach Notification", "Sensitive Data", "DPO"],
     isLive: true,
-    isNew: true,
   },
   {
     id: "south-africa",
@@ -51,7 +50,6 @@ const countries: CountryItem[] = [
     flagEmoji: "🇿🇦",
     modules: ["Applicability", "Prior Authorisation", "Responsible Party/Operator", "Data Breach", "Data Subject Rights", "Special Information", "Children Data", "Information Officer", "Direct Marketing"],
     isLive: true,
-    isNew: true,
   },
   {
     id: "kenya",
