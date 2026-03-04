@@ -1,35 +1,33 @@
 
 
-## Plan: Fix Ghana Module Issues
+## Plan: Scroll-to-Top + Tooltip Fix
 
-Four issues to address:
+### 1. Create a `ScrollToTop` component (`src/components/shared/ScrollToTop.tsx`)
+- A small component that calls `window.scrollTo(0, 0)` on every route change using `useLocation` from react-router-dom and `useEffect`
+- This is the standard pattern for React Router SPA scroll restoration
 
-### 1. Add Ghana card to homepage (`src/pages/Index.tsx`)
-- Add a Ghana card to the homepage grid (lines 105-183), positioned first to give it visibility
-- Include the "NEW!" badge on the Ghana card
-- Remove "NEW!" badges from South Africa and Uganda cards on the homepage
+### 2. Add `ScrollToTop` to `src/App.tsx`
+- Place `<ScrollToTop />` inside the `<BrowserRouter>` block, before `<Routes>`
+- This ensures every page navigation scrolls to top
 
-### 2. Remove "NEW!" from other countries on the countries page (`src/components/CountrySelector.tsx`)
-- Set `isNew: false` for Uganda (line 45) and South Africa (line 54)
-- Keep `isNew: true` only for Ghana (line 71)
+### 3. Fix tooltips in `AssessmentInterface` (`src/components/shared/AssessmentInterface.tsx`)
+- The tooltips use `TooltipProvider` wrapping individual tooltips, but there's already a global `TooltipProvider` in `App.tsx`
+- The issue is likely that on mobile/touch devices, Radix tooltips don't trigger on tap by default
+- Fix: Add `delayDuration={0}` to the inner `TooltipProvider` instances and ensure the `TooltipTrigger` has `type="button"` and proper touch handling
+- Alternatively, consider converting tooltips to use `Popover` (click-based) instead of `Tooltip` (hover-based) for better mobile support, since tooltips are hover-only and don't work on touch devices
 
-### 3. Fix mobile text overflow on Registration module (`src/pages/GhanaRegistration.tsx`)
-- The button text "Yes, I intend to process personal data as a Data Controller" and "No, I do not intend to process personal data as a Data Controller" overflows on mobile
-- Add `whitespace-normal text-wrap break-words` classes to the Button elements (lines 153-166) so text wraps properly on small screens
+### Technical detail
+- Radix UI `Tooltip` is hover-only by design and does not support tap/click on mobile
+- The proper fix for mobile is to either:
+  - (a) Use `Popover` instead of `Tooltip` for the help icons, or
+  - (b) Wrap `TooltipTrigger` in a clickable element with `onClick` that shows a toast/alert with the tooltip content
+- Option (a) is cleanest — replace `Tooltip`/`TooltipTrigger`/`TooltipContent` with `Popover`/`PopoverTrigger`/`PopoverContent` for the `HelpCircle` icons in `AssessmentInterface` and `GhanaRegistration`
 
-### 4. Fix button alignment on Registration result page (`src/pages/GhanaRegistration.tsx`)
-- The "Start New Assessment" and "Back to Ghana Modules" buttons (lines 101-108) use inline layout with `mr-4` which breaks on mobile
-- Change the container div to use `flex flex-col sm:flex-row gap-4 items-center justify-center` instead of `text-center` with `mr-4`
-
-### 5. Add Ghana module cross-links in AssessmentInterface (`src/components/shared/AssessmentInterface.tsx`)
-- South Africa already has cross-module links via `renderSouthAfricanAssessmentLinks()`
-- Add equivalent `ghanaModules` array and `renderGhanaAssessmentLinks()` function
-- Detect Ghana assessments via `window.location.pathname.includes("ghana")`
-- Render these links in the completion message alongside the existing South Africa ones
+### Files to create
+- `src/components/shared/ScrollToTop.tsx`
 
 ### Files to modify
-- `src/pages/Index.tsx` -- add Ghana card, remove NEW from SA/Uganda
-- `src/components/CountrySelector.tsx` -- only Ghana gets NEW badge
-- `src/pages/GhanaRegistration.tsx` -- fix text overflow and button alignment
-- `src/components/shared/AssessmentInterface.tsx` -- add Ghana cross-module links
+- `src/App.tsx` — add ScrollToTop component
+- `src/components/shared/AssessmentInterface.tsx` — change tooltip help icons to Popover for mobile support
+- `src/pages/GhanaRegistration.tsx` — change tooltip to Popover for mobile support
 
