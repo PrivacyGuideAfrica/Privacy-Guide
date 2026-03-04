@@ -2,7 +2,7 @@ import { useState, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2, Shield, Users, Database, UserCheck, Send, UserCog, Globe, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate, Link } from "react-router-dom";
@@ -655,18 +655,16 @@ export const AssessmentInterface = ({
                 <p className="text-lg whitespace-pre-line">{currentQuestionData.text}</p>
               )}
               {!renderQuestion && currentQuestionData.tooltip && (
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
-                        <HelpCircle className="h-4 w-4" />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p className="max-w-xs">{currentQuestionData.tooltip}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
+                      <HelpCircle className="h-4 w-4" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="max-w-xs text-sm">
+                    <p>{currentQuestionData.tooltip}</p>
+                  </PopoverContent>
+                </Popover>
               )}
             </div>
             <div className="space-y-4">
