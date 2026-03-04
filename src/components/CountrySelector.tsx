@@ -64,10 +64,11 @@ const countries: CountryItem[] = [
   {
     id: "ghana",
     name: "Ghana",
-    description: "Coming Soon",
+    description: "Data Protection Act, 2012 (Act 843)",
     flagEmoji: "🇬🇭",
-    modules: [],
-    isLive: false,
+    modules: ["Applicability", "Registration", "Data Subject Rights", "Data Breach", "DPO"],
+    isLive: true,
+    isNew: true,
   },
   {
     id: "tanzania",
