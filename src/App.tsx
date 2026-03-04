@@ -40,6 +40,11 @@ import SouthAfricaSpecialInformation from "./pages/SouthAfricaSpecialInformation
 import SouthAfricaChildrenInformation from "./pages/SouthAfricaChildrenInformation";
 import SouthAfricaInformationOfficer from "./pages/SouthAfricaInformationOfficer";
 import SouthAfricaDirectMarketing from "./pages/SouthAfricaDirectMarketing";
+import GhanaApplicability from "./pages/GhanaApplicability";
+import GhanaRegistration from "./pages/GhanaRegistration";
+import GhanaDataSubjectRights from "./pages/GhanaDataSubjectRights";
+import GhanaDataBreach from "./pages/GhanaDataBreach";
+import GhanaDPO from "./pages/GhanaDPO";
 
 const queryClient = new QueryClient();
 
@@ -89,6 +94,13 @@ const App = () => {
           <Route path="/south-africa-children-information" element={<SouthAfricaChildrenInformation />} />
           <Route path="/south-africa-information-officer" element={<SouthAfricaInformationOfficer />} />
           <Route path="/south-africa-direct-marketing" element={<SouthAfricaDirectMarketing />} />
+          
+          {/* Ghana Routes */}
+          <Route path="/ghana-applicability" element={<GhanaApplicability />} />
+          <Route path="/ghana-registration" element={<GhanaRegistration />} />
+          <Route path="/ghana-data-subject-rights" element={<GhanaDataSubjectRights />} />
+          <Route path="/ghana-data-breach" element={<GhanaDataBreach />} />
+          <Route path="/ghana-dpo" element={<GhanaDPO />} />
           
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyNotice />} />

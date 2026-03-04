@@ -48,6 +48,14 @@ const countryData: Record<string, CountryInfo> = {
     lawName: "Protection of Personal Information Act (POPIA)",
     lawYear: "2013",
   },
+  ghana: {
+    id: "ghana",
+    name: "Ghana",
+    description: "West Africa's pioneer in data protection legislation with a well-established regulatory framework.",
+    flagEmoji: "🇬🇭",
+    lawName: "Data Protection Act, 2012 (Act 843)",
+    lawYear: "2012",
+  },
 };
 
 const CountryPage = () => {

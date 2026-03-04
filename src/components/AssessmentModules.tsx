@@ -153,6 +153,39 @@ const ugandaModules: Module[] = [
   },
 ];
 
+const ghanaModules: Module[] = [
+  {
+    title: "Application of the Law",
+    description: "Determine if Ghana's Data Protection Act, 2012 (Act 843) applies to your organisation",
+    icon: Shield,
+    link: "/ghana-applicability",
+  },
+  {
+    title: "Registration with the Data Protection Commission",
+    description: "Understand registration requirements with Ghana's Data Protection Commission",
+    icon: Globe,
+    link: "/ghana-registration",
+  },
+  {
+    title: "Understanding Data Subject Rights",
+    description: "Assess how well your organisation upholds individuals' data rights under Ghanaian law",
+    icon: UserCheck,
+    link: "/ghana-data-subject-rights",
+  },
+  {
+    title: "Data Breach Notification",
+    description: "Determine whether an incident constitutes a data breach and the steps to take",
+    icon: AlertTriangle,
+    link: "/ghana-data-breach",
+  },
+  {
+    title: "Appointment of Data Protection Supervisor (DPO)",
+    description: "Assess if your organisation needs to appoint a Data Protection Supervisor",
+    icon: UserCog,
+    link: "/ghana-dpo",
+  },
+];
+
 const southAfricaModules: Module[] = [
   {
     title: "Applicability Assessment",
@@ -214,11 +247,13 @@ export const AssessmentModules = ({ country }: AssessmentModulesProps) => {
   const modules = country === "nigeria" ? nigeriaModules : 
                  country === "rwanda" ? rwandaModules : 
                  country === "uganda" ? ugandaModules :
-                 country === "south-africa" ? southAfricaModules : [];
+                 country === "south-africa" ? southAfricaModules :
+                 country === "ghana" ? ghanaModules : [];
   const countryName = country === "nigeria" ? "Nigeria" : 
                      country === "rwanda" ? "Rwanda" : 
                      country === "uganda" ? "Uganda" :
-                     country === "south-africa" ? "South Africa" : country;
+                     country === "south-africa" ? "South Africa" :
+                     country === "ghana" ? "Ghana" : country;
 
   return (
     <div>
