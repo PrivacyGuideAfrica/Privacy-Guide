@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { ArrowLeft, Building, FileText, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/shared/Layout";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const GhanaRegistration = () => {
   const [showResult, setShowResult] = useState<"required" | "not-required" | null>(null);
@@ -138,16 +138,14 @@ const GhanaRegistration = () => {
         <Card className="p-8">
           <div className="flex items-center gap-2 mb-6">
             <h2 className="text-xl font-semibold">Do you intend to process personal data as a Data Controller in Ghana?</h2>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger>
-                  <HelpCircle className="h-5 w-5 text-muted-foreground hover:text-foreground" />
-                </TooltipTrigger>
-                <TooltipContent className="max-w-sm">
-                  <p>A Data Controller is the person or organisation that decides why and how personal data is processed. This applies if you collect, use, store, or otherwise handle personal data.</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <Popover>
+              <PopoverTrigger>
+                <HelpCircle className="h-5 w-5 text-muted-foreground hover:text-foreground" />
+              </PopoverTrigger>
+              <PopoverContent className="max-w-sm text-sm">
+                <p>A Data Controller is the person or organisation that decides why and how personal data is processed. This applies if you collect, use, store, or otherwise handle personal data.</p>
+              </PopoverContent>
+            </Popover>
           </div>
           <div className="space-y-4">
             <Button
