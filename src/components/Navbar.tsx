@@ -18,7 +18,7 @@ export const Navbar = () => {
           </div>
           
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4">
             <Button variant="ghost" asChild>
               <Link to="/about">About</Link>
             </Button>
@@ -39,12 +39,14 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center lg:hidden">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
             >
               <Menu className="h-6 w-6" />
             </Button>
@@ -53,13 +55,13 @@ export const Navbar = () => {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4">
+          <div id="mobile-navigation" className="lg:hidden pb-4">
             <div className="flex flex-col space-y-2">
               <Button variant="ghost" asChild className="justify-start">
-                <Link to="/about">About</Link>
+                <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
               </Button>
               <Button variant="ghost" asChild className="justify-start">
-                <Link to="/countries">Explore Modules</Link>
+                <Link to="/countries" onClick={() => setIsMenuOpen(false)}>Explore Modules</Link>
               </Button>
               <Button 
                 variant="outline" 
@@ -70,7 +72,7 @@ export const Navbar = () => {
                 UlinziQuest
               </Button>
               <Button variant="default" className="bg-orange-500 hover:bg-orange-600 justify-start" asChild>
-                <Link to="/countries">Start Free Assessment</Link>
+                <Link to="/countries" onClick={() => setIsMenuOpen(false)}>Start Free Assessment</Link>
               </Button>
             </div>
           </div>

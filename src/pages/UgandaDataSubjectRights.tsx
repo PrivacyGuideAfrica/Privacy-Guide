@@ -12,7 +12,7 @@ import { Eye, Edit, Trash2, Ban, Download, Shield, Users, Clock, FileText, Alert
 type DataSubjectRight = {
   id: string;
   name: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   description: string;
   timeframe: number; // days
   color: string;

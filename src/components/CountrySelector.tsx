@@ -86,9 +86,9 @@ export const CountrySelector = ({ selectedCountry, onCountryChange }: CountrySel
     <div className="space-y-12">
       {/* Live Countries */}
       <div>
-        <h2 className="text-3xl font-bold text-center mb-8 relative">
+        <h2 className="flex items-center justify-center gap-2 text-3xl font-bold text-center mb-8">
           <span className="bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">Now Live!</span>
-          <span className="absolute -right-6 top-0 text-xl text-orange-500">✨</span>
+          <span aria-hidden="true" className="text-xl text-orange-500">✨</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {liveCountries.map((country) => (

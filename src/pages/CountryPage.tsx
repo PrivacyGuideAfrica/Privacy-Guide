@@ -1,7 +1,6 @@
 
 import { useParams } from "react-router-dom";
 import { AssessmentModules } from "@/components/AssessmentModules";
-import { useState, useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/shared/Layout";
@@ -60,21 +59,17 @@ const countryData: Record<string, CountryInfo> = {
 
 const CountryPage = () => {
   const { countryId } = useParams<{ countryId: string }>();
-  const [country, setCountry] = useState<CountryInfo | null>(null);
-
-  useEffect(() => {
-    if (countryId && countryData[countryId]) {
-      setCountry(countryData[countryId]);
-    }
-  }, [countryId]);
+  const country = countryId && Object.prototype.hasOwnProperty.call(countryData, countryId)
+    ? countryData[countryId]
+    : null;
 
   if (!country) {
     return (
       <Layout>
         <div className="max-w-7xl mx-auto px-4 py-12 text-center">
           <h1 className="text-2xl font-bold">Country not found</h1>
-          <Link to="/" className="text-ndpa-green hover:underline mt-4 inline-block">
-            Return to homepage
+          <Link to="/countries" className="text-ndpa-green hover:underline mt-4 inline-block">
+            Explore available countries
           </Link>
         </div>
       </Layout>

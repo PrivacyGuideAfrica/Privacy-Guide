@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/shared/ScrollToTop";
 import Index from "./pages/Index";
 import Countries from "./pages/Countries";
@@ -14,7 +14,8 @@ import RwandaRegistration from "./pages/RwandaRegistration";
 import ControllerProcessor from "./pages/ControllerProcessor";
 import DataBreachAssessment from "./pages/DataBreachAssessment";
 import DPIAAssessment from "./pages/DPIAAssessment";
-import AnnualAudit from "./pages/AnnualAudit";
+import AssessmentUnavailable from "./pages/AssessmentUnavailable";
+import NotFound from "./pages/NotFound";
 import LegalNotice from "./pages/LegalNotice";
 import PrivacyNotice from "./pages/PrivacyNotice";
 import About from "./pages/About";
@@ -50,9 +51,6 @@ import GhanaDPO from "./pages/GhanaDPO";
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Debug: Verify JavaScript is loading on deployed site
-  console.log("Privacy Assessment Tool - App component loaded successfully");
-  
   return (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -72,8 +70,10 @@ const App = () => {
           <Route path="/nigeria-lawful-basis" element={<NigeriaLawfulBasis />} />
           <Route path="/data-breach" element={<DataBreachAssessment />} />
           <Route path="/rwanda-data-breach" element={<RwandaDataBreachAssessment />} />
-          <Route path="/dpia-assessment" element={<DPIAAssessment />} />
-          <Route path="/annual-audit" element={<AnnualAudit />} />
+          <Route path="/dpia-assessment" element={<Navigate to="/rwanda-dpia" replace />} />
+          <Route path="/rwanda-dpia" element={<DPIAAssessment />} />
+          <Route path="/nigeria-dpia" element={<AssessmentUnavailable title="DPIA Assessment" />} />
+          <Route path="/annual-audit" element={<AssessmentUnavailable title="Annual Audit Requirements" />} />
           <Route path="/representative-assessment" element={<RepresentativeAssessment />} />
           <Route path="/dpo-assessment" element={<DPOAssessment />} />
           <Route path="/uganda-registration" element={<UgandaRegistration />} />
@@ -107,6 +107,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyNotice />} />
           <Route path="/legal-notice" element={<LegalNotice />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

@@ -43,9 +43,11 @@ const nigeriaModules: Module[] = [
   },
   {
     title: "DPIA Assessment",
-    description: "Determine whether your organization needs to conduct a Data Protection Impact Assessment",
+    description: "Guidance for Nigeria is being reviewed. This assessment is not yet available.",
     icon: FileCheck,
-    link: "/dpia-assessment",
+    link: "/nigeria-dpia",
+    isDisabled: true,
+    disabledMessage: "Under Review",
   },
   {
     title: "Annual Audit Requirements",
@@ -80,7 +82,7 @@ const rwandaModules: Module[] = [
     title: "Do You Need to Do a DPIA?",
     description: "Determine if your processing requires a Data Protection Impact Assessment",
     icon: FileCheck,
-    link: "/dpia-assessment",
+    link: "/rwanda-dpia",
   },
   {
     title: "Do You Need to Appoint a Local Representative?",
@@ -267,9 +269,9 @@ export const AssessmentModules = ({ country }: AssessmentModulesProps) => {
                 <div key={module.title}>
                   <Card className="h-full opacity-60 cursor-not-allowed">
                     <CardHeader>
-                      <CardTitle className="flex items-center space-x-2">
-                        <module.icon className="h-6 w-6 text-muted-foreground" />
-                        <span>{module.title}</span>
+                      <CardTitle className="flex flex-wrap items-center gap-2">
+                        <module.icon className="h-6 w-6 shrink-0 text-muted-foreground" />
+                        <span className="min-w-0 flex-1">{module.title}</span>
                         {module.disabledMessage && (
                           <Badge variant="secondary" className="ml-2 text-xs">
                             {module.disabledMessage}

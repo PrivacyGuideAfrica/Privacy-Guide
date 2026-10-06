@@ -4,13 +4,7 @@ import { Layout } from "@/components/shared/Layout";
 import { RwandaControllerProcessorDescription } from "@/components/controller-processor/RwandaControllerProcessorDescription";
 import { useState } from "react";
 
-// Used to track the user's path through the assessment
-interface AnswerPath {
-  [key: number]: string;
-}
-
 const RwandaControllerProcessor = () => {
-  const [answerPath, setAnswerPath] = useState<AnswerPath>({});
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
 
   // Simplified messages that will be shown in the initial result card
@@ -22,8 +16,7 @@ const RwandaControllerProcessor = () => {
 
   // Function to handle answer recording and determine assessment result
   const handleAnswer = (questionId: number, answer: string) => {
-    const newAnswers = { ...answerPath, [questionId]: answer };
-    setAnswerPath(newAnswers);
+    setFinalMessage(null);
 
     // Determine the result based on the answers to the questions
     if (questionId === 1 && answer === "yes") {
@@ -94,7 +87,6 @@ const RwandaControllerProcessor = () => {
 
   // Reset function for the assessment
   const resetAssessment = () => {
-    setAnswerPath({});
     setFinalMessage(null);
   };
 

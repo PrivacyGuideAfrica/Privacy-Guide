@@ -6,13 +6,7 @@ import { NigeriaLawfulBasisGuidance } from "@/components/lawful-basis/NigeriaLaw
 import { useState, lazy, Suspense } from "react";
 import { CheckCircle, FileCheck, Gavel, Heart, Users, Handshake } from "lucide-react";
 
-// Used to track the user's path through the assessment
-interface AnswerPath {
-  [key: number]: string;
-}
-
 const NigeriaLawfulBasis = () => {
-  const [answerPath, setAnswerPath] = useState<AnswerPath>({});
   const [finalMessage, setFinalMessage] = useState<string | null>(null);
   const [selectedBasis, setSelectedBasis] = useState<string>("");
 
@@ -29,113 +23,30 @@ const NigeriaLawfulBasis = () => {
 
   const legitimateMessage = "Your most appropriate lawful basis is likely to be Legitimate Interests. This basis applies when processing is necessary for your legitimate interests or those of a third party, provided these interests don't override the fundamental rights and freedoms of the data subject.";
 
-  // Function to handle answer recording and determine assessment result
+  // Branch navigation and answer history belong to AssessmentInterface.
   const handleAnswer = (questionId: number, answer: string) => {
-    const newAnswers = { ...answerPath, [questionId]: answer };
-    setAnswerPath(newAnswers);
-
-    // Decision tree logic
-    if (questionId === 1) {
-      if (answer === "yes") {
-        // If processing for legal obligation, go to legal obligation confirmation
-        setCurrentQuestionId(2);
-      } else {
-        // If not for legal obligation, check for contract necessity
-        setCurrentQuestionId(3);
-      }
-    } 
-    else if (questionId === 2) {
-      if (answer === "yes") {
-        // Confirmed legal obligation
-        setFinalMessage(legalMessage);
-        setSelectedBasis("Legal Obligation");
-      } else {
-        // Not truly a legal obligation, check for contract
-        setCurrentQuestionId(3);
-      }
-    }
-    else if (questionId === 3) {
-      if (answer === "yes") {
-        // If processing for a contract, go to contract confirmation
-        setCurrentQuestionId(4);
-      } else {
-        // If not for a contract, check for vital interests
-        setCurrentQuestionId(5);
-      }
-    }
-    else if (questionId === 4) {
-      if (answer === "yes") {
-        // Confirmed necessary for contract
-        setFinalMessage(contractMessage);
-        setSelectedBasis("Contractual Necessity");
-      } else {
-        // Not truly necessary for contract, check for vital interests
-        setCurrentQuestionId(5);
-      }
-    }
-    else if (questionId === 5) {
-      if (answer === "yes") {
-        // If processing for vital interests, go to vital interests confirmation
-        setCurrentQuestionId(6);
-      } else {
-        // If not for vital interests, check for public interest
-        setCurrentQuestionId(7);
-      }
-    }
-    else if (questionId === 6) {
-      if (answer === "yes") {
-        // Confirmed vital interests
-        setFinalMessage(vitalMessage);
-        setSelectedBasis("Vital Interests");
-      } else {
-        // Not truly for vital interests, check for public interest
-        setCurrentQuestionId(7);
-      }
-    }
-    else if (questionId === 7) {
-      if (answer === "yes") {
-        // If processing for public interest, go to public interest confirmation
-        setCurrentQuestionId(8);
-      } else {
-        // If not for public interest, check for legitimate interests
-        setCurrentQuestionId(9);
-      }
-    }
-    else if (questionId === 8) {
-      if (answer === "yes") {
-        // Confirmed public interest
-        setFinalMessage(publicMessage);
-        setSelectedBasis("Public Interest");
-      } else {
-        // Not truly for public interest, check for legitimate interests
-        setCurrentQuestionId(9);
-      }
-    }
-    else if (questionId === 9) {
-      if (answer === "yes") {
-        // If processing might be for legitimate interests, go to legitimate interests conditions
-        setCurrentQuestionId(10);
-      } else {
-        // If not even for legitimate interests, must be consent
-        setFinalMessage(consentMessage);
-        setSelectedBasis("Consent");
-      }
-    }
-    else if (questionId === 10) {
-      if (answer === "yes") {
-        // If legitimate interests would override rights, must be consent
-        setFinalMessage(consentMessage);
-        setSelectedBasis("Consent");
-      } else {
-        // Legitimate interests is appropriate
-        setFinalMessage(legitimateMessage);
-        setSelectedBasis("Legitimate Interests");
-      }
+    setFinalMessage(null);
+    setSelectedBasis("");
+    if (questionId === 2 && answer === "yes") {
+      setFinalMessage(legalMessage);
+      setSelectedBasis("Legal Obligation");
+    } else if (questionId === 4 && answer === "yes") {
+      setFinalMessage(contractMessage);
+      setSelectedBasis("Contractual Necessity");
+    } else if (questionId === 6 && answer === "yes") {
+      setFinalMessage(vitalMessage);
+      setSelectedBasis("Vital Interests");
+    } else if (questionId === 8 && answer === "yes") {
+      setFinalMessage(publicMessage);
+      setSelectedBasis("Public Interest");
+    } else if ((questionId === 9 && answer === "no") || (questionId === 10 && answer === "yes")) {
+      setFinalMessage(consentMessage);
+      setSelectedBasis("Consent");
+    } else if (questionId === 10 && answer === "no") {
+      setFinalMessage(legitimateMessage);
+      setSelectedBasis("Legitimate Interests");
     }
   };
-
-  // Track the current question ID separately from the answers
-  const [currentQuestionId, setCurrentQuestionId] = useState(1);
 
   const questions: Question[] = [
     {
@@ -290,15 +201,10 @@ const NigeriaLawfulBasis = () => {
     },
   ];
 
-  // Get the current question to display
-  const currentQuestion = questions.find(q => q.id === currentQuestionId);
-
   // Reset function for the assessment
   const resetAssessment = () => {
-    setAnswerPath({});
     setFinalMessage(null);
     setSelectedBasis("");
-    setCurrentQuestionId(1);
   };
 
   return (

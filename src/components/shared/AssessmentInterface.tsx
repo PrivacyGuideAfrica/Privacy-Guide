@@ -37,6 +37,7 @@ interface Props {
   title: string;
   questions: Question[];
   onComplete?: () => void;
+  /** Clear parent-owned completion state when restarting or reviewing a result. */
   onReset?: () => void;
   renderQuestion?: (question: Question) => React.ReactNode;
   customAnswerHandler?: (questionId: number, answer: string) => void;
@@ -209,7 +210,8 @@ export const AssessmentInterface = ({
   introContent
 }: Props) => {
   const navigate = useNavigate();
-  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [currentQuestion, setCurrentQuestion] = useState(questions[0]?.id ?? 1);
+  const [history, setHistory] = useState<number[]>([]);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [internalFinalMessage, setInternalFinalMessage] = useState<string | null>(null);
   const finalMessage = externalFinalMessage !== undefined ? externalFinalMessage : internalFinalMessage;
@@ -227,13 +229,6 @@ export const AssessmentInterface = ({
     const question = questions.find(q => q.id === currentQuestion);
     if (!question) return;
 
-    const newAnswers = { ...answers, [currentQuestion]: value };
-    setAnswers(newAnswers);
-
-    if (customAnswerHandler) {
-      customAnswerHandler(currentQuestion, value);
-    }
-
     let option;
     if (value === "yes") {
       option = question.options.yes;
@@ -244,34 +239,45 @@ export const AssessmentInterface = ({
     } else {
       return;
     }
-    
-    if (option.message && option.nextQuestion === null) {
+    // Keep only answers on the current branch when an earlier answer changes.
+    const retainedAnswers = Object.fromEntries(
+      history.map(id => [id, answers[id]])
+    );
+    setAnswers({ ...retainedAnswers, [currentQuestion]: value });
+    customAnswerHandler?.(currentQuestion, value);
+
+    if (option.nextQuestion === null) {
       if (externalFinalMessage === undefined) {
-        setInternalFinalMessage(option.message);
+        setInternalFinalMessage(option.message ?? null);
       }
       onComplete?.();
     } 
-    else if (option.nextQuestion !== null) {
+    else {
+      setHistory([...history, currentQuestion]);
       setCurrentQuestion(option.nextQuestion);
     }
   };
 
   const goToPreviousQuestion = () => {
-    if (currentQuestion > 1) {
-      setCurrentQuestion(currentQuestion - 1);
+    if (finalMessage) {
+      // Reopen the terminal question and clear any parent-owned result/guidance.
+      setInternalFinalMessage(null);
+      setAnswers(Object.fromEntries(history.map(id => [id, answers[id]])));
+      setOpenSteps([]);
+      onReset?.();
+      return;
     }
-  };
-
-  const goToNextQuestion = () => {
-    const nextQuestionId = currentQuestion + 1;
-    const nextQuestion = questions.find(q => q.id === nextQuestionId);
-    if (nextQuestion) {
-      setCurrentQuestion(nextQuestionId);
-    }
+    const previousQuestion = history[history.length - 1];
+    if (previousQuestion === undefined) return;
+    const previousHistory = history.slice(0, -1);
+    setCurrentQuestion(previousQuestion);
+    setHistory(previousHistory);
+    setAnswers(Object.fromEntries(previousHistory.map(id => [id, answers[id]])));
   };
 
   const resetAssessment = () => {
-    setCurrentQuestion(1);
+    setCurrentQuestion(questions[0]?.id ?? 1);
+    setHistory([]);
     setAnswers({});
     setInternalFinalMessage(null);
     setOpenSteps([]);
@@ -280,7 +286,6 @@ export const AssessmentInterface = ({
   };
 
   const currentQuestionData = questions.find(q => q.id === currentQuestion);
-  const progress = (currentQuestion / questions.length) * 100;
 
   const renderDPIAGuidance = () => (
     <div className="space-y-4">
@@ -624,16 +629,11 @@ export const AssessmentInterface = ({
           </Button>
         </CardTitle>
         {!finalMessage && (
-          <div className="space-y-2">
-            <div className="h-2 w-full bg-gray-200 rounded-full">
-              <div
-                className="h-2 bg-ndpa-green rounded-full transition-all duration-300"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
+          <div className="space-y-2" aria-live="polite" aria-atomic="true">
             <p className="text-sm text-gray-600">
-              Question {currentQuestion} of {questions.length}
+              Step {history.length + 1} · {history.length} answered
             </p>
+            <p className="text-sm text-gray-600">Your answers determine which questions come next.</p>
           </div>
         )}
       </CardHeader>
@@ -696,28 +696,16 @@ export const AssessmentInterface = ({
         ) : null}
       </CardContent>
 
-      {!finalMessage && (
-        <div className="p-6 pt-0">
-          <div className="flex justify-between w-full">
-            <Button
-              variant="outline"
-              onClick={goToPreviousQuestion}
-              disabled={currentQuestion === 1}
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Previous
-            </Button>
-            <Button
-              variant="outline"
-              onClick={goToNextQuestion}
-              disabled={!answers[currentQuestion] || currentQuestion === questions.length}
-            >
-              Next
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </div>
-        </div>
-      )}
+      <div className="p-6 pt-0">
+        <Button
+          variant="outline"
+          onClick={goToPreviousQuestion}
+          disabled={!finalMessage && history.length === 0}
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          {finalMessage ? "Review last answer" : "Previous"}
+        </Button>
+      </div>
     </Card>
   );
 };

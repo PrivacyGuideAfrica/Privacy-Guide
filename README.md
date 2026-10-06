@@ -1,5 +1,35 @@
 # Welcome to your Lovable project
 
+## Development checks
+
+Use npm and `package-lock.json` for reproducible installs. The current deployment
+uses Node 18; the cloud environment and CI use Node 18.20.8 / npm 10.8.2.
+
+```sh
+npm ci
+npm run dev
+npm run lint
+npm run typecheck
+npx playwright install chromium
+npm test
+```
+
+`npm test` builds the production site and runs Chromium regression tests against
+a local preview on port 4175. Tests cover country routing, unavailable modules,
+assessment branching, reviewing and changing results, resets, custom outcomes,
+and responsive layouts. External analytics and editing scripts are blocked in
+tests so the checks exercise the app independently of those services.
+
+On Linux, use `npx playwright install --with-deps chromium` if browser system
+dependencies are missing. To use an existing Chromium installation, set
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium` when running `npm test`.
+GitHub Actions runs lint, TypeScript, the production build, and browser tests on
+pull requests and pushes to main. Failed browser traces are saved as artifacts.
+
+Nigeria's DPIA and annual audit assessments are unavailable pending content review.
+Rwanda's DPIA is at `/rwanda-dpia`; the old `/dpia-assessment` URL redirects there.
+New or revised legal guidance should be reviewed before enabling these modules.
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/202e958d-8a10-4014-9aa7-15f8137dd546
