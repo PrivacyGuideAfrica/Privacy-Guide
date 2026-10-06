@@ -1,9 +1,8 @@
 import { FileText, AlertTriangle, Link as LinkIcon, AlertCircle, FileBadge, MailQuestion } from "lucide-react";
-import { Layout } from "@/components/shared/Layout";
 
 const LegalNotice = () => {
   return (
-    <Layout>
+    <>
       <div className="max-w-4xl mx-auto px-4 py-12 bg-gradient-to-b from-gray-50 to-white">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-ndpa-navy mb-3">Legal Notice</h1>
@@ -67,7 +66,10 @@ const LegalNotice = () => {
               <h2 className="text-2xl font-semibold text-gray-800">Intellectual Property</h2>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              If you intend to save, copy, modify, or use any part of the information on this website for your purposes, including but not limited to commercial purposes, prior written consent is required. You can send us an email at support@privacyguide.africa.
+              You may print, save as PDF, and retain your assessment results for your personal records or your organisation’s internal compliance records without requesting permission. Please retain the accompanying sources and disclaimers.
+            </p>
+            <p className="text-gray-700 leading-relaxed mt-4">
+              For other copying, modification, republication or commercial reuse of website content, prior written consent is required, except where permitted by applicable law. Contact us at <a href="mailto:support@privacyguide.africa" className="text-blue-700 underline hover:no-underline">support@privacyguide.africa</a>.
             </p>
           </section>
 
@@ -79,12 +81,12 @@ const LegalNotice = () => {
               <h2 className="text-2xl font-semibold text-gray-800">Contact Us</h2>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              For questions about this Legal Notice or the Website, please contact us at: <a href="mailto:support@privacyguide.africa" className="text-blue-600 hover:underline">support@privacyguide.africa</a>
+              For questions about this Legal Notice or the Website, please contact us at: <a href="mailto:support@privacyguide.africa" className="text-blue-700 underline hover:no-underline">support@privacyguide.africa</a>
             </p>
           </section>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
-import { Layout } from "@/components/shared/Layout";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Shield, AlertTriangle } from "lucide-react";
@@ -58,7 +57,7 @@ const SouthAfricaSpecialInformation = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
         <div className="container mx-auto px-4 py-8">
           <div className="mb-6">
@@ -131,7 +130,7 @@ const SouthAfricaSpecialInformation = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

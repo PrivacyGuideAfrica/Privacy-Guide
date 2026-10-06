@@ -1,4 +1,3 @@
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 
 const questions: Question[] = [
@@ -69,7 +68,7 @@ const questions: Question[] = [
 
 const GhanaDataSubjectRights = () => {
   return (
-    <Layout>
+    <>
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-6 text-center">
           Understanding Data Subject Rights - Ghana
@@ -92,7 +91,7 @@ const GhanaDataSubjectRights = () => {
           onReset={() => {}}
         />
       </div>
-    </Layout>
+    </>
   );
 };
 

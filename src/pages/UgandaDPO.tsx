@@ -1,4 +1,3 @@
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -35,7 +34,7 @@ const UgandaDPO = () => {
       }
     }
   }];
-  return <Layout>
+  return <>
       <div className="container py-8 space-y-6">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Uganda Data Protection Officer (DPO) Assessment</h1>
@@ -140,6 +139,6 @@ const UgandaDPO = () => {
             </div>
           </div>}
       </div>
-    </Layout>;
+    </>;
 };
 export default UgandaDPO;

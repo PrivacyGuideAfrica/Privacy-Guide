@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Linkedin, Users, Target, Heart, Zap, ShieldCheck, Globe, Twitter } from "lucide-react";
-import { Layout } from "@/components/shared/Layout";
 
 const About = () => {
   return (
-    <Layout>
+    <>
       <div className="max-w-4xl mx-auto px-4 py-12 bg-gradient-to-b from-gray-50 to-white">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-ndpa-navy mb-3">About Us</h1>
@@ -134,7 +133,7 @@ const About = () => {
           </section>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

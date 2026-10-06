@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import { Layout } from "@/components/shared/Layout";
 import { Button } from "@/components/ui/button";
 
 const NotFound = () => (
-  <Layout>
+  <>
     <div className="mx-auto max-w-2xl px-4 py-16 text-center space-y-6">
       <p className="text-sm font-medium text-muted-foreground">404</p>
       <h1 className="text-3xl font-bold">Page not found</h1>
@@ -12,7 +11,7 @@ const NotFound = () => (
       </p>
       <Button asChild><Link to="/countries">Explore available countries</Link></Button>
     </div>
-  </Layout>
+  </>
 );
 
 export default NotFound;

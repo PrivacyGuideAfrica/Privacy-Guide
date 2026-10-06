@@ -1,5 +1,4 @@
 import { AssessmentInterface, Question } from '@/components/shared/AssessmentInterface';
-import { Layout } from '@/components/shared/Layout';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
@@ -427,7 +426,7 @@ export default function SouthAfricaResponsibleParty() {
   const navigate = useNavigate();
 
   return (
-    <Layout>
+    <>
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-4xl mx-auto">
@@ -488,6 +487,6 @@ export default function SouthAfricaResponsibleParty() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }

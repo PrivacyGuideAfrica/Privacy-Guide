@@ -1,12 +1,11 @@
 
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { dpiaQuestions, dpiaActivities } from "@/data/dpiaQuestions";
 import { AlertCircle } from "lucide-react";
 
 const DPIAAssessment = () => {
   return (
-    <Layout>
+    <>
       <div className="max-w-4xl mx-auto p-6 space-y-6">
         <div className="text-center space-y-4">
           <h1 className="text-3xl font-bold text-foreground">
@@ -49,7 +48,7 @@ const DPIAAssessment = () => {
           }}
         />
       </div>
-    </Layout>
+    </>
   );
 };
 

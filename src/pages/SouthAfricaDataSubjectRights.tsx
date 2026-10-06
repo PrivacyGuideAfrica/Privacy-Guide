@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Layout } from "@/components/shared/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -400,7 +399,7 @@ const SouthAfricaDataSubjectRights = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
@@ -533,7 +532,7 @@ const SouthAfricaDataSubjectRights = () => {
           {currentStage === 'results' && renderResults()}
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

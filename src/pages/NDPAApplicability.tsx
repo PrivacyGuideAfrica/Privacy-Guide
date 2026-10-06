@@ -1,4 +1,3 @@
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -81,7 +80,7 @@ const questions: Question[] = [
 
 const NDPAApplicability = () => {
   return (
-    <Layout>
+    <>
       <div className="max-w-4xl mx-auto px-4 py-8">
         <AssessmentInterface
           title="NDPA Applicability Assessment"
@@ -100,7 +99,7 @@ const NDPAApplicability = () => {
           </Link>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

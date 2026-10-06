@@ -1,6 +1,5 @@
 import React from 'react';
 import { AssessmentInterface, Question } from '@/components/shared/AssessmentInterface';
-import { Layout } from '@/components/shared/Layout';
 import { ArrowLeft, Mail, MessageSquare, Shield } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -47,7 +46,7 @@ const SouthAfricaDirectMarketing = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-4xl mx-auto">
@@ -108,7 +107,7 @@ const SouthAfricaDirectMarketing = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6">
+    <footer className="print:hidden bg-gray-900 text-white pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="col-span-1 md:col-span-2">
@@ -29,8 +29,8 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
-          &copy; 2025 DataUlinzi. All rights reserved.
+        <div className="border-t border-gray-800 pt-6 text-center text-gray-300 text-sm">
+          &copy; {new Date().getFullYear()} DataUlinzi. All rights reserved.
         </div>
       </div>
     </footer>

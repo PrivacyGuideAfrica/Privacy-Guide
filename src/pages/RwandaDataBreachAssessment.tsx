@@ -1,5 +1,4 @@
 
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { RwandaDataBreachDescription } from "@/components/data-breach/RwandaDataBreachDescription";
 import { rwandaDataBreachQuestions } from "@/data/rwandaDataBreachQuestions";
@@ -12,7 +11,7 @@ const RwandaDataBreachAssessment = () => {
   const [isCompleted, setIsCompleted] = useState(false);
 
   return (
-    <Layout>
+    <>
       <div className="container py-8 space-y-6">
         <h1 className="text-3xl font-bold">Data Breach Notification Assessment</h1>
         <RwandaDataBreachDescription />
@@ -95,7 +94,7 @@ const RwandaDataBreachAssessment = () => {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 

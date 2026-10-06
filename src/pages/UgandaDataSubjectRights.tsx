@@ -1,4 +1,3 @@
-import { Layout } from "@/components/shared/Layout";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -465,7 +464,7 @@ const UgandaDataSubjectRights = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="container py-8 space-y-6">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Uganda Data Subject Rights Assessment</h1>
@@ -514,7 +513,7 @@ const UgandaDataSubjectRights = () => {
           </Button>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

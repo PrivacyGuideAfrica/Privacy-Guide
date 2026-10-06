@@ -2,8 +2,8 @@
 
 ## Development checks
 
-Use npm and `package-lock.json` for reproducible installs. The current deployment
-uses Node 18; the cloud environment and CI use Node 18.20.8 / npm 10.8.2.
+Use npm and `package-lock.json` for reproducible installs. Local development, CI, and deployment use Node 24.19.0, pinned in `.nvmrc`.
+Use `nvm use` when working outside the prepared cloud environment.
 
 ```sh
 npm ci
@@ -97,3 +97,28 @@ Simply open [Lovable](https://lovable.dev/projects/202e958d-8a10-4014-9aa7-15f81
 ## I want to use a custom domain - is that possible?
 
 We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+
+## Site structure and content review
+
+`src/data/catalog.ts` owns the country/module directory, availability, regulator
+resource links and legal-review metadata. The shared layout provides one main
+landmark, breadcrumbs, navigation and a footer across routes. Assessment pages
+load on demand; build-time scripts generate route-specific HTML metadata and a
+sitemap, and enforce an initial JavaScript budget. This generates metadata for
+link previews; it is not server rendering of the complete application content.
+
+Shared guided assessments include answer review and editing, print/save-as-PDF,
+next steps and reference/review information. Custom assessment pages retain their
+own result interactions and also have shared printing/reference controls. Review
+status is explicitly unknown until an approval is recorded; regulator links are
+not represented as verified module-level citations.
+
+See [content-review.md](docs/content-review.md) for the initial research queue and
+owner approval process, and [privacy-review.md](docs/privacy-review.md) for the
+privacy-notice approval and outstanding provider verification. New legal conclusions
+must be approved by the site owner before publishing.
+
+The browser suite includes axe checks for WCAG A/AA rules on the core journey,
+keyboard focus, reduced motion, enlarged text, printing, metadata and assessment
+regressions. These checks do not replace a complete accessibility audit or tests
+with assistive-technology users.

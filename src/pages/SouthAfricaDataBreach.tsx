@@ -1,4 +1,3 @@
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +38,7 @@ const SouthAfricaDataBreach = () => {
   const [isCompleted, setIsCompleted] = useState(false);
 
   return (
-    <Layout>
+    <>
       <div className="container py-8 space-y-6">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl font-bold mb-4">Data Breach Notification Assessment</h1>
@@ -100,7 +99,7 @@ const SouthAfricaDataBreach = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

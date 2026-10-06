@@ -1,5 +1,4 @@
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
-import { Layout } from "@/components/shared/Layout";
 
 const questions: Question[] = [
   {
@@ -94,7 +93,7 @@ const questions: Question[] = [
 
 const ControllerProcessor = () => {
   return (
-    <Layout>
+    <>
       <div className="container mx-auto py-8">
         <h1 className="text-2xl font-bold mb-6 text-center">
           Controller or Processor Assessment
@@ -108,7 +107,7 @@ const ControllerProcessor = () => {
           questions={questions}
         />
       </div>
-    </Layout>
+    </>
   );
 };
 

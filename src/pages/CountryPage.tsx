@@ -1,114 +1,32 @@
-
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { AssessmentModules } from "@/components/AssessmentModules";
-import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Layout } from "@/components/shared/Layout";
-
-interface CountryInfo {
-  id: string;
-  name: string;
-  description: string;
-  flagEmoji: string;
-  lawName: string;
-  lawYear: string;
-}
-
-const countryData: Record<string, CountryInfo> = {
-  nigeria: {
-    id: "nigeria",
-    name: "Nigeria",
-    description: "Africa's most populous country with a rapidly evolving digital landscape.",
-    flagEmoji: "🇳🇬",
-    lawName: "Nigeria Data Protection Act",
-    lawYear: "2023",
-  },
-  rwanda: {
-    id: "rwanda",
-    name: "Rwanda",
-    description: "A leader in technological advancement and digital transformation in East Africa.",
-    flagEmoji: "🇷🇼",
-    lawName: "Rwanda Data Protection Law",
-    lawYear: "2021",
-  },
-  uganda: {
-    id: "uganda",
-    name: "Uganda",
-    description: "East Africa's emerging digital economy with comprehensive data protection legislation.",
-    flagEmoji: "🇺🇬",
-    lawName: "Uganda Data Protection and Privacy Act",
-    lawYear: "2019",
-  },
-  "south-africa": {
-    id: "south-africa",
-    name: "South Africa",
-    description: "Africa's economic powerhouse with comprehensive data protection legislation.",
-    flagEmoji: "🇿🇦",
-    lawName: "Protection of Personal Information Act (POPIA)",
-    lawYear: "2013",
-  },
-  ghana: {
-    id: "ghana",
-    name: "Ghana",
-    description: "West Africa's pioneer in data protection legislation with a well-established regulatory framework.",
-    flagEmoji: "🇬🇭",
-    lawName: "Data Protection Act, 2012 (Act 843)",
-    lawYear: "2012",
-  },
-};
+import { Button } from "@/components/ui/button";
+import { findCountry } from "@/data/catalog";
 
 const CountryPage = () => {
   const { countryId } = useParams<{ countryId: string }>();
-  const country = countryId && Object.prototype.hasOwnProperty.call(countryData, countryId)
-    ? countryData[countryId]
-    : null;
-
-  if (!country) {
-    return (
-      <Layout>
-        <div className="max-w-7xl mx-auto px-4 py-12 text-center">
-          <h1 className="text-2xl font-bold">Country not found</h1>
-          <Link to="/countries" className="text-ndpa-green hover:underline mt-4 inline-block">
-            Explore available countries
-          </Link>
-        </div>
-      </Layout>
-    );
-  }
-
+  const country = findCountry(countryId || "");
+  if (!country || country.status !== "available") return (
+    <div className="mx-auto max-w-3xl px-4 py-12 text-center">
+      <h1 className="text-3xl font-bold">Country not found</h1>
+      <Link to="/countries" className="mt-6 inline-block text-blue-800 underline">Explore available countries</Link>
+    </div>
+  );
+  const firstModule = country.modules.find(module => module.link === country.startPath);
   return (
-    <Layout>
-      {/* Country Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link 
-            to="/countries" 
-            className="inline-flex items-center text-white/90 hover:text-white mb-6 transition-colors"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to countries
-          </Link>
-          <div className="flex items-center justify-center md:justify-start">
-            <span className="text-5xl mr-4">{country.flagEmoji}</span>
-            <div>
-              <h1 className="text-4xl font-bold sm:text-5xl">{country.name}</h1>
-              <p className="mt-2 text-xl text-white/90">{country.description}</p>
-            </div>
-          </div>
-          <div className="mt-8 inline-block bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-            <p className="text-white">
-              <span className="font-semibold">{country.lawName}</span> ({country.lawYear})
-            </p>
-          </div>
-        </div>
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <div className="mb-8">
+        <p aria-hidden="true" className="text-4xl mb-3">{country.flagEmoji}</p>
+        <h1 className="text-4xl font-bold">{country.name}</h1>
+        <p className="mt-3 text-lg text-slate-600">{country.lawName}{country.lawName?.includes(country.lawYear || "") ? "" : ` (${country.lawYear})`}</p>
       </div>
-
-      {/* Assessment Modules Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <AssessmentModules country={country.id} />
-      </div>
-    </Layout>
+      {firstModule && <section aria-labelledby="start-here" className="mb-10 rounded-xl border border-blue-200 bg-blue-50 p-6">
+        <h2 id="start-here" className="text-xl font-semibold">Not sure where to start?</h2>
+        <p className="mt-2 mb-5 text-slate-700">{firstModule.description}.</p>
+        <Button asChild><Link to={firstModule.link}>Start here: {firstModule.title}</Link></Button>
+      </section>}
+      <AssessmentModules country={country.id} />
+    </div>
   );
 };
-
 export default CountryPage;

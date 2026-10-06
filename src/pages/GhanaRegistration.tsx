@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, Building, FileText, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Layout } from "@/components/shared/Layout";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const GhanaRegistration = () => {
@@ -11,7 +10,7 @@ const GhanaRegistration = () => {
 
   if (showResult) {
     return (
-      <Layout>
+      <>
         <div className="max-w-4xl mx-auto px-4 py-12">
           <Link to="/country/ghana" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -108,12 +107,12 @@ const GhanaRegistration = () => {
             </div>
           </Card>
         </div>
-      </Layout>
+      </>
     );
   }
 
   return (
-    <Layout>
+    <>
       <div className="max-w-4xl mx-auto px-4 py-12">
         <Link to="/country/ghana" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8">
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -165,7 +164,7 @@ const GhanaRegistration = () => {
           </div>
         </Card>
       </div>
-    </Layout>
+    </>
   );
 };
 

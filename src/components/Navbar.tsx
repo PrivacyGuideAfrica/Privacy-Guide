@@ -1,83 +1,29 @@
-
+import { useRef, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Menu, Trophy } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 
 export const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center">
-              <span className="text-ndpa-navy font-bold text-lg sm:text-xl">PrivacyGuide.Africa</span>
-            </Link>
-          </div>
-          
-          {/* Desktop menu */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="ghost" asChild>
-              <Link to="/about">About</Link>
-            </Button>
-            <Button variant="ghost" asChild>
-              <Link to="/countries">Explore Modules</Link>
-            </Button>
-            <Button 
-              variant="outline" 
-              className="border-orange-500 text-orange-500 hover:bg-orange-50" 
-              onClick={() => window.open("https://quest.privacyguide.africa", "_blank")}
-            >
-              <Trophy className="mr-1 h-4 w-4" />
-              UlinziQuest
-            </Button>
-            <Button variant="default" className="bg-orange-500 hover:bg-orange-600" asChild>
-              <Link to="/countries">Start Free Assessment</Link>
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="flex items-center lg:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={isMenuOpen}
-              aria-controls="mobile-navigation"
-            >
-              <Menu className="h-6 w-6" />
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div id="mobile-navigation" className="lg:hidden pb-4">
-            <div className="flex flex-col space-y-2">
-              <Button variant="ghost" asChild className="justify-start">
-                <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
-              </Button>
-              <Button variant="ghost" asChild className="justify-start">
-                <Link to="/countries" onClick={() => setIsMenuOpen(false)}>Explore Modules</Link>
-              </Button>
-              <Button 
-                variant="outline" 
-                className="border-orange-500 text-orange-500 hover:bg-orange-50 justify-start" 
-                onClick={() => window.open("https://quest.privacyguide.africa", "_blank")}
-              >
-                <Trophy className="mr-1 h-4 w-4" />
-                UlinziQuest
-              </Button>
-              <Button variant="default" className="bg-orange-500 hover:bg-orange-600 justify-start" asChild>
-                <Link to="/countries" onClick={() => setIsMenuOpen(false)}>Start Free Assessment</Link>
-              </Button>
-            </div>
-          </div>
-        )}
+  const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const close = () => setOpen(false);
+  const links = <>
+    <NavLink to="/countries" onClick={close} className="rounded-md px-3 py-3 font-medium text-slate-700 hover:bg-slate-100">Explore Modules</NavLink>
+    <NavLink to="/about" onClick={close} className="rounded-md px-3 py-3 font-medium text-slate-700 hover:bg-slate-100">About</NavLink>
+    <Button asChild className="bg-blue-900 hover:bg-blue-800"><Link to="/countries" onClick={close}>Start Free Assessment</Link></Button>
+  </>;
+  return <header className="sticky top-0 z-40 border-b border-slate-200 bg-white print:hidden">
+    <nav aria-label="Main navigation" className="mx-auto max-w-6xl px-4 sm:px-6" onKeyDown={event => {
+      if (event.key === "Escape" && open) { close(); toggle.current?.focus(); }
+    }}>
+      <div className="flex h-16 items-center justify-between gap-4">
+        <Link to="/" onClick={close} className="text-lg font-bold tracking-tight text-blue-950 sm:text-xl">PrivacyGuide.Africa</Link>
+        <div className="hidden lg:flex items-center gap-3">{links}</div>
+        <Button ref={toggle} variant="ghost" size="icon" className="lg:hidden" aria-label="Toggle menu" aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>
+          {open ? <X aria-hidden="true" className="h-6 w-6" /> : <Menu aria-hidden="true" className="h-6 w-6" />}
+        </Button>
       </div>
+      <div id="mobile-navigation" hidden={!open} className="pb-4 lg:hidden"><div className="flex flex-col gap-2">{links}</div></div>
     </nav>
-  );
+  </header>;
 };

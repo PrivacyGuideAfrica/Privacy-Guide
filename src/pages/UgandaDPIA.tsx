@@ -1,5 +1,4 @@
 
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -52,7 +51,7 @@ const UgandaDPIA = () => {
   ];
 
   return (
-    <Layout>
+    <>
       <div className="container py-8 space-y-6">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Uganda DPIA Assessment</h1>
@@ -257,7 +256,7 @@ const UgandaDPIA = () => {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 

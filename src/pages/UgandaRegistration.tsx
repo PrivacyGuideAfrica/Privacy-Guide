@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, Building, FileText, Clock, HelpCircle, Download, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Layout } from "@/components/shared/Layout";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const UgandaRegistration = () => {
@@ -101,7 +100,7 @@ const UgandaRegistration = () => {
     const result = getRegistrationRequirement();
     
     return (
-      <Layout>
+      <>
         <div className="max-w-4xl mx-auto px-4 py-12">
           <Link to="/country/uganda" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -185,14 +184,14 @@ const UgandaRegistration = () => {
             </div>
           </Card>
         </div>
-      </Layout>
+      </>
     );
   }
 
   const currentQuestion = questions[currentStep - 1];
 
   return (
-    <Layout>
+    <>
       <div className="max-w-4xl mx-auto px-4 py-12">
         <Link to="/country/uganda" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8">
           <ArrowLeft className="mr-2 h-4 w-4" />
@@ -249,7 +248,7 @@ const UgandaRegistration = () => {
           </div>
         </Card>
       </div>
-    </Layout>
+    </>
   );
 };
 

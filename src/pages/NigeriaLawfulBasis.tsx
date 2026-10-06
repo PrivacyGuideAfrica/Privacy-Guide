@@ -1,6 +1,5 @@
 
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
-import { Layout } from "@/components/shared/Layout";
 import { NigeriaLawfulBasisDescription } from "@/components/lawful-basis/NigeriaLawfulBasisDescription";
 import { NigeriaLawfulBasisGuidance } from "@/components/lawful-basis/NigeriaLawfulBasisGuidance";
 import { useState, lazy, Suspense } from "react";
@@ -208,7 +207,7 @@ const NigeriaLawfulBasis = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="container mx-auto py-8">
         <h1 className="text-2xl font-bold mb-6 text-center">
           Lawful Basis Assessment - Nigeria
@@ -231,7 +230,7 @@ const NigeriaLawfulBasis = () => {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 

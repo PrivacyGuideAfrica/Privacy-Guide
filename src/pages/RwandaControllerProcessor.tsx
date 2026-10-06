@@ -1,6 +1,5 @@
 
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
-import { Layout } from "@/components/shared/Layout";
 import { RwandaControllerProcessorDescription } from "@/components/controller-processor/RwandaControllerProcessorDescription";
 import { useState } from "react";
 
@@ -91,7 +90,7 @@ const RwandaControllerProcessor = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="container mx-auto py-8">
         <h1 className="text-2xl font-bold mb-6 text-center">
           Controller or Processor Assessment - Rwanda
@@ -108,7 +107,7 @@ const RwandaControllerProcessor = () => {
           finalMessage={finalMessage}
         />
       </div>
-    </Layout>
+    </>
   );
 };
 

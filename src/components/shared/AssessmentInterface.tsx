@@ -1,11 +1,13 @@
-import { useState, lazy, Suspense } from "react";
+import { findAssessment } from "@/data/catalog";
+import { ResultDetails } from "./ResultDetails";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2, Shield, Users, Database, UserCheck, Send, UserCog, Globe, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import DOMPurify from "dompurify";
 
@@ -95,110 +97,6 @@ const dpiaSteps: DPIAStep[] = [
   }
 ];
 
-interface SouthAfricaModule {
-  title: string;
-  description: string;
-  icon: React.ElementType;
-  link: string;
-}
-
-interface GhanaModule {
-  title: string;
-  description: string;
-  icon: React.ElementType;
-  link: string;
-}
-
-const ghanaModules: GhanaModule[] = [
-  {
-    title: "Applicability Assessment",
-    description: "Determine if the Data Protection Act, 2012 (Act 843) applies to your organisation",
-    icon: Shield,
-    link: "/ghana-applicability",
-  },
-  {
-    title: "Registration with the Data Protection Commission",
-    description: "Assess whether you need to register with the DPC before processing personal data",
-    icon: FileText,
-    link: "/ghana-registration",
-  },
-  {
-    title: "Data Subject Rights",
-    description: "Evaluate your organisation's readiness to handle data subject rights requests",
-    icon: UserCheck,
-    link: "/ghana-data-subject-rights",
-  },
-  {
-    title: "Data Breach Notification",
-    description: "Understand your obligations for reporting data breaches under the Act",
-    icon: AlertTriangle,
-    link: "/ghana-data-breach",
-  },
-  {
-    title: "Data Protection Officer (DPO)",
-    description: "Assess whether your organisation should appoint a DPO",
-    icon: UserCog,
-    link: "/ghana-dpo",
-  },
-];
-
-const southAfricaModules: SouthAfricaModule[] = [
-  {
-    title: "Applicability Assessment",
-    description: "Determine if the Protection of Personal Information Act (POPIA) applies to your organization",
-    icon: Shield,
-    link: "/south-africa-applicability",
-  },
-  {
-    title: "Prior Authorisation from the Information Regulator",
-    description: "Assess whether your processing activities require prior authorisation from IRSA",
-    icon: FileText,
-    link: "/south-africa-prior-authorisation",
-  },
-  {
-    title: "Are you a Responsible Party or Operator?",
-    description: "Determine whether your organization acts as a Responsible Party (Controller) or Operator (Processor)",
-    icon: Users,
-    link: "/south-africa-responsible-party",
-  },
-  {
-    title: "Data Breach Notification",
-    description: "Understand your obligations for reporting security compromises under POPIA",
-    icon: AlertTriangle,
-    link: "/south-africa-data-breach",
-  },
-  {
-    title: "Handling Data Subject Rights Requests in South Africa",
-    description: "Learn how to respond to data subject access, correction, and deletion requests",
-    icon: UserCheck,
-    link: "/south-africa-data-subject-rights",
-  },
-  {
-    title: "Processing Special Personal Information in South Africa",
-    description: "Assess requirements for processing sensitive personal information under POPIA",
-    icon: Database,
-    link: "/south-africa-special-information",
-  },
-  {
-    title: "Processing Personal Information of Children",
-    description: "Understand the special requirements for processing children's personal information",
-    icon: Users,
-    link: "/south-africa-children-information",
-  },
-  {
-    title: "Appointment of Information Officer and Responsibilities",
-    description: "Determine if you need to appoint an Information Officer and understand their duties",
-    icon: UserCog,
-    link: "/south-africa-information-officer",
-  },
-  {
-    title: "Direct Marketing",
-    description: "Assess your compliance obligations for direct marketing activities under POPIA",
-    icon: Send,
-    link: "/south-africa-direct-marketing",
-  },
-];
-
 export const AssessmentInterface = ({ 
   title, 
   questions, 
@@ -210,12 +108,34 @@ export const AssessmentInterface = ({
   introContent
 }: Props) => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const assessment = findAssessment(pathname);
+  const questionHeading = useRef<HTMLHeadingElement>(null);
+  const resultHeading = useRef<HTMLHeadingElement>(null);
+  const mounted = useRef(false);
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]?.id ?? 1);
   const [history, setHistory] = useState<number[]>([]);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [internalFinalMessage, setInternalFinalMessage] = useState<string | null>(null);
   const finalMessage = externalFinalMessage !== undefined ? externalFinalMessage : internalFinalMessage;
   const [openSteps, setOpenSteps] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (!mounted.current) { mounted.current = true; return; }
+    (finalMessage ? resultHeading : questionHeading).current?.focus();
+  }, [currentQuestion, finalMessage]);
+
+  const editAnswer = (index: number) => {
+    const path = [...history, currentQuestion];
+    const retainedPath = path.slice(0, index);
+    setCurrentQuestion(path[index]);
+    setHistory(retainedPath);
+    setAnswers(Object.fromEntries(retainedPath.map(id => [id, answers[id]])));
+    setInternalFinalMessage(null);
+    setOpenSteps([]);
+    onReset?.();
+  };
+
 
   const toggleStep = (stepIndex: number) => {
     setOpenSteps(prev => 
@@ -318,82 +238,6 @@ export const AssessmentInterface = ({
     </div>
   );
 
-  // Detect if this is a South African assessment
-  const isSouthAfricanAssessment = () => {
-    return window.location.pathname.includes("south-africa");
-  };
-
-  // Get current assessment link to exclude from recommendations
-  const getCurrentAssessmentLink = () => {
-    const path = window.location.pathname;
-    return path;
-  };
-
-  // Render South African assessment links
-  const renderSouthAfricanAssessmentLinks = () => {
-    if (!isSouthAfricanAssessment()) return null;
-
-    const currentLink = getCurrentAssessmentLink();
-    const otherAssessments = southAfricaModules.filter(module => module.link !== currentLink);
-
-    return (
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-center">Other South Africa (POPIA) Assessments</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {otherAssessments.map((module) => (
-            <Link to={module.link} key={module.title} className="block">
-              <Card className="cursor-pointer hover:shadow-md transition-shadow h-full hover:translate-y-[-2px] p-4">
-                <div className="flex items-start space-x-3">
-                  <module.icon className="h-5 w-5 text-ndpa-green shrink-0 mt-1" />
-                  <div className="space-y-1">
-                    <h4 className="font-medium text-sm leading-tight">{module.title}</h4>
-                    <p className="text-xs text-muted-foreground line-clamp-2">
-                      {module.description}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const isGhanaAssessment = () => {
-    return window.location.pathname.includes("ghana");
-  };
-
-  const renderGhanaAssessmentLinks = () => {
-    if (!isGhanaAssessment()) return null;
-
-    const currentLink = getCurrentAssessmentLink();
-    const otherAssessments = ghanaModules.filter(module => module.link !== currentLink);
-
-    return (
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-center">Other Ghana (Act 843) Assessments</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {otherAssessments.map((module) => (
-            <Link to={module.link} key={module.title} className="block">
-              <Card className="cursor-pointer hover:shadow-md transition-shadow h-full hover:translate-y-[-2px] p-4">
-                <div className="flex items-start space-x-3">
-                  <module.icon className="h-5 w-5 text-ndpa-green shrink-0 mt-1" />
-                  <div className="space-y-1">
-                    <h4 className="font-medium text-sm leading-tight">{module.title}</h4>
-                    <p className="text-xs text-muted-foreground line-clamp-2">
-                      {module.description}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
   const renderCompletionMessage = () => {
     const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
     const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
@@ -448,7 +292,8 @@ export const AssessmentInterface = ({
     };
     
     return (
-      <div className="space-y-6">
+      <div className="assessment-result space-y-6">
+        {assessment && <p className="text-sm font-medium text-slate-700">{assessment.country.name} · {assessment.module.title}</p>}
         <div className="flex flex-col items-center justify-center p-6 text-center">
           {(() => {
             // Direct Marketing specific icons
@@ -484,7 +329,7 @@ export const AssessmentInterface = ({
               );
             }
           })()}
-          <h2 className="text-2xl font-bold mb-2">
+          <h2 ref={resultHeading} tabIndex={-1} className="text-2xl font-bold mb-2">
             {isDirectMarketing && getDirectMarketingContent()
               ? getDirectMarketingContent()?.title
               : isDpiaRequired 
@@ -514,13 +359,7 @@ export const AssessmentInterface = ({
           <div className="flex items-start gap-3">
             <FileText className="h-5 w-5 text-foreground shrink-0 mt-1" />
             <div className="space-y-2">
-              <h3 className="font-medium">
-                {isDirectMarketing && getDirectMarketingContent() 
-                  ? getDirectMarketingContent()?.title
-                  : isDpoRequired 
-                    ? "DPO Requirements" 
-                    : "Recommendation"}
-              </h3>
+              <h3 className="text-xl font-semibold">Outcome</h3>
               {(() => {
                 // Handle Direct Marketing specific content
                 if (isDirectMarketing && getDirectMarketingContent()) {
@@ -588,13 +427,9 @@ export const AssessmentInterface = ({
           </div>
         )}
 
-        {/* South African Assessment Links */}
-        {renderSouthAfricanAssessmentLinks()}
+        <ResultDetails questions={questions} answers={answers} path={[...history, currentQuestion]} onEdit={editAnswer} />
 
-        {/* Ghana Assessment Links */}
-        {renderGhanaAssessmentLinks()}
-
-        <div className="space-y-4 pt-2">
+        <div className="space-y-4 pt-2 print:hidden">
           <Button 
             className="w-full bg-ndpa-green text-white hover:bg-ndpa-green/90" 
             onClick={resetAssessment}
@@ -615,10 +450,12 @@ export const AssessmentInterface = ({
   };
 
   return (
-    <Card className="w-full max-w-3xl mx-auto">
+    <Card className="assessment-card w-full max-w-3xl mx-auto">
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
+        <div className="flex items-start justify-between gap-3">
+          <h2 className="text-xl font-semibold">
           {finalMessage ? "Assessment Complete" : title}
+          </h2>
           <Button
             variant="outline"
             size="icon"
@@ -627,7 +464,7 @@ export const AssessmentInterface = ({
           >
             <RotateCcw className="h-4 w-4" />
           </Button>
-        </CardTitle>
+        </div>
         {!finalMessage && (
           <div className="space-y-2" aria-live="polite" aria-atomic="true">
             <p className="text-sm text-gray-600">
@@ -650,6 +487,7 @@ export const AssessmentInterface = ({
           renderCompletionMessage()
         ) : currentQuestionData ? (
           <div className="space-y-6">
+            <h3 ref={questionHeading} tabIndex={-1} className="text-lg font-semibold">Step {history.length + 1}</h3>
             <div className="flex items-start gap-2">
               {renderQuestion && renderQuestion(currentQuestionData) || (
                 <p className="text-lg whitespace-pre-line">{currentQuestionData.text}</p>
@@ -657,7 +495,7 @@ export const AssessmentInterface = ({
               {!renderQuestion && currentQuestionData.tooltip && (
                 <Popover>
                   <PopoverTrigger asChild>
-                    <Button variant="ghost" size="icon" className="h-6 w-6 p-0">
+                    <Button variant="ghost" size="icon" aria-label="Explain this question" className="shrink-0">
                       <HelpCircle className="h-4 w-4" />
                     </Button>
                   </PopoverTrigger>
@@ -696,7 +534,7 @@ export const AssessmentInterface = ({
         ) : null}
       </CardContent>
 
-      <div className="p-6 pt-0">
+      <div className="p-6 pt-0 print:hidden">
         <Button
           variant="outline"
           onClick={goToPreviousQuestion}

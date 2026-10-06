@@ -1,5 +1,4 @@
 
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -41,7 +40,7 @@ const UgandaDataBreach = () => {
   ];
 
   return (
-    <Layout>
+    <>
       <div className="container py-8 space-y-6">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Data Breach Notification</h1>
@@ -123,7 +122,7 @@ const UgandaDataBreach = () => {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 

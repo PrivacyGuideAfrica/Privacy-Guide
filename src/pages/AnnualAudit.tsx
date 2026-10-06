@@ -1,5 +1,4 @@
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
-import { Navbar } from "@/components/Navbar";
 
 export type Classification = "MDP-UHL" | "MDP-EHL" | "MDP-OHL" | null;
 
@@ -52,7 +51,7 @@ const questions: Question[] = [
 const AnnualAudit = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+
       <div className="max-w-4xl mx-auto px-4 py-8">
         <AssessmentInterface
           title="Annual Audit Requirements Assessment"

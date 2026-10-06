@@ -1,5 +1,4 @@
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
-import { Layout } from "@/components/shared/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -36,7 +35,7 @@ const SouthAfricaInformationOfficer = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="mb-6">
@@ -99,7 +98,7 @@ const SouthAfricaInformationOfficer = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

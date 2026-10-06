@@ -1,4 +1,3 @@
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Baby, Shield, AlertTriangle } from "lucide-react";
@@ -63,7 +62,7 @@ export default function SouthAfricaChildrenInformation() {
   };
 
   return (
-    <Layout>
+    <>
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
         <div className="container mx-auto px-4 py-8 max-w-4xl">
           <Button
@@ -143,6 +142,6 @@ export default function SouthAfricaChildrenInformation() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }

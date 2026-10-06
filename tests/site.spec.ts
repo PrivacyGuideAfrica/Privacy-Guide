@@ -192,7 +192,7 @@ for (const country of ["nigeria", "rwanda", "uganda", "south-africa", "ghana"]) 
     const errors: string[] = [];
     page.on("pageerror", error => errors.push(error.message));
     await page.goto(`/country/${country}`);
-    const links = await page.locator("main a[href]").evaluateAll(elements =>
+    const links = await page.locator('section[aria-labelledby="assessment-modules"] a[href]').evaluateAll(elements =>
       elements.map(element => element.getAttribute("href")!).filter(href => href !== "/countries")
     );
     expect(links.length).toBeGreaterThan(0);

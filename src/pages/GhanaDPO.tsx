@@ -1,4 +1,3 @@
-import { Layout } from "@/components/shared/Layout";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -39,7 +38,7 @@ const GhanaDPO = () => {
   ];
 
   return (
-    <Layout>
+    <>
       <div className="container py-8 space-y-6">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Data Protection Supervisor (DPO) Assessment - Ghana</h1>
@@ -143,7 +142,7 @@ const GhanaDPO = () => {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 
