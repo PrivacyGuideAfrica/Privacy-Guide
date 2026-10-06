@@ -15,7 +15,7 @@ npm test
 ```
 
 `npm test` builds the production site and runs Chromium regression tests against
-a local preview on port 4175. Tests cover country routing, unavailable modules,
+a local preview on port 4175. Tests cover country routing, approved country-specific guidance,
 assessment branching, reviewing and changing results, resets, custom outcomes,
 and responsive layouts. External analytics and editing scripts are blocked in
 tests so the checks exercise the app independently of those services.
@@ -26,7 +26,9 @@ dependencies are missing. To use an existing Chromium installation, set
 GitHub Actions runs lint, TypeScript, the production build, and browser tests on
 pull requests and pushes to main. Failed browser traces are saved as artifacts.
 
-Nigeria's DPIA and annual audit assessments are unavailable pending content review.
+Nigeria’s DPIA and annual CAR assessments are available with the owner-approved
+research dated 6 October 2026. See [research implementation](docs/research/implementation.md)
+for the approved scope, source provenance, remaining uncertainties and scenario coverage.
 Rwanda's DPIA is at `/rwanda-dpia`; the old `/dpia-assessment` URL redirects there.
 New or revised legal guidance should be reviewed before enabling these modules.
 
@@ -110,7 +112,7 @@ link previews; it is not server rendering of the complete application content.
 Shared guided assessments include answer review and editing, print/save-as-PDF,
 next steps and reference/review information. Custom assessment pages retain their
 own result interactions and also have shared printing/reference controls. Review
-status is explicitly unknown until an approval is recorded; regulator links are
+status is explicitly unknown for modules outside the approved research; regulator links are
 not represented as verified module-level citations.
 
 See [content-review.md](docs/content-review.md) for the initial research queue and
@@ -122,3 +124,7 @@ The browser suite includes axe checks for WCAG A/AA rules on the core journey,
 keyboard focus, reduced motion, enlarged text, printing, metadata and assessment
 regressions. These checks do not replace a complete accessibility audit or tests
 with assistive-technology users.
+
+`npm run check:guidance` checks approved question graphs, terminal outcomes and source
+metadata. It also runs before the browser suite. These checks validate implementation,
+not the underlying law.

@@ -1,0 +1,130 @@
+import type { ReviewedAssessment } from "./types";
+
+export const nigeriaBreach: ReviewedAssessment = {
+  "packet": "NG-BREACH-0.1",
+  "title": "Data Breach Notification — Nigeria",
+  "intro": "Separate controller risk-based NDPC reporting, high-risk communication to individuals, and processor escalation. If you act in both roles, assess both sets of duties.",
+  "questions": [
+    {
+      "id": 1,
+      "text": "Has a security incident caused accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to personal data?",
+      "tooltip": "NDPA sections 40 and 65; GAID article 33.",
+      "options": {
+        "yes": {
+          "nextQuestion": 2
+        },
+        "no": {
+          "nextQuestion": null,
+          "message": "No personal data breach has been established on these answers. Document the assessment, investigate any unresolved incident and reassess new facts."
+        },
+        "notSure": {
+          "nextQuestion": null,
+          "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline."
+        }
+      }
+    },
+    {
+      "id": 2,
+      "text": "Are you the controller for the affected processing (including where you also act as a processor)?",
+      "tooltip": "NDPA section 40 distinguishes controller and processor duties.",
+      "options": {
+        "yes": {
+          "nextQuestion": 4
+        },
+        "no": {
+          "nextQuestion": 3
+        },
+        "notSure": {
+          "nextQuestion": null,
+          "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline. If acting as processor, notify the engaging controller or processor on awareness."
+        }
+      }
+    },
+    {
+      "id": 3,
+      "text": "Are you processing the affected data on behalf of a controller or another processor?",
+      "tooltip": "NDPA section 40(1).",
+      "options": {
+        "yes": {
+          "nextQuestion": null,
+          "message": "As a processor, notify the controller or processor that engaged you on becoming aware of the personal data breach. Supply required details and assist its response. Do not wait for its regulator deadline or the next working day."
+        },
+        "no": {
+          "nextQuestion": null,
+          "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline. Determine your role urgently; do not assume no reporting duty."
+        },
+        "notSure": {
+          "nextQuestion": null,
+          "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline."
+        }
+      }
+    },
+    {
+      "id": 4,
+      "text": "Is the breach likely to result in risk to individuals’ rights and freedoms?",
+      "tooltip": "NDPA section 40(2), (7); GAID article 33. Encryption and subsequent measures are risk factors, not automatic exemptions.",
+      "options": {
+        "yes": {
+          "nextQuestion": 5
+        },
+        "no": {
+          "nextQuestion": null,
+          "message": "No ordinary section 40(2) notification trigger has been established on the documented facts. Record the breach and reasoning; reassess new facts and any immediate-containment reporting duty under GAID article 33(4)."
+        },
+        "notSure": {
+          "nextQuestion": null,
+          "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "text": "Is that risk high?",
+      "tooltip": "NDPA section 40(2), (3), (7).",
+      "options": {
+        "yes": {
+          "nextQuestion": 6
+        },
+        "no": {
+          "nextQuestion": null,
+          "message": "Notify the NDPC within 72 elapsed hours of awareness of the breach likely to create risk to individuals (section 40(2)). Submit through the NDPC NIMP breach service. If already late, notify promptly and explain the delay. No high-risk communication duty is established on these answers; reassess new facts and record the decision."
+        },
+        "notSure": {
+          "nextQuestion": null,
+          "message": "Notify the NDPC within 72 elapsed hours of awareness of the breach likely to create risk to individuals (section 40(2)). Submit through the NDPC NIMP breach service. If already late, notify promptly and explain the delay. The high-risk subject-communication assessment remains unresolved; obtain immediate assessment."
+        }
+      }
+    },
+    {
+      "id": 6,
+      "text": "Is direct communication with affected individuals feasible without disproportionate effort or excessive cost?",
+      "tooltip": "NDPA section 40(3) and communication provisions.",
+      "options": {
+        "yes": {
+          "nextQuestion": null,
+          "message": "Notify the NDPC within 72 elapsed hours of awareness of the breach likely to create risk to individuals (section 40(2)). Submit through the NDPC NIMP breach service. If already late, notify promptly and explain the delay. Communicate with affected data subjects immediately because high risk is established, including protective steps they can take."
+        },
+        "no": {
+          "nextQuestion": null,
+          "message": "Notify the NDPC within 72 elapsed hours of awareness of the breach likely to create risk to individuals (section 40(2)). Submit through the NDPC NIMP breach service. If already late, notify promptly and explain the delay. Communicate the high-risk breach immediately through effective public communication where direct contact is disproportionate, infeasible or excessively costly. Record the reason for that route."
+        },
+        "notSure": {
+          "nextQuestion": null,
+          "message": "Notify the NDPC within 72 elapsed hours of awareness of the breach likely to create risk to individuals (section 40(2)). Submit through the NDPC NIMP breach service. If already late, notify promptly and explain the delay. High-risk communication is required immediately; urgently establish an effective direct or permitted public route."
+        }
+      }
+    }
+  ],
+  "guidance": [
+    "Record occurrence, discovery, first legally relevant awareness or belief, escalation, notifications and follow-up separately. Hour limits mean elapsed hours, including weekends, not business hours. Sector, cyber-incident, contractual or criminal-law duties may also apply. Preserve evidence, contain the incident and report in parallel; uncertainty or an incomplete investigation does not create an extension.",
+    "Keep records of every personal data breach and the decision about reporting. Information may be supplied in phases without undue delay. GAID article 33(4) also calls for immediate information where it may assist containment; a 72-hour outer limit is not a reason to delay useful information.",
+    "Encryption, de-identification and subsequent protective measures are factors in the section 40(7) risk assessment, not blanket exemptions. Assess the actual likelihood and severity of harm.",
+    "For a controller first aware at 10:00 Monday, the 72-hour outer limit is 10:00 Thursday where the risk trigger is met. A processor’s duty arises on awareness, without a 72-hour allowance."
+  ],
+  "links": [
+    {
+      "label": "Report to the NDPC",
+      "url": "https://services.ndpc.gov.ng/breach/"
+    }
+  ]
+};

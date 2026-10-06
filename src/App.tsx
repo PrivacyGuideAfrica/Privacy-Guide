@@ -18,6 +18,8 @@ const RwandaApplicability = lazy(() => import("./pages/RwandaApplicability"));
 const RwandaRegistration = lazy(() => import("./pages/RwandaRegistration"));
 const ControllerProcessor = lazy(() => import("./pages/ControllerProcessor"));
 const DataBreachAssessment = lazy(() => import("./pages/DataBreachAssessment"));
+const NigeriaDPIA = lazy(() => import("./pages/NigeriaDPIA"));
+const AnnualAudit = lazy(() => import("./pages/AnnualAudit"));
 const DPIAAssessment = lazy(() => import("./pages/DPIAAssessment"));
 const AssessmentUnavailable = lazy(() => import("./pages/AssessmentUnavailable"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -89,8 +91,8 @@ const App = () => {
           <Route path="/rwanda-data-breach" element={<RwandaDataBreachAssessment />} />
           <Route path="/dpia-assessment" element={<Navigate to="/rwanda-dpia" replace />} />
           <Route path="/rwanda-dpia" element={<DPIAAssessment />} />
-          <Route path="/nigeria-dpia" element={<AssessmentUnavailable title="DPIA Assessment" />} />
-          <Route path="/annual-audit" element={<AssessmentUnavailable title="Annual Audit Requirements" />} />
+          <Route path="/nigeria-dpia" element={<NigeriaDPIA />} />
+          <Route path="/annual-audit" element={<AnnualAudit />} />
           <Route path="/representative-assessment" element={<RepresentativeAssessment />} />
           <Route path="/dpo-assessment" element={<DPOAssessment />} />
           <Route path="/uganda-registration" element={<UgandaRegistration />} />

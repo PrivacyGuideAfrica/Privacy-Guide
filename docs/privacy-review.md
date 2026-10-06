@@ -52,3 +52,7 @@ Once account evidence is available, configure retention where supported, record 
 - The owner confirms Netlify hosting. `netlify.toml` does not establish account settings, processing regions, subprocessors or contracts.
 - Browser regression tests intentionally block external services. They do not establish third-party behavior or legal compliance. Inspect the deployed site with integrations enabled and relevant opt-out states when access is available.
 - Official regulator source retrieval was blocked by the environment's network policy during the initial research (see `docs/content-review.md`). No jurisdiction-specific legal conclusions have been marked as independently verified.
+
+## Approved research follow-up — 6 October 2026
+
+The owner subsequently approved the supplied African privacy modules research for platform use. Its notice checklist supplements, rather than replaces, the earlier operator facts and approval. The notice now explains that browser printing/PDF copies can include answers and results, and the legal notice preserves third-party rights without claiming exclusive rights over statutes. The research supplies no new provider-account evidence; the open operational items above remain unresolved.

@@ -31,7 +31,7 @@ const PrivacyNotice = () => {
               <h2 className="text-2xl font-semibold text-gray-800">The Data We Process</h2>
             </div>
             <p className="text-gray-700 leading-relaxed mb-4">
-              You can use our assessments without creating an account. Assessment answers are held in the page while you use it. If you contact us, we process your email address, your name if provided, and the information you include in your message.
+              You can use our assessments without creating an account. Assessment answers are held in the page while you use it. Printing or saving a PDF uses your browser’s print dialog; copies can include your answers and results. You control the copies you create or share. If you contact us, we process your email address, your name if provided, and the information you include in your message.
             </p>
             <p className="text-gray-700 leading-relaxed mb-4">
               Netlify hosts this website. Loading the website involves sending technical information to our hosting provider, including your IP address and browser request information. Technical information may include:

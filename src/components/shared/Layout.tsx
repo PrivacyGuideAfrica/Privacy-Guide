@@ -38,7 +38,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           </ol>
         </nav>}
         {children}
-        {assessment && ["/uganda-registration", "/uganda-annual-compliance", "/uganda-data-subject-rights", "/south-africa-data-subject-rights", "/ghana-registration"].includes(pathname) && <div className="mx-auto max-w-4xl px-6 pb-10 space-y-6">
+        {assessment && ["/uganda-registration", "/uganda-annual-compliance", "/uganda-data-subject-rights", "/south-africa-data-subject-rights"].includes(pathname) && <div className="mx-auto max-w-4xl px-6 pb-10 space-y-6">
           <Button variant="outline" onClick={() => window.print()}>Print or save as PDF</Button>
           <GuidanceReferences />
         </div>}

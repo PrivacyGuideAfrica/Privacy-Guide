@@ -12,27 +12,25 @@ test.beforeEach(async ({ page }) => {
 const answer = (page: Page, name: "Yes" | "No" | "Not Sure") =>
   page.getByRole("button", { name, exact: true }).click();
 
-test("Nigeria does not offer Rwanda's DPIA; Rwanda and its old URL remain usable", async ({ page }) => {
+test("Nigeria and Rwanda offer separate DPIAs and Rwanda's old URL still works", async ({ page }) => {
   await page.goto("/country/nigeria");
-  await expect(page.getByText("Guidance for Nigeria is being reviewed.", { exact: false })).toBeVisible();
-  await expect(page.getByRole("link", { name: /DPIA Assessment/ })).toHaveCount(0);
+  await page.getByRole("link", { name: /DPIA Assessment/ }).click();
+  await expect(page).toHaveURL(/\/nigeria-dpia$/);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Nigeria");
   await page.goto("/country/rwanda");
   await page.getByRole("link", { name: /Do You Need to Do a DPIA/ }).click();
   await expect(page).toHaveURL(/\/rwanda-dpia$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Rwanda");
-  await expect(page.getByRole("button", { name: "Yes", exact: true })).toBeVisible();
   await page.goto("/dpia-assessment");
   await expect(page).toHaveURL(/\/rwanda-dpia$/);
 });
 
-for (const [path, title] of [["/nigeria-dpia", "DPIA Assessment"], ["/annual-audit", "Annual Audit Requirements"]]) {
-  test(`${path} explains unavailability on direct visits`, async ({ page }) => {
+for (const path of ["/nigeria-dpia", "/annual-audit"]) {
+  test(`${path} is available after research approval`, async ({ page }) => {
     await page.goto(path);
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText(title);
-    await expect(page.getByText("This assessment is temporarily unavailable", { exact: false })).toBeVisible();
-    await expect(page.getByRole("button", { name: "Yes", exact: true })).toHaveCount(0);
-    await page.getByRole("link", { name: "Explore Nigeria’s modules" }).click();
-    await expect(page).toHaveURL(/\/country\/nigeria$/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Nigeria");
+    await expect(page.getByRole("button", { name: "Yes", exact: true })).toBeVisible();
+    await expect(page.getByText("This assessment is temporarily unavailable", { exact: false })).toHaveCount(0);
   });
 }
 
@@ -60,21 +58,18 @@ test("Previous follows the answered branch and changed answers choose a new path
   await expect(page.getByRole("button", { name: "Previous" })).toBeDisabled();
   await answer(page, "Yes");
   await answer(page, "No");
-  await expect(page.getByText("Is your organisation outside Nigeria", { exact: false })).toBeVisible();
+  await expect(page.getByText("Does an organisation outside Nigeria", { exact: false })).toBeVisible();
   await expect(page.getByText("Step 3 · 2 answered")).toBeVisible();
   await page.getByRole("button", { name: "Previous" }).click();
-  await expect(page.getByText("Is the personal data being processed within Nigeria", { exact: false })).toBeVisible();
+  await expect(page.getByText("Is the controller or processor established", { exact: false })).toBeVisible();
   await answer(page, "Yes");
-  await expect(page.getByText("Is your organisation established or operating within Nigeria?", { exact: true })).toBeVisible();
-  await answer(page, "No");
+  await expect(page.getByText("Is this processing solely for personal or household", { exact: false })).toBeVisible();
   await page.getByRole("button", { name: "Previous" }).click();
-  await expect(page.getByText("Is your organisation established or operating within Nigeria?", { exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Next", exact: true })).toHaveCount(0);
-  await page.getByRole("button", { name: "Previous" }).click();
+  await expect(page.getByText("Is the controller or processor established", { exact: false })).toBeVisible();
   await page.getByRole("button", { name: "Previous" }).click();
   await expect(page.getByRole("button", { name: "Previous" })).toBeDisabled();
   await answer(page, "No");
-  await expect(page.getByText("The NDPA does not apply as you are not processing personal data.", { exact: false })).toBeVisible();
+  await expect(page.locator(".assessment-result")).toContainText("No NDPA personal-data processing is established");
 });
 
 test("completed assessments allow review, a different result, and a full reset", async ({ page }) => {
@@ -104,36 +99,36 @@ test("review clears parent-owned completion guidance", async ({ page }) => {
   await expect(page.getByText("You are not legally required to appoint a DPO.", { exact: false })).toBeVisible();
 });
 
-test("custom results can be revised without retaining the previous result", async ({ page }) => {
+test("reviewed results can be revised without retaining the previous result", async ({ page }) => {
   await page.goto("/nigeria-lawful-basis");
   await answer(page, "Yes");
   await answer(page, "Yes");
-  await expect(page.getByText("Your most appropriate lawful basis is likely to be Legal Obligation.", { exact: false })).toBeVisible();
+  await expect(page.getByText("Legal Obligation may be available,", { exact: false })).toBeVisible();
   await page.getByRole("button", { name: "Review last answer" }).click();
-  await expect(page.getByText("Your most appropriate lawful basis is likely to be Legal Obligation.", { exact: false })).toHaveCount(0);
+  await expect(page.getByText("Legal Obligation may be available,", { exact: false })).toHaveCount(0);
   await answer(page, "No");
   await answer(page, "Yes");
   await answer(page, "Yes");
-  await expect(page.getByText("Your most appropriate lawful basis is likely to be Contractual Necessity.", { exact: false })).toBeVisible();
+  await expect(page.getByText("Contractual Necessity may be available", { exact: false })).toBeVisible();
   await page.getByTitle("Reset Assessment").click();
   await expect(page.getByText("Step 1 · 0 answered")).toBeVisible();
-  await expect(page.getByText("Your most appropriate lawful basis is likely", { exact: false })).toHaveCount(0);
+  await expect(page.getByText("Legal Obligation may be available", { exact: false })).toHaveCount(0);
 });
 
 const lawfulBasisCases: { result: string; answers: ("Yes" | "No")[] }[] = [
-  { result: "Legal Obligation", answers: ["Yes", "Yes"] },
-  { result: "Contractual Necessity", answers: ["No", "Yes", "Yes"] },
-  { result: "Vital Interests", answers: ["No", "No", "Yes", "Yes"] },
-  { result: "Public Interest", answers: ["No", "No", "No", "Yes", "Yes"] },
-  { result: "Legitimate Interests", answers: ["No", "No", "No", "No", "Yes", "No"] },
-  { result: "Consent", answers: ["No", "No", "No", "No", "No"] },
-  { result: "Consent", answers: ["No", "No", "No", "No", "Yes", "Yes"] },
+  { result: "Legal Obligation may be available", answers: ["Yes", "Yes"] },
+  { result: "Contractual Necessity may be available", answers: ["No", "Yes", "Yes"] },
+  { result: "Vital Interests may be available", answers: ["No", "No", "Yes", "Yes"] },
+  { result: "Public Interest or Official Authority may be available", answers: ["No", "No", "No", "Yes", "Yes"] },
+  { result: "Legitimate Interests may be available", answers: ["No", "No", "No", "No", "Yes", "Yes"] },
+  { result: "Consent may be available only if", answers: ["No", "No", "No", "No", "No", "Yes"] },
+  { result: "No lawful basis has been established", answers: ["No", "No", "No", "No", "Yes", "No", "No"] },
 ];
 for (const [index, scenario] of lawfulBasisCases.entries()) {
-  test(`lawful basis path ${index + 1} retains its ${scenario.result} outcome`, async ({ page }) => {
+  test(`lawful basis path ${index + 1}: ${scenario.result}`, async ({ page }) => {
     await page.goto("/nigeria-lawful-basis");
     for (const response of scenario.answers) await answer(page, response);
-    await expect(page.getByText(`Your most appropriate lawful basis is likely to be ${scenario.result}.`, { exact: false })).toBeVisible();
+    await expect(page.locator(".assessment-result")).toContainText(scenario.result);
   });
 }
 
@@ -148,18 +143,18 @@ test("Rwanda custom controller/processor results can be changed", async ({ page 
   await expect(page.getByText("You are likely to be a Data Processor.", { exact: false })).toBeVisible();
 });
 
-test("Not Sure follows its branch and reset clears progress before completion", async ({ page }) => {
+test("Not Sure preserves uncertainty and reset clears progress", async ({ page }) => {
   await page.goto("/rwanda-dpia");
   await answer(page, "Not Sure");
-  await expect(page.getByText("Does your processing involve any of the following?", { exact: true })).toBeVisible();
-  await page.getByRole("button", { name: "Previous" }).click();
+  await expect(page.locator(".assessment-result")).toContainText("Consult NCSA where unsure");
+  await page.getByRole("button", { name: "Review last answer" }).click();
   await expect(page.getByRole("button", { name: "Not Sure", exact: true })).toBeVisible();
-  await answer(page, "Not Sure");
+  await answer(page, "No");
   await page.getByTitle("Reset Assessment").click();
   await expect(page.getByText("Step 1 · 0 answered")).toBeVisible();
   await expect(page.getByRole("button", { name: "Previous" })).toBeDisabled();
-  await answer(page, "No");
-  await expect(page.getByText("You might not need a DPIA", { exact: false })).toBeVisible();
+  await answer(page, "Yes");
+  await expect(page.locator(".assessment-result")).toContainText("A Rwanda DPIA trigger is identified");
 });
 
 test("tablet navigation exposes its state and supports keyboard activation", async ({ page }) => {

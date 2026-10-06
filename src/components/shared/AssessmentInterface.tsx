@@ -45,6 +45,8 @@ interface Props {
   customAnswerHandler?: (questionId: number, answer: string) => void;
   finalMessage?: string | null;
   introContent?: React.ReactNode;
+  /** Approved module-specific guidance replaces generic result interpretations. */
+  reviewedGuidance?: React.ReactNode;
 }
 
 interface DPIAStep {
@@ -105,7 +107,8 @@ export const AssessmentInterface = ({
   renderQuestion,
   customAnswerHandler,
   finalMessage: externalFinalMessage,
-  introContent
+  introContent,
+  reviewedGuidance
 }: Props) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -239,17 +242,17 @@ export const AssessmentInterface = ({
   );
 
   const renderCompletionMessage = () => {
-    const isDpiaRequired = finalMessage?.includes("you must conduct a DPIA");
+    const isDpiaRequired = !reviewedGuidance && finalMessage?.includes("you must conduct a DPIA");
     const isRepresentativeRequired = finalMessage?.includes("you must designate a representative");
     const isDpoRequired = finalMessage?.includes("You must designate a Data Protection Officer");
     const isRwandaControllerProcessor = window.location.pathname.includes("rwanda-controller-processor");
     const isControllerProcessor = isRwandaControllerProcessor || finalMessage?.includes("Dual Role") || finalMessage?.includes("Controller") && (finalMessage?.includes("Processor") || finalMessage?.includes("controller") || finalMessage?.includes("processor")) && !finalMessage?.includes("breach") && !finalMessage?.includes("notify");
     
     // Detect role-based assessments (Responsible Party/Operator, Controller/Processor)
-    const isRoleAssessment = window.location.pathname.includes("responsible-party") || 
+    const isRoleAssessment = !reviewedGuidance && (window.location.pathname.includes("responsible-party") ||
                             finalMessage?.includes("Responsible Party") || 
                             finalMessage?.includes("Operator") ||
-                            finalMessage?.includes("obligations under POPIA");
+                            finalMessage?.includes("obligations under POPIA"));
     
     // More specific breach notification detection - only for actual breach assessment modules
     const isBreachNotification = !isRoleAssessment && (
@@ -296,6 +299,7 @@ export const AssessmentInterface = ({
         {assessment && <p className="text-sm font-medium text-slate-700">{assessment.country.name} · {assessment.module.title}</p>}
         <div className="flex flex-col items-center justify-center p-6 text-center">
           {(() => {
+            if (reviewedGuidance) return <FileText aria-hidden="true" className="h-12 w-12 text-ndpa-navy mb-4" />;
             // Direct Marketing specific icons
             if (isDirectMarketing && getDirectMarketingContent()) {
               const dmContent = getDirectMarketingContent();
@@ -426,6 +430,8 @@ export const AssessmentInterface = ({
             </Suspense>
           </div>
         )}
+
+        {reviewedGuidance}
 
         <ResultDetails questions={questions} answers={answers} path={[...history, currentQuestion]} onEdit={editAnswer} />
 

@@ -10,8 +10,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.node.json --noEmit && tsc -p tsconfig.test.json --noEmit",
-    "pretest": "npm run build",
-    "test": "playwright test"
+    "pretest": "npm run check:guidance && npm run build",
+    "test": "playwright test",
+    "check:guidance": "node scripts/check-guidance.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

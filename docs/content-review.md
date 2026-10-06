@@ -2,9 +2,13 @@
 
 The site owner approves substantive legal guidance. No approval is inferred from a code review or a passing test. No legal review dates or named reviewers have been invented in the catalog.
 
-## Initial research brief — awaiting primary-source access
+## Research implemented — 6 October 2026
 
-This is a review of the existing repository, not a completed current-law verification. On 6 October 2026, the environment proxy denied requests to all five regulator websites with HTTP 403. Required network additions have been saved in the environment draft. The following questions define the first research and approval batch once access is enabled.
+The owner supplied and explicitly approved `African_Privacy_Modules_Research_Findings_2026-10-06.md` for use on the platform. The 11 named assessment packets are implemented with their stated uncertainties preserved. See [implementation and approval record](research/implementation.md) for the exact scope, baseline comparison, sources and tests. The original report remains unchanged, including its older “UNAPPROVED” label; the later conversation approval is authoritative. Approval does not extend to other assessment modules or establish provider-account facts.
+
+## Historical initial research brief
+
+This is a review of the existing repository, not a completed current-law verification. On 6 October 2026, the environment proxy denied requests to all five regulator websites with HTTP 403. Required network additions have been saved in the environment draft. The following table records the original research agenda, now addressed by the supplied approved research for the named modules.
 
 | Priority | Existing guidance to examine | Questions for primary-source research | Intended deliverable for owner approval |
 | --- | --- | --- | --- |
@@ -17,7 +21,7 @@ This is a review of the existing repository, not a completed current-law verific
 | 2 | Ghana registration (`src/pages/GhanaRegistration.tsx`) | Does the current two-outcome flow capture all applicable conditions and exceptions? | Reviewed registration scope, exceptions, and official filing links. |
 | 3 | Privacy and legal notices | Do claims about collection, tracking, retention, transfers and copying match actual service configuration and the new print feature? | Owner approved the current notices for publication on 6 October 2026; operational verification remains open in `docs/privacy-review.md`. |
 
-Research destinations (retrieval has not yet succeeded):
+Original research destinations (direct retrieval was blocked at that time):
 
 - Nigeria Data Protection Commission: https://ndpc.gov.ng/
 - Rwanda Data Protection and Privacy Office: https://www.dpo.gov.rw/
@@ -25,7 +29,7 @@ Research destinations (retrieval has not yet succeeded):
 - Ghana Data Protection Commission: https://dataprotection.org.gh/
 - South Africa Information Regulator: https://inforegulator.org.za/
 
-These are regulator resource links, not evidence that every existing outcome has been validated. Published modules currently display that module-specific citations and legal review dates have not been recorded.
+These are regulator resource links, not evidence that every existing outcome has been validated. The 11 implemented packets now display their specific sources, research provenance, approval date and version. Other modules retain their unreviewed status.
 
 ## Approval packet for each module
 

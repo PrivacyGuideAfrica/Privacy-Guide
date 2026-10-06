@@ -66,7 +66,7 @@ const LegalNotice = () => {
               <h2 className="text-2xl font-semibold text-gray-800">Intellectual Property</h2>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              You may print, save as PDF, and retain your assessment results for your personal records or your organisation’s internal compliance records without requesting permission. Please retain the accompanying sources and disclaimers.
+              You may print, save as PDF, and retain your assessment results for your personal records or your organisation’s internal compliance records without requesting permission. Please retain the accompanying sources and disclaimers. Rights in third-party material remain with the relevant rights holders; this permission does not claim exclusive rights over statutes or third-party sources.
             </p>
             <p className="text-gray-700 leading-relaxed mt-4">
               For other copying, modification, republication or commercial reuse of website content, prior written consent is required, except where permitted by applicable law. Contact us at <a href="mailto:support@privacyguide.africa" className="text-blue-700 underline hover:no-underline">support@privacyguide.africa</a>.

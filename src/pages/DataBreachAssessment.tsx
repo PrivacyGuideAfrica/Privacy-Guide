@@ -1,20 +1,6 @@
-import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
-import { DataBreachDescription } from "@/components/data-breach/DataBreachDescription";
-import { dataBreachQuestions } from "@/data/dataBreachQuestions";
+import { ReviewedAssessment } from "@/components/shared/ReviewedAssessment";
+import { nigeriaBreach } from "@/data/reviewed/nigeriaBreach";
 
-const DataBreachAssessment = () => {
-  return (
-    <>
-      <div className="container py-8 space-y-6">
-        <h1 className="text-3xl font-bold">Data Breach Assessment</h1>
-        <DataBreachDescription />
-        <AssessmentInterface
-          title="Data Breach Risk Assessment"
-          questions={dataBreachQuestions}
-        />
-      </div>
-    </>
-  );
-};
+const DataBreachAssessment = () => <ReviewedAssessment definition={nigeriaBreach} />;
 
 export default DataBreachAssessment;

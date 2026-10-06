@@ -2,7 +2,8 @@ export interface GuidanceSource {
   label: string;
   url: string;
   section: string;
-  verifiedAt: string;
+  /** Retrieval date reported in the owner-approved research. */
+  retrievedAt: string;
 }
 export interface AssessmentModule {
   title: string;
@@ -12,6 +13,8 @@ export interface AssessmentModule {
   disabledMessage?: string;
   reviewedAt: string | null;
   reviewer: string | null;
+  reviewVersion?: string;
+  reviewBasis?: string;
   sources: GuidanceSource[];
 }
 export interface Country {
@@ -26,7 +29,7 @@ export interface Country {
   regulator?: { label: string; url: string };
   modules: AssessmentModule[];
 }
-// Review fields remain empty until primary sources and the owner's approval are recorded.
+// Review metadata is limited to the implemented packets approved by the owner.
 export const countries: Country[] = [
   {
     "id": "nigeria",
@@ -47,9 +50,24 @@ export const countries: Country[] = [
         "description": "Determine if the Nigerian Data Protection Act applies to your organization",
         "link": "/ndpa-applicability",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Nigeria Data Protection Act 2023",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2024/03/Nigeria_Data_Protection_Act_2023.pdf",
+            "section": "Sections 2–3, 24–25, 32, 40 and Part VI (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPA General Application and Implementation Directive 2025, NDPC/NDP ACT-GAID/01/2025",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf",
+            "section": "Articles 3(2), 5–6 (regulatory directive)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "NG-SCOPE-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "Controller or Processor",
@@ -65,38 +83,126 @@ export const countries: Country[] = [
         "description": "Identify the appropriate lawful basis for your data processing activities",
         "link": "/nigeria-lawful-basis",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Nigeria Data Protection Act 2023",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2024/03/Nigeria_Data_Protection_Act_2023.pdf",
+            "section": "Sections 25–26, 30–31, 37, 41–43 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPA General Application and Implementation Directive 2025, NDPC/NDP ACT-GAID/01/2025",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf",
+            "section": "Articles 3(2), 16–26 (regulatory directive)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "NG-BASIS-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "Data Breach Assessment",
         "description": "Evaluate your data breach response readiness and obligations",
         "link": "/data-breach",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Nigeria Data Protection Act 2023",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2024/03/Nigeria_Data_Protection_Act_2023.pdf",
+            "section": "Sections 40, 65 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPA General Application and Implementation Directive 2025, NDPC/NDP ACT-GAID/01/2025",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf",
+            "section": "Article 33 (regulatory directive)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPC NIMP",
+            "url": "https://services.ndpc.gov.ng/breach/",
+            "section": "Breach reporting entrypoint (operational service)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPC NIMP",
+            "url": "https://services.ndpc.gov.ng/",
+            "section": "Breach reporting entrypoint (operational service)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "NG-BREACH-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "DPIA Assessment",
-        "description": "Guidance for Nigeria is being reviewed. This assessment is not yet available.",
+        "description": "Screen Nigeria-specific DPIA triggers, filing and consultation under the NDPA and GAID 2025",
         "link": "/nigeria-dpia",
-        "disabledMessage": "Under Review",
-        "status": "review",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "status": "available",
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Nigeria Data Protection Act 2023",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2024/03/Nigeria_Data_Protection_Act_2023.pdf",
+            "section": "Sections 2–3, 28, 65 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPA General Application and Implementation Directive 2025, NDPC/NDP ACT-GAID/01/2025",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf",
+            "section": "Article 28; Schedule 4 (regulatory directive)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPC Annual Report 2025",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2026/02/Print_NDPC-Annual-Report-2025-1.pdf",
+            "section": "Pages 19–20, GAID effective date (official explanatory report)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "NG-DPIA-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "Annual Audit Requirements",
-        "description": "Find out if your organization needs to conduct an annual data protection audit",
+        "description": "Distinguish annual CAR filing, OHL registration renewal and periodic compliance audits",
         "link": "/annual-audit",
-        "disabledMessage": "Being Updated",
-        "status": "review",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "status": "available",
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "NDPA General Application and Implementation Directive 2025, NDPC/NDP ACT-GAID/01/2025",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2025/07/NDP-ACT-GAID-2025-MARCH-20TH.pdf",
+            "section": "Articles 3, 8–10; Schedules 2, 7, 10 (regulatory directive)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "Updated Registration Guidance Notice, NDPC/HQ/GN/VOL.03/B/24",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2025/07/Updated-Guidance-Notice-on-Registtration-2024.pdf",
+            "section": "Paragraphs 1–5 (regulatory designation notice)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPC FAQs",
+            "url": "https://ndpc.gov.ng/faqs/",
+            "section": "CAR and OHL explanations (regulator FAQ)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NDPC Annual Report 2025",
+            "url": "https://ndpc.gov.ng/wp-content/uploads/2026/02/Print_NDPC-Annual-Report-2025-1.pdf",
+            "section": "Pages 19–20 (official explanatory report)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "NG-CAR-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       }
     ]
   },
@@ -146,9 +252,30 @@ export const countries: Country[] = [
         "description": "Determine if your processing requires a Data Protection Impact Assessment",
         "link": "/rwanda-dpia",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Rwanda Law No. 058/2021 of 13 October 2021",
+            "url": "https://dpo.gov.rw/fileadmin/DPO/Law_relating_to_the_protection_of_personal_data_and_privacy.pdf",
+            "section": "Articles 9, 38 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "NCSA Guidelines on DPIA",
+            "url": "https://dpo.gov.rw/fileadmin/DPO/ComplianceTools/-_dpia-guide-and-form.pdf",
+            "section": "Pages 3–7, 11–12; December 2023 (regulator guidance)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "DPO engages stakeholders to shape Rwanda’s Data Privacy regulations",
+            "url": "https://dpo.gov.rw/news-and-updates/news/article/dpo-engages-stakeholders-to-shape-rwandas-data-privacy-regulations",
+            "section": "5 March 2026 consultation announcement (draft status, not binding law)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "RW-DPIA-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "Do You Need to Appoint a Local Representative?",
@@ -173,9 +300,30 @@ export const countries: Country[] = [
         "description": "Understand your data breach notification obligations under Rwanda's law",
         "link": "/rwanda-data-breach",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Rwanda Law No. 058/2021 of 13 October 2021",
+            "url": "https://dpo.gov.rw/fileadmin/DPO/Law_relating_to_the_protection_of_personal_data_and_privacy.pdf",
+            "section": "Articles 43–45 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "Rwanda breach service and form",
+            "url": "https://dpo.gov.rw/services/report-a-data-breach",
+            "section": "Reporting service and form (operational guidance)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "Rwanda breach service and form",
+            "url": "https://dpo.gov.rw/fileadmin/DPO/ComplianceTools/Personal%20Data%20Breach%20Notification%20Form.pdf",
+            "section": "Reporting service and form (operational guidance)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "RW-BREACH-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       }
     ]
   },
@@ -243,9 +391,36 @@ export const countries: Country[] = [
         "description": "Understand your obligations for reporting data breaches to authorities and individuals",
         "link": "/uganda-data-breach",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Uganda Data Protection and Privacy Act, Cap.97",
+            "url": "https://www.nita.go.ug/sites/default/files/2026-09/Data%20Protection%20and%20Privacy%20Act%20cap%2097.pdf",
+            "section": "Section 23 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "Uganda Data Protection and Privacy Regulations 2021, SI 21/2021",
+            "url": "https://oldsite.nita.go.ug/sites/default/files/2022-11/Data_Protection_and_Privacy_Regulations-2021.pdf",
+            "section": "Regulation 33; Schedule 1 Form 7 (Regulations)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "PDPO reporting service / Form 7",
+            "url": "https://pdpo.go.ug/",
+            "section": "Breach service and Form 7 (operational guidance)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "PDPO reporting service / Form 7",
+            "url": "https://pdpo.go.ug/media/2022/02/Form_7_-_Notification_of_Data_Breach.pdf",
+            "section": "Breach service and Form 7 (operational guidance)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "UG-BREACH-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "Processing of Sensitive Data",
@@ -313,9 +488,42 @@ export const countries: Country[] = [
         "description": "Understand your obligations for reporting security compromises under POPIA",
         "link": "/south-africa-data-breach",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "South Africa Protection of Personal Information Act 4 of 2013",
+            "url": "https://inforegulator.org.za/wp-content/uploads/2020/07/InfoRegSA-act-2013-004.pdf",
+            "section": "Sections 21(2), 22 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "South Africa Protection of Personal Information Act 4 of 2013",
+            "url": "https://inforegulator.org.za/acts/",
+            "section": "Sections 21(2), 22 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "Information Regulator security-compromises fact sheet",
+            "url": "https://inforegulator.org.za/2025/08/19/fact-sheet-handling-of-security-compromises/",
+            "section": "Timing, operators, low risk and incomplete information (regulator guidance)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "Information Regulator POPIA FAQs / eServices",
+            "url": "https://inforegulator.org.za/popia/",
+            "section": "Security-compromises FAQs 4–8; eServices (operational guidance)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "Information Regulator POPIA FAQs / eServices",
+            "url": "https://eservices.inforegulator.org.za/",
+            "section": "Security-compromises FAQs 4–8; eServices (operational guidance)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "ZA-BREACH-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "Handling Data Subject Rights Requests in South Africa",
@@ -375,7 +583,7 @@ export const countries: Country[] = [
     "startPath": "/ghana-applicability",
     "regulator": {
       "label": "Data Protection Commission",
-      "url": "https://dataprotection.org.gh/"
+      "url": "https://dpc.gov.gh/"
     },
     "modules": [
       {
@@ -392,9 +600,36 @@ export const countries: Country[] = [
         "description": "Understand registration requirements with Ghana's Data Protection Commission",
         "link": "/ghana-registration",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Ghana Data Protection Act 2012, Act 843",
+            "url": "https://dpc.gov.gh/wp-content/uploads/2025/05/data-protection-act-2012-act-843.pdf",
+            "section": "Sections 27, 45–56, 60–67 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "DPC For Organisations / Compliance",
+            "url": "https://dpc.gov.gh/for-organisations/",
+            "section": "Registration, renewal and filing routes (regulator guidance)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "DPC For Organisations / Compliance",
+            "url": "https://dpc.gov.gh/compliance/",
+            "section": "Registration, renewal and filing routes (regulator guidance)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "DPC Documents",
+            "url": "https://dpc.gov.gh/documents/",
+            "section": "Replacement bill listed as draft (official document index)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "GH-REG-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "Understanding Data Subject Rights",
@@ -410,9 +645,24 @@ export const countries: Country[] = [
         "description": "Determine whether an incident constitutes a data breach and the steps to take",
         "link": "/ghana-data-breach",
         "status": "available",
-        "reviewedAt": null,
-        "reviewer": null,
-        "sources": []
+        "reviewedAt": "2026-10-06",
+        "reviewer": "Site owner",
+        "sources": [
+          {
+            "label": "Ghana Data Protection Act 2012, Act 843",
+            "url": "https://dpc.gov.gh/wp-content/uploads/2025/05/data-protection-act-2012-act-843.pdf",
+            "section": "Section 31 (Act)",
+            "retrievedAt": "2026-10-06"
+          },
+          {
+            "label": "DPC Incident / Data Breach Report Form",
+            "url": "https://dpc.gov.gh/wp-content/uploads/2025/07/INCIDENT-BREACH-REPORT-FORM-DPC-SAMPLE.pdf",
+            "section": "Page 1; loss/damage and submission instructions (regulator form)",
+            "retrievedAt": "2026-10-06"
+          }
+        ],
+        "reviewVersion": "GH-BREACH-0.1",
+        "reviewBasis": "Owner-approved research dated 6 October 2026"
       },
       {
         "title": "Appointment of Data Protection Supervisor (DPO)",
