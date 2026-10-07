@@ -1,20 +1,28 @@
+import { DocumentLayout } from "@/components/shared/DocumentLayout";
 
 import { Shield, Eye, Server, Scale, UserCheck, Clock, Globe, MessageSquare } from "lucide-react";
+
+const sections = [
+  { id: 'about-privacy-guide-africa', label: 'About Privacy Guide Africa' },
+  { id: 'the-data-we-process', label: 'The Data We Process' },
+  { id: 'why-we-need-this-data', label: 'Why We Need This Data' },
+  { id: 'analytics', label: 'Analytics' },
+  { id: 'our-lawful-basis', label: 'Our Lawful Basis' },
+  { id: 'your-rights', label: 'Your Rights' },
+  { id: 'how-long-we-keep-information', label: 'How Long We Keep Information' },
+  { id: 'international-data-transfers', label: 'International Data Transfers' },
+  { id: 'talk-to-us', label: 'Talk to Us' },
+];
 
 const PrivacyNotice = () => {
   return (
     <>
-      <div className="max-w-4xl mx-auto px-4 py-12 bg-gradient-to-b from-gray-50 to-white">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-ndpa-navy mb-3">Privacy Notice</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">Transparent, straightforward, and human</p>
-        </div>
-        
+      <DocumentLayout title="Privacy Notice" subtitle="Transparent, straightforward, and human" sections={sections}>
         <div className="space-y-10">
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="about-privacy-guide-africa" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-blue-50 p-3 rounded-lg mr-4">
-                <Shield className="h-6 w-6 text-blue-600" />
+              <div className="document-icon">
+                <Shield className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">About Privacy Guide Africa</h2>
             </div>
@@ -23,10 +31,10 @@ const PrivacyNotice = () => {
             </p>
           </section>
 
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="the-data-we-process" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-green-50 p-3 rounded-lg mr-4">
-                <Eye className="h-6 w-6 text-green-600" />
+              <div className="document-icon">
+                <Eye className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">The Data We Process</h2>
             </div>
@@ -48,10 +56,10 @@ const PrivacyNotice = () => {
             </p>
           </section>
 
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="why-we-need-this-data" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-purple-50 p-3 rounded-lg mr-4">
-                <Server className="h-6 w-6 text-purple-600" />
+              <div className="document-icon">
+                <Server className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">Why We Need This Data</h2>
             </div>
@@ -71,25 +79,25 @@ const PrivacyNotice = () => {
             </p>
           </section>
 
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="analytics" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-orange-50 p-3 rounded-lg mr-4">
-                <Server className="h-6 w-6 text-orange-600" />
+              <div className="document-icon">
+                <Server className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">Analytics</h2>
             </div>
             <p className="text-gray-700 leading-relaxed mb-4">
-              We use Umami Analytics to understand our audience and improve the site. The information available to our site administrators is limited to country and device, browser or operating-system information, such as Chrome or Safari on macOS.
+              We use Umami to understand aggregate usage patterns, including visitors’ countries, browsers and device types, and to improve the website.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              These reports do not give us your name or email address. Your browser contacts Umami to load its analytics service. The limited information in our reports does not establish what technical information Umami processes to produce them.
+              These reports do not give us your name or email address. Your browser contacts Umami to load its analytics service.
             </p>
           </section>
 
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="our-lawful-basis" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-indigo-50 p-3 rounded-lg mr-4">
-                <Scale className="h-6 w-6 text-indigo-600" />
+              <div className="document-icon">
+                <Scale className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">Our Lawful Basis</h2>
             </div>
@@ -106,10 +114,10 @@ const PrivacyNotice = () => {
             </p>
           </section>
 
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="your-rights" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-red-50 p-3 rounded-lg mr-4">
-                <UserCheck className="h-6 w-6 text-red-600" />
+              <div className="document-icon">
+                <UserCheck className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">Your Rights</h2>
             </div>
@@ -129,40 +137,40 @@ const PrivacyNotice = () => {
             </p>
           </section>
 
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="how-long-we-keep-information" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-yellow-50 p-3 rounded-lg mr-4">
-                <Clock className="h-6 w-6 text-yellow-600" />
+              <div className="document-icon">
+                <Clock className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">How Long We Keep Information</h2>
             </div>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Our retention policy for technical and analytics data under our control is a maximum of three months.
+              Our retention policy is three months for routine operational and analytics information and one year for support correspondence.
             </p>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Support emails are retained for one year. Access is limited to site administrators.
+              Access to support correspondence is limited to site administrators.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Provider retention and deletion settings are being checked against this policy. We cannot yet confirm that Netlify and Umami delete all provider-held information within three months.
+              We take steps to delete or anonymise personal data when it is no longer needed.
             </p>
           </section>
 
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="international-data-transfers" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-teal-50 p-3 rounded-lg mr-4">
-                <Globe className="h-6 w-6 text-teal-600" />
+              <div className="document-icon">
+                <Globe className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">International Data Transfers</h2>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              Our hosting, analytics and email services may involve processing information outside your country. We are confirming the processing locations and any transfer safeguards that apply to our provider accounts. Contact us at support@privacyguide.africa with questions about international processing.
+              Our hosting, analytics and email services may involve processing information outside your country. Where personal data is transferred internationally, we will take steps to ensure appropriate safeguards are in place to protect it, as required by applicable data protection law. Contact us at support@privacyguide.africa with questions about international processing.
             </p>
           </section>
 
-          <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
+          <section id="talk-to-us" className="document-section" tabIndex={-1}>
             <div className="flex items-start mb-4">
-              <div className="bg-pink-50 p-3 rounded-lg mr-4">
-                <MessageSquare className="h-6 w-6 text-pink-600" />
+              <div className="document-icon">
+                <MessageSquare className="h-6 w-6 text-blue-700" />
               </div>
               <h2 className="text-2xl font-semibold text-gray-800">Talk to Us</h2>
             </div>
@@ -172,7 +180,7 @@ const PrivacyNotice = () => {
             </p>
           </section>
         </div>
-      </div>
+      </DocumentLayout>
     </>
   );
 };

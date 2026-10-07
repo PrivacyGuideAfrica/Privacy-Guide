@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
@@ -12,7 +13,7 @@ const UgandaSensitiveData = () => {
     {
       id: 1,
       text: "Are you processing any of the following: health data, genetic or biometric data, race, ethnicity, religious beliefs, political opinions, or sexual life?",
-      tooltip: "These are classified as sensitive personal data under Ugandan law.",
+      tooltip: "These categories concern particularly private information, such as health status, medical records or religious beliefs. For example, employee medical records require more care than a general office contact list. Consider the actual information you hold, not just the name of the database.",
       options: {
         yes: { nextQuestion: 2, message: null },
         no: { 
@@ -85,12 +86,11 @@ const UgandaSensitiveData = () => {
 
   return (
     <>
-      <div className="container py-8 space-y-6">
+      <div className="assessment-page">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Uganda Sensitive Data Assessment</h1>
-          <p className="text-lg text-muted-foreground">
-            Determine if your processing of sensitive personal data is lawful under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations.
-          </p>
+          <AssessmentHeader title="Uganda Sensitive Data Assessment">
+          <p>Determine if your processing of sensitive personal data is lawful under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations.</p>
+        </AssessmentHeader>
           <div className="bg-red-50 border border-red-200 rounded-lg p-4">
             <p className="text-sm text-red-800">
               <strong>Important:</strong> Sensitive personal data requires explicit consent or a specific legal exception, plus enhanced security safeguards. Processing without proper authorization is strictly prohibited.

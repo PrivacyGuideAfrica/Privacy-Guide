@@ -1,41 +1,40 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, Globe, ListChecks, FileCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Globe2, ListChecks, FileText, MoveDown, Circle, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CountrySelector } from "@/components/CountrySelector";
+import UlinziQuest from "@/components/sections/UlinziQuest";
 
-const Index = () => (
-  <>
-    <section className="bg-gradient-to-br from-blue-950 to-blue-800 text-white">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-        <p className="mb-5 text-sm font-semibold uppercase tracking-widest text-blue-100">PrivacyGuide.Africa</p>
-        <h1 className="max-w-3xl text-4xl font-bold leading-tight sm:text-5xl">Your Compliance Companion for Africa's Privacy Laws</h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-blue-50">Find the guidance that applies to your organisation. Choose a country, answer a few questions, and understand your next steps.</p>
-        <Button size="lg" asChild className="mt-8 bg-white text-blue-950 hover:bg-blue-50">
-          <Link to="/countries">Explore Country Modules <ArrowRight aria-hidden="true" className="ml-2 h-5 w-5" /></Link>
-        </Button>
-        <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-blue-50">
-          {["Free to use", "No account needed", "Clear next steps"].map(item => <li key={item} className="flex items-center gap-2"><Check aria-hidden="true" className="h-4 w-4" />{item}</li>)}
-        </ul>
+const Index = () => <>
+  <section className="home-hero">
+    <div className="page-container hero-grid">
+      <div className="hero-copy">
+        <h1>Your Compliance Companion for <span>Africa's Privacy Laws</span></h1>
+        <p className="hero-description">A free tool to help organisations across Africa assess their data protection obligations and understand local compliance requirements.</p>
+        <div className="hero-actions"><Button size="lg" asChild><Link to="/countries">Explore Country Modules <ArrowRight aria-hidden="true" /></Link></Button><a className="text-action" href="#how-it-works">See how it works <MoveDown aria-hidden="true" size={16} /></a></div>
+        <ul className="hero-reassurance">{["Free to use", "No account needed"].map(item => <li key={item}><Check aria-hidden="true" size={16} />{item}</li>)}</ul>
       </div>
-    </section>
-    <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6" aria-labelledby="home-country-heading">
-      <h2 id="home-country-heading" className="text-3xl font-bold">Start with your country</h2>
-      <p className="mt-3 mb-8 max-w-2xl leading-relaxed text-slate-600">Rules differ by jurisdiction. Select where your organisation operates or handles personal data.</p>
-      <CountrySelector />
-    </section>
-    <section className="bg-slate-100" aria-labelledby="how-it-works">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <h2 id="how-it-works" className="text-2xl font-semibold">From questions to next steps</h2>
-        <ol className="mt-8 grid gap-8 md:grid-cols-3">
-          {[
-            { icon: Globe, title: "Choose a country and topic", text: "Start with applicability if you are unsure where to begin." },
-            { icon: ListChecks, title: "Answer at your own pace", text: "Read the explanations and go back to change an answer whenever you need." },
-            { icon: FileCheck, title: "Review and keep your results", text: "Review your answers, read the guidance, and print a copy for your records." },
-          ].map((step, index) => <li key={step.title}><step.icon aria-hidden="true" className="h-7 w-7 text-blue-800" /><h3 className="mt-4 text-lg font-semibold">{index + 1}. {step.title}</h3><p className="mt-2 leading-relaxed text-slate-600">{step.text}</p></li>)}
-        </ol>
-        <p className="mt-8 text-sm text-slate-600">This tool offers general guidance. For decisions specific to your organisation, consult the relevant regulator or a qualified adviser.</p>
+      <div className="hero-visual">
+        <img src="/images/africa-glass.webp" width="1254" height="1254" alt="" fetchPriority="high" />
+        <aside className="hero-checklist" aria-labelledby="context-heading"><h2 id="context-heading"><FileText aria-hidden="true" size={21} />Assess your context</h2><ol><li><CheckCircle2 aria-hidden="true" size={18} />Select country</li><li><Circle aria-hidden="true" size={18} />Answer a few questions</li><li><Circle aria-hidden="true" size={18} />Get tailored guidance</li></ol></aside>
       </div>
-    </section>
-  </>
-);
+    </div>
+  </section>
+  <section className="page-container section-space" aria-labelledby="home-country-heading">
+    <div className="section-heading"><div><h2 id="home-country-heading">Start with your country</h2><p>Local laws. Guidance for your organisation.</p></div><Link className="text-action" to="/countries">View all countries <ArrowUpRight aria-hidden="true" size={18} /></Link></div>
+    <CountrySelector compact />
+  </section>
+  <section className="how-section section-space" id="how-it-works" aria-labelledby="how-heading">
+    <div className="page-container">
+      <div className="section-heading"><div><h2 id="how-heading">From questions to next steps</h2><p>Take it one question at a time. We’ll guide you through.</p></div></div>
+      <ol className="steps-grid">{[
+        { icon: Globe2, title: "Choose a country and topic", text: "Start with applicability if you are unsure where to begin." },
+        { icon: ListChecks, title: "Answer at your own pace", text: "Read the explanations and go back to change an answer whenever you need." },
+        { icon: FileText, title: "Review and keep your results", text: "Review your answers, read the guidance, and print a copy for your records." },
+      ].map((step, index) => <li key={step.title}><div className="step-top"><span className="icon-tile"><step.icon aria-hidden="true" /></span><span className="step-number">0{index + 1}</span></div><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol>
+      <p className="guidance-disclaimer">This tool offers general guidance. For decisions specific to your organisation, consult the relevant regulator or a qualified adviser.</p>
+    </div>
+  </section>
+  <UlinziQuest />
+  <section className="page-container section-space"><div className="home-closing"><h2>Clarity starts with a question.</h2><p>No account needed. No hidden fees. Just clarity.</p><Button asChild size="lg"><Link to="/countries">Start Free Assessment <ArrowRight aria-hidden="true" /></Link></Button></div></section>
+</>;
 export default Index;

@@ -8,7 +8,7 @@ export const nigeriaScope: ReviewedAssessment = {
     {
       "id": 1,
       "text": "Are you processing personal data relating to an identifiable individual?",
-      "tooltip": "NDPA sections 2 and 65.",
+      "tooltip": "Personal data is information that identifies a person directly or indirectly, such as a name, phone number, or customer ID linked to them. Processing includes collecting, storing, using, sharing or deleting that information. For example, maintaining an employee contact list is processing personal data.",
       "options": {
         "yes": {
           "nextQuestion": 2
@@ -21,12 +21,13 @@ export const nigeriaScope: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The facts or legal conditions are uncertain. Obtain a regulator or legal assessment before relying on a conclusion. Record the reasoning; uncertainty does not establish an exemption."
         }
-      }
+      },
+      "helpReference": "NDPA sections 2 and 65."
     },
     {
       "id": 2,
       "text": "Is the controller or processor established, resident or operating in Nigeria, or does the processing take place in Nigeria?",
-      "tooltip": "NDPA section 2(2)(a)–(b). Assess processing location separately from incorporation.",
+      "tooltip": "A controller decides why and how personal data is used; a processor handles it on a controller’s behalf. Consider where those organisations operate and where the activity happens. For example, processing carried out in Nigeria can be relevant even if the company is incorporated elsewhere.",
       "options": {
         "yes": {
           "nextQuestion": 4
@@ -38,12 +39,13 @@ export const nigeriaScope: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The facts or legal conditions are uncertain. Obtain a regulator or legal assessment before relying on a conclusion. Record the reasoning; uncertainty does not establish an exemption."
         }
-      }
+      },
+      "helpReference": "NDPA section 2(2)(a)–(b). Assess processing location separately from incorporation."
     },
     {
       "id": 3,
       "text": "Does an organisation outside Nigeria process personal data of a data subject in Nigeria?",
-      "tooltip": "NDPA section 2(2)(c). Local incorporation is not necessary, and this question does not add a goods/services or monitoring condition.",
+      "tooltip": "A data subject is the person the information relates to. Consider whether the people whose information you handle are in Nigeria. For example, an overseas organisation may hold records about individuals in Nigeria even without a Nigerian office.",
       "options": {
         "yes": {
           "nextQuestion": 4
@@ -56,12 +58,13 @@ export const nigeriaScope: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The facts or legal conditions are uncertain. Obtain a regulator or legal assessment before relying on a conclusion. Record the reasoning; uncertainty does not establish an exemption."
         }
-      }
+      },
+      "helpReference": "NDPA section 2(2)(c). Local incorporation is not necessary, and this question does not add a goods/services or monitoring condition."
     },
     {
       "id": 4,
       "text": "Is this processing solely for personal or household purposes without violating another person’s fundamental right to privacy?",
-      "tooltip": "NDPA section 3(1); GAID article 6. This is not a general organisational exemption.",
+      "tooltip": "This means an individual using data only in their private or family life, such as a private address book. It is not a general exemption for organisations, and the activity must not violate another person’s fundamental right to privacy.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -74,12 +77,13 @@ export const nigeriaScope: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The facts or legal conditions are uncertain. Obtain a regulator or legal assessment before relying on a conclusion. Record the reasoning; uncertainty does not establish an exemption."
         }
-      }
+      },
+      "helpReference": "NDPA section 3(1); GAID article 6. This is not a general organisational exemption."
     },
     {
       "id": 5,
       "text": "Are you claiming a specific statutory or NDPC regulatory exemption for this particular processing?",
-      "tooltip": "NDPA section 3(2)–(4); GAID articles 3(2), 5–6.",
+      "tooltip": "An exemption is a specific legal exception. Identify the provision and the particular activity it covers, rather than assuming an entire organisation is exempt. For example, an exception for a specified purpose may leave other data protection duties in place.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -93,7 +97,8 @@ export const nigeriaScope: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "A section 3(2) exemption is purpose-specific and affects specified Part V obligations. Sections 24, 25, 32 and 40 remain applicable, and Part VI rights are not exempted by that provision. Do not treat the organisation as outside the whole Act. Resolve the claimed exemption before relying on it."
         }
-      }
+      },
+      "helpReference": "NDPA section 3(2)–(4); GAID articles 3(2), 5–6."
     }
   ],
   "guidance": [

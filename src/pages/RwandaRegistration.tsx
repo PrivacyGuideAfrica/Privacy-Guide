@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 
@@ -143,14 +144,11 @@ const RwandaRegistration = () => {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Registering as a data controller or processor in Rwanda
-        </h1>
-        <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
-          This module helps you determine if you must register with the Data Protection and Privacy Office (DPPO) 
-          and guides you through the information needed.
-        </p>
+      <div className="assessment-page">
+        <AssessmentHeader title="Registering as a data controller or processor in Rwanda">
+          <p>This module helps you determine if you must register with the Data Protection and Privacy Office (DPPO)
+          and guides you through the information needed.</p>
+        </AssessmentHeader>
         <AssessmentInterface
           title="Registration with Rwanda's DPPO"
           questions={questions}

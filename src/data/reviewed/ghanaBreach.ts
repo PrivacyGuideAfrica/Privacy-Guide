@@ -8,7 +8,7 @@ export const ghanaBreach: ReviewedAssessment = {
     {
       "id": 1,
       "text": "Are there reasonable grounds to believe an unauthorised person accessed or acquired the personal data?",
-      "tooltip": "Act 843 section 31; DPC Incident / Data Breach Report Form.",
+      "tooltip": "Personal data is information about an identifiable person. Reasonable grounds can include evidence that records were viewed or obtained by someone without permission, such as an unauthorised account accessing customer files. Consider the evidence rather than waiting for proof of actual misuse.",
       "options": {
         "yes": {
           "nextQuestion": 2
@@ -21,12 +21,13 @@ export const ghanaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline. Assess the DPC’s broader loss/damage reporting position."
         }
-      }
+      },
+      "helpReference": "Act 843 section 31; DPC Incident / Data Breach Report Form."
     },
     {
       "id": 2,
       "text": "Have the security agencies or DPC instructed that notifying data subjects would impede a criminal investigation?",
-      "tooltip": "Act 843 section 31(3)–(4). Embarrassment, an internal HR request or an incomplete investigation is not the specified instruction.",
+      "tooltip": "This concerns an instruction from the security agencies or DPC that notifying individuals would impede a criminal investigation. An internal request to delay, reputational concerns, or an unfinished internal investigation is different from that specified instruction.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -40,7 +41,8 @@ export const ghanaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Notify the Data Protection Commission (DPC) and affected data subjects as soon as reasonably practicable after discovery of reasonable grounds for unauthorised access or acquisition. Low risk does not remove that trigger. Use the official incident form and incidents@dataprotection.org.gh. Do not assume a lawful delay to subject notification without the specified instruction."
         }
-      }
+      },
+      "helpReference": "Act 843 section 31(3)–(4). Embarrassment, an internal HR request or an incomplete investigation is not the specified instruction."
     }
   ],
   "guidance": [

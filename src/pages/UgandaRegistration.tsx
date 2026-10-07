@@ -1,10 +1,11 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, Building, FileText, Clock, HelpCircle, Download, Mail } from "lucide-react";
+import { ArrowLeft, Building, FileText, Clock, Download, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { QuestionHelp } from "@/components/shared/QuestionHelp";
 
 const UgandaRegistration = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -25,6 +26,7 @@ const UgandaRegistration = () => {
     {
       id: "data_processing",
       question: "Do you process personal data as part of your operations?",
+      tooltip: "Personal data is information about an identifiable person, such as customer contact details or employee records. Processing includes collecting, storing, using, sharing or deleting it. Even a small contact list can involve personal data.",
       options: [
         { value: "yes", label: "Yes, we regularly process personal data" },
         { value: "limited", label: "Yes, but only limited processing" },
@@ -101,13 +103,14 @@ const UgandaRegistration = () => {
     
     return (
       <>
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          <Link to="/country/uganda" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Uganda Modules
-          </Link>
+        <div className="assessment-page">
 
-          <Card className="p-8">
+
+          <AssessmentHeader title="Uganda Registration Assessment">
+            <p>Determine if your organization needs to register with Uganda's Personal Data Protection Office</p>
+          </AssessmentHeader>
+
+          <Card className="assessment-custom-card p-8">
             <div className="text-center mb-8">
               {result.icon}
               <h2 className="text-2xl font-bold mt-4 mb-2">{result.title}</h2>
@@ -178,9 +181,7 @@ const UgandaRegistration = () => {
               <Button onClick={() => window.location.reload()} className="mr-4">
                 Start New Assessment
               </Button>
-              <Button variant="outline" asChild>
-                <Link to="/country/uganda">Back to Uganda Modules</Link>
-              </Button>
+
             </div>
           </Card>
         </div>
@@ -192,17 +193,13 @@ const UgandaRegistration = () => {
 
   return (
     <>
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <Link to="/country/uganda" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Uganda Modules
-        </Link>
+      <div className="assessment-page">
+
 
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-4">Uganda Registration Assessment</h1>
-          <p className="text-gray-600">
-            Determine if your organization needs to register with Uganda's Personal Data Protection Office
-          </p>
+          <AssessmentHeader title="Uganda Registration Assessment">
+          <p>Determine if your organization needs to register with Uganda's Personal Data Protection Office</p>
+        </AssessmentHeader>
         </div>
 
         <div className="mb-6">
@@ -218,20 +215,11 @@ const UgandaRegistration = () => {
           </div>
         </div>
 
-        <Card className="p-8">
-          <div className="flex items-center gap-2 mb-6">
-            <h2 className="text-xl font-semibold">{currentQuestion.question}</h2>
+        <Card className="assessment-custom-card p-8">
+          <div className="flex flex-col items-start gap-2 mb-6">
+            <h2 className="custom-question-prompt">{currentQuestion.question}</h2>
             {currentQuestion.tooltip && (
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <HelpCircle className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-                  </TooltipTrigger>
-                  <TooltipContent className="max-w-sm">
-                    <p>{currentQuestion.tooltip}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <QuestionHelp explanation={currentQuestion.tooltip} />
             )}
           </div>
           <div className="space-y-4">
@@ -239,7 +227,7 @@ const UgandaRegistration = () => {
               <Button
                 key={option.value}
                 variant="outline"
-                className="w-full text-left p-4 h-auto justify-start hover:bg-blue-50"
+                className="answer-option"
                 onClick={() => handleAnswer(currentQuestion.id, option.value)}
               >
                 {option.label}

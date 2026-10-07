@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -5,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Eye, Edit, Trash2, Ban, Download, Shield, Users, Clock, FileText, AlertTriangle, CheckCircle2, HelpCircle } from "lucide-react";
+import { QuestionHelp } from "@/components/shared/QuestionHelp";
+import { Eye, Edit, Trash2, Ban, Download, Shield, Users, Clock, FileText, AlertTriangle, CheckCircle2 } from "lucide-react";
 
 type DataSubjectRight = {
   id: string;
@@ -154,24 +155,15 @@ const UgandaDataSubjectRights = () => {
     if (currentStep <= 2) {
       const question = questions[currentStep - 1];
       return (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="assessment-custom-card">
+          <CardHeader className="question-card-header">
+            <CardTitle className="flex flex-wrap items-center gap-2">
               Question {currentStep} of 4
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{question.tooltip}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <QuestionHelp explanation={question.tooltip} />
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-lg">{question.text}</p>
+          <CardContent className="question-card-content space-y-4">
+            <p className="custom-question-prompt">{question.text}</p>
             <div className="flex gap-4">
               <Button 
                 onClick={() => handleAnswer(question.id, "yes")}
@@ -194,24 +186,15 @@ const UgandaDataSubjectRights = () => {
 
     if (currentStep === 3) {
       return (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="assessment-custom-card">
+          <CardHeader className="question-card-header">
+            <CardTitle className="flex flex-wrap items-center gap-2">
               Step 3 of 4: Select Data Subject Rights
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Select all rights that the individual is exercising in their request.</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <QuestionHelp explanation={"Select all rights that the individual is exercising in their request."} />
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-lg">Which of the following rights is the data subject exercising?</p>
+          <CardContent className="question-card-content space-y-4">
+            <p className="custom-question-prompt">Which of the following rights is the data subject exercising?</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {dataSubjectRights.map((right) => {
                 const Icon = right.icon;
@@ -256,24 +239,15 @@ const UgandaDataSubjectRights = () => {
 
     if (currentStep === 4) {
       return (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+        <Card className="assessment-custom-card">
+          <CardHeader className="question-card-header">
+            <CardTitle className="flex flex-wrap items-center gap-2">
               Step 4 of 4: Documentation
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Maintain comprehensive records of identity verification, assessments, actions taken, and communications for audit purposes.</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <QuestionHelp explanation={"Maintain comprehensive records of identity verification, assessments, actions taken, and communications for audit purposes."} />
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <p className="text-lg">Have you documented all steps taken to fulfill or explain limitations for each requested right?</p>
+          <CardContent className="question-card-content space-y-4">
+            <p className="custom-question-prompt">Have you documented all steps taken to fulfill or explain limitations for each requested right?</p>
             <div className="flex gap-4">
               <Button 
                 onClick={() => handleFinalSubmit("yes")}
@@ -298,7 +272,7 @@ const UgandaDataSubjectRights = () => {
   const renderResults = () => {
     if (answers[1] === "no") {
       return (
-        <Card>
+        <Card className="assessment-custom-card">
           <CardContent className="p-6">
             <h3 className="font-semibold text-lg mb-2">No Action Required</h3>
             <p className="text-muted-foreground">
@@ -311,7 +285,7 @@ const UgandaDataSubjectRights = () => {
 
     if (answers[2] === "no") {
       return (
-        <Card>
+        <Card className="assessment-custom-card">
           <CardContent className="p-6">
             <h3 className="font-semibold text-lg mb-2">Identity Verification Required</h3>
             <p className="text-muted-foreground">
@@ -324,7 +298,7 @@ const UgandaDataSubjectRights = () => {
 
     if (answers[4] === "no") {
       return (
-        <Card>
+        <Card className="assessment-custom-card">
           <CardContent className="p-6">
             <h3 className="font-semibold text-lg mb-2">Documentation Required</h3>
             <p className="text-muted-foreground">
@@ -341,7 +315,7 @@ const UgandaDataSubjectRights = () => {
 
     return (
       <div className="space-y-6">
-        <Card>
+        <Card className="assessment-custom-card">
           <CardContent className="p-6">
             <div className="flex items-center gap-2 mb-4">
               <CheckCircle2 className="h-5 w-5 text-green-500" />
@@ -369,8 +343,8 @@ const UgandaDataSubjectRights = () => {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
+        <Card className="assessment-custom-card">
+          <CardHeader className="question-card-header">
             <CardTitle>Selected Rights to Fulfill</CardTitle>
           </CardHeader>
           <CardContent>
@@ -405,7 +379,7 @@ const UgandaDataSubjectRights = () => {
         <div className="space-y-4">
           <h3 className="text-xl font-semibold">Next Steps</h3>
           <div className="grid grid-cols-1 gap-4">
-            <Card>
+            <Card className="assessment-custom-card">
               <CardContent className="p-4">
                 <div className="flex items-start gap-3">
                   <FileText className="h-5 w-5 text-blue-500 flex-shrink-0 mt-1" />
@@ -419,7 +393,7 @@ const UgandaDataSubjectRights = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="assessment-custom-card">
               <CardContent className="p-4">
                 <div className="flex items-start gap-3">
                   <Clock className="h-5 w-5 text-purple-500 flex-shrink-0 mt-1" />
@@ -433,7 +407,7 @@ const UgandaDataSubjectRights = () => {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="assessment-custom-card">
               <CardContent className="p-4">
                 <div className="flex items-start gap-3">
                   <Users className="h-5 w-5 text-indigo-500 flex-shrink-0 mt-1" />
@@ -465,12 +439,11 @@ const UgandaDataSubjectRights = () => {
 
   return (
     <>
-      <div className="container py-8 space-y-6">
+      <div className="assessment-page">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Uganda Data Subject Rights Assessment</h1>
-          <p className="text-lg text-muted-foreground">
-            Learn how to handle data subject requests and rights under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations.
-          </p>
+          <AssessmentHeader title="Uganda Data Subject Rights Assessment">
+          <p>Learn how to handle data subject requests and rights under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations.</p>
+        </AssessmentHeader>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
               <strong>Important:</strong> Response timeframes vary by right type - Objection requests must be handled within 14 days, while other rights have a 30-day deadline.

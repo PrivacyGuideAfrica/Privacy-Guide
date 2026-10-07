@@ -1,6 +1,6 @@
 import { GuidanceReferences } from "./GuidanceReferences";
 import { Link, useLocation } from "react-router-dom";
-import { Printer } from "lucide-react";
+import { ListChecks, Footprints } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { findAssessment } from "@/data/catalog";
 import type { Question } from "./AssessmentInterface";
@@ -15,9 +15,17 @@ export const ResultDetails = ({ questions, answers, path, onEdit }: Props) => {
   const { pathname } = useLocation();
   const assessment = findAssessment(pathname);
   const labels: Record<string, string> = { yes: "Yes", no: "No", notSure: "Not sure" };
-  return <div className="space-y-8 border-t pt-6 text-left">
+  return <div className="result-details">
+    <section aria-labelledby="result-next-steps">
+      <h3 id="result-next-steps" className="text-xl font-semibold"><Footprints aria-hidden="true" />Next steps</h3>
+      <ol className="mt-3 list-decimal space-y-2 pl-5 leading-relaxed text-slate-700">
+        <li>Check the outcome and any actions or deadlines described in the guidance above.</li>
+        <li>Confirm requirements for your organisation with the relevant regulator or a qualified adviser.</li>
+        <li>Keep a copy of this result and revisit it when your circumstances change.</li>
+      </ol>
+    </section>
     <section aria-labelledby="result-context">
-      <h3 id="result-context" className="text-xl font-semibold">Why this applies</h3>
+      <h3 id="result-context" className="text-xl font-semibold"><ListChecks aria-hidden="true" />Why this applies</h3>
       <p className="mt-3 leading-relaxed text-slate-700">This result follows the answers below{assessment ? ` for ${assessment.country.name}` : ""}. Check that they describe your situation before acting on the guidance.</p>
       <ol className="mt-4 space-y-4">
         {path.map((id, index) => <li key={`${id}-${index}`} className="rounded-lg border border-slate-200 p-4">
@@ -28,16 +36,6 @@ export const ResultDetails = ({ questions, answers, path, onEdit }: Props) => {
           </div>
         </li>)}
       </ol>
-    </section>
-    <section aria-labelledby="result-next-steps">
-      <h3 id="result-next-steps" className="text-xl font-semibold">Next steps</h3>
-      <ol className="mt-3 list-decimal space-y-2 pl-5 leading-relaxed text-slate-700">
-        <li>Check the outcome and any actions or deadlines described in the guidance above.</li>
-        <li>Confirm requirements for your organisation with the relevant regulator or a qualified adviser.</li>
-        <li>Keep a copy of this result and revisit it when your circumstances change.</li>
-      </ol>
-      <Button variant="outline" className="mt-4" onClick={() => window.print()}><Printer aria-hidden="true" className="h-4 w-4" />Print or save as PDF</Button>
-      <p className="mt-2 text-sm text-slate-600 print:hidden">Your browser’s print dialog lets you choose a printer or save a PDF. The copy includes your answers.</p>
     </section>
     <GuidanceReferences />
     {assessment && <div className="print:hidden"><Link className="text-blue-800 underline" to={`/country/${assessment.country.id}`}>Explore other {assessment.country.name} assessments</Link></div>}

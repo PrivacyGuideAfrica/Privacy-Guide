@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -348,7 +349,7 @@ const SouthAfricaDataSubjectRights = () => {
         </Alert>
 
         {result.actions.length > 0 && (
-          <Card>
+          <Card className="assessment-custom-card">
             <CardHeader>
               <CardTitle className="text-lg">Required Actions</CardTitle>
             </CardHeader>
@@ -401,14 +402,14 @@ const SouthAfricaDataSubjectRights = () => {
   return (
     <>
       <div className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              Handling Data Subject Rights Requests in South Africa
-            </h1>
+        <div className="assessment-page">
+          <div className="assessment-introduction">
+            <AssessmentHeader title="Handling Data Subject Rights Requests in South Africa">
+              <p>Understand how to respond to personal information rights requests under South Africa's Protection of Personal Information Act (POPIA).</p>
+            </AssessmentHeader>
             {currentStage !== 'results' && (
               <div className="mb-6">
-                <Progress value={getProgressPercentage()} className="w-full max-w-md mx-auto" />
+                <Progress value={getProgressPercentage()} className="w-full" />
                 <p className="text-sm text-gray-600 mt-2">{Math.round(getProgressPercentage())}% Complete</p>
               </div>
             )}
@@ -425,20 +426,20 @@ const SouthAfricaDataSubjectRights = () => {
                 </p>
               </div>
 
-              <Card>
+              <Card className="assessment-custom-card">
                 <CardHeader>
                   <CardTitle>Initial Assessment</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="font-medium mb-4">
+                    <p className="custom-question-prompt mb-4">
                       Have you received a request from an individual asking to access, change, delete, or object to the use of their personal information?
                     </p>
                     <p className="text-sm text-gray-600 mb-4">
                       This covers any formal communication (written, email, or via a specific form like Form 1 or Form 2 of the POPIA Regulations 2021) where an individual asks you to take action regarding their personal information.
                     </p>
                     <div className="flex space-x-3">
-                      <Button onClick={() => handleInitialAnswer('yes')} className="bg-green-600 hover:bg-green-700">
+                      <Button onClick={() => handleInitialAnswer('yes')} className="bg-primary hover:bg-blue-800">
                         Yes
                       </Button>
                       <Button onClick={() => handleInitialAnswer('no')} variant="outline">
@@ -460,7 +461,7 @@ const SouthAfricaDataSubjectRights = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {requestTypes.map((type) => (
-                  <Card key={type.id} className="cursor-pointer hover:shadow-md transition-shadow" onClick={() => handleRequestTypeSelection(type)}>
+                  <Card key={type.id} className="cursor-pointer hover:shadow-md transition-shadow" role="button" tabIndex={0} onKeyDown={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); handleRequestTypeSelection(type); } }} onClick={() => handleRequestTypeSelection(type)}>
                     <CardHeader>
                       <CardTitle className="flex items-center space-x-3">
                         <type.icon className="h-6 w-6 text-blue-600" />
@@ -494,10 +495,10 @@ const SouthAfricaDataSubjectRights = () => {
                 </span>
               </div>
 
-              <Card>
+              <Card className="assessment-custom-card">
                 <CardContent className="space-y-4 pt-6">
                   <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="font-medium mb-4">
+                    <p className="custom-question-prompt mb-4">
                       {selectedRequestType.questions[currentQuestion].text}
                     </p>
                     {selectedRequestType.questions[currentQuestion].tooltip && (
@@ -506,7 +507,7 @@ const SouthAfricaDataSubjectRights = () => {
                       </p>
                     )}
                     <div className="flex space-x-3">
-                      <Button onClick={() => handleAnswer('yes')} className="bg-green-600 hover:bg-green-700">
+                      <Button onClick={() => handleAnswer('yes')} className="bg-primary hover:bg-blue-800">
                         Yes
                       </Button>
                       <Button onClick={() => handleAnswer('no')} variant="outline">

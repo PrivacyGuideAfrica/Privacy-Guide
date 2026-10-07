@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -39,14 +40,13 @@ const GhanaDPO = () => {
 
   return (
     <>
-      <div className="container py-8 space-y-6">
+      <div className="assessment-page">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Data Protection Supervisor (DPO) Assessment - Ghana</h1>
-          <p className="text-lg text-muted-foreground">
-            This module helps you work out if your organisation needs to appoint a Data Protection Supervisor under 
+          <AssessmentHeader title="Data Protection Supervisor (DPO) Assessment - Ghana">
+          <p>This module helps you work out if your organisation needs to appoint a Data Protection Supervisor under
             Ghana's Data Protection Act, 2012 (Act 843). While the Act refers to a "Data Protection Supervisor," this 
-            role is similar to what is often called a "Data Protection Officer" (DPO) in other data protection laws.
-          </p>
+            role is similar to what is often called a "Data Protection Officer" (DPO) in other data protection laws.</p>
+        </AssessmentHeader>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
               <strong>Important:</strong> A Data Protection Supervisor is responsible for helping your organisation 

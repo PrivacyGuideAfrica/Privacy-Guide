@@ -1,10 +1,11 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 
 const questions: Question[] = [
   {
     id: 1,
     text: "Do you process personal data? (e.g., collect, store, use, share, or delete it)",
-    tooltip: "Processing is doing anything with personal data, like collecting it, storing it, using it, sharing it, or even deleting it.",
+    tooltip: "Personal data identifies a person directly or indirectly, such as a name, phone number or customer ID linked to them. Processing includes collecting, storing, using, sharing or deleting it. For example, keeping an employee contact list is processing personal data.",
     options: {
       yes: {
         nextQuestion: 2,
@@ -94,14 +95,11 @@ const questions: Question[] = [
 const ControllerProcessor = () => {
   return (
     <>
-      <div className="container mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Controller or Processor Assessment
-        </h1>
-        <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
-          This assessment will help determine whether your organization is classified as a Data Controller
-          or Data Processor under the Nigerian Data Protection Act (NDPA).
-        </p>
+      <div className="assessment-page">
+        <AssessmentHeader title="Controller or Processor Assessment">
+          <p>This assessment will help determine whether your organization is classified as a Data Controller
+          or Data Processor under the Nigerian Data Protection Act (NDPA).</p>
+        </AssessmentHeader>
         <AssessmentInterface
           title="Controller/Processor Assessment"
           questions={questions}

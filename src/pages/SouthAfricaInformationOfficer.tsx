@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -37,28 +38,14 @@ const SouthAfricaInformationOfficer = () => {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="mb-6">
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/countries")}
-              className="mb-4"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Countries
-            </Button>
-          </div>
+        <div className="assessment-page">
 
-          <Card className="mb-8">
-            <CardHeader className="text-center pb-6">
-              <div className="flex justify-center mb-4">
-                <div className="bg-gradient-to-br from-green-100 to-blue-100 p-3 rounded-full">
-                  <Users className="h-8 w-8 text-green-600" />
-                </div>
-              </div>
-              <CardTitle className="text-3xl font-bold text-gray-900 mb-4">
-                Module 8: Appointment of Information Officer and Responsibilities
-              </CardTitle>
+
+          <section className="assessment-introduction">
+            <div>
+              <AssessmentHeader title="Module 8: Appointment of Information Officer and Responsibilities">
+                <p>Understand Information Officer appointment and responsibilities under South Africa's Protection of Personal Information Act (POPIA).</p>
+              </AssessmentHeader>
               <div className="text-left space-y-4 text-gray-700">
                 <Alert>
                   <Shield className="h-4 w-4" />
@@ -77,8 +64,8 @@ const SouthAfricaInformationOfficer = () => {
                   </p>
                 </div>
               </div>
-            </CardHeader>
-          </Card>
+            </div>
+          </section>
 
           <AssessmentInterface
             title="Information Officer Assessment"

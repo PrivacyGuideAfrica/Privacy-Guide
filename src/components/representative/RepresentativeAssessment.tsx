@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { useState } from "react";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
@@ -80,13 +81,12 @@ export const RepresentativeAssessment = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="assessment-page">
       <div className="space-y-8">
         <div className="space-y-2">
-          <h1 className="text-3xl font-bold">Do You Need to Designate a Representative in Rwanda?</h1>
-          <p className="text-muted-foreground">
-            This module helps you determine whether you must appoint a representative under the Rwandan Data Protection Law, and provides additional guidance if you do.
-          </p>
+          <AssessmentHeader title="Do You Need to Designate a Representative in Rwanda?">
+          <p>This module helps you determine whether you must appoint a representative under the Rwandan Data Protection Law, and provides additional guidance if you do.</p>
+        </AssessmentHeader>
         </div>
 
         <AssessmentInterface

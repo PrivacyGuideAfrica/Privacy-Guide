@@ -1,10 +1,12 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface } from "./AssessmentInterface";
 import type { ReviewedAssessment as Definition } from "@/data/reviewed/types";
 
 export const ReviewedAssessment = ({ definition }: { definition: Definition }) => (
-  <div className="max-w-4xl mx-auto px-4 py-8 space-y-6">
-    <h1 className="text-3xl font-bold text-ndpa-navy">{definition.title}</h1>
-    <p className="text-slate-700 leading-relaxed">{definition.intro}</p>
+  <div className="assessment-page">
+    <AssessmentHeader title={definition.title}>
+      <p>{definition.intro}</p>
+    </AssessmentHeader>
     <p className="text-sm text-slate-600">Assess one processing activity or incident at a time. Choose “Not Sure” where the facts are unresolved. This guidance does not determine every legal obligation.</p>
     <AssessmentInterface
       title="Assessment questions"

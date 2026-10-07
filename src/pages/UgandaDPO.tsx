@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -35,14 +36,13 @@ const UgandaDPO = () => {
     }
   }];
   return <>
-      <div className="container py-8 space-y-6">
+      <div className="assessment-page">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Uganda Data Protection Officer (DPO) Assessment</h1>
-          <p className="text-lg text-muted-foreground">
-            This assessment helps you determine if your organisation needs to appoint a Data Protection Officer (DPO) 
+          <AssessmentHeader title="Uganda Data Protection Officer (DPO) Assessment">
+          <p>This assessment helps you determine if your organisation needs to appoint a Data Protection Officer (DPO)
             under Uganda's Data Protection and Privacy Act, 2019. A DPO is a designated person with expert knowledge 
-            who helps your organisation comply with data protection laws and manage personal data responsibly.
-          </p>
+            who helps your organisation comply with data protection laws and manage personal data responsibly.</p>
+        </AssessmentHeader>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
               <strong>Important:</strong> DPO appointment is mandatory for organisations whose main activities involve 

@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import React from 'react';
 import { AssessmentInterface, Question } from '@/components/shared/AssessmentInterface';
 import { ArrowLeft, Mail, MessageSquare, Shield } from 'lucide-react';
@@ -48,35 +49,16 @@ const SouthAfricaDirectMarketing = () => {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="assessment-page">
+          <div className="assessment-page">
             <div className="mb-8">
-              <Link
-                to="/south-africa-applicability"
-                className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors mb-6"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back to South Africa Assessments
-              </Link>
+
 
               <div className="text-center space-y-4">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <div className="p-3 bg-green-100 rounded-full">
-                    <Mail className="w-8 h-8 text-green-600" />
-                  </div>
-                  <div className="p-3 bg-blue-100 rounded-full">
-                    <MessageSquare className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <div className="p-3 bg-purple-100 rounded-full">
-                    <Shield className="w-8 h-8 text-purple-600" />
-                  </div>
-                </div>
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                  Module 9: Direct Marketing
-                </h1>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Understand the strict rules for direct marketing, especially when using unsolicited electronic communications, under South Africa's Protection of Personal Information Act (POPIA).
-                </p>
+
+                <AssessmentHeader title="Module 9: Direct Marketing">
+          <p>Understand the strict rules for direct marketing, especially when using unsolicited electronic communications, under South Africa's Protection of Personal Information Act (POPIA).</p>
+        </AssessmentHeader>
               </div>
             </div>
 
@@ -87,7 +69,7 @@ const SouthAfricaDirectMarketing = () => {
               </AlertDescription>
             </Alert>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="assessment-form-container">
               <AssessmentInterface
                 title="Direct Marketing Compliance Assessment"
                 questions={directMarketingQuestions}

@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
@@ -36,7 +37,7 @@ const UgandaDPIA = () => {
     {
       id: 3,
       text: "Are you processing children's data or special categories such as health, race, religious beliefs, or sexual life?",
-      tooltip: "These are sensitive data types that typically require additional safeguards.",
+      tooltip: "Children’s data and special categories of personal data can create particular risks. For example, exposing a child’s location or a person’s medical records may cause serious harm. A DPIA documents those risks and the safeguards proposed to reduce them.",
       options: {
         yes: { 
           nextQuestion: null,
@@ -52,12 +53,11 @@ const UgandaDPIA = () => {
 
   return (
     <>
-      <div className="container py-8 space-y-6">
+      <div className="assessment-page">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Uganda DPIA Assessment</h1>
-          <p className="text-lg text-muted-foreground">
-            Determine when you need to conduct a Data Protection Impact Assessment under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations, and understand how to carry one out.
-          </p>
+          <AssessmentHeader title="Uganda DPIA Assessment">
+          <p>Determine when you need to conduct a Data Protection Impact Assessment under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations, and understand how to carry one out.</p>
+        </AssessmentHeader>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
               <strong>Important:</strong> A DPIA is mandatory under Section 25 if processing is likely to result in high risk to the rights and freedoms of individuals. Even when not required, conducting a DPIA demonstrates accountability and proactive risk management.

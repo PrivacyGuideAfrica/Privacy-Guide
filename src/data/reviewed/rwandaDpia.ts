@@ -8,7 +8,7 @@ export const rwandaDpia: ReviewedAssessment = {
     {
       "id": 1,
       "text": "Does the activity involve systematic and extensive personal evaluation based on automated processing (including profiling), on which decisions with effects on those people are based?",
-      "tooltip": "Law 058/2021 article 38. Preserve the systematic, extensive and consequential conditions; this is not every automated operation.",
+      "tooltip": "This means organised and extensive evaluation of people using automated processing, with decisions based on it that affect them. For example, automated profiling used to decide access to a service may be relevant. Routine automation alone does not meet every condition.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -21,12 +21,13 @@ export const rwandaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Consult NCSA where unsure whether a DPIA is mandatory, whether one assessment can cover several operations, or about other DPIA doubts. Supply the full assessment during consultation or on request. Do not treat uncertainty as a no-DPIA result."
         }
-      }
+      },
+      "helpReference": "Law 058/2021 article 38. Preserve the systematic, extensive and consequential conditions; this is not every automated operation."
     },
     {
       "id": 2,
       "text": "Does the activity involve large-scale processing of sensitive personal data?",
-      "tooltip": "Article 38; NCSA DPIA Guide pages 3–7. Consider people, data range/volume, duration and geographic extent, not a universal numerical threshold.",
+      "tooltip": "Sensitive personal data needs particular protection, such as health or biometric information. Large scale depends on factors including the number of people, data volume and variety, duration and geographic reach. For example, a nationwide health database differs from a small, occasional record set.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -39,12 +40,13 @@ export const rwandaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Consult NCSA where unsure whether a DPIA is mandatory, whether one assessment can cover several operations, or about other DPIA doubts. Supply the full assessment during consultation or on request. Do not treat uncertainty as a no-DPIA result."
         }
-      }
+      },
+      "helpReference": "Article 38; NCSA DPIA Guide pages 3–7. Consider people, data range/volume, duration and geographic extent, not a universal numerical threshold."
     },
     {
       "id": 3,
       "text": "Does the activity involve systematic monitoring of a publicly accessible area on a large scale?",
-      "tooltip": "Article 38. All three conditions matter; smaller/private monitoring may still present other high risk.",
+      "tooltip": "Systematic monitoring is organised or repeated observation. This trigger also requires a publicly accessible area and a large scale, such as a broad network of cameras monitoring public spaces. Other monitoring can still create high risk under a different criterion.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -57,12 +59,13 @@ export const rwandaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Consult NCSA where unsure whether a DPIA is mandatory, whether one assessment can cover several operations, or about other DPIA doubts. Supply the full assessment during consultation or on request. Do not treat uncertainty as a no-DPIA result."
         }
-      }
+      },
+      "helpReference": "Article 38. All three conditions matter; smaller/private monitoring may still present other high risk."
     },
     {
       "id": 4,
       "text": "Does the activity involve new technology in processing personal data?",
-      "tooltip": "Article 38; NCSA Guide page 6 discusses AI, neuro-measurement and IoT.",
+      "tooltip": "Consider technology that introduces new ways to collect, analyse or use personal data. Examples discussed in the NCSA guide include artificial intelligence and connected devices. Assess the privacy effects in the particular use case.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -75,12 +78,13 @@ export const rwandaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Consult NCSA where unsure whether a DPIA is mandatory, whether one assessment can cover several operations, or about other DPIA doubts. Supply the full assessment during consultation or on request. Do not treat uncertainty as a no-DPIA result."
         }
-      }
+      },
+      "helpReference": "Article 38; NCSA Guide page 6 discusses AI, neuro-measurement and IoT."
     },
     {
       "id": 5,
       "text": "Does the activity involve vulnerable data subjects, including children, people with disabilities, asylum seekers, refugees, older people or a power imbalance?",
-      "tooltip": "NCSA Guide pages 5–6. Children aged 16 or 17 are not excluded. Article 9’s under-16 parental-consent rule is distinct.",
+      "tooltip": "Vulnerable data subjects may have less ability to understand, object to or influence processing because of their circumstances or a power imbalance. Examples include children, refugees and employees. Children aged 16 or 17 are not excluded from this risk consideration.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -93,12 +97,13 @@ export const rwandaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Consult NCSA where unsure whether a DPIA is mandatory, whether one assessment can cover several operations, or about other DPIA doubts. Supply the full assessment during consultation or on request. Do not treat uncertainty as a no-DPIA result."
         }
-      }
+      },
+      "helpReference": "NCSA Guide pages 5–6. Children aged 16 or 17 are not excluded. Article 9’s under-16 parental-consent rule is distinct."
     },
     {
       "id": 6,
       "text": "Does the activity match or combine datasets from different purposes or controllers beyond individuals’ reasonable expectations?",
-      "tooltip": "NCSA Guide page 6. This does not automatically include every routine database join.",
+      "tooltip": "This means combining information gathered for different purposes or by different controllers in ways people would not reasonably expect. For example, joining unrelated records to build a new profile can reveal more about someone than either dataset alone.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -111,12 +116,13 @@ export const rwandaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Consult NCSA where unsure whether a DPIA is mandatory, whether one assessment can cover several operations, or about other DPIA doubts. Supply the full assessment during consultation or on request. Do not treat uncertainty as a no-DPIA result."
         }
-      }
+      },
+      "helpReference": "NCSA Guide page 6. This does not automatically include every routine database join."
     },
     {
       "id": 7,
       "text": "Otherwise, is the processing likely to create high risk to individuals’ rights and freedoms?",
-      "tooltip": "Article 38; NCSA DPIA Guide pages 3–7.",
+      "tooltip": "Consider whether people could face serious harm, such as exclusion from services, discrimination, loss of confidentiality or intrusive surveillance. Assess both likelihood and severity, including risks that do not fit neatly into the earlier questions.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -130,7 +136,8 @@ export const rwandaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Consult NCSA where unsure whether a DPIA is mandatory, whether one assessment can cover several operations, or about other DPIA doubts. Supply the full assessment during consultation or on request. Do not treat uncertainty as a no-DPIA result."
         }
-      }
+      },
+      "helpReference": "Article 38; NCSA DPIA Guide pages 3–7."
     }
   ],
   "guidance": [

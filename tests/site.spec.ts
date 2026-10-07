@@ -59,7 +59,8 @@ test("Previous follows the answered branch and changed answers choose a new path
   await answer(page, "Yes");
   await answer(page, "No");
   await expect(page.getByText("Does an organisation outside Nigeria", { exact: false })).toBeVisible();
-  await expect(page.getByText("Step 3 · 2 answered")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Step 3", exact: true })).toBeVisible();
+  await expect(page.getByText("2 answered", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Previous" }).click();
   await expect(page.getByText("Is the controller or processor established", { exact: false })).toBeVisible();
   await answer(page, "Yes");
@@ -83,8 +84,8 @@ test("completed assessments allow review, a different result, and a full reset",
   await expect(page.getByText("does not directly apply to your current activities", { exact: false })).toHaveCount(0);
   await answer(page, "Yes");
   await expect(page.getByText("The Ghana Data Protection Act, 2012 (Act 843) applies to your activities.", { exact: false })).toBeVisible();
-  await page.getByTitle("Reset Assessment").click();
-  await expect(page.getByText("Step 1 · 0 answered")).toBeVisible();
+  await page.getByRole("button", { name: /Retake Assessment|Restart assessment/ }).click();
+  await expect(page.getByText("0 answered", { exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Previous" })).toBeDisabled();
 });
 
@@ -110,8 +111,8 @@ test("reviewed results can be revised without retaining the previous result", as
   await answer(page, "Yes");
   await answer(page, "Yes");
   await expect(page.getByText("Contractual Necessity may be available", { exact: false })).toBeVisible();
-  await page.getByTitle("Reset Assessment").click();
-  await expect(page.getByText("Step 1 · 0 answered")).toBeVisible();
+  await page.getByRole("button", { name: /Retake Assessment|Restart assessment/ }).click();
+  await expect(page.getByText("0 answered", { exact: true })).toBeVisible();
   await expect(page.getByText("Legal Obligation may be available", { exact: false })).toHaveCount(0);
 });
 
@@ -150,8 +151,8 @@ test("Not Sure preserves uncertainty and reset clears progress", async ({ page }
   await page.getByRole("button", { name: "Review last answer" }).click();
   await expect(page.getByRole("button", { name: "Not Sure", exact: true })).toBeVisible();
   await answer(page, "No");
-  await page.getByTitle("Reset Assessment").click();
-  await expect(page.getByText("Step 1 · 0 answered")).toBeVisible();
+  await page.getByRole("button", { name: /Retake Assessment|Restart assessment/ }).click();
+  await expect(page.getByText("0 answered", { exact: true })).toBeVisible();
   await expect(page.getByRole("button", { name: "Previous" })).toBeDisabled();
   await answer(page, "Yes");
   await expect(page.locator(".assessment-result")).toContainText("A Rwanda DPIA trigger is identified");
@@ -187,7 +188,9 @@ for (const country of ["nigeria", "rwanda", "uganda", "south-africa", "ghana"]) 
     const errors: string[] = [];
     page.on("pageerror", error => errors.push(error.message));
     await page.goto(`/country/${country}`);
-    const links = await page.locator('section[aria-labelledby="assessment-modules"] a[href]').evaluateAll(elements =>
+    const moduleLinks = page.locator('section[aria-labelledby="assessment-modules"] a[href]');
+    await expect(moduleLinks.first()).toBeVisible();
+    const links = await moduleLinks.evaluateAll(elements =>
       elements.map(element => element.getAttribute("href")!).filter(href => href !== "/countries")
     );
     expect(links.length).toBeGreaterThan(0);

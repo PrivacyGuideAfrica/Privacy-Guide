@@ -8,7 +8,7 @@ export const nigeriaAudit: ReviewedAssessment = {
     {
       "id": 1,
       "text": "Are you a controller, processor, or both, with relevant personal-data processing within Nigeria’s scope?",
-      "tooltip": "NDPA section 2; GAID articles 8–10.",
+      "tooltip": "A controller decides why and how data is processed; a processor acts on its behalf. Personal data relates to identifiable people, such as customers or employees. Assess the organisation’s Nigerian connections and activities before considering annual filing requirements.",
       "options": {
         "yes": {
           "nextQuestion": 2
@@ -21,12 +21,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Determine classification before relying on a filing exemption or deadline. Check the registration certificate, sector designation and all applicable non-volume criteria with the NDPC. Do not assume OHL from low headcount."
         }
-      }
+      },
+      "helpReference": "NDPA section 2; GAID articles 8–10."
     },
     {
       "id": 2,
       "text": "Does your registration certificate or applicable NDPC designation establish UHL or EHL classification?",
-      "tooltip": "GAID articles 8–10, Schedule 7; updated Registration Guidance Notice paragraphs 1–4. A multinational with 150 local data subjects must not be excluded solely by count.",
+      "tooltip": "UHL and EHL are NDPC registration classifications: Ultra-High Level and Extra-High Level. Check the certificate or applicable designation rather than guessing from the organisation’s size. For example, a sector-based designation can matter even with a modest number of local data subjects.",
       "options": {
         "yes": {
           "nextQuestion": 7
@@ -38,12 +39,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Determine classification before relying on a filing exemption or deadline. Check the registration certificate, sector designation and all applicable non-volume criteria with the NDPC. Do not assume OHL from low headcount."
         }
-      }
+      },
+      "helpReference": "GAID articles 8–10, Schedule 7; updated Registration Guidance Notice paragraphs 1–4. A multinational with 150 local data subjects must not be excluded solely by count."
     },
     {
       "id": 3,
       "text": "Does your registration certificate or applicable NDPC designation establish OHL classification?",
-      "tooltip": "GAID article 9(3) supplies the OHL annual-renewal exception to the general CAR wording.",
+      "tooltip": "OHL means Ordinary-High Level, an NDPC registration classification. Check the organisation’s certificate or applicable designation. This classification matters because its annual registration renewal treatment differs from the general Compliance Audit Return requirements.",
       "options": {
         "yes": {
           "nextQuestion": 4
@@ -55,12 +57,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Determine classification before relying on a filing exemption or deadline. Check the registration certificate, sector designation and all applicable non-volume criteria with the NDPC. Do not assume OHL from low headcount."
         }
-      }
+      },
+      "helpReference": "GAID article 9(3) supplies the OHL annual-renewal exception to the general CAR wording."
     },
     {
       "id": 4,
       "text": "Is your OHL annual registration renewal current?",
-      "tooltip": "GAID articles 9(3), 10(1)–(5).",
+      "tooltip": "Annual registration renewal keeps an OHL registration current; it is distinct from a Compliance Audit Return (CAR). Check the renewal record for the relevant year rather than relying only on the original registration certificate.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -74,12 +77,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Check your OHL renewal status with the NDPC before relying on the CAR exception. Internal audit duties remain."
         }
-      }
+      },
+      "helpReference": "GAID articles 9(3), 10(1)–(5)."
     },
     {
       "id": 5,
       "text": "Have you assessed all designation criteria, including sector, commercial ICT services on another person’s data-capable device, and distinct data subjects processed in six months?",
-      "tooltip": "Updated Registration Guidance Notice paragraphs 1–4; GAID Schedule 7. Designation is not solely based on volume.",
+      "tooltip": "Designation as a controller or processor of major importance can depend on the sector, specified activities and numbers of distinct people. For example, count people rather than repeated transactions, and check sector criteria even if the volume appears low.",
       "options": {
         "yes": {
           "nextQuestion": 6
@@ -92,12 +96,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Determine classification before relying on a filing exemption or deadline. Check the registration certificate, sector designation and all applicable non-volume criteria with the NDPC. Do not assume OHL from low headcount."
         }
-      }
+      },
+      "helpReference": "Updated Registration Guidance Notice paragraphs 1–4; GAID Schedule 7. Designation is not solely based on volume."
     },
     {
       "id": 6,
       "text": "Does that documented assessment establish that you are not of major importance?",
-      "tooltip": "GAID articles 8, 10(1)–(6); Schedule 7 paragraph 4. Exactly 1,000 or 5,000 people are not cleanly allocated by the volume bands; seek classification if other criteria do not resolve this.",
+      "tooltip": "Use a recorded assessment of all applicable designation criteria, not just a headcount. For example, being below a volume threshold does not resolve whether a sector or activity criterion applies. Seek clarification where classification boundaries are unresolved.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -111,12 +116,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Determine classification before relying on a filing exemption or deadline. Check the registration certificate, sector designation and all applicable non-volume criteria with the NDPC. Do not assume OHL from low headcount."
         }
-      }
+      },
+      "helpReference": "GAID articles 8, 10(1)–(6); Schedule 7 paragraph 4. Exactly 1,000 or 5,000 people are not cleanly allocated by the volume bands; seek classification if other criteria do not resolve this."
     },
     {
       "id": 7,
       "text": "Is there a specific NDPC instruction or a verified extension applicable to your entity and filing period?",
-      "tooltip": "GAID article 10; the approved research verified no general 2026 extension. A case-specific direction requires evidence.",
+      "tooltip": "This means an official direction or verified extension that actually covers your organisation and filing period. For example, an extension for a previous year or another entity is not evidence that your current deadline changed.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -129,12 +135,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Annual CAR filing is required for your confirmed UHL or EHL classification. File through a licensed DPCO unless the NDPC approves another route. Check for specific instructions and confirm your establishment date before selecting a deadline."
         }
-      }
+      },
+      "helpReference": "GAID article 10; the approved research verified no general 2026 extension. A case-specific direction requires evidence."
     },
     {
       "id": 8,
       "text": "Was the entity legally established before 12 June 2023?",
-      "tooltip": "GAID article 10(7)–(9). Establishment date, not the date of becoming major importance, determines this timing rule.",
+      "tooltip": "Use the date the entity was legally established, such as the incorporation date in its official records. This is different from when it registered with the NDPC or first became a controller or processor of major importance.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -147,12 +154,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Annual CAR filing is required for your confirmed UHL or EHL classification. File through a licensed DPCO unless the NDPC approves another route. Establishment date is unresolved: obtain confirmation without assuming a new grace period."
         }
-      }
+      },
+      "helpReference": "GAID article 10(7)–(9). Establishment date, not the date of becoming major importance, determines this timing rule."
     },
     {
       "id": 9,
       "text": "Was the entity legally established after 12 June 2023?",
-      "tooltip": "GAID article 10(7)–(8).",
+      "tooltip": "Check the entity’s legal establishment date in its official records. For example, the date of incorporation is distinct from the date of NDPC registration. Do not treat an entity established exactly on 12 June 2023 as falling before or after that date.",
       "options": {
         "yes": {
           "nextQuestion": 10
@@ -165,12 +173,13 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Annual CAR filing is required for your confirmed UHL or EHL classification. File through a licensed DPCO unless the NDPC approves another route. Confirm the legal establishment date; no automatic extension follows from uncertainty."
         }
-      }
+      },
+      "helpReference": "GAID article 10(7)–(8)."
     },
     {
       "id": 10,
       "text": "Is this the entity’s first CAR filing?",
-      "tooltip": "GAID article 10(8); NDPC FAQ is explanatory rather than a statutory amendment.",
+      "tooltip": "A Compliance Audit Return (CAR) is a compliance filing, distinct from registration or registration renewal. Check whether the entity has previously filed a CAR; for example, holding a registration certificate does not show that a first CAR has been filed.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -184,7 +193,8 @@ export const nigeriaAudit: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Annual CAR filing is required for your confirmed UHL or EHL classification. File through a licensed DPCO unless the NDPC approves another route. Confirm whether this is a first or subsequent filing and address any overdue compliance."
         }
-      }
+      },
+      "helpReference": "GAID article 10(8); NDPC FAQ is explanatory rather than a statutory amendment."
     }
   ],
   "guidance": [

@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -54,15 +55,12 @@ export default function SouthAfricaPriorAuthorisation() {
 
   return (
     <>
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="assessment-page">
+        <div className="assessment-page">
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              Prior Authorisation Assessment
-            </h1>
-            <p className="text-lg text-gray-600 mb-6">
-              This module helps you determine if your organisation's (or your individual) personal information processing activities require 'Prior Authorisation' from the Information Regulator in South Africa under the Protection of Personal Information Act (POPIA). Prior Authorisation is a specific approval needed for certain high-risk processing activities before they can begin.
-            </p>
+            <AssessmentHeader title="Prior Authorisation Assessment">
+          <p>This module helps you determine if your organisation's (or your individual) personal information processing activities require 'Prior Authorisation' from the Information Regulator in South Africa under the Protection of Personal Information Act (POPIA). Prior Authorisation is a specific approval needed for certain high-risk processing activities before they can begin.</p>
+        </AssessmentHeader>
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
               <h3 className="font-semibold text-blue-900 mb-2">Key Definitions:</h3>
               <ul className="text-sm text-blue-800 space-y-1">
@@ -82,7 +80,7 @@ export default function SouthAfricaPriorAuthorisation() {
           <div className="mt-8 text-center">
             <Button 
               variant="outline" 
-              onClick={() => navigate('/countries/south-africa')}
+              onClick={() => navigate('/country/south-africa')}
               className="mr-4"
             >
               Take Other Assessments
