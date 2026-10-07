@@ -5,11 +5,8 @@
 [build.environment]
   NODE_VERSION = "24.19.0"
 
-# SPA redirects - redirect all routes to index.html for client-side routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Routes and legacy redirects are defined in public/_redirects.
+# Known pages have static HTML; unknown paths serve the branded 404 page.
 
 # Security headers (we'll add CSP back later once deployment works)
 [[headers]]
