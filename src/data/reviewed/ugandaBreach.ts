@@ -8,7 +8,7 @@ export const ugandaBreach: ReviewedAssessment = {
     {
       "id": 1,
       "text": "Do you believe personal data has been accessed or acquired by an unauthorised person?",
-      "tooltip": "Uganda Act section 23; Regulations 2021, regulation 33 and Schedule 1 Form 7.",
+      "tooltip": "Personal data is information about an identifiable individual, such as employee records or customer contact details. Unauthorised access or acquisition means someone viewed or obtained it without permission, for example after an account compromise or a misdirected disclosure.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -22,7 +22,8 @@ export const ugandaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline."
         }
-      }
+      },
+      "helpReference": "Uganda Act section 23; Regulations 2021, regulation 33 and Schedule 1 Form 7."
     }
   ],
   "guidance": [

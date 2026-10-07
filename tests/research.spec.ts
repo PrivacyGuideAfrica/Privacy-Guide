@@ -82,7 +82,7 @@ for (const scenario of scenarios) {
     await expect(result).toBeVisible();
     for (const phrase of scenario.outcome) await expect(result).toContainText(phrase);
     for (const phrase of scenario.absent || []) await expect(result).not.toContainText(phrase);
-    await expect(result).toContainText("Approved for use 2026-10-06 by Site owner");
+    await expect(result).not.toContainText("Approved for use");
     await expect(result.getByRole("link", { name: "Print or save as PDF" })).toHaveCount(0);
     await expect(result.getByRole("button", { name: "Print or save as PDF" })).toBeVisible();
   });
@@ -98,12 +98,12 @@ for (const path of ["/nigeria-dpia", "/annual-audit", "/ghana-registration", "/r
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
     await page.emulateMedia({ media: "print" });
     await expect(page.getByRole("heading", { name: "Conditions and practical guidance" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Sources and review status" })).toHaveCount(1);
-    await expect(page.locator(".assessment-result")).toContainText("Version:");
+    await expect(page.getByRole("heading", { name: "Sources and legal references" })).toHaveCount(1);
+    await expect(page.locator(".assessment-result")).not.toContainText("Version:");
     await page.emulateMedia({ media: "screen" });
     await page.getByRole("button", { name: "Change answer 1", exact: true }).click();
     await expect(page.getByRole("heading", { name: "Conditions and practical guidance" })).toHaveCount(0);
-    await expect(page.getByText("Step 1 · 0 answered")).toBeVisible();
+    await expect(page.getByText("0 answered", { exact: true })).toBeVisible();
   });
 }
 
@@ -119,7 +119,7 @@ test("Nigeria's express DPIA list retains every category and no universal scale 
 test("approval is limited to researched modules and newly available modules enter the sitemap", async ({ page, request }) => {
   await page.goto("/ghana-applicability");
   await page.getByRole("button", { name: "Yes", exact: true }).click();
-  await expect(page.getByText("Legal review date: not yet recorded.")).toBeVisible();
+  await expect(page.getByText("Legal review date: not yet recorded.")).toHaveCount(0);
   const sitemap = await (await request.get("/sitemap.xml")).text();
   expect(sitemap).toContain("https://privacyguide.africa/nigeria-dpia");
   expect(sitemap).toContain("https://privacyguide.africa/annual-audit");

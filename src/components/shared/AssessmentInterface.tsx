@@ -5,8 +5,8 @@ import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Printer, ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2, Shield, Users, Database, UserCheck, Send, UserCog, Globe, AlertTriangle } from "lucide-react";
+import { QuestionHelp } from "./QuestionHelp";
+import { Printer, ArrowLeft, ArrowRight, RotateCcw, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2, Shield, Users, Database, UserCheck, Send, UserCog, Globe, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -20,6 +20,7 @@ export interface Question {
   id: number;
   text: string;
   tooltip?: string;
+  helpReference?: string;
   options: {
     yes: {
       nextQuestion: number | null;
@@ -313,7 +314,7 @@ export const AssessmentInterface = ({
               } else {
                 return (
                   <div className="bg-muted/50 rounded-full p-4 mb-4">
-                    <CheckCircle2 className="h-12 w-12 text-ndpa-green" />
+                    <FileText aria-hidden="true" className="h-12 w-12 text-blue-700" />
                   </div>
                 );
               }
@@ -329,7 +330,7 @@ export const AssessmentInterface = ({
             } else {
               return (
                 <div className="bg-muted/50 rounded-full p-4 mb-4">
-                  <CheckCircle2 className="h-12 w-12 text-ndpa-green" />
+                  <FileText aria-hidden="true" className="h-12 w-12 text-blue-700" />
                 </div>
               );
             }
@@ -459,26 +460,19 @@ export const AssessmentInterface = ({
   };
 
   return (
-    <div className="assessment-workspace">
+    <div className={`assessment-workspace ${finalMessage ? "workspace-complete" : ""}`}>
     <Card className={`assessment-card ${finalMessage ? "is-complete" : ""}`}>
       <CardHeader className="question-card-header">
         <div className="flex items-start justify-between gap-3">
           <h2 className={finalMessage ? "sr-only" : "question-card-label"}>
           {finalMessage ? "Assessment Complete" : title}
           </h2>
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={resetAssessment}
-            title="Reset Assessment"
-          >
-            <RotateCcw className="h-4 w-4" />
-          </Button>
+
         </div>
         {!finalMessage && (
           <div className="space-y-2" aria-live="polite" aria-atomic="true">
             <p className="text-sm text-gray-600">
-              Step {history.length + 1} · {history.length} answered
+              {history.length} answered
             </p>
             <p className="text-sm text-gray-600">Your answers determine which questions come next.</p>
           </div>
@@ -502,18 +496,7 @@ export const AssessmentInterface = ({
               {renderQuestion && renderQuestion(currentQuestionData) || (
                 <p className="whitespace-pre-line">{currentQuestionData.text}</p>
               )}
-              {!renderQuestion && currentQuestionData.tooltip && (
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button variant="ghost" size="icon" aria-label="Explain this question" className="shrink-0">
-                      <HelpCircle className="h-4 w-4" />
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="max-w-xs text-sm">
-                    <p>{currentQuestionData.tooltip}</p>
-                  </PopoverContent>
-                </Popover>
-              )}
+              {currentQuestionData.tooltip && <QuestionHelp key={currentQuestionData.id} explanation={currentQuestionData.tooltip} reference={currentQuestionData.helpReference} />}
             </div>
             <p className="answer-hint">Select an answer to continue.</p>
             <div className="answer-options">
@@ -554,11 +537,12 @@ export const AssessmentInterface = ({
           <ArrowLeft className="h-4 w-4 mr-2" />
           {finalMessage ? "Review last answer" : "Previous"}
         </Button>
+        {!finalMessage && <Button variant="ghost" className="restart-assessment" onClick={resetAssessment}><RotateCcw aria-hidden="true" size={16} />Restart assessment</Button>}
       </div>
     </Card>
     {!finalMessage && <div className="question-companion">
       {history.length > 0 && <details className="answer-history"><summary>Your answers ({history.length})<ChevronDown aria-hidden="true" size={18} /></summary><ol>{history.map((id, index) => <li key={id}><p>{questions.find(question => question.id === id)?.text}</p><div><strong>{answers[id] === "notSure" ? "Not sure" : answers[id] === "yes" ? "Yes" : "No"}</strong><Button variant="ghost" size="sm" onClick={() => editAnswer(index)} aria-label={`Edit previous answer ${index + 1}`}>Edit</Button></div></li>)}</ol></details>}
-      {assessment && <details className="question-sources"><summary>Sources & review<ChevronDown aria-hidden="true" size={18} /></summary><GuidanceReferences /></details>}
+      {assessment && <details className="question-sources"><summary>Sources & references<ChevronDown aria-hidden="true" size={18} /></summary><GuidanceReferences /></details>}
     </div>}
     </div>
   );

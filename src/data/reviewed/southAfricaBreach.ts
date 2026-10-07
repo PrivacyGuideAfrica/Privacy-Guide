@@ -8,7 +8,7 @@ export const southAfricaBreach: ReviewedAssessment = {
     {
       "id": 1,
       "text": "Are there reasonable grounds to believe an unauthorised person accessed or acquired personal information?",
-      "tooltip": "POPIA sections 21(2), 22; Information Regulator security-compromises fact sheet (August 2025).",
+      "tooltip": "Personal information can relate to an identifiable living person or, where applicable, an identifiable existing juristic person such as a company. Reasonable grounds may include evidence of unauthorised access to records. For example, logs showing an intruder opened customer files can be relevant without proof of later misuse.",
       "options": {
         "yes": {
           "nextQuestion": 2
@@ -21,12 +21,13 @@ export const southAfricaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline. Assess the Regulator’s broader all-compromises reporting guidance."
         }
-      }
+      },
+      "helpReference": "POPIA sections 21(2), 22; Information Regulator security-compromises fact sheet (August 2025)."
     },
     {
       "id": 2,
       "text": "Are you acting only as an operator for the affected processing?",
-      "tooltip": "POPIA sections 21(2), 22. If also responsible party, assess that role separately.",
+      "tooltip": "An operator processes personal information for a responsible party under a contract or mandate, rather than deciding the purpose itself. For example, an outsourced hosting provider may be an operator for client records. If you also determine the purpose, assess that responsible-party role separately.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -39,12 +40,13 @@ export const southAfricaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline. An operator must notify the responsible party immediately once the trigger is met."
         }
-      }
+      },
+      "helpReference": "POPIA sections 21(2), 22. If also responsible party, assess that role separately."
     },
     {
       "id": 3,
       "text": "Are you the responsible party for the affected processing?",
-      "tooltip": "POPIA sections 21–22.",
+      "tooltip": "A responsible party decides the purpose of and means for processing personal information. For example, an employer usually makes those decisions for employee records. Your duties depend on the role held for this affected processing.",
       "options": {
         "yes": {
           "nextQuestion": 4
@@ -57,12 +59,13 @@ export const southAfricaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline."
         }
-      }
+      },
+      "helpReference": "POPIA sections 21–22."
     },
     {
       "id": 4,
       "text": "Can the identity of affected data subjects be established?",
-      "tooltip": "POPIA section 22(1)(a)–(b). This is different from assuming all data are effectively de-identified.",
+      "tooltip": "Consider whether you can identify the people or entities whose information was affected. For example, a compromised customer list may identify affected customers. Being unable to identify the affected subjects is not the same as assuming all the data is fully de-identified.",
       "options": {
         "yes": {
           "nextQuestion": 5
@@ -75,12 +78,13 @@ export const southAfricaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Regulator notification remains required as soon as reasonably possible. Urgently establish which affected subjects can be identified and notified; uncertainty does not excuse the Regulator report."
         }
-      }
+      },
+      "helpReference": "POPIA section 22(1)(a)–(b). This is different from assuming all data are effectively de-identified."
     },
     {
       "id": 5,
       "text": "Has the specified public body or Regulator determined that subject notification would impede a criminal investigation?",
-      "tooltip": "POPIA section 22(2)–(3). Timing also takes account of legitimate law-enforcement needs and measures reasonably necessary to restore system integrity.",
+      "tooltip": "This concerns a determination by the specified public body or Information Regulator that notifying data subjects would impede a criminal investigation. An organisation’s own preference to delay notification is different from that determination.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -94,7 +98,8 @@ export const southAfricaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Notify the Information Regulator through eServices and identifiable affected data subjects as soon as reasonably possible after discovery. Low risk does not remove the duty once the section 22 trigger is met. Do not assume a permitted subject-notification delay without the specified determination."
         }
-      }
+      },
+      "helpReference": "POPIA section 22(2)–(3). Timing also takes account of legitimate law-enforcement needs and measures reasonably necessary to restore system integrity."
     }
   ],
   "guidance": [

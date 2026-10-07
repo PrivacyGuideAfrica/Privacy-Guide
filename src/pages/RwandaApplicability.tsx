@@ -5,7 +5,7 @@ const questions: Question[] = [
   {
     id: 1,
     text: "Do you use electronic or other means (automated or non-automated platforms) to process personal data?",
-    tooltip: "Processing personal data includes collecting, storing, using, sharing, or deleting information about individuals.",
+    tooltip: "Personal data is information about an identifiable individual, such as a name, contact details or an ID linked to them. Processing includes collecting, storing, using, sharing or deleting it. For example, maintaining customer records is processing personal data.",
     options: {
       yes: { nextQuestion: 2 },
       no: { 

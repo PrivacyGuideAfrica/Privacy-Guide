@@ -4,7 +4,7 @@ const questions: Question[] = [
   {
     id: 1,
     text: "Are you processing personal information (using either automated or non-automated methods) that is part of a record or filing system?",
-    tooltip: "This means you are doing anything with personal information (e.g., collecting, storing, using, sharing). A 'record' includes any recorded information regardless of its form or medium. 'Automated means' refers to equipment capable of operating automatically in response to instructions for processing information.",
+    tooltip: "Personal information relates to an identifiable living person or, where applicable, an identifiable existing juristic person such as a company. Processing includes collecting, storing, using or sharing it, for example keeping customer records. A 'record' includes any recorded information regardless of its form or medium. 'Automated means' refers to equipment capable of operating automatically in response to instructions for processing information.",
     options: {
       yes: { nextQuestion: 2 },
       no: { 

@@ -8,7 +8,7 @@ export const nigeriaBreach: ReviewedAssessment = {
     {
       "id": 1,
       "text": "Has a security incident caused accidental or unlawful destruction, loss, alteration, unauthorised disclosure of, or access to personal data?",
-      "tooltip": "NDPA sections 40 and 65; GAID article 33.",
+      "tooltip": "A personal data breach is a security incident affecting information about identifiable people. Examples include sending customer records to the wrong recipient, unauthorised access to employee files, or accidental loss of those files. It is not limited to hacking.",
       "options": {
         "yes": {
           "nextQuestion": 2
@@ -21,12 +21,13 @@ export const nigeriaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline."
         }
-      }
+      },
+      "helpReference": "NDPA sections 40 and 65; GAID article 33."
     },
     {
       "id": 2,
       "text": "Are you the controller for the affected processing (including where you also act as a processor)?",
-      "tooltip": "NDPA section 40 distinguishes controller and processor duties.",
+      "tooltip": "A controller decides why and how the affected data is processed. For example, an employer usually makes those decisions for its employee records. Assess your role for this incident, even if you act as a processor for other activities.",
       "options": {
         "yes": {
           "nextQuestion": 4
@@ -38,12 +39,13 @@ export const nigeriaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline. If acting as processor, notify the engaging controller or processor on awareness."
         }
-      }
+      },
+      "helpReference": "NDPA section 40 distinguishes controller and processor duties."
     },
     {
       "id": 3,
       "text": "Are you processing the affected data on behalf of a controller or another processor?",
-      "tooltip": "NDPA section 40(1).",
+      "tooltip": "A processor handles data on another organisation’s instructions. For example, a payroll service may process employee records for an employer. A subcontracted processor may handle data on behalf of another processor.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -57,12 +59,13 @@ export const nigeriaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline."
         }
-      }
+      },
+      "helpReference": "NDPA section 40(1)."
     },
     {
       "id": 4,
       "text": "Is the breach likely to result in risk to individuals’ rights and freedoms?",
-      "tooltip": "NDPA section 40(2), (7); GAID article 33. Encryption and subsequent measures are risk factors, not automatic exemptions.",
+      "tooltip": "Consider possible harm to the people affected, such as fraud, loss of confidentiality, discrimination or loss of control over their data. Assess the information involved, who could access it and how likely harm is. Encryption is a factor to examine, not an automatic exemption.",
       "options": {
         "yes": {
           "nextQuestion": 5
@@ -75,12 +78,13 @@ export const nigeriaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "The incident facts or reporting threshold are uncertain. Seek immediate incident and legal assessment, preserve evidence and relevant timestamps, and reassess promptly. Do not wait for an investigation to finish if the reporting trigger is already met; uncertainty does not extend a deadline."
         }
-      }
+      },
+      "helpReference": "NDPA section 40(2), (7); GAID article 33. Encryption and subsequent measures are risk factors, not automatic exemptions."
     },
     {
       "id": 5,
       "text": "Is that risk high?",
-      "tooltip": "NDPA section 40(2), (3), (7).",
+      "tooltip": "High risk involves the likelihood and seriousness of harm to individuals. For example, exposed identity documents combined with financial details may create more serious consequences than limited, low-sensitivity information. Record the reasons for the assessment.",
       "options": {
         "yes": {
           "nextQuestion": 6
@@ -93,12 +97,13 @@ export const nigeriaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Notify the NDPC within 72 elapsed hours of awareness of the breach likely to create risk to individuals (section 40(2)). Submit through the NDPC NIMP breach service. If already late, notify promptly and explain the delay. The high-risk subject-communication assessment remains unresolved; obtain immediate assessment."
         }
-      }
+      },
+      "helpReference": "NDPA section 40(2), (3), (7)."
     },
     {
       "id": 6,
       "text": "Is direct communication with affected individuals feasible without disproportionate effort or excessive cost?",
-      "tooltip": "NDPA section 40(3) and communication provisions.",
+      "tooltip": "Direct communication means reaching the affected people individually, for example by email or letter. Assess practical feasibility, effort and cost in the circumstances, rather than assuming that inconvenience alone justifies a public notice.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -112,7 +117,8 @@ export const nigeriaBreach: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Notify the NDPC within 72 elapsed hours of awareness of the breach likely to create risk to individuals (section 40(2)). Submit through the NDPC NIMP breach service. If already late, notify promptly and explain the delay. High-risk communication is required immediately; urgently establish an effective direct or permitted public route."
         }
-      }
+      },
+      "helpReference": "NDPA section 40(3) and communication provisions."
     }
   ],
   "guidance": [

@@ -50,7 +50,7 @@ test("in-progress answer review discards the old branch and preserves source acc
   await expect(page.locator(".answer-history li")).toHaveCount(1);
   await expect(page.locator(".answer-history strong")).toHaveText("No");
   await page.locator(".question-sources summary").click();
-  await expect(page.getByRole("heading", { name: "Sources and review status" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Sources and legal references" })).toBeVisible();
 });
 
 for (const path of ["/uganda-data-subject-rights", "/south-africa-data-subject-rights"]) {
@@ -69,3 +69,43 @@ for (const path of ["/uganda-data-subject-rights", "/south-africa-data-subject-r
     expect(result.violations).toEqual([]);
   });
 }
+
+test("question help explains concepts, retains references and works with keyboard and touch", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/ndpa-applicability");
+  const help = page.getByRole("button", { name: "Explain this question" });
+  await help.focus();
+  await page.keyboard.press("Enter");
+  const explanation = page.getByRole("dialog", { name: "Question explanation" });
+  await expect(explanation).toContainText("Personal data is information that identifies a person");
+  await expect(explanation).toContainText("employee contact list");
+  await expect(explanation).toContainText("NDPA sections 2 and 65");
+  const scan = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
+  expect(scan.violations).toEqual([]);
+  await page.keyboard.press("Escape");
+  await expect(help).toBeFocused();
+  await page.getByRole("button", { name: "Yes", exact: true }).click();
+  await help.click();
+  await expect(explanation).toContainText("A controller decides why and how");
+  await expect(explanation).not.toContainText("employee contact list");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("mobile country modules navigate and return focus to the main content", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/ndpa-applicability");
+  const menu = page.locator(".assessment-mobile-modules");
+  await menu.locator("summary").click();
+  await menu.getByRole("link", { name: "Lawful Basis Assessment" }).click();
+  await expect(page).toHaveURL(/nigeria-lawful-basis$/);
+  await expect(menu).not.toHaveAttribute("open");
+  await expect(page.getByRole("main")).toBeFocused();
+  await menu.locator("summary").click();
+  await expect(menu.getByRole("link", { name: "Lawful Basis Assessment" })).toHaveAttribute("aria-current", "page");
+});
+
+test("custom representative questions expose their existing explanations", async ({ page }) => {
+  await page.goto("/representative-assessment");
+  await page.getByRole("button", { name: "Explain this question" }).click();
+  await expect(page.getByRole("dialog", { name: "Question explanation" })).toContainText("A Data Controller determines the purposes and means");
+});

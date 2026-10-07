@@ -189,10 +189,7 @@
 .upcoming-countries { margin-top: 42px; padding: 26px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid #e7edf5; }
 .upcoming-countries h2 { font-size: 1.1875rem; font-weight: 700; }
 .upcoming-countries p { color: #64748b; font-size: 0.9375rem; margin-top: 6px; }
-.how-section { position: relative; isolation: isolate; overflow: hidden; background: linear-gradient(120deg, #eaf3ff, #edf0fc 70%, #e3eafd); border-block: 1px solid #d5e1f4; }
-.how-section::before, .how-section::after { content: ""; position: absolute; z-index: -1; width: 430px; height: 430px; border-radius: 50%; background: repeating-radial-gradient(ellipse at center, transparent 0 24px, #a3bce340 25px 26px, transparent 27px 49px); pointer-events: none; }
-.how-section::before { right: -230px; top: -240px; }
-.how-section::after { left: -280px; bottom: -285px; }
+.how-section { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 12% 20%, #e0edff99, transparent 65%), linear-gradient(120deg, #f1f7ff, #eef0fc); }
 .how-section .steps-grid p, .how-section .section-heading p, .how-section .guidance-disclaimer { color: #526178; }
 .how-section .icon-tile { background: #ffffffb8; border-color: #fff; box-shadow: 0 5px 18px -12px #1e40af50; }
 .how-section .guidance-disclaimer { border-color: #cedbf0; }
@@ -212,14 +209,15 @@
 .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .breadcrumbs a:hover { color: #1d4ed8; text-decoration: underline; }
 .breadcrumbs [aria-current=page] { color: #334155; }
-.country-intro { position: relative; display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 20px; margin-bottom: 44px; min-height: 310px; padding-block: 12px; }
+.country-intro { position: relative; display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 20px; margin-bottom: 44px; min-height: 340px; padding: 28px 36px; border-radius: 28px; overflow: hidden; background: linear-gradient(115deg, #edf5ff, #e4efff 65%, #dce9fd); }
 .country-intro-copy { position: relative; z-index: 1; padding-block: 20px; }
 .country-intro .country-law-title { color: #334766; font-size: 1.1875rem; margin-top: 18px; }
 .country-intro .country-intro-description { color: #526178; font-size: 1.0625rem; line-height: 1.75; max-width: 540px; margin-top: 18px; }
 .country-intro .regulator-link { margin-top: 22px; max-width: none; }
-.country-hero-art { position: relative; align-self: stretch; min-height: 310px; overflow: hidden; border-radius: 24px; background: radial-gradient(ellipse at 65% 40%, #e4efff, #fff 72%); }
-.country-outline { position: absolute; right: 7%; top: -8px; width: 64%; height: 72%; object-fit: contain; filter: drop-shadow(0 10px 16px #3b82f615); }
-.country-scene { position: absolute; bottom: 0; right: 0; width: 100%; height: 67%; object-fit: cover; object-position: center 65%; mask-image: linear-gradient(to bottom, transparent, black 30%); }
+.country-hero-art { position: relative; align-self: stretch; min-height: 310px; overflow: hidden; border-radius: 24px; background: transparent; }
+.country-outline { position: absolute; right: 6%; top: -5px; width: 68%; height: 76%; background: #8bb5f5 url('/images/africa-glass.webp') center 53% / 140% auto; mask-size: contain; mask-repeat: no-repeat; mask-position: center; opacity: .9; }
+.country-scene { position: absolute; bottom: -8px; right: -12px; width: calc(100% + 24px); max-width: none; height: 65%; object-fit: cover; object-position: center 65%; mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent), linear-gradient(to bottom, transparent, black 38%, black 78%, transparent); mask-composite: intersect; }
+
 .country-title { display: flex; align-items: center; gap: 20px; }
 .country-title .country-flag { font-size: 3.0rem; }
 
@@ -372,6 +370,49 @@ a.module-card:hover::before, a.module-card:focus-visible::before { opacity: 1; }
 .quest-token { color: #865b18; bottom: 8px; left: 26px; background: #fff3d8; transform: rotate(-10deg); }
 .quest-chip svg, .quest-token svg { width: 28px; height: 28px; }
 @media (prefers-reduced-motion: reduce) { .country-card:hover, .country-card:focus-visible, a.module-card:hover, a.module-card:focus-visible { transform: none; } }
+/* Assessment discovery and reading surfaces. */
+.assessment-shell { grid-template-columns: 235px minmax(0,1fr); gap: 36px; }
+.assessment-sidebar { padding: 24px 15px 170px; border: 1px solid #dae7fa; border-radius: 22px; background: linear-gradient(#edf5ff 55%, #e6efff); isolation: isolate; overflow: hidden; }
+.assessment-sidebar::after { content: ""; position: absolute; z-index: -1; pointer-events: none; bottom: -52px; left: 0; width: 100%; height: 235px; background: url('/images/africa-glass.webp') center / contain no-repeat; opacity: .65; mask-image: linear-gradient(transparent, black 30%, black); }
+.sidebar-back { padding-inline: 7px; margin-bottom: 24px; color: #405575; }
+.sidebar-country { padding-inline: 7px; margin-bottom: 24px; }
+.sidebar-country p, .sidebar-regulator { color: #526178; }
+.assessment-sidebar nav a, .assessment-mobile-modules nav a { border: 1px solid transparent; transition: background .2s, box-shadow .2s; }
+.assessment-sidebar nav a:hover, .assessment-sidebar nav a:focus-visible { background: #ffffffaa; box-shadow: inset 0 1px white; }
+.assessment-sidebar nav a[aria-current], .assessment-mobile-modules nav a[aria-current] { background: #fff; color: #1d4ed8; border-color: #d7e5fa; box-shadow: inset 3px 0 #3565e7, 0 5px 18px -12px #315d9e60; font-weight: 600; }
+.assessment-sidebar nav a svg { color: #3565c9; }
+.assessment-mobile-modules { display: none; margin-bottom: 28px; border: 1px solid #d7e5fa; background: #eef5ff; border-radius: 14px; }
+.assessment-mobile-modules summary { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 16px; cursor: pointer; font-weight: 600; list-style: none; }
+.assessment-mobile-modules summary::-webkit-details-marker { display: none; }
+.assessment-mobile-modules summary span { font-size: .875rem; font-weight: 400; color: #526178; margin-left: auto; }
+.assessment-mobile-modules[open] summary svg { transform: rotate(180deg); }
+.assessment-mobile-modules nav { display: grid; gap: 5px; padding: 0 12px 12px; }
+.assessment-mobile-modules nav a { display: flex; align-items: start; gap: 12px; border-radius: 9px; padding: 12px; color: #405575; font-size: .9375rem; }
+.assessment-mobile-modules nav svg { flex-shrink: 0; margin-top: 3px; }
+.question-card-header { background: linear-gradient(110deg, #f1f6ff, #fafcff); border-radius: 20px 20px 0 0; }
+.question-prompt { display: block; }
+.question-help-trigger { display: inline-flex; gap: 8px; height: auto; white-space: normal; text-align: left; justify-content: start; padding: 9px 12px; margin-top: 16px; color: #1d4ed8; background: #edf4ff; font-size: .875rem; font-weight: 600; }
+.question-help-trigger:hover { background: #e0ecff; }
+.question-help-content { width: min(380px, calc(100vw - 32px)); max-height: min(480px, var(--radix-popover-content-available-height)); overflow-y: auto; padding: 20px; border: 1px solid #ccddf7; border-radius: 14px; box-shadow: 0 16px 45px -18px #25477955; font-size: 1rem; line-height: 1.65; color: #263b59; }
+.question-help-reference { margin-top: 16px; padding-top: 12px; border-top: 1px solid #dce7f8; color: #526178; font-size: .875rem; }
+.answer-option:focus-visible { background: #edf4ff; border-color: #3565e7; }
+.question-card-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.restart-assessment { color: #526178; font-size: .8125rem; }
+.question-companion { align-self: start; }
+.question-companion details { border: 1px solid #dce7f8; border-radius: 16px; background: linear-gradient(145deg, #f5f9ff, #fff); padding: 0 20px; }
+.question-companion summary { color: #263b59; font-weight: 600; }
+.question-companion summary svg { flex-shrink: 0; }
+.answer-history li > p { line-height: 1.6; }
+.is-complete .question-card-header { background: transparent; }
+.result-heading { padding-bottom: 24px; border-bottom: 1px solid #e1e9f6; }
+.result-details section[aria-labelledby="result-next-steps"] { padding: 24px; background: #f0f6ff; border: 1px solid #dce7f8; border-radius: 16px; }
+@media (min-width: 1280px) {
+  .assessment-workspace:not(.workspace-complete) { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 24px; align-items: start; }
+  .question-companion { margin-top: 0; }
+  .question-card-header { padding: 24px; }
+  .question-card-content { padding: 28px 24px; }
+  .question-card-footer { padding: 0 24px 24px; }
+}
 @media (max-width: 1100px) { .hero-checklist { right: 0; bottom: 0; width: min(100%, 265px); padding: 20px; } .hero-visual { padding-bottom: 90px; } }
 @media (max-width: 1100px) {
   .country-grid-compact { grid-template-columns: repeat(3,minmax(0,1fr)); }
@@ -386,6 +427,7 @@ a.module-card:hover::before, a.module-card:focus-visible::before { opacity: 1; }
 @media (max-width: 900px) {
   .assessment-shell { display: block; }
   .assessment-sidebar { display: none; }
+  .assessment-mobile-modules { display: block; }
   .module-grid, .country-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .hero-grid { grid-template-columns: 1.3fr 1fr; }
   .hero-copy h1 { font-size: 2.7rem; }
@@ -423,9 +465,9 @@ a.module-card:hover::before, a.module-card:focus-visible::before { opacity: 1; }
   .page-intro > p:last-child { font-size: 1.125rem; margin-top: 18px; }
   .eyebrow { font-size: 0.6875rem; margin-bottom: 16px; }
   .breadcrumbs { padding-top: 22px; font-size: 0.75rem; }
-  .country-intro { display: flex; flex-direction: column; align-items: stretch; gap: 0; margin-bottom: 30px; padding: 0; }
+  .country-intro { display: flex; flex-direction: column; align-items: stretch; gap: 0; margin-bottom: 30px; padding: 28px 22px 12px; border-radius: 22px; }
   .country-intro-copy { padding-block: 0; }
-  .country-hero-art { min-height: 230px; margin-top: 24px; }
+  .country-hero-art { min-height: 230px; margin: 24px -12px 0; }
   .country-outline { width: 55%; right: 10%; }
   .country-scene { height: 68%; }
   .quest-section { padding-top: 52px; }

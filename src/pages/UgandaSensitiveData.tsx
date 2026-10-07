@@ -12,7 +12,7 @@ const UgandaSensitiveData = () => {
     {
       id: 1,
       text: "Are you processing any of the following: health data, genetic or biometric data, race, ethnicity, religious beliefs, political opinions, or sexual life?",
-      tooltip: "These are classified as sensitive personal data under Ugandan law.",
+      tooltip: "These categories concern particularly private information, such as health status, medical records or religious beliefs. For example, employee medical records require more care than a general office contact list. Consider the actual information you hold, not just the name of the database.",
       options: {
         yes: { nextQuestion: 2, message: null },
         no: { 

@@ -39,3 +39,15 @@ Country cards use a pale blue frosted surface to separate them from the white pa
 All five country module landing pages pair their illustration with a geographic outline and introductory description. Country outlines are derived from the public-domain Natural Earth 1:110m Admin 0 countries dataset (https://www.naturalearthdata.com/about/terms-of-use/), retrieved from https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_admin_0_countries.geojson. They are decorative locator silhouettes, not legal boundary guidance.
 
 Module cards provide a faint glass sheen, border and shadow on hover and keyboard focus. Reduced-motion preferences disable the lift. Actual question screens and legal decision data are unchanged.
+
+## Assessment and country-hero refinements
+
+Country introductions now sit on a continuous pale blue gradient. City scenes fade at their edges, and the existing country silhouettes mask a crop of the homepage Africa artwork to share its layered blue treatment. The how-it-works background uses a smooth blue/lavender gradient without the former contour rings or horizontal borders.
+
+Assessment navigation uses a tinted panel, shared topic icons, a clear active item and decorative Africa artwork. A mobile disclosure exposes the same country modules, closes on navigation, and uses the application's existing main-content focus behaviour. At wide desktop sizes, answer review and source disclosures sit beside the question card. The interface keeps click-to-advance answers, one step heading, and a separate labelled restart action.
+
+All 68 questions across the 11 research-backed modules now have explanatory help with examples or factual context; the prior reference text is retained in a separate `helpReference` field. Selected older modules also clarify basic concepts, including personal data and processing. A shared click/touch/keyboard popover exposes this help, including the previously hidden Rwanda representative explanations and the custom Uganda controls. Reviewed decision trees, question wording, result messages and guidance paragraphs are unchanged.
+
+Public reports and source panels omit internal approval dates, reviewer names, packet versions and research-approval paragraphs. The catalogue retains that metadata for internal checks. Public citations, regulator resources and the guidance-feedback link remain under “Sources and legal references.” Next steps precede answer review in shared reports, and the default completion icon is neutral.
+
+Validation: 112 browser scenarios verified across the full run and targeted rerun after updating the step-label expectation and aligning mobile navigation with existing focus behaviour. The country-route smoke check now waits for lazy-loaded module links before collecting them. Type checking, guidance validation and production build pass; lint retains six existing Fast Refresh warnings with no errors. Additional WCAG A/AA scans on 11 routes at 1440px, 390px and 320px report no violations or horizontal overflow. A two-page sample report PDF retains outcomes, answers and sources and contains none of the removed approval wording.

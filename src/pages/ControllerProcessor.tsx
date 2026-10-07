@@ -4,7 +4,7 @@ const questions: Question[] = [
   {
     id: 1,
     text: "Do you process personal data? (e.g., collect, store, use, share, or delete it)",
-    tooltip: "Processing is doing anything with personal data, like collecting it, storing it, using it, sharing it, or even deleting it.",
+    tooltip: "Personal data identifies a person directly or indirectly, such as a name, phone number or customer ID linked to them. Processing includes collecting, storing, using, sharing or deleting it. For example, keeping an employee contact list is processing personal data.",
     options: {
       yes: {
         nextQuestion: 2,

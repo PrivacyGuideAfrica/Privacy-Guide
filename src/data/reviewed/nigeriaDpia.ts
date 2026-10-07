@@ -8,7 +8,7 @@ export const nigeriaDpia: ReviewedAssessment = {
     {
       "id": 1,
       "text": "Does the activity involve personal data and fall within Nigeria’s territorial scope?",
-      "tooltip": "NDPA sections 2 and 65. Processing in Nigeria, establishment or operation there, or processing a data subject in Nigeria may establish scope.",
+      "tooltip": "Personal data identifies a person directly or indirectly; processing includes collecting, storing, using or sharing it. Consider connections such as processing in Nigeria, operating there, or processing data about a person in Nigeria. For example, customer records held by a Nigerian business are relevant.",
       "options": {
         "yes": {
           "nextQuestion": 2
@@ -21,12 +21,13 @@ export const nigeriaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "DPIA screening is unresolved. Obtain a further assessment before starting processing; do not treat uncertainty as a finding that no DPIA is needed."
         }
-      }
+      },
+      "helpReference": "NDPA sections 2 and 65. Processing in Nigeria, establishment or operation there, or processing a data subject in Nigeria may establish scope."
     },
     {
       "id": 2,
       "text": "Are you claiming a specific statutory exemption for this processing?",
-      "tooltip": "NDPA section 3(1)–(4); GAID articles 3(2), 5–6. An organisation or sector is not automatically exempt.",
+      "tooltip": "A statutory exemption is a particular legal exception for an activity. Identify its conditions and which duties it affects. For example, a limited exception for one purpose does not automatically exempt the organisation’s other processing.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -39,12 +40,13 @@ export const nigeriaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "DPIA screening is unresolved. Obtain a further assessment before starting processing; do not treat uncertainty as a finding that no DPIA is needed."
         }
-      }
+      },
+      "helpReference": "NDPA section 3(1)–(4); GAID articles 3(2), 5–6. An organisation or sector is not automatically exempt."
     },
     {
       "id": 3,
       "text": "Does any of these GAID article 28(3) circumstances apply?\n\n• Evaluation or scoring, including profiling\n• Automated decisions with legal or similarly significant effects\n• Systematic monitoring\n• Sensitive or highly personal data\n• Vulnerable data subjects\n• Innovative technological or organisational solutions which may create significant privacy risk\n• Software development for communication with data subjects\n• Financial services through digital devices\n• Healthcare services\n• E-commerce services\n• Cameras in places accessible to the public\n• A legal instrument or policy requiring processing of the general public’s data\n• Student or pupil education records\n• Hospitality services\n• Cross-border transfers",
-      "tooltip": "GAID article 28(3)(a)–(o). Do not add a large-scale condition to every trigger: even a small hotel or an overseas hosting transfer can fall within the express list.",
+      "tooltip": "These are express DPIA triggers in the GAID. A DPIA examines how a proposed activity could affect people and how to reduce the risks. Examples in this list include a hotel handling guest records and transfers to overseas hosting; a large scale is not required for every listed trigger.",
       "options": {
         "yes": {
           "nextQuestion": 5
@@ -56,12 +58,13 @@ export const nigeriaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "DPIA screening is unresolved. Obtain a further assessment before starting processing; do not treat uncertainty as a finding that no DPIA is needed."
         }
-      }
+      },
+      "helpReference": "GAID article 28(3)(a)–(o). Do not add a large-scale condition to every trigger: even a small hotel or an overseas hosting transfer can fall within the express list."
     },
     {
       "id": 4,
       "text": "Otherwise, could the nature, scope, context or purpose of the processing create high risk to individuals?",
-      "tooltip": "NDPA section 28(1), (4); GAID article 28(1)–(2).",
+      "tooltip": "Consider how likely harm is and how serious it could be, given the data, people and purpose involved. Examples include risks of identity theft, discrimination or intrusive surveillance. An activity may create high risk even if it does not fit the preceding list.",
       "options": {
         "yes": {
           "nextQuestion": 6
@@ -74,12 +77,13 @@ export const nigeriaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "DPIA screening is unresolved. Obtain a further assessment before starting processing; do not treat uncertainty as a finding that no DPIA is needed."
         }
-      }
+      },
+      "helpReference": "NDPA section 28(1), (4); GAID article 28(1)–(2)."
     },
     {
       "id": 5,
       "text": "Has a completed DPIA assessed the risk remaining after the proposed safeguards?",
-      "tooltip": "NDPA section 28(2); GAID article 28(9).",
+      "tooltip": "A Data Protection Impact Assessment (DPIA) documents the activity, its necessity, risks to people and safeguards. Residual risk is what remains after those safeguards. For example, assess whether access restrictions actually reduce the risk of exposure.",
       "options": {
         "yes": {
           "nextQuestion": 7
@@ -92,12 +96,13 @@ export const nigeriaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Conduct a Nigeria-specific DPIA before processing. Describe the operations and purpose, assess necessity and proportionality, identify risks to individuals, and document safeguards (NDPA section 28(4)). This activity meets an express GAID article 28(3) trigger: file the DPIA with the NDPC before processing under article 28(9). Filing is distinct from prior consultation. Residual risk is unresolved; obtain further assessment before starting."
         }
-      }
+      },
+      "helpReference": "NDPA section 28(2); GAID article 28(9)."
     },
     {
       "id": 6,
       "text": "Has a completed DPIA assessed the risk remaining after the proposed safeguards?",
-      "tooltip": "NDPA section 28(2); GAID article 28(9).",
+      "tooltip": "A Data Protection Impact Assessment (DPIA) documents the activity, its necessity, risks to people and safeguards. Residual risk is what remains after those safeguards. For example, assess whether access restrictions actually reduce the risk of exposure.",
       "options": {
         "yes": {
           "nextQuestion": 8
@@ -110,12 +115,13 @@ export const nigeriaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Conduct a Nigeria-specific DPIA before processing. Describe the operations and purpose, assess necessity and proportionality, identify risks to individuals, and document safeguards (NDPA section 28(4)). Residual risk is unresolved; obtain further assessment before starting."
         }
-      }
+      },
+      "helpReference": "NDPA section 28(2); GAID article 28(9)."
     },
     {
       "id": 7,
       "text": "Does high risk remain despite the proposed safeguards?",
-      "tooltip": "NDPA section 28(2); GAID article 28(9).",
+      "tooltip": "Consider the risk that remains after the measures assessed in the DPIA. For example, encryption may reduce exposure risk but leave risks from authorised users misusing information. A list of planned controls alone does not establish that high risk has been resolved.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -129,12 +135,13 @@ export const nigeriaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "Conduct a Nigeria-specific DPIA before processing. Describe the operations and purpose, assess necessity and proportionality, identify risks to individuals, and document safeguards (NDPA section 28(4)). This activity meets an express GAID article 28(3) trigger: file the DPIA with the NDPC before processing under article 28(9). Filing is distinct from prior consultation. Residual risk is unresolved. Seek further assessment and do not proceed on an assumed low-risk result."
         }
-      }
+      },
+      "helpReference": "NDPA section 28(2); GAID article 28(9)."
     },
     {
       "id": 8,
       "text": "Does high risk remain despite the proposed safeguards?",
-      "tooltip": "NDPA section 28(2); GAID article 28(9).",
+      "tooltip": "Consider the risk that remains after the measures assessed in the DPIA. For example, encryption may reduce exposure risk but leave risks from authorised users misusing information. A list of planned controls alone does not establish that high risk has been resolved.",
       "options": {
         "yes": {
           "nextQuestion": null,
@@ -148,7 +155,8 @@ export const nigeriaDpia: ReviewedAssessment = {
           "nextQuestion": null,
           "message": "DPIA screening is unresolved. Obtain a further assessment before starting processing; do not treat uncertainty as a finding that no DPIA is needed."
         }
-      }
+      },
+      "helpReference": "NDPA section 28(2); GAID article 28(9)."
     }
   ],
   "guidance": [

@@ -36,7 +36,7 @@ const UgandaDPIA = () => {
     {
       id: 3,
       text: "Are you processing children's data or special categories such as health, race, religious beliefs, or sexual life?",
-      tooltip: "These are sensitive data types that typically require additional safeguards.",
+      tooltip: "Children’s data and special categories of personal data can create particular risks. For example, exposing a child’s location or a person’s medical records may cause serious harm. A DPIA documents those risks and the safeguards proposed to reduce them.",
       options: {
         yes: { 
           nextQuestion: null,

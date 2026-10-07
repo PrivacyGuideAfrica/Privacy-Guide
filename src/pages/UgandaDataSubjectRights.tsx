@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Eye, Edit, Trash2, Ban, Download, Shield, Users, Clock, FileText, AlertTriangle, CheckCircle2, HelpCircle } from "lucide-react";
+import { QuestionHelp } from "@/components/shared/QuestionHelp";
+import { Eye, Edit, Trash2, Ban, Download, Shield, Users, Clock, FileText, AlertTriangle, CheckCircle2 } from "lucide-react";
 
 type DataSubjectRight = {
   id: string;
@@ -156,18 +156,9 @@ const UgandaDataSubjectRights = () => {
       return (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex flex-wrap items-center gap-2">
               Question {currentStep} of 4
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger aria-label="Explain this question">
-                    <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{question.tooltip}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <QuestionHelp explanation={question.tooltip} />
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -196,18 +187,9 @@ const UgandaDataSubjectRights = () => {
       return (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex flex-wrap items-center gap-2">
               Step 3 of 4: Select Data Subject Rights
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger aria-label="Explain this question">
-                    <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Select all rights that the individual is exercising in their request.</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <QuestionHelp explanation={"Select all rights that the individual is exercising in their request."} />
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -258,18 +240,9 @@ const UgandaDataSubjectRights = () => {
       return (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex flex-wrap items-center gap-2">
               Step 4 of 4: Documentation
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger aria-label="Explain this question">
-                    <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Maintain comprehensive records of identity verification, assessments, actions taken, and communications for audit purposes.</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <QuestionHelp explanation={"Maintain comprehensive records of identity verification, assessments, actions taken, and communications for audit purposes."} />
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">

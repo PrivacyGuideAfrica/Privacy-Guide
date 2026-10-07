@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, Building, FileText, Clock, HelpCircle, Download, Mail } from "lucide-react";
+import { ArrowLeft, Building, FileText, Clock, Download, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { QuestionHelp } from "@/components/shared/QuestionHelp";
 
 const UgandaRegistration = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -25,6 +25,7 @@ const UgandaRegistration = () => {
     {
       id: "data_processing",
       question: "Do you process personal data as part of your operations?",
+      tooltip: "Personal data is information about an identifiable person, such as customer contact details or employee records. Processing includes collecting, storing, using, sharing or deleting it. Even a small contact list can involve personal data.",
       options: [
         { value: "yes", label: "Yes, we regularly process personal data" },
         { value: "limited", label: "Yes, but only limited processing" },
@@ -222,16 +223,7 @@ const UgandaRegistration = () => {
           <div className="flex items-center gap-2 mb-6">
             <h2 className="text-xl font-semibold">{currentQuestion.question}</h2>
             {currentQuestion.tooltip && (
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <HelpCircle className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-                  </TooltipTrigger>
-                  <TooltipContent className="max-w-sm">
-                    <p>{currentQuestion.tooltip}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <QuestionHelp explanation={currentQuestion.tooltip} />
             )}
           </div>
           <div className="space-y-4">

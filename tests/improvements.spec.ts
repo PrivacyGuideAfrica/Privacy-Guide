@@ -45,8 +45,8 @@ test("answer review edits an earlier branch and removes stale results and answer
   await page.getByRole("button", { name: "Yes", exact: true }).click();
   await expect(page.getByRole("button", { name: /Change answer/ })).toHaveCount(1);
   await expect(page.getByText("Your answer: Yes", { exact: true })).toBeVisible();
-  for (const heading of ["Outcome", "Why this applies", "Next steps", "Sources and review status"]) await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
-  await expect(page.getByText("Legal review date: not yet recorded.")).toBeVisible();
+  for (const heading of ["Outcome", "Why this applies", "Next steps", "Sources and legal references"]) await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
+  await expect(page.getByText("Legal review date: not yet recorded.")).toHaveCount(0);
   const result = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
   expect(result.violations).toEqual([]);
 });
@@ -61,7 +61,7 @@ test("print output includes result, country, answers and sources without navigat
   await expect(page.getByRole("navigation", { name: "Main navigation" })).toBeHidden();
   await expect(page.getByRole("contentinfo")).toBeHidden();
   await expect(page.getByText("Your answer: Yes", { exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Sources and review status" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Sources and legal references" })).toBeVisible();
   await expect(page.locator(".assessment-result")).toContainText("Ghana");
 });
 

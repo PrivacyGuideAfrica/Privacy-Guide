@@ -1,8 +1,9 @@
+import { moduleIcon } from "@/lib/module-icon";
 import { GuidanceReferences } from "./GuidanceReferences";
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, ChevronRight, FileText, Printer } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, ChevronRight, ChevronDown, Printer } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/shared/Footer";
 import { findAssessment, findCountry } from "@/data/catalog";
@@ -12,6 +13,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const { pathname: rawPath } = useLocation();
   const pathname = rawPath.replace(/\/+$/, "") || "/";
   const assessment = findAssessment(pathname);
+  const mobileModules = useRef<HTMLDetailsElement>(null);
+  useEffect(() => { if (mobileModules.current) mobileModules.current.open = false; }, [pathname]);
   const country = assessment?.country || (pathname.startsWith("/country/") ? findCountry(pathname.slice(9)) : undefined);
   const infoTitle = ({ "/about": "About us", "/privacy": "Privacy Notice", "/legal-notice": "Legal Notice" } as Record<string, string>)[pathname];
   useEffect(() => {
@@ -25,6 +28,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     ]) document.querySelector(selector)?.setAttribute("content", value);
     document.querySelector('link[rel="canonical"]')?.setAttribute("href", metadata.canonical);
   }, [pathname]);
+  const moduleNavigation = assessment && <nav aria-label="Country assessments">{assessment.country.modules.filter(module => module.status === "available").map(module => {
+    const Icon = moduleIcon(module.title);
+    return <Link key={module.link} to={module.link} aria-current={assessment.module.link === module.link ? "page" : undefined}><Icon aria-hidden="true" size={18} /><span>{module.title}</span></Link>;
+  })}</nav>;
   const content = <>{children}{assessment && ["/uganda-registration", "/uganda-annual-compliance", "/uganda-data-subject-rights", "/south-africa-data-subject-rights"].includes(pathname) && <div className="custom-result-tools"><Button onClick={() => window.print()}><Printer aria-hidden="true" />Print or save as PDF</Button><GuidanceReferences /></div>}</>;
   return <div className="site-layout">
     <a href="#main-content" className="skip-link" onClick={() => document.getElementById("main-content")?.focus()}>Skip to main content</a>
@@ -42,10 +49,16 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         <aside className="assessment-sidebar print:hidden" aria-label={`${assessment.country.name} assessment navigation`}>
           <Link className="sidebar-back" to={`/country/${assessment.country.id}`}><ArrowLeft aria-hidden="true" size={16} />All {assessment.country.name} modules</Link>
           <div className="sidebar-country"><span aria-hidden="true">{assessment.country.flagEmoji}</span><div><strong>{assessment.country.name}</strong><p>{assessment.country.lawName}</p></div></div>
-          <nav aria-label="Country assessments">{assessment.country.modules.map(module => module.status === "available" && <Link key={module.link} to={module.link} aria-current={assessment.module.link === module.link ? "page" : undefined}><FileText aria-hidden="true" size={17} /><span>{module.title}</span></Link>)}</nav>
+          {moduleNavigation}
           {assessment.country.regulator && <a className="sidebar-regulator" href={assessment.country.regulator.url} target="_blank" rel="noopener noreferrer">Regulator resources <ArrowUpRight aria-hidden="true" size={15} /></a>}
         </aside>
-        <div className="assessment-body">{content}</div>
+        <div className="assessment-body">
+          <details ref={mobileModules} className="assessment-mobile-modules print:hidden">
+            <summary>Country modules <span>{assessment.country.name}</span><ChevronDown aria-hidden="true" size={18} /></summary>
+            {moduleNavigation}
+          </details>
+          {content}
+        </div>
       </div> : content}
     </main>
     <Footer />

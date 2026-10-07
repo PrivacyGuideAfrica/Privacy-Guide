@@ -16,6 +16,14 @@ export const ResultDetails = ({ questions, answers, path, onEdit }: Props) => {
   const assessment = findAssessment(pathname);
   const labels: Record<string, string> = { yes: "Yes", no: "No", notSure: "Not sure" };
   return <div className="result-details">
+    <section aria-labelledby="result-next-steps">
+      <h3 id="result-next-steps" className="text-xl font-semibold"><Footprints aria-hidden="true" />Next steps</h3>
+      <ol className="mt-3 list-decimal space-y-2 pl-5 leading-relaxed text-slate-700">
+        <li>Check the outcome and any actions or deadlines described in the guidance above.</li>
+        <li>Confirm requirements for your organisation with the relevant regulator or a qualified adviser.</li>
+        <li>Keep a copy of this result and revisit it when your circumstances change.</li>
+      </ol>
+    </section>
     <section aria-labelledby="result-context">
       <h3 id="result-context" className="text-xl font-semibold"><ListChecks aria-hidden="true" />Why this applies</h3>
       <p className="mt-3 leading-relaxed text-slate-700">This result follows the answers below{assessment ? ` for ${assessment.country.name}` : ""}. Check that they describe your situation before acting on the guidance.</p>
@@ -27,14 +35,6 @@ export const ResultDetails = ({ questions, answers, path, onEdit }: Props) => {
             <Button variant="outline" size="sm" onClick={() => onEdit(index)} aria-label={`Change answer ${index + 1}`}>Change answer</Button>
           </div>
         </li>)}
-      </ol>
-    </section>
-    <section aria-labelledby="result-next-steps">
-      <h3 id="result-next-steps" className="text-xl font-semibold"><Footprints aria-hidden="true" />Next steps</h3>
-      <ol className="mt-3 list-decimal space-y-2 pl-5 leading-relaxed text-slate-700">
-        <li>Check the outcome and any actions or deadlines described in the guidance above.</li>
-        <li>Confirm requirements for your organisation with the relevant regulator or a qualified adviser.</li>
-        <li>Keep a copy of this result and revisit it when your circumstances change.</li>
       </ol>
     </section>
     <GuidanceReferences />
