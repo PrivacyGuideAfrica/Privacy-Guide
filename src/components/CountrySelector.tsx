@@ -10,6 +10,7 @@ export const CountrySelector = ({ compact = false }: { compact?: boolean }) => <
         <div className="country-card-top"><span aria-hidden="true" className="country-flag">{country.flagEmoji}</span><ArrowRight aria-hidden="true" className="country-arrow" size={20} /></div>
         <h3>{country.name}</h3>
         <p className="country-law">{country.lawName}{!country.lawName?.includes(country.lawYear || "") && ` (${country.lawYear})`}</p>
+        <img className="country-art" src={`/images/countries/${country.id}.webp`} width="768" height="512" alt="" loading="lazy" decoding="async" />
         <div className="country-card-bottom"><span><FileText aria-hidden="true" size={16} />{country.modules.filter(module => module.status === "available").length} <span className="sr-only">available </span>assessments</span><span className="country-explore">Explore modules <ArrowRight aria-hidden="true" size={16} /></span></div>
       </Link>)}
     </div>

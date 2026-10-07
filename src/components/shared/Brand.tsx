@@ -1,3 +1,1 @@
-import { Compass } from "lucide-react";
-
-export const Brand = () => <span className="brand"><span className="brand-symbol"><Compass aria-hidden="true" strokeWidth={1.6} /></span><span>PrivacyGuide<span className="brand-domain">.Africa</span></span></span>;
+export const Brand = () => <span className="brand"><img className="brand-logo" src="/lovable-uploads/9597fe48-64a4-41ee-a29f-7c769e6ceeb7.png" width="48" height="48" alt="" /><span>PrivacyGuide<span className="brand-domain">.Africa</span></span></span>;

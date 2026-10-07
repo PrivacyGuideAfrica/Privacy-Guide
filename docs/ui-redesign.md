@@ -4,9 +4,9 @@ The selected direction combines the site's original blue identity and hero copy 
 
 ## Scope
 
-- Shared responsive navigation, wordmark, footer, breadcrumbs and blue button styling.
-- Homepage with the original headline, description and primary action; optimized Africa illustration; country discovery; how-it-works section.
-- Country directory and module libraries with roomy cards, clear starting points and distinct topic icons.
+- Shared responsive navigation with the existing Privacy Guide Africa logo, the original dark Resources/Connect footer and slogan, breadcrumbs and blue button styling.
+- Homepage with the original headline, description and primary action; optimized Africa illustration and “Assess your context” checklist; country discovery; how-it-works section. Added promotional eyebrow slogans and the closing star icon have been removed following design review.
+- Country directory and homepage cards with locally served country illustrations; module libraries with roomy cards, clear starting points and distinct topic icons.
 - Assessment navigation, larger answer controls, collapsible in-progress answer review and source details.
 - Results with a prominent print/PDF action, approved outcome text, guidance, editable answers and references.
 - Privacy, legal notice and about pages with a document layout, section navigation and keyboard focus management.
@@ -29,3 +29,5 @@ Validation commands: `npm run typecheck`, `npm run lint`, `npm test`. In this cl
 This work is prepared on `design/luminous-blue` for review and local testing. Merging and production deployment follow design approval.
 
 Validation completed: 109 browser tests passed, including five redesign checks; the final print regression passed after print-spacing adjustments. Type checks and the production build passed. Lint has no errors and six existing Fast Refresh warnings. Additional accessibility scans passed on nine representative routes at desktop and phone widths; all available assessments fit a 320px viewport without horizontal overflow.
+
+Country-card scenes are generated editorial illustrations inspired by Lagos, Kigali, Kampala, Cape Town and Accra. They are decorative artwork, not documentary photographs. The original logo asset is reused without changing its artwork.
