@@ -67,7 +67,7 @@ const UgandaAnnualCompliance = () => {
         <Card className="max-w-4xl mx-auto">
           <CardHeader>
             <CardTitle className="flex items-center">
-              <FileText className="mr-2 h-6 w-6 text-ndpa-green" />
+              <FileText className="mr-2 h-6 w-6 shrink-0 text-blue-700" />
               Is an Annual Compliance Report Required for Your Organisation?
             </CardTitle>
           </CardHeader>
@@ -82,7 +82,7 @@ const UgandaAnnualCompliance = () => {
                     </span>
                     <div className="w-32 bg-gray-200 rounded-full h-2">
                       <div 
-                        className="bg-ndpa-green h-2 rounded-full transition-all duration-300"
+                        className="bg-primary h-2 rounded-full transition-all duration-300"
                         style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
                       ></div>
                     </div>

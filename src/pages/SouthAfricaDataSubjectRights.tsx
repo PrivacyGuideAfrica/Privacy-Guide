@@ -438,7 +438,7 @@ const SouthAfricaDataSubjectRights = () => {
                       This covers any formal communication (written, email, or via a specific form like Form 1 or Form 2 of the POPIA Regulations 2021) where an individual asks you to take action regarding their personal information.
                     </p>
                     <div className="flex space-x-3">
-                      <Button onClick={() => handleInitialAnswer('yes')} className="bg-green-600 hover:bg-green-700">
+                      <Button onClick={() => handleInitialAnswer('yes')} className="bg-primary hover:bg-blue-800">
                         Yes
                       </Button>
                       <Button onClick={() => handleInitialAnswer('no')} variant="outline">
@@ -460,7 +460,7 @@ const SouthAfricaDataSubjectRights = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {requestTypes.map((type) => (
-                  <Card key={type.id} className="cursor-pointer hover:shadow-md transition-shadow" onClick={() => handleRequestTypeSelection(type)}>
+                  <Card key={type.id} className="cursor-pointer hover:shadow-md transition-shadow" role="button" tabIndex={0} onKeyDown={event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); handleRequestTypeSelection(type); } }} onClick={() => handleRequestTypeSelection(type)}>
                     <CardHeader>
                       <CardTitle className="flex items-center space-x-3">
                         <type.icon className="h-6 w-6 text-blue-600" />
@@ -506,7 +506,7 @@ const SouthAfricaDataSubjectRights = () => {
                       </p>
                     )}
                     <div className="flex space-x-3">
-                      <Button onClick={() => handleAnswer('yes')} className="bg-green-600 hover:bg-green-700">
+                      <Button onClick={() => handleAnswer('yes')} className="bg-primary hover:bg-blue-800">
                         Yes
                       </Button>
                       <Button onClick={() => handleAnswer('no')} variant="outline">

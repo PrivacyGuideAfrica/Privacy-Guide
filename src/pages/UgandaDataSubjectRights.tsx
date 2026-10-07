@@ -160,7 +160,7 @@ const UgandaDataSubjectRights = () => {
               Question {currentStep} of 4
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger aria-label="Explain this question">
                     <HelpCircle className="h-4 w-4 text-muted-foreground" />
                   </TooltipTrigger>
                   <TooltipContent>
@@ -200,7 +200,7 @@ const UgandaDataSubjectRights = () => {
               Step 3 of 4: Select Data Subject Rights
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger aria-label="Explain this question">
                     <HelpCircle className="h-4 w-4 text-muted-foreground" />
                   </TooltipTrigger>
                   <TooltipContent>
@@ -262,7 +262,7 @@ const UgandaDataSubjectRights = () => {
               Step 4 of 4: Documentation
               <TooltipProvider>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger aria-label="Explain this question">
                     <HelpCircle className="h-4 w-4 text-muted-foreground" />
                   </TooltipTrigger>
                   <TooltipContent>

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const NotFound = () => (
   <>
-    <div className="mx-auto max-w-2xl px-4 py-16 text-center space-y-6">
+    <div className="page-container empty-state">
       <p className="text-sm font-medium text-muted-foreground">404</p>
       <h1 className="text-3xl font-bold">Page not found</h1>
       <p className="text-muted-foreground">

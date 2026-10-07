@@ -1,11 +1,12 @@
 import { findAssessment } from "@/data/catalog";
+import { GuidanceReferences } from "./GuidanceReferences";
 import { ResultDetails } from "./ResultDetails";
 import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2, Shield, Users, Database, UserCheck, Send, UserCog, Globe, AlertTriangle } from "lucide-react";
+import { Printer, ArrowLeft, ArrowRight, RotateCcw, HelpCircle, ChevronDown, CheckCircle, AlertCircle, FileText, CheckCircle2, Shield, Users, Database, UserCheck, Send, UserCog, Globe, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -295,9 +296,9 @@ export const AssessmentInterface = ({
     };
     
     return (
-      <div className="assessment-result space-y-6">
+      <div className="assessment-result space-y-8">
         {assessment && <p className="text-sm font-medium text-slate-700">{assessment.country.name} · {assessment.module.title}</p>}
-        <div className="flex flex-col items-center justify-center p-6 text-center">
+        <div className="result-heading">
           {(() => {
             if (reviewedGuidance) return <FileText aria-hidden="true" className="h-12 w-12 text-ndpa-navy mb-4" />;
             // Direct Marketing specific icons
@@ -359,7 +360,7 @@ export const AssessmentInterface = ({
           </p>
         </div>
 
-        <div className="bg-card border rounded-lg p-6 space-y-4">
+        <div className="result-outcome">
           <div className="flex items-start gap-3">
             <FileText className="h-5 w-5 text-foreground shrink-0 mt-1" />
             <div className="space-y-2">
@@ -370,7 +371,7 @@ export const AssessmentInterface = ({
                   const dmContent = getDirectMarketingContent();
                   return (
                     <div className="space-y-3">
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-base text-muted-foreground">
                         {dmContent?.explanation}
                       </div>
                       {dmContent?.actions && dmContent.actions.length > 0 && (
@@ -405,13 +406,13 @@ export const AssessmentInterface = ({
                   
                   return (
                     <div 
-                      className="text-sm text-muted-foreground" 
+                      className="text-base text-muted-foreground"
                       dangerouslySetInnerHTML={{ __html: sanitizedContent }} 
                     />
                   );
                 } else {
                   return (
-                    <div className="text-sm text-muted-foreground whitespace-pre-line">
+                    <div className="result-message whitespace-pre-line">
                       {messageContent}
                     </div>
                   );
@@ -420,6 +421,8 @@ export const AssessmentInterface = ({
             </div>
           </div>
         </div>
+
+        <div className="result-print print:hidden"><Button onClick={() => window.print()}><Printer aria-hidden="true" />Print or save as PDF</Button><p>Your browser’s print dialog lets you choose a printer or save a PDF. The copy includes your answers.</p></div>
 
         {isDpiaRequired && renderDPIAGuidance()}
         
@@ -435,17 +438,17 @@ export const AssessmentInterface = ({
 
         <ResultDetails questions={questions} answers={answers} path={[...history, currentQuestion]} onEdit={editAnswer} />
 
-        <div className="space-y-4 pt-2 print:hidden">
+        <div className="result-actions print:hidden">
           <Button 
-            className="w-full bg-ndpa-green text-white hover:bg-ndpa-green/90" 
+            variant="outline"
             onClick={resetAssessment}
           >
             <RotateCcw className="h-4 w-4 mr-2" />
             Retake Assessment
           </Button>
           <Button 
-            variant="outline" 
-            className="w-full border-ndpa-green text-ndpa-green hover:bg-ndpa-green/10" 
+            variant="outline"
+            className="text-blue-700"
             onClick={() => navigate("/countries")}
           >
             Take Other Assessments
@@ -456,10 +459,11 @@ export const AssessmentInterface = ({
   };
 
   return (
-    <Card className="assessment-card w-full max-w-3xl mx-auto">
-      <CardHeader>
+    <div className="assessment-workspace">
+    <Card className={`assessment-card ${finalMessage ? "is-complete" : ""}`}>
+      <CardHeader className="question-card-header">
         <div className="flex items-start justify-between gap-3">
-          <h2 className="text-xl font-semibold">
+          <h2 className={finalMessage ? "sr-only" : "question-card-label"}>
           {finalMessage ? "Assessment Complete" : title}
           </h2>
           <Button
@@ -481,7 +485,7 @@ export const AssessmentInterface = ({
         )}
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="question-card-content">
         {/* Show intro content only when assessment is active (not completed) */}
         {!finalMessage && introContent && (
           <div className="mb-8">
@@ -493,10 +497,10 @@ export const AssessmentInterface = ({
           renderCompletionMessage()
         ) : currentQuestionData ? (
           <div className="space-y-6">
-            <h3 ref={questionHeading} tabIndex={-1} className="text-lg font-semibold">Step {history.length + 1}</h3>
-            <div className="flex items-start gap-2">
+            <h3 ref={questionHeading} tabIndex={-1} className="question-step">Step {history.length + 1}</h3>
+            <div className="question-prompt">
               {renderQuestion && renderQuestion(currentQuestionData) || (
-                <p className="text-lg whitespace-pre-line">{currentQuestionData.text}</p>
+                <p className="whitespace-pre-line">{currentQuestionData.text}</p>
               )}
               {!renderQuestion && currentQuestionData.tooltip && (
                 <Popover>
@@ -511,28 +515,29 @@ export const AssessmentInterface = ({
                 </Popover>
               )}
             </div>
-            <div className="space-y-4">
+            <p className="answer-hint">Select an answer to continue.</p>
+            <div className="answer-options">
               <Button
                 variant={answers[currentQuestion] === "yes" ? "default" : "outline"}
-                className="w-full justify-start"
+                className="answer-option"
                 onClick={() => handleAnswer("yes")}
               >
-                Yes
+                <span>Yes</span><ArrowRight aria-hidden="true" />
               </Button>
               <Button
                 variant={answers[currentQuestion] === "no" ? "default" : "outline"}
-                className="w-full justify-start"
+                className="answer-option"
                 onClick={() => handleAnswer("no")}
               >
-                No
+                <span>No</span><ArrowRight aria-hidden="true" />
               </Button>
               {currentQuestionData.options.notSure && (
                 <Button
                   variant={answers[currentQuestion] === "notSure" ? "default" : "outline"}
-                  className="w-full justify-start"
+                  className="answer-option"
                   onClick={() => handleAnswer("notSure")}
                 >
-                  Not Sure
+                  <span>Not Sure</span><ArrowRight aria-hidden="true" />
                 </Button>
               )}
             </div>
@@ -540,7 +545,7 @@ export const AssessmentInterface = ({
         ) : null}
       </CardContent>
 
-      <div className="p-6 pt-0 print:hidden">
+      <div className="question-card-footer print:hidden">
         <Button
           variant="outline"
           onClick={goToPreviousQuestion}
@@ -551,5 +556,10 @@ export const AssessmentInterface = ({
         </Button>
       </div>
     </Card>
+    {!finalMessage && <div className="question-companion">
+      {history.length > 0 && <details className="answer-history"><summary>Your answers ({history.length})<ChevronDown aria-hidden="true" size={18} /></summary><ol>{history.map((id, index) => <li key={id}><p>{questions.find(question => question.id === id)?.text}</p><div><strong>{answers[id] === "notSure" ? "Not sure" : answers[id] === "yes" ? "Yes" : "No"}</strong><Button variant="ghost" size="sm" onClick={() => editAnswer(index)} aria-label={`Edit previous answer ${index + 1}`}>Edit</Button></div></li>)}</ol></details>}
+      {assessment && <details className="question-sources"><summary>Sources & review<ChevronDown aria-hidden="true" size={18} /></summary><GuidanceReferences /></details>}
+    </div>}
+    </div>
   );
 };
