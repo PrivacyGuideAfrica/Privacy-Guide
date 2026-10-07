@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowUpRight, ChevronRight, ChevronDown, Printer } from "luc
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/shared/Footer";
 import { findAssessment, findCountry } from "@/data/catalog";
-import { pageMetadata } from "@/lib/page-metadata";
+import { metadataTags, pageMetadata } from "@/lib/page-metadata";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   const { pathname: rawPath } = useLocation();
@@ -20,13 +20,17 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const metadata = pageMetadata(pathname);
     document.title = metadata.title;
-    for (const [selector, value] of [
-      ['meta[name="description"]', metadata.description],
-      ['meta[property="og:title"]', metadata.title],
-      ['meta[property="og:description"]', metadata.description],
-      ['meta[property="og:url"]', metadata.canonical],
-    ]) document.querySelector(selector)?.setAttribute("content", value);
-    document.querySelector('link[rel="canonical"]')?.setAttribute("href", metadata.canonical);
+    for (const [attribute, key, value] of metadataTags(metadata)) {
+      let tag = document.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
+      if (!value) { tag?.remove(); continue; }
+      if (!tag) { tag = document.createElement("meta"); tag.setAttribute(attribute, key); document.head.appendChild(tag); }
+      tag.content = value;
+    }
+    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (metadata.canonical) {
+      if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
+      canonical.href = metadata.canonical;
+    } else canonical?.remove();
   }, [pathname]);
   const moduleNavigation = assessment && <nav aria-label="Country assessments">{assessment.country.modules.filter(module => module.status === "available").map(module => {
     const Icon = moduleIcon(module.title);
