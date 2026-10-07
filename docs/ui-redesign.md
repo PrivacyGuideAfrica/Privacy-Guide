@@ -31,3 +31,11 @@ This work is prepared on `design/luminous-blue` for review and local testing. Me
 Validation completed: 109 browser tests passed, including five redesign checks; the final print regression passed after print-spacing adjustments. Type checks and the production build passed. Lint has no errors and six existing Fast Refresh warnings. Additional accessibility scans passed on nine representative routes at desktop and phone widths; all available assessments fit a 320px viewport without horizontal overflow.
 
 Country-card scenes are generated editorial illustrations inspired by Lagos, Kigali, Kampala, Cape Town and Accra. They are decorative artwork, not documentary photographs. The original logo asset is reused without changing its artwork.
+
+## Discovery-page refinements
+
+Country cards use a pale blue frosted surface to separate them from the white page. The how-it-works section has a blue-to-indigo background with a quiet contour pattern. UlinziQuest is restored after that section with a direct link to the existing game; no navbar action is added.
+
+All five country module landing pages pair their illustration with a geographic outline and introductory description. Country outlines are derived from the public-domain Natural Earth 1:110m Admin 0 countries dataset (https://www.naturalearthdata.com/about/terms-of-use/), retrieved from https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_admin_0_countries.geojson. They are decorative locator silhouettes, not legal boundary guidance.
+
+Module cards provide a faint glass sheen, border and shadow on hover and keyboard focus. Reduced-motion preferences disable the lift. Actual question screens and legal decision data are unchanged.

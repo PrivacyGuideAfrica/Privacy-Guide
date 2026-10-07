@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, Check, Globe2, ListChecks, FileText, MoveDown, Circle, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CountrySelector } from "@/components/CountrySelector";
+import UlinziQuest from "@/components/sections/UlinziQuest";
 
 const Index = () => <>
   <section className="home-hero">
@@ -33,6 +34,7 @@ const Index = () => <>
       <p className="guidance-disclaimer">This tool offers general guidance. For decisions specific to your organisation, consult the relevant regulator or a qualified adviser.</p>
     </div>
   </section>
+  <UlinziQuest />
   <section className="page-container section-space"><div className="home-closing"><h2>Clarity starts with a question.</h2><p>No account needed. No hidden fees. Just clarity.</p><Button asChild size="lg"><Link to="/countries">Start Free Assessment <ArrowRight aria-hidden="true" /></Link></Button></div></section>
 </>;
 export default Index;
