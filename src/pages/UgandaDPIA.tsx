@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
@@ -52,12 +53,11 @@ const UgandaDPIA = () => {
 
   return (
     <>
-      <div className="container py-8 space-y-6">
+      <div className="assessment-page">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Uganda DPIA Assessment</h1>
-          <p className="text-lg text-muted-foreground">
-            Determine when you need to conduct a Data Protection Impact Assessment under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations, and understand how to carry one out.
-          </p>
+          <AssessmentHeader title="Uganda DPIA Assessment">
+          <p>Determine when you need to conduct a Data Protection Impact Assessment under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations, and understand how to carry one out.</p>
+        </AssessmentHeader>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
               <strong>Important:</strong> A DPIA is mandatory under Section 25 if processing is likely to result in high risk to the rights and freedoms of individuals. Even when not required, conducting a DPIA demonstrates accountability and proactive risk management.

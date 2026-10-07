@@ -87,10 +87,10 @@ const PrivacyNotice = () => {
               <h2 className="text-2xl font-semibold text-gray-800">Analytics</h2>
             </div>
             <p className="text-gray-700 leading-relaxed mb-4">
-              We use Umami Analytics to understand our audience and improve the site. The information available to our site administrators is limited to country and device, browser or operating-system information, such as Chrome or Safari on macOS.
+              We use Umami to understand aggregate usage patterns, including visitors’ countries, browsers and device types, and to improve the website.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              These reports do not give us your name or email address. Your browser contacts Umami to load its analytics service. The limited information in our reports does not establish what technical information Umami processes to produce them.
+              These reports do not give us your name or email address. Your browser contacts Umami to load its analytics service.
             </p>
           </section>
 
@@ -145,13 +145,13 @@ const PrivacyNotice = () => {
               <h2 className="text-2xl font-semibold text-gray-800">How Long We Keep Information</h2>
             </div>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Our retention policy for technical and analytics data under our control is a maximum of three months.
+              Our retention policy is three months for routine operational and analytics information and one year for support correspondence.
             </p>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Support emails are retained for one year. Access is limited to site administrators.
+              Access to support correspondence is limited to site administrators.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Provider retention and deletion settings are being checked against this policy. We cannot yet confirm that Netlify and Umami delete all provider-held information within three months.
+              We take steps to delete or anonymise personal data when it is no longer needed.
             </p>
           </section>
 
@@ -163,7 +163,7 @@ const PrivacyNotice = () => {
               <h2 className="text-2xl font-semibold text-gray-800">International Data Transfers</h2>
             </div>
             <p className="text-gray-700 leading-relaxed">
-              Our hosting, analytics and email services may involve processing information outside your country. We are confirming the processing locations and any transfer safeguards that apply to our provider accounts. Contact us at support@privacyguide.africa with questions about international processing.
+              Our hosting, analytics and email services may involve processing information outside your country. Where personal data is transferred internationally, we will take steps to ensure appropriate safeguards are in place to protect it, as required by applicable data protection law. Contact us at support@privacyguide.africa with questions about international processing.
             </p>
           </section>
 

@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Baby, Shield, AlertTriangle } from "lucide-react";
@@ -64,28 +65,16 @@ export default function SouthAfricaChildrenInformation() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
-        <div className="container mx-auto px-4 py-8 max-w-4xl">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/countries/south-africa")}
-            className="mb-6 text-gray-600 hover:text-gray-800"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to South Africa Assessments
-          </Button>
+        <div className="assessment-page">
 
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full">
-                <Baby className="h-6 w-6 text-blue-600" />
-              </div>
+
+          <div className="assessment-introduction">
+            <div className="assessment-title-container">
+
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">
-                  Processing Personal Information of Children
-                </h1>
-                <p className="text-lg text-gray-600 mt-2">
-                  Module 7: Understanding POPIA's Protection of Children's Data
-                </p>
+                <AssessmentHeader title="Processing Personal Information of Children">
+          <p>Module 7: Understanding POPIA's Protection of Children's Data</p>
+        </AssessmentHeader>
               </div>
             </div>
 
@@ -122,7 +111,7 @@ export default function SouthAfricaChildrenInformation() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-8">
+          <div className="assessment-form-container">
             <AssessmentInterface
               title="Children's Information Processing Assessment"
               questions={childrenInformationQuestions}
@@ -133,7 +122,7 @@ export default function SouthAfricaChildrenInformation() {
 
           <div className="mt-8 text-center">
             <Button
-              onClick={() => navigate("/countries/south-africa")}
+              onClick={() => navigate("/country/south-africa")}
               variant="outline"
               className="bg-white hover:bg-gray-50"
             >

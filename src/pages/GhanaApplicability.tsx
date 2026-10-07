@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 
 const questions: Question[] = [
@@ -44,15 +45,12 @@ const questions: Question[] = [
 const GhanaApplicability = () => {
   return (
     <>
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Ghana Data Protection Act - Applicability Assessment
-        </h1>
-        <p className="text-muted-foreground mb-8 text-center max-w-2xl mx-auto">
-          This module helps you quickly determine if the Data Protection Act, 2012 (Act 843) applies to how your 
+      <div className="assessment-page">
+        <AssessmentHeader title="Ghana Data Protection Act - Applicability Assessment">
+          <p>This module helps you quickly determine if the Data Protection Act, 2012 (Act 843) applies to how your
           organisation handles personal data in Ghana. Understanding this is the crucial first step to ensuring 
-          your business complies with Ghanaian data protection laws.
-        </p>
+          your business complies with Ghanaian data protection laws.</p>
+        </AssessmentHeader>
         <div className="mb-6 p-4 bg-muted rounded-lg">
           <p className="text-sm text-muted-foreground">
             <strong>Personal data</strong> refers to any information that can be used to identify an individual. 

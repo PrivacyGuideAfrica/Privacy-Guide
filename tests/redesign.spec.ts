@@ -33,7 +33,7 @@ test("mobile legal contents navigate to visible sections and keep keyboard focus
   await expect(page.locator("#how-long-we-keep-information")).toBeFocused();
   await expect(page.getByRole("heading", { name: "How Long We Keep Information" })).toBeInViewport();
   await expect(page.locator(".document-mobile-toc")).not.toHaveAttribute("open");
-  await expect(page.locator("#how-long-we-keep-information")).toContainText("We cannot yet confirm that Netlify and Umami delete all provider-held information within three months.");
+  await expect(page.locator("#how-long-we-keep-information")).toContainText("Our retention policy is three months for routine operational and analytics information and one year for support correspondence.");
   const result = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze();
   expect(result.violations).toEqual([]);
 });

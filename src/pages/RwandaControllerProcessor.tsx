@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { RwandaControllerProcessorDescription } from "@/components/controller-processor/RwandaControllerProcessorDescription";
@@ -91,13 +92,11 @@ const RwandaControllerProcessor = () => {
 
   return (
     <>
-      <div className="container mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Controller or Processor Assessment - Rwanda
-        </h1>
-        <div className="mb-8 max-w-3xl mx-auto">
-          <RwandaControllerProcessorDescription />
-        </div>
+      <div className="assessment-page">
+        <AssessmentHeader title="Controller or Processor Assessment - Rwanda">
+          <p>This assessment will help you determine whether your organization is a Data Controller or Data Processor under Rwanda's Data Protection Law.</p>
+        </AssessmentHeader>
+        <RwandaControllerProcessorDescription />
         <AssessmentInterface
           title="Controller/Processor Assessment"
           questions={questions}

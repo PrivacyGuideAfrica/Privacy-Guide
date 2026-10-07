@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -46,25 +47,16 @@ const UgandaAnnualCompliance = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="container mx-auto px-4 py-8">
+      <div className="assessment-page">
         <div className="mb-6">
-          <Link 
-            to="/country/uganda" 
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Uganda Assessments
-          </Link>
           
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Annual Data Protection Compliance Report - Uganda
-          </h1>
-          <p className="text-lg text-gray-600">
-            This module helps you understand your obligation to file an Annual Data Protection and Privacy Compliance Report with the Personal Data Protection Office (PDPO) in Uganda. This report is crucial for demonstrating your organisation's ongoing commitment to data protection.
-          </p>
+
+          <AssessmentHeader title="Annual Data Protection Compliance Report - Uganda">
+          <p>This module helps you understand your obligation to file an Annual Data Protection and Privacy Compliance Report with the Personal Data Protection Office (PDPO) in Uganda. This report is crucial for demonstrating your organisation's ongoing commitment to data protection.</p>
+        </AssessmentHeader>
         </div>
 
-        <Card className="max-w-4xl mx-auto">
+        <Card className="assessment-custom-card assessment-page">
           <CardHeader>
             <CardTitle className="flex items-center">
               <FileText className="mr-2 h-6 w-6 shrink-0 text-blue-700" />
@@ -91,7 +83,7 @@ const UgandaAnnualCompliance = () => {
 
                 <div className="space-y-4">
                   <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
-                    <h3 className="font-semibold text-lg mb-3">
+                    <h3 className="custom-question-prompt mb-3">
                       {questions[currentQuestionIndex].question}
                     </h3>
                     {questions[currentQuestionIndex].tooltip && (
@@ -260,11 +252,7 @@ const UgandaAnnualCompliance = () => {
                   <Button onClick={resetAssessment} variant="outline">
                     Start Over
                   </Button>
-                  <Link to="/country/uganda">
-                    <Button variant="default">
-                      Back to Uganda Assessments
-                    </Button>
-                  </Link>
+
                 </div>
               </div>
             )}

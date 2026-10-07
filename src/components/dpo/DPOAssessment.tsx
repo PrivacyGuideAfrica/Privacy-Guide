@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { Question } from "@/components/shared/AssessmentInterface";
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
@@ -186,12 +187,11 @@ export const DPOAssessment = () => {
 
   return (
     <div className="space-y-8">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-4">Do You Need to Designate a Data Protection Officer?</h1>
-        <p className="text-lg text-muted-foreground mb-8">
-          This module helps you determine whether your organisation must appoint a DPO under Rwandan law. 
-          A DPO oversees your data protection strategy and compliance efforts.
-        </p>
+      <div className="assessment-page">
+        <AssessmentHeader title="Do You Need to Designate a Data Protection Officer?">
+          <p>This module helps you determine whether your organisation must appoint a DPO under Rwandan law.
+          A DPO oversees your data protection strategy and compliance efforts.</p>
+        </AssessmentHeader>
 
         <AssessmentInterface
           title="DPO Appointment Assessment"

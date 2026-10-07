@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -59,29 +60,16 @@ const SouthAfricaSpecialInformation = () => {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-        <div className="container mx-auto px-4 py-8">
-          <div className="mb-6">
-            <Button
-              variant="ghost"
-              onClick={() => navigate('/countries/south-africa')}
-              className="mb-4"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to South Africa Assessments
-            </Button>
-          </div>
+        <div className="assessment-page">
 
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-              <div className="flex items-center mb-6">
-                <Shield className="h-8 w-8 text-green-600 mr-3" />
+
+          <div className="assessment-page">
+            <div className="assessment-introduction">
+              <div className="assessment-title-container">
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                    Processing Special Personal Information in South Africa
-                  </h1>
-                  <p className="text-gray-600">
-                    POPIA Module 6: Understanding heightened protection requirements for sensitive data
-                  </p>
+                  <AssessmentHeader title="Processing Special Personal Information in South Africa">
+          <p>POPIA Module 6: Understanding heightened protection requirements for sensitive data</p>
+        </AssessmentHeader>
                 </div>
               </div>
 
@@ -121,7 +109,7 @@ const SouthAfricaSpecialInformation = () => {
             <div className="text-center">
               <Button
                 variant="outline"
-                onClick={() => navigate('/countries/south-africa')}
+                onClick={() => navigate('/country/south-africa')}
                 className="mb-4"
               >
                 Take Other South Africa Assessments

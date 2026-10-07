@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
@@ -88,12 +89,11 @@ const UgandaLawfulBasis = () => {
 
   return (
     <>
-      <div className="container py-8 space-y-6">
+      <div className="assessment-page">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Uganda Lawful Basis Assessment</h1>
-          <p className="text-lg text-muted-foreground">
-            Identify the appropriate lawful basis for your data processing activities under the Uganda Data Protection and Privacy Act, 2019.
-          </p>
+          <AssessmentHeader title="Uganda Lawful Basis Assessment">
+          <p>Identify the appropriate lawful basis for your data processing activities under the Uganda Data Protection and Privacy Act, 2019.</p>
+        </AssessmentHeader>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
             <p className="text-sm text-blue-800">
               <strong>Important:</strong> Organisations must establish and document a lawful basis for every processing activity involving personal data before processing begins.

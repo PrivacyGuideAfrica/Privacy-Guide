@@ -288,6 +288,17 @@ a.module-card:hover::before, a.module-card:focus-visible::before { opacity: 1; }
 .assessment-body h1 { font-size: clamp(1.65rem, 2.7vw, 2.35rem); font-weight: 800; line-height: 1.25; color: #172554; text-align: left; background: none; -webkit-text-fill-color: currentColor; }
 .assessment-body > div > p { color: #526178; max-width: 800px; line-height: 1.75; }
 .assessment-body > div > p.text-sm { font-size: 0.875rem; color: #64748b; }
+.assessment-page, .assessment-form-container { width: 100%; max-width: none; margin-inline: 0; padding: 0; }
+.assessment-body .assessment-header { margin: 0 0 32px; text-align: left; }
+.assessment-body .assessment-header h1 { margin: 0; font-family: Manrope, sans-serif; font-size: clamp(1.65rem, 2.7vw, 2.35rem); font-weight: 800; line-height: 1.25; letter-spacing: -.035em; }
+.assessment-header .assessment-description { margin-top: 24px; max-width: 800px; color: #526178; font: 400 1.125rem/1.75 'Source Sans 3', sans-serif; text-align: left; }
+.assessment-description > p { margin: 0; }
+.assessment-introduction { margin-bottom: 32px; text-align: left; }
+.assessment-title-container { display: block; margin: 0; }
+.assessment-body .assessment-custom-card { width: 100%; max-width: none; margin-inline: 0; border: 1px solid #e1e8f2; border-radius: 20px; box-shadow: 0 8px 30px -24px #395e9d70; text-align: left; }
+.assessment-custom-card h2, .assessment-custom-card h3 { font-family: Manrope, sans-serif; font-weight: 700; line-height: 1.5; }
+.assessment-custom-card .text-center { text-align: left; }
+.guidance-references > .guidance-action { display: block; width: fit-content; max-width: 100%; margin-top: 16px; }
 .assessment-workspace { margin-top: 32px; }
 .assessment-card { width: 100%; max-width: none; margin: 0; border: 1px solid #e1e8f2; border-radius: 20px; box-shadow: 0 8px 30px -24px #395e9d70; background: white; overflow: visible; }
 .question-card-header { padding: 26px 36px; border-bottom: 1px solid #edf1f7; gap: 0; }
@@ -298,7 +309,7 @@ a.module-card:hover::before, a.module-card:focus-visible::before { opacity: 1; }
 .question-card-content { padding: 36px; }
 .question-step { font: 600 0.75rem 'Source Sans 3', sans-serif; text-transform: uppercase; letter-spacing: .12em; color: #1d4ed8; }
 .question-prompt { display: flex; align-items: start; gap: 12px; margin-top: 16px !important; }
-.question-prompt > p { font-family: Manrope,sans-serif; font-size: clamp(1.25rem,2vw,1.6rem); font-weight: 700; line-height: 1.5; letter-spacing: -.025em; }
+.question-prompt > p, .question-prompt > div > p, .assessment-body .custom-question-prompt { font-family: Manrope,sans-serif; font-size: clamp(1.25rem,2vw,1.6rem); font-weight: 700; line-height: 1.5; letter-spacing: -.025em; }
 .question-prompt button { color: #1d4ed8; }
 .answer-hint { font-size: 0.875rem; color: #64748b; margin-top: 28px !important; }
 .answer-options { display: grid; gap: 13px; margin-top: 12px !important; }
@@ -503,11 +514,12 @@ a.module-card:hover::before, a.module-card:focus-visible::before { opacity: 1; }
   .document-section .p-8 { padding: 20px; }
   .document-section > .flex-col > .flex { flex-wrap: wrap; }
   .assessment-shell { padding-block: 30px 60px; }
-  .assessment-body > div > p { font-size: 1.0625rem; }
+  .assessment-body > div > p, .assessment-header .assessment-description { font-size: 1.0625rem; }
+  .assessment-body .assessment-custom-card.p-8 { padding: 20px; }
   .question-card-header { padding: 20px; }
   .question-card-content { padding: 24px 20px; }
   .question-card-footer { padding: 0 20px 24px; }
-  .question-prompt > p { font-size: 1.25rem; }
+  .question-prompt > p, .question-prompt > div > p, .assessment-body .custom-question-prompt { font-size: 1.25rem; }
   .question-prompt { gap: 4px; }
   .question-card-header > div[aria-live] { display: block; }
   .question-card-header > div[aria-live] p:last-child { margin-top: 5px; }
@@ -546,7 +558,7 @@ a.module-card:hover::before, a.module-card:focus-visible::before { opacity: 1; }
   .assessment-card, .result-outcome { border: 0 !important; box-shadow: none !important; background: white !important; }
   .assessment-body, .result-outcome, .question-card-content { padding: 0 !important; }
   .result-outcome .result-message { font-size: 12pt; color: black; }
-  .assessment-body h1 { font-size: 20pt; }
+  .assessment-body h1, .assessment-body .assessment-header h1 { font-size: 20pt; }
   .document-section, .result-details > section { padding-top: 18px; }
   .result-details a[href^="https:"] { color: black; }
   .result-details { gap: 20px; }

@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 
 const questions: Question[] = [
@@ -94,14 +95,11 @@ const questions: Question[] = [
 const ControllerProcessor = () => {
   return (
     <>
-      <div className="container mx-auto py-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Controller or Processor Assessment
-        </h1>
-        <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
-          This assessment will help determine whether your organization is classified as a Data Controller
-          or Data Processor under the Nigerian Data Protection Act (NDPA).
-        </p>
+      <div className="assessment-page">
+        <AssessmentHeader title="Controller or Processor Assessment">
+          <p>This assessment will help determine whether your organization is classified as a Data Controller
+          or Data Processor under the Nigerian Data Protection Act (NDPA).</p>
+        </AssessmentHeader>
         <AssessmentInterface
           title="Controller/Processor Assessment"
           questions={questions}

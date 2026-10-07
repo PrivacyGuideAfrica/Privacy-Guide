@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 import { AssessmentInterface, Question } from '@/components/shared/AssessmentInterface';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -428,18 +429,15 @@ export default function SouthAfricaResponsibleParty() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto">
+        <div className="assessment-page">
+          <div className="assessment-page">
             <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-foreground mb-4">
-                Responsible Party vs Operator Assessment
-              </h1>
-              <p className="text-xl text-muted-foreground mb-6">
-                Determine your role under South Africa's Protection of Personal Information Act (POPIA)
-              </p>
+              <AssessmentHeader title="Responsible Party vs Operator Assessment">
+          <p>Determine your role under South Africa's Protection of Personal Information Act (POPIA)</p>
+        </AssessmentHeader>
             </div>
 
-            <div className="bg-card rounded-lg shadow-lg p-8 mb-8">
+            <div className="assessment-form-container">
               <AssessmentInterface
                 title="Ascertaining Your Role"
                 questions={responsiblePartyQuestions}
@@ -477,7 +475,7 @@ export default function SouthAfricaResponsibleParty() {
 
               <div className="mt-8 text-center">
                 <Button 
-                  onClick={() => navigate('/countries/south-africa')}
+                  onClick={() => navigate('/country/south-africa')}
                   variant="outline"
                 >
                   Take Other South Africa Assessments

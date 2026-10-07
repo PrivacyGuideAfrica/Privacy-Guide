@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { AssessmentInterface, Question } from "@/components/shared/AssessmentInterface";
 
@@ -58,15 +59,12 @@ const questions: Question[] = [
 const RwandaApplicability = () => {
   return (
     <>
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Does the Rwandan Data Protection Law Apply to You?
-        </h1>
-        <p className="text-gray-600 mb-8 text-center max-w-2xl mx-auto">
-          This assessment will help you determine if Rwanda's Data Protection Law applies to your 
+      <div className="assessment-page">
+        <AssessmentHeader title="Does the Rwandan Data Protection Law Apply to You?">
+          <p>This assessment will help you determine if Rwanda's Data Protection Law applies to your
           data processing activities. This law sets out rules for how personal data is handled to 
-          protect the privacy of individuals in Rwanda.
-        </p>
+          protect the privacy of individuals in Rwanda.</p>
+        </AssessmentHeader>
         <AssessmentInterface
           title="Rwandan Data Protection Law Applicability"
           questions={questions}

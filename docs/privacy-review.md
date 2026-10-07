@@ -2,6 +2,12 @@
 
 Status: approved by the site owner on 6 October 2026. The owner stated, “privacy review is approved, w will proceed as is”. Approval covers the current privacy notice and assessment-copying permission, including the wording about unverified provider settings. It authorises publication as written; it does not establish a completed provider review, configure provider accounts, or verify retention enforcement.
 
+## Public wording update — 7 October 2026
+
+The owner approved replacing the public pending-verification passages with policy language: three months for routine operational and analytics information, one year for support correspondence, steps to delete or anonymise data when no longer needed, and appropriate safeguards for international transfers as required by applicable law. Analytics now describes aggregate countries, browsers and device types. The notice retains that browsers contact Umami and that administrator reports do not provide names or email addresses.
+
+This supersedes the public wording described in the historical table below. The account configuration, processing-location, retention-enforcement and transfer-safeguard checks remain internal follow-up tasks; this copy edit does not configure or verify provider accounts.
+
 ## Owner-confirmed facts and instructions
 
 | Topic | Owner's answer | Approved treatment |

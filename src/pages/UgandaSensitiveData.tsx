@@ -1,3 +1,4 @@
+import { AssessmentHeader } from "@/components/shared/AssessmentHeader";
 
 import { AssessmentInterface } from "@/components/shared/AssessmentInterface";
 import { useState } from "react";
@@ -85,12 +86,11 @@ const UgandaSensitiveData = () => {
 
   return (
     <>
-      <div className="container py-8 space-y-6">
+      <div className="assessment-page">
         <div className="space-y-4">
-          <h1 className="text-3xl font-bold">Uganda Sensitive Data Assessment</h1>
-          <p className="text-lg text-muted-foreground">
-            Determine if your processing of sensitive personal data is lawful under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations.
-          </p>
+          <AssessmentHeader title="Uganda Sensitive Data Assessment">
+          <p>Determine if your processing of sensitive personal data is lawful under Uganda's Data Protection and Privacy Act, 2019 and its 2021 Regulations.</p>
+        </AssessmentHeader>
           <div className="bg-red-50 border border-red-200 rounded-lg p-4">
             <p className="text-sm text-red-800">
               <strong>Important:</strong> Sensitive personal data requires explicit consent or a specific legal exception, plus enhanced security safeguards. Processing without proper authorization is strictly prohibited.
